@@ -8,9 +8,10 @@ import 'package:project/screen/auth/login_screen.dart';
 // WelcomeScreen class represents the welcome screen of the app
 class WelcomeScreen extends StatelessWidget {
   // Constructor for WelcomeScreen, making it const for performance optimization
-  const WelcomeScreen({super.key});
+   WelcomeScreen({super.key});
 
   static const storage = FlutterSecureStorage();
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +19,13 @@ class WelcomeScreen extends StatelessWidget {
     Timer(const Duration(seconds: 3), () {
       _onCheckToToken();
     });
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body:  Center(
-
-          child: Image.asset('assets/images/logo.png',width: 100,height: 100,)
+    return ScaffoldMessenger(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body:  Center(
+      
+            child: Image.asset('assets/images/logo.png',width: 100,height: 100,)
+        ),
       ),
     );
   }
