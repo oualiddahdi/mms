@@ -1,8 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
+  import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:project/main.dart';
 import 'package:project/widgets/toggle_button.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../utils/app_event_bus.dart';
 
@@ -40,11 +41,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
   _saveSelectedLanguage() async {
     await storage.write(key: 'selectedLanguage', value: selectedLanguage);
 
-    // تغيير اللغة
-    context.setLocale(Locale(selectedLanguage));
+    Restart.restartApp();
 
-    // إشعار جميع الصفحات بتغيير اللغة
-    AppEventBus().notifyLanguageChange();
 
   }
 
