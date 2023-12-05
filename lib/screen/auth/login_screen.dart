@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                  Navigator.push(
                      context,
                      MaterialPageRoute(
-                     builder: (context) => LanguageScreen(),
+                     builder: (context) => const LanguageScreen(),
                   ));
 
                 });
