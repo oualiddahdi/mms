@@ -38,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
     if(!token.isNull){
 
     }else{
-      Get.offAll((const LoginScreen()));
+      Get.off((const LoginScreen()));
 
     }
 

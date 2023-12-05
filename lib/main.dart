@@ -2,60 +2,64 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 // Import the WelcomeScreen file
+import 'controller/language_controller.dart';
 import 'screen/welcome_screen.dart';
 
 void main() async {
+  // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
-  final storage = FlutterSecureStorage();
+  // Initialize FlutterSecureStorage for storing the selected language
+  const storage = FlutterSecureStorage();
+
+// Read the saved language from storage
   String? savedLanguage = await storage.read(key: 'selectedLanguage');
-  Locale locale;
 
-  if (savedLanguage != null) {
-    locale = Locale(savedLanguage);
-  } else {
-    // If no language is saved, use the device's locale or a default locale
-    locale = Locale('en', ''); // Default to English if not saved
-  }
+// Set the initial locale based on the saved language or use a default locale
+  Locale locale = savedLanguage == 'ar'
+      ? const Locale('ar', 'AR')
+      : const Locale('en', 'US');
 
+  // Run the app with localization settings
   runApp(
     EasyLocalization(
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('ar', ''),
-      ],
+      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'AR')],
       path: 'assets/translations',
-      fallbackLocale: Locale('en', ''),
-      startLocale: locale, // Set the start locale based on saved language or device locale
+      fallbackLocale: const Locale('en', 'US'),
+      startLocale: locale,
       child: const MyApp(),
     ),
   );
-
 }
 
 // The main class for the application, extending StatelessWidget
 class MyApp extends StatelessWidget {
   // Constructor for MyApp, making it const for performance optimization
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // Build method to define the structure of the widget
   @override
   Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        // Provider for LanguageController
+        ChangeNotifierProvider(create: (_) => LanguageController()),
+      ],
+      child: GetMaterialApp(
+        // Disable the debug banner in development mode
+        debugShowCheckedModeBanner: false,
 
-    // Use GetMaterialApp for GetX features and material design
-    return  GetMaterialApp(
-      // Disable the debug banner in development mode
-      debugShowCheckedModeBanner: false,
+        // Set WelcomeScreen as the initial screen of the app
+        home: WelcomeScreen(),
 
-      // Set WelcomeScreen as the initial screen of the app
-      home:  WelcomeScreen(),
-
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-
+        // Localization settings
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+      ),
     );
   }
 }

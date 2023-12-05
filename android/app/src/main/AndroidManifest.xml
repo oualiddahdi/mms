@@ -6,7 +6,7 @@
 
 
     <application
-        android:label="food"
+        android:label="MMS"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

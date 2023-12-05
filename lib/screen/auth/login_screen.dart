@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
+import 'package:project/controller/language_controller.dart';
 
 import 'package:project/screen/language_screen.dart';
-import 'package:project/utils/app_event_bus.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,25 +16,24 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController controllerEmail = TextEditingController();
 
-  final _eventBus = AppEventBus();
-
-  @override
-  void initState() {
-    super.initState();
-    _eventBus.onLanguageChange.listen((_) {
-      // قم بتحديث البيانات هنا
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+
+    context.watch<LanguageController>();
+
     return Scaffold(
       backgroundColor: Colors.white,
         appBar: AppBar(
           title: InkWell(
               onTap: () {
                 setState(() {
-                  Get.to(const LanguageScreen());
+
+                 Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                     builder: (context) => LanguageScreen(),
+                  ));
+
                 });
               },
               child: const Icon(Icons.language, color: Colors.blueAccent)),
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("MMS"),
+            const Text("MMS").tr(),
             const SizedBox(
               height: 20,
             ),
@@ -58,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.email),
                   border: InputBorder.none,
-                  hintText: "email".tr,
+                  hintText: "email".tr(),
                 ),
               ),
             ),
@@ -75,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.password),
                   border: InputBorder.none,
-                  hintText: "password".tr,
+                  hintText: "password".tr(),
                 ),
               ),
             ),
@@ -85,11 +86,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
-  @override
-  void dispose() {
-    _eventBus.dispose();
-    super.dispose();
-  }
 
 }
