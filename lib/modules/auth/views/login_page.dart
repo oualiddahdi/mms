@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:project/controller/language_controller.dart';
+import 'package:project/common/widgets/button_global_widget.dart';
+import 'package:project/modules/settings/language/controllers/language_controller.dart';
 
-import 'package:project/screen/language_screen.dart';
+import 'package:project/modules/settings/language/views/language_page.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -80,6 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+
+            ButtonGlobal(onPress: (){}, text: 'enter')
           ],
         ),
       ),

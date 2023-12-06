@@ -32,21 +32,28 @@ dependencies:
     sdk: flutter
 
 
-
+  # Dependency for state management, route management, and dependency injection
   get: ^4.6.5
+
+  # Package for making HTTP requests in a Flutter app
   http: ^1.0.0
 
+  # Secure storage mechanism for sensitive information (e.g., tokens, passwords)
   flutter_secure_storage: ^9.0.0
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # Cupertino-styled icons for iOS applications
   cupertino_icons: ^1.0.2
 
+  # Package for easy localization and internationalization
   easy_localization: ^3.0.3
+
+  # Loader for the easy_localization package
   easy_localization_loader: ^2.0.0
 
+  # Package for value equality in Dart, simplifying implementation for complex objects
   equatable: ^2.0.5
 
+  # State management package for Flutter, providing a simple and efficient way to manage app state
   provider: ^6.1.1
 
 

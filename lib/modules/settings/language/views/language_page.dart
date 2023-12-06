@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project/controller/language_controller.dart';
+import 'package:project/modules/settings/language/controllers/language_controller.dart';
 
 import 'package:provider/provider.dart';
 

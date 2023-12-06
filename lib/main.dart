@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 // Import the WelcomeScreen file
-import 'controller/language_controller.dart';
-import 'screen/welcome_screen.dart';
+import 'modules/settings/language/controllers/language_controller.dart';
+import 'welcome_screen.dart';
 
 void main() async {
   // Ensure that Flutter is initialized

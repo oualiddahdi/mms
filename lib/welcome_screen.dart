@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project/screen/auth/login_screen.dart';
+import 'package:project/modules/auth/views/login_page.dart';
 
 // WelcomeScreen class represents the welcome screen of the app
 class WelcomeScreen extends StatelessWidget {

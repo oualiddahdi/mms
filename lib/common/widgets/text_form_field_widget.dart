@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
+// Custom widget representing a styled TextFormField
 class TextFormFieldWidget extends StatelessWidget {
-  final int maxLines;
-  final String hintText;
-  final TextEditingController controller;
+  final int maxLines; // Maximum number of lines for the TextFormField
+  final String hintText; // Hint text for the TextFormField
+  final TextEditingController controller; // Controller to manage the text input
 
-  const TextFormFieldWidget(
-      {Key? key,
-      required this.maxLines,
-      required this.hintText,
-      required this.controller})
-      : super(key: key);
+  // Constructor for the TextFormFieldWidget
+  const TextFormFieldWidget({
+    Key? key,
+    required this.maxLines,
+    required this.hintText,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Expanded widget to take all available vertical space within its parent
     return Expanded(
       child: Center(
         child: Container(
@@ -24,6 +27,7 @@ class TextFormFieldWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(4.0),
+            // TextFormField for text input
             child: TextFormField(
               controller: controller,
               maxLines: maxLines,
@@ -31,11 +35,12 @@ class TextFormFieldWidget extends StatelessWidget {
                 hintText: hintText,
                 hintStyle: const TextStyle(color: Colors.black38),
                 border: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                  width: 1,
-                  color: Colors.black,
-                )),
-                // ... المزيد من الحدود والتنسيقات هنا
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                // Additional borders and formatting can be added here
               ),
             ),
           ),
