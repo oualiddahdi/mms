@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pop(context); // Close the drawer
                 setState(() {
-                  currentScreen = SettingsContent();
+                  currentScreen =   ();
                   appBarTitle = Text('Settings');
                 });
               },

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/common/widgets/button_global_widget.dart';
+import 'package:project/modules/home/views/home_page.dart';
 import 'package:project/modules/settings/language/controllers/language_controller.dart';
 
 import 'package:project/modules/settings/language/views/language_page.dart';
@@ -15,6 +16,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+  bool _isPasswordVisible = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,19 +73,42 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(10)),
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: TextField(
+                controller: controllerPassword,
                 textAlignVertical: TextAlignVertical.center,
+                obscureText: !_isPasswordVisible, // Toggle visibility based on the state
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.password),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      // Toggle the visibility state
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                    child: Icon(
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    ),
+                  ),
                   border: InputBorder.none,
                   hintText: "password".tr(),
                 ),
               ),
             ),
+            const SizedBox(
+              height: 50,
+            ),
+            ButtonGlobal(onPress: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ));
 
-            ButtonGlobal(onPress: (){}, text: 'enter')
+            }, text: 'sign in'.tr())
           ],
         ),
       ),

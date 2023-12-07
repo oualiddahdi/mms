@@ -1,6 +1,9 @@
 {
-    "email": "email",
+    "email": "user name",
     "password": "password",
     "english": "English",
-    "arabic": "Arabic"
+    "arabic": "Arabic",
+
+    "sign in": "Sign in"
+
 }

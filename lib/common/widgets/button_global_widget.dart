@@ -23,14 +23,7 @@ class ButtonGlobal extends StatelessWidget {
               topRight: Radius.circular(10),
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.primaryColor,
-              spreadRadius: 4,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
+
         ),
 
         child: Text(
