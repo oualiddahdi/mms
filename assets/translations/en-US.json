@@ -1,9 +1,19 @@
 {
-    "email": "user name",
-    "password": "password",
     "english": "English",
     "arabic": "Arabic",
+    "language": "Language",
 
-    "sign in": "Sign in"
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "home": "Home",
+    "projects": "Projects",
+    "deliveryRequests": "Delivery Requests",
+    "visits": "Visits",
+    "tasks": "Tasks",
+    "messages": "Messages",
+    "notifications": "Notifications",
+    "aboutApp": "About App",
+    "settings": "Settings"
 
 }

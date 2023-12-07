@@ -55,6 +55,7 @@ dependencies:
 
   # State management package for Flutter, providing a simple and efficient way to manage app state
   provider: ^6.1.1
+  flutter_material_symbols: ^0.0.4
 
 
 

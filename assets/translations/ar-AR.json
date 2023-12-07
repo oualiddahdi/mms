@@ -1,10 +1,18 @@
 {
+    "arabic": "عربي",
+    "english": "الانجلزية",
+    "language": "اللغة",
+
     "email": "إسم المستخدم",
     "password": "كلمة المرور",
-    "english": "الانجلزية",
-    "arabic": "عربي",
-
-    "sign in": "تسجيل الدخول"
-
-
+    "signIn": "تسجيل الدخول",
+    "home": "الرئيسية",
+    "projects": "المشاريع",
+    "deliveryRequests": "طلبات تسليم البنود",
+    "visits": "الزيارات",
+    "tasks": "المهام",
+    "messages": "الرسائل",
+    "notifications": "الاشعارات",
+    "aboutApp": "عن التطبيق",
+    "settings": "الاعدادات"
 }
