@@ -1,17 +1,23 @@
+// Importing necessary packages and files
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:project/modules/auth/views/content/projects_content.dart';
+import 'package:project/common/app_colors.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../auth/views/content/about_app_content.dart';
-import '../../auth/views/content/delivery_requests_content.dart';
-import '../../auth/views/content/home_content.dart';
-import '../../auth/views/content/messages_content.dart';
-import '../../auth/views/content/notifications_content.dart';
-import '../../auth/views/content/settings_content.dart';
-import '../../auth/views/content/tasks_content.dart';
-import '../../auth/views/content/visits_content.dart';
+// Importing other content views
+import '../../../common/app_size_text.dart';
+import 'content/about_app_content.dart';
+import 'content/delivery_requests_content.dart';
+import 'content/home_content.dart';
+import 'content/messages_content.dart';
+import 'content/notifications_content.dart';
+import 'content/projects_content.dart';
+import 'content/settings_content.dart';
+import 'content/tasks_content.dart';
+import 'content/visits_content.dart';
 
+// Define the HomePage widget
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -19,118 +25,187 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+// Define the state for the HomePage widget
 class _HomePageState extends State<HomePage> {
-  Widget currentScreen = const HomeContent(); // Default screen
-  Widget appBarTitle = H(); // Default title
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+    buildSignature: 'Unknown',
+    installerStore: 'Unknown',
+  );
 
+  // Default screen and title
+  Widget currentScreen = const HomeContent();
+  String appBarTitle = 'home'.tr();
 
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
+
+  Future<void> _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // App bar with the current title
       appBar: AppBar(
-        title: appBarTitle,
+        title: Text(
+          appBarTitle,
+          style: const TextStyle(
+            fontSize: AppSizeText.mediumTextSize,
+          ),
+        ),
       ),
+      // Drawer navigation menu
       drawer: Drawer(
+        backgroundColor: AppColors.backgroundWhite,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             SizedBox(
-               height: 150,
-               child: DrawerHeader(
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                ),
+            // Drawer header with user information
+            userDrawerHeader(),
+            // Drawer items for different content screens
+            buildListTile(
+                'home', MaterialSymbols.home_app_logo, const HomeContent()),
+            buildListTile(
+                'projects', MaterialSymbols.grain, const ProjectsContent()),
+            buildListTile('deliveryRequests', MaterialSymbols.folder,
+                const DeliveryRequestsContent()),
+            buildListTile('visits', MaterialSymbols.business_center,
+                const VisitsContent()),
+            buildListTile(
+                'tasks', MaterialSymbols.task_alt, const TasksContent()),
+            buildListTile(
+                'messages', MaterialSymbols.mail, const MessagesContent()),
+            buildListTile('notifications', MaterialSymbols.notifications,
+                const NotificationsContent()),
+            buildListTile(
+                'aboutApp', MaterialSymbols.info, const AboutAppContent()),
+            buildListTile(
+                'settings', MaterialSymbols.settings, const SettingsContent()),
 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
-                            fit: BoxFit.fill
-                        ),
-                      ),
-                    ),
-
-                    const Column(
-                      children: [
-                        Text(
-                          'محمد خالد',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-
-                        Text(
-                          'جهة مالكة',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                           ),
-             ),
-            // Usage
-            buildListTile('home', MaterialSymbols.home_app_logo, const HomeContent()),
-            buildListTile('projects', MaterialSymbols.grain, const ProjectsContent()),
-            buildListTile('deliveryRequests', MaterialSymbols.folder, const DeliveryRequestsContent()),
-            buildListTile('visits', MaterialSymbols.business_center, const VisitsContent()),
-            buildListTile('tasks', MaterialSymbols.task_alt, const TasksContent()),
-            buildListTile('messages', MaterialSymbols.mail, const MessagesContent()),
-            buildListTile('notifications', MaterialSymbols.notifications, const NotificationsContent()),
-            buildListTile('aboutApp', MaterialSymbols.info, const AboutAppContent()),
-            buildListTile('settings', MaterialSymbols.settings, const SettingsContent()),
+            _infoTile('appVersion', _packageInfo.version)
           ],
         ),
       ),
+      // Body of the page showing the current screen
       body: currentScreen,
-
     );
   }
 
+  // Method to create a ListTile for the drawer
   Padding buildListTile(String titleKey, IconData icon, Widget content) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
-        leading: Icon(icon,color: const Color(0XFF73BEBD)),
-        title: Text(titleKey.tr()),
-        trailing: const Icon(Icons.arrow_forward_ios,color: Color(0XFF73BEBD)),
+        leading: Icon(icon,
+            size: AppSizeText.largeTextSize, color: const Color(0XFF73BEBD)),
+        title: Text(titleKey.tr(),
+            style: const TextStyle(
+                color: AppColors.textColor,
+                fontSize: AppSizeText.mediumTextSize)),
+        trailing: const Icon(Icons.arrow_forward_ios,
+            size: AppSizeText.largeTextSize, color: Color(0XFF73BEBD)),
         onTap: () {
-          Navigator.pop(context); // Close the drawer
+          // Close the drawer and update the screen and title
+          Navigator.pop(context);
           setState(() {
             currentScreen = content;
-            appBarTitle = Text(titleKey.tr());
+            appBarTitle = titleKey.tr();
           });
         },
       ),
     );
   }
 
-}
+  // Method to create the user drawer header
+  userDrawerHeader() {
+    return SizedBox(
+      height: 150,
+      child: DrawerHeader(
+        decoration: const BoxDecoration(),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.topCenter,
+                width: 50,
+                height: 50,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://googleflutter.com/sample_image.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+            const Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // User name and role
+                  Text(
+                    'محمد خالد',
+                    style: TextStyle(
+                      color: AppColors.textColor,
+                      fontSize: AppSizeText.mediumTextSize,
+                    ),
+                  ),
+                  Text(
+                    'جهة مالكة',
+                    style: TextStyle(
+                      color: AppColors.textColor,
+                      fontSize: AppSizeText.mediumTextSize,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-
-class H extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
+  Widget _infoTile(String title, String subtitle) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Welcome to the Home Content!'),
-          Text('Welcome to the Home Content!'),
+          // Title of the row
+          Text(
+            title.tr(),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: AppSizeText.mediumTextSize,
+            ),
+          ),
 
+          // Subtitle with conditional rendering and custom style
+          Text(
+            subtitle.isEmpty ? 'Not set' : subtitle,
+            style: const TextStyle(
+              color: AppColors.textColor,
+              fontSize: AppSizeText.mediumTextSize,
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

@@ -3,6 +3,8 @@
     "arabic": "Arabic",
     "language": "Language",
 
+    "appVersion": "App version",
+
     "email": "Email",
     "password": "Password",
     "signIn": "Sign In",

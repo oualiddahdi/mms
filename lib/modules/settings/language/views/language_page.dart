@@ -3,9 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:project/common/app_colors.dart';
 import 'package:project/modules/settings/language/controllers/language_controller.dart';
 
 import 'package:provider/provider.dart';
+
+import '../../../../common/app_size_text.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -16,7 +19,7 @@ class LanguageScreen extends StatefulWidget {
 
 class _LanguageScreenState extends State<LanguageScreen> {
   String selectedLanguage = 'en'; // Default language code, e.g., English
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   @override
   void initState() {
@@ -31,22 +34,17 @@ class _LanguageScreenState extends State<LanguageScreen> {
       if (savedLanguage.toLowerCase() != selectedLanguage.toLowerCase()) {
         setState(() {
           selectedLanguage = savedLanguage;
-
-
         });
       }
     }
   }
 
-
   // Save the selected language to secure storage
   _saveSelectedLanguage() async {
     await storage.write(key: 'selectedLanguage', value: selectedLanguage);
 
-
-    Locale locale = new Locale(selectedLanguage); //languageCode=ru or es
+    Locale locale = Locale(selectedLanguage); //languageCode=ru or es
     Get.updateLocale(locale);
-
   }
 
   @override
@@ -55,7 +53,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(""),
+        title:  Text(
+          "language",
+          style: TextStyle(
+            fontSize: AppSizeText.mediumTextSize,
+          ),
+        ).tr(),
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
@@ -69,11 +72,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     _saveSelectedLanguage(); // Save the selected language when tapped
                     // Apply logic to change the app's locale if needed
 
-                    context.locale = Locale('ar', 'AR');
+                    context.locale = const Locale('ar', 'AR');
 
                     controller.onLanguageChanged();
-
-
                   });
                 },
                 child: Container(
@@ -81,10 +82,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: selectedLanguage == 'ar'
-                            ? Colors.blue // Change the color as needed
-                            : Colors.grey.shade300,
+                            ? AppColors
+                                .primaryColor // Change the color as needed
+                            : AppColors.backgroundColorGreyShade300,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Text('arabic').tr()),
+                    child:  const Text(
+                      'arabic',
+                      style: TextStyle(fontSize: AppSizeText.smallTextSize),
+                    ).tr()),
               ),
               const SizedBox(
                 height: 14,
@@ -92,14 +97,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
               InkWell(
                 onTap: () {
                   setState(() {
-
                     selectedLanguage = 'en';
                     _saveSelectedLanguage(); // Save the selected language when tapped
                     // Apply logic to change the app's locale if needed
-                    context.locale = Locale('en', 'US');
+                    context.locale = const Locale('en', 'US');
 
                     controller.onLanguageChanged();
-
                   });
                 },
                 child: Container(
@@ -107,10 +110,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: selectedLanguage == 'en'
-                            ? Colors.blue // Change the color as needed
-                            : Colors.grey.shade300,
+                            ? AppColors
+                                .primaryColor // Change the color as needed
+                            : AppColors.backgroundColorGreyShade300,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Text('english').tr()),
+                    child: const Text(
+                      'english',
+                      style: TextStyle(fontSize: AppSizeText.smallTextSize),
+                    ).tr()),
               )
             ],
           ),

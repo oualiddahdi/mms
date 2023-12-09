@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  package_info_plus: ^4.2.0
 
   # Dependency for state management, route management, and dependency injection
   get: ^4.6.5
@@ -94,11 +95,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: assets/font/cairo.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

@@ -38,7 +38,7 @@ void main() async {
 // The main class for the application, extending StatelessWidget
 class MyApp extends StatelessWidget {
   // Constructor for MyApp, making it const for performance optimization
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // Build method to define the structure of the widget
   @override
@@ -49,6 +49,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageController()),
       ],
       child: GetMaterialApp(
+        theme: ThemeData(
+          fontFamily: 'cairo',
+        ),
+
         // Disable the debug banner in development mode
         debugShowCheckedModeBanner: false,
 
