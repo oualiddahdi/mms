@@ -108,13 +108,13 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
         leading: Icon(icon,
-            size: AppSizeText.largeTextSize, color: const Color(0XFF73BEBD)),
+            size: AppSizeText.largeTextSize, color: AppColors.primaryColor),
         title: Text(titleKey.tr(),
             style: const TextStyle(
                 color: AppColors.textColor,
                 fontSize: AppSizeText.mediumTextSize)),
         trailing: const Icon(Icons.arrow_forward_ios,
-            size: AppSizeText.largeTextSize, color: Color(0XFF73BEBD)),
+            size: AppSizeText.largeTextSize, color: AppColors.primaryColor),
         onTap: () {
           // Close the drawer and update the screen and title
           Navigator.pop(context);

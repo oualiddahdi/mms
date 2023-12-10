@@ -17,12 +17,8 @@ class ButtonGlobal extends StatelessWidget {
         alignment: Alignment.center,
         height: 50,
         decoration: const BoxDecoration(
-          color:Color(0XFF0DAE91),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
+          color:AppColors.primaryColor,
+          borderRadius: BorderRadius.all(Radius.circular(14)),
 
         ),
 

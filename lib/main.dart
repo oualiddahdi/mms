@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 // Import the WelcomeScreen file
+import 'modules/auth/views/service_description.dart';
 import 'modules/settings/language/controllers/language_controller.dart';
 import 'welcome_screen.dart';
 
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
 
         // Set WelcomeScreen as the initial screen of the app
-        home: WelcomeScreen(),
+        home: ServiceDescriptionPage(),
 
         // Localization settings
         localizationsDelegates: context.localizationDelegates,
