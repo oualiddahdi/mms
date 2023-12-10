@@ -111,3 +111,9 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_intl:
   enabled: true
+
+
+
+
+
+#flutter build appbundle --target-platform android-arm,android-arm64
