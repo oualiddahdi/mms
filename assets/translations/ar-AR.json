@@ -5,8 +5,8 @@
 
     "appVersion": "نسخة التطبيق",
 
-    "email": "إسم المستخدم",
-    "password": "كلمة المرور",
+    "lbl_your_email": "إسم المستخدم",
+    "lbl_password": "كلمة المرور",
     "signIn": "تسجيل الدخول",
     "home": "الرئيسية",
     "projects": "المشاريع",
@@ -18,8 +18,13 @@
     "aboutApp": "عن التطبيق",
     "settings": "الاعدادات",
 
+    "getStarted": "البدء",
 
-
-    "getStarted": "البدء"
+    "lbl_sign_in": "تسجيل الدخول",
+    "msg_sign_in_to_continue": "تسجيل الدخول للمتابعة",
+    "msg_welcome_to_e_com": "مرحبا بكم في إي كوم",
+    "msg_forgot_password": "هل نسيت كلمة السر؟",
+    "msg_don_t_have_an_account2": "ليس لديك حساب؟",
+    "lbl_register": "يسجل"
 
 }

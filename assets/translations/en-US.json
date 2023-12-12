@@ -5,8 +5,8 @@
 
     "appVersion": "App version",
 
-    "email": "Email",
-    "password": "Password",
+    "lbl_your_email": "Your Email",
+    "lbl_password": "Password",
     "signIn": "Sign In",
     "home": "Home",
     "projects": "Projects",
@@ -18,7 +18,12 @@
     "aboutApp": "About App",
     "settings": "Settings",
 
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
 
-
+    "lbl_sign_in": "Sign In",
+    "msg_sign_in_to_continue": "Sign in to continue",
+    "msg_welcome_to_e_com": "Welcome to E-com",
+    "msg_forgot_password": "Forgot Password?",
+    "msg_don_t_have_an_account2": "Don’t have an account?",
+    "lbl_register": "Register"
 }

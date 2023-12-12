@@ -2,12 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:project/presentation/language_screen/controllers/language_controller.dart';
+import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
+import 'package:project/routes/app_routes.dart';
+import 'package:project/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 
-// Import the WelcomeScreen file
-import 'modules/auth/views/service_description.dart';
-import 'modules/settings/language/controllers/language_controller.dart';
-import 'welcome_screen.dart';
+
 
 void main() async {
   // Ensure that Flutter is initialized
@@ -24,12 +25,15 @@ void main() async {
       ? const Locale('ar', 'AR')
       : const Locale('en', 'US');
 
+  ThemeHelper().changeTheme('primary');
+
+
   // Run the app with localization settings
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en', 'US'), Locale('ar', 'AR')],
       path: 'assets/translations',
-      fallbackLocale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('ar', 'AR'),
       startLocale: locale,
       child: const MyApp(),
     ),
@@ -50,21 +54,24 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageController()),
       ],
       child: GetMaterialApp(
-        theme: ThemeData(
-          fontFamily: 'cairo',
-        ),
+        theme: theme,
 
         // Disable the debug banner in development mode
         debugShowCheckedModeBanner: false,
 
-        // Set WelcomeScreen as the initial screen of the app
-        home: ServiceDescriptionPage(),
 
         // Localization settings
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
+
+        initialBinding: SplashBinding(),
+        initialRoute: AppRoutes.splashScreen,
+        getPages: AppRoutes.pages,
+
       ),
+
+
     );
   }
 }

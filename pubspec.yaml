@@ -58,6 +58,12 @@ dependencies:
   provider: ^6.1.1
   flutter_material_symbols: ^0.0.4
 
+  # add this line to your dependencies
+  fluttertoast: ^8.2.3
+
+  cached_network_image: ^3.2.0
+
+  flutter_svg: ^1.1.6
 
 
 dev_dependencies:
