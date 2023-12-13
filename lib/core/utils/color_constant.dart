@@ -1,79 +1,45 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class ColorConstant {
-  static Color gray5066 = fromHex('#66fbfcfc');
+  static const Color primaryColor = Color(0xFF1786f9);
+  static const Color secondaryColor = Color(0xFF2ecc71);
+  static const Color accentColor = Color(0xFFe74c3c);
+  static const Color textColor = Color(0xFF333333);
+  static const Color whiteA700 = Color(0xFFFFFFFF);
 
-  static Color gray5001 = fromHex('#fcfcfc');
-
-  static Color gray5002 = fromHex('#fcfcfd');
-
-  static Color blueGray5099 = fromHex('#99edeef1');
-
-  static Color blueGray50 = fromHex('#edeef1');
-
-  static Color gray90033 = fromHex('#33131416');
-
-  static Color green50019 = fromHex('#1948bc65');
-
-  static Color blue50061 = fromHex('#611786f9');
-
-  static Color red400 = fromHex('#eb5a5a');
-
-  static Color black9003f = fromHex('#3f000000');
-
-  static Color gray50 = fromHex('#f9f9fa');
-
-  static Color green500 = fromHex('#48bc65');
-
-  static Color gray30099 = fromHex('#99d8dae2');
-
-  static Color red40019 = fromHex('#19eb5a5a');
-
-  static Color black900 = fromHex('#000000');
-
-  static Color yellow700 = fromHex('#fabe3c');
-
-  static Color teal900 = fromHex('#082d53');
-
-  static Color blueGray40014 = fromHex('#14718096');
-
-  static Color blueGray900 = fromHex('#29303c');
-
-  static Color red4000c = fromHex('#0ceb5a5a');
-
-  static Color blueGray5001 = fromHex('#eeeff2');
-
-  static Color gray5099 = fromHex('#99f9f9fa');
-
-  static Color gray700 = fromHex('#5d5f6f');
-
-  static Color blueGray5087 = fromHex('#87edeef1');
-
-  static Color blueGray400 = fromHex('#8b8fa7');
-
-  static Color blue500 = fromHex('#1786f9');
-
-  static Color gray900 = fromHex('#131416');
-
-  static Color blueGray500 = fromHex('#74778b');
-
-  static Color gray300 = fromHex('#d8dae2');
-
-  static Color blue50 = fromHex('#d1e7fe');
-
-  static Color gray9007e = fromHex('#7e131416');
-
-  static Color blueGray1000f = fromHex('#0fc5c7d3');
-
-  static Color blueGray40001 = fromHex('#888888');
-
-  static Color whiteA700 = fromHex('#ffffff');
-
-  static Color fromHex(String hexString) {
-    final buffer = StringBuffer();
-    if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
-    buffer.write(hexString.replaceFirst('#', ''));
-    return Color(int.parse(buffer.toString(), radix: 16));
-  }
+  static const Color gray5066 = Color(0xFF66fbfcfc);
+  static const Color gray5001 = Color(0xFFfcfcfc);
+  static const Color gray5002 = Color(0xFFfcfcfd);
+  static const Color blueGray5099 = Color(0xFF99edeef1);
+  static const Color blueGray50 = Color(0xFFedeef1);
+  static const Color gray90033 = Color(0xFF33131416);
+  static const Color green50019 = Color(0xFF1948bc65);
+  static const Color blue50061 = Color(0xFF611786f9);
+  static const Color red400 = Color(0xFFeb5a5a);
+  static const Color black9003f = Color(0xFF3f000000);
+  static const Color gray50 = Color(0xFFf9f9fa);
+  static const Color green500 = Color(0xFF48bc65);
+  static const Color gray30099 = Color(0xFF99d8dae2);
+  static const Color red40019 = Color(0xFF19eb5a5a);
+  static const Color black900 = Color(0xFF000000);
+  static const Color yellow700 = Color(0xFFfabe3c);
+  static const Color teal900 = Color(0xFF082d53);
+  static const Color blueGray40014 = Color(0xFF14718096);
+  static const Color blueGray900 = Color(0xFF29303c);
+  static const Color red4000c = Color(0xFF0ceb5a5a);
+  static const Color blueGray5001 = Color(0xFFeeeff2);
+  static const Color gray5099 = Color(0xFF99f9f9fa);
+  static const Color gray700 = Color(0xFF5d5f6f);
+  static const Color blueGray5087 = Color(0xFF87edeef1);
+  static const Color blueGray400 = Color(0xFF8b8fa7);
+  static const Color blue500 = Color(0xFF1786f9);
+  static const Color gray900 = Color(0xFF131416);
+  static const Color blueGray500 = Color(0xFF74778b);
+  static const Color gray300 = Color(0xFFd8dae2);
+  static const Color blue50 = Color(0xFFd1e7fe);
+  static const Color gray9007e = Color(0xFF7e131416);
+  static const Color blueGray1000f = Color(0xFF0fc5c7d3);
+  static const Color blueGray40001 = Color(0xFF888888);
 }
+

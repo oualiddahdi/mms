@@ -12,5 +12,7 @@ class ImageConstant {
   static String imgOnboarding = 'assets/images/img_onboarding.png';
 
 
+  static String imgArrowLeftBlueGray300 =
+      '$imagePath/img_arrow_left_blue_gray_300.svg';
 
 }

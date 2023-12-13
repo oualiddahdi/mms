@@ -11,7 +11,7 @@ class SplashController extends GetxController {
 
     Future.delayed(const Duration(milliseconds: 3000), () {
       Get.offNamed(
-        AppRoutes.onboardingScreen,
+        AppRoutes.loginScreen,
       );
     });
   }

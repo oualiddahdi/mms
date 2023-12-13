@@ -3,16 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:project/core/common/app_colors.dart';
-import 'package:project/core/common/app_size_text.dart';
+import 'package:project/core/utils/size_utils.dart';
 
 // Importing other content views
+import '../../core/utils/color_constant.dart';
 import '../home_container_screen/home_screen.dart';
 import '../../modules/home/content/about_app/about_app_screen.dart';
 import '../../modules/home/content/delivery_requests/delivery_requests_screen.dart';
 import '../../modules/home/content/messages/messages_screen.dart';
 import '../../modules/home/content/notifications/notifications_screen.dart';
-import '../../modules/home/content/projects/projects_screen.dart';
+import '../list_projcts_screen/list_projcts_screen.dart';
 import '../../modules/home/content/settings/settings_screen.dart';
 import '../../modules/home/content/tasks/tasks_screen.dart';
 import '../../modules/home/content/visits/visits_screen.dart';
@@ -60,14 +60,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           appBarTitle,
-          style: const TextStyle(
-            fontSize: AppSizeText.mediumTextSize,
+          style: TextStyle(
+            fontSize: 16.v,
           ),
         ),
       ),
       // Drawer navigation menu
       drawer: Drawer(
-        backgroundColor: AppColors.backgroundWhite,
+        backgroundColor: ColorConstant.whiteA700,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -107,14 +107,11 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
-        leading: Icon(icon,
-            size: AppSizeText.largeTextSize, color: AppColors.primaryColor),
+        leading: Icon(icon, size: 16.v, color: ColorConstant.blue500),
         title: Text(titleKey.tr(),
-            style: const TextStyle(
-                color: AppColors.textColor,
-                fontSize: AppSizeText.mediumTextSize)),
-        trailing: const Icon(Icons.arrow_forward_ios,
-            size: AppSizeText.largeTextSize, color: AppColors.primaryColor),
+            style: TextStyle(color: ColorConstant.black900, fontSize: 16.v)),
+        trailing: Icon(Icons.arrow_forward_ios,
+            size: 16.v, color: ColorConstant.blue500),
         onTap: () {
           // Close the drawer and update the screen and title
           Navigator.pop(context);
@@ -151,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
               flex: 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,15 +158,15 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     'محمد خالد',
                     style: TextStyle(
-                      color: AppColors.textColor,
-                      fontSize: AppSizeText.mediumTextSize,
+                      color: ColorConstant.black900,
+                      fontSize: 16.v,
                     ),
                   ),
                   Text(
                     'جهة مالكة',
                     style: TextStyle(
-                      color: AppColors.textColor,
-                      fontSize: AppSizeText.mediumTextSize,
+                      color: ColorConstant.black900,
+                      fontSize: 16.v,
                     ),
                   ),
                 ],
@@ -190,18 +187,18 @@ class _HomePageState extends State<HomePage> {
           // Title of the row
           Text(
             title.tr(),
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: AppSizeText.mediumTextSize,
+              fontSize: 16.adaptSize,
             ),
           ),
 
           // Subtitle with conditional rendering and custom style
           Text(
             subtitle.isEmpty ? 'Not set' : subtitle,
-            style: const TextStyle(
-              color: AppColors.textColor,
-              fontSize: AppSizeText.mediumTextSize,
+            style: TextStyle(
+              color: ColorConstant.black900,
+              fontSize: 16.adaptSize,
             ),
           ),
         ],

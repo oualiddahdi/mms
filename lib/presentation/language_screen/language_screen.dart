@@ -3,12 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project/core/common/app_colors.dart';
-import 'package:project/core/common/app_size_text.dart';
+import 'package:project/core/utils/color_constant.dart';
+import 'package:project/core/utils/size_utils.dart';
 
 import 'package:provider/provider.dart';
 
 import 'controllers/language_controller.dart';
+
 
 
 class LanguageScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
         title:  Text(
           "language",
           style: TextStyle(
-            fontSize: AppSizeText.mediumTextSize,
+            fontSize: 14.v,
           ),
         ).tr(),
       ),
@@ -83,13 +84,13 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: selectedLanguage == 'ar'
-                            ? AppColors
-                                .primaryColor // Change the color as needed
-                            : AppColors.backgroundColorGreyShade300,
+                            ? ColorConstant
+                                .gray90033 // Change the color as needed
+                            : ColorConstant.whiteA700,
                         borderRadius: BorderRadius.circular(10)),
-                    child:  const Text(
+                    child:  Text(
                       'arabic',
-                      style: TextStyle(fontSize: AppSizeText.smallTextSize),
+                      style: TextStyle(fontSize: 14.v),
                     ).tr()),
               ),
               const SizedBox(
@@ -111,13 +112,13 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                         color: selectedLanguage == 'en'
-                            ? AppColors
-                                .primaryColor // Change the color as needed
-                            : AppColors.backgroundColorGreyShade300,
+                            ? ColorConstant
+                                .gray90033 // Change the color as needed
+                            : ColorConstant.whiteA700,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Text(
+                    child:  Text(
                       'english',
-                      style: TextStyle(fontSize: AppSizeText.smallTextSize),
+                      style: TextStyle(fontSize: 14.v),
                     ).tr()),
               )
             ],
@@ -125,5 +126,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
         ),
       ),
     );
+
   }
+
+
+
 }

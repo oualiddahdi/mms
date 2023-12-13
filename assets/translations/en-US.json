@@ -25,5 +25,8 @@
     "msg_welcome_to_e_com": "Welcome to E-com",
     "msg_forgot_password": "Forgot Password?",
     "msg_don_t_have_an_account2": "Don’t have an account?",
-    "lbl_register": "Register"
+    "lbl_register": "Register",
+
+    "upload_extracts": "Upload extracts"
+
 }

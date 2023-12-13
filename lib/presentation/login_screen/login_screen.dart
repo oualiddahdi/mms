@@ -6,6 +6,8 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/presentation/home_page/home_page.dart';
+import 'package:project/presentation/language_screen/language_screen.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:project/widgets/custom_elevated_button.dart';
@@ -21,7 +23,6 @@ import 'controller/login_controller.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -36,8 +37,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -130,6 +129,8 @@ class LoginScreen extends StatelessWidget {
 
   ///Future
   Future<void> onTapSignin() async {
+
+    Get.to(HomePage());
 
     final postLoginReq = {
       "username": emailController.text,

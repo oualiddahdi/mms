@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
@@ -98,7 +99,7 @@ class CustomTextFormField extends StatelessWidget {
     ),
   );
   InputDecoration get decoration => InputDecoration(
-    hintText: hintText ?? "",
+    hintText: hintText!.tr() ?? "".tr(),
     hintStyle: hintStyle ?? theme.textTheme.bodySmall,
     prefixIcon: prefix,
     prefixIconConstraints: prefixConstraints,

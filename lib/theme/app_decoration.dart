@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/theme/theme_helper.dart';
 
 class AppDecoration {
+
+  static BoxDecoration get fillOnPrimaryContainer => BoxDecoration(
+    color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+  );
   static BoxDecoration get txtFillGreen50019 => BoxDecoration(
     color: ColorConstant.green50019,
   );
@@ -172,6 +177,8 @@ class AppDecoration {
       ),
     ],
   );
+
+
 }
 
 class BorderRadiusStyle {
