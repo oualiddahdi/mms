@@ -15,4 +15,8 @@ class ImageConstant {
   static String imgArrowLeftBlueGray300 =
       '$imagePath/img_arrow_left_blue_gray_300.svg';
 
+  static String datetime = 'assets/images/datetime.svg';
+  static String calendarAdd = 'assets/images/calendar_add.svg';
+
+
 }

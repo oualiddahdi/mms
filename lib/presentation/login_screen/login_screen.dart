@@ -50,6 +50,7 @@ class LoginScreen extends StatelessWidget {
                       _buildPageHeader(context),
                       SizedBox(height: 28.v),
                       CustomTextFormField(
+                          autofocus: false,
                           controller: emailController,
                           hintText: "lbl_your_email".tr(),
                           textInputType: TextInputType.emailAddress,
@@ -65,6 +66,8 @@ class LoginScreen extends StatelessWidget {
                               top: 15.v, right: 30.h, bottom: 15.v)),
                       SizedBox(height: 10.v),
                       CustomTextFormField(
+                          autofocus: false,
+
                           controller: passwordController,
                           hintText: "lbl_password".tr(),
                           textInputAction: TextInputAction.done,

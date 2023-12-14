@@ -3,6 +3,8 @@
     "arabic": "Arabic",
     "language": "Language",
 
+    "sr": "SR",
+
     "appVersion": "App version",
 
     "lbl_your_email": "Your Email",
@@ -10,7 +12,7 @@
     "signIn": "Sign In",
     "home": "Home",
     "projects": "Projects",
-    "deliveryRequests": "Delivery Requests",
+    "iR-Requests": "iR-Requests",
     "visits": "Visits",
     "tasks": "Tasks",
     "messages": "Messages",
@@ -27,6 +29,35 @@
     "msg_don_t_have_an_account2": "Don’t have an account?",
     "lbl_register": "Register",
 
-    "upload_extracts": "Upload extracts"
+    "upload_extracts": "Upload extracts",
+    "lbl_date_hijri": "hijri calendar",
+    "lbl_date_gregorian": "Gregorian date",
+
+    "total_count": "Total Count",
+    "total_cost": "Total Cost",
+
+    "advanced": "Advanced",
+    "normal": "Normal",
+    "delayed": "Delayed",
+    "stumbled": "stumbled",
+    "initial_receipt": "initial_receipt",
+    "stopped": "stopped",
+
+    "canceled": "canceled",
+    "finished": "finished",
+    "in_progress": "In Progress",
+    "new": "New",
+    "redirection": "Redirection",
+    "review": "Review",
+
+    "scheduled_visit": "Scheduled Visit",
+    "Daily_visit": "Daily Visit",
+    "weekly_visit": "Weekly Visit",
+    "un_planned_visit": "Un Planned Visit",
+    "safety_precaution_visit": "Safety Precaution Visit",
+    "inspection_visit(IRD)": "Inspection Visit(IRD)",
+    "visit_quality_assurances(QA)": "Visit Quality Assurances(QA)",
+    "visit_scheduled_of_contractor": "Visit Scheduled Of Contractor"
+
 
 }

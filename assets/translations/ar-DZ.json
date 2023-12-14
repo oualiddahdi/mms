@@ -1,0 +1,64 @@
+{
+    "arabic": "عربي",
+    "english": "الانجلزية",
+    "language": "اللغة",
+
+    "sr": "ر.س",
+
+    "appVersion": "نسخة التطبيق",
+
+    "lbl_your_email": "إسم المستخدم",
+    "lbl_password": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "home": "الرئيسية",
+    "projects": "المشاريع",
+    "iR-Requests": "طلبات تسليم البنود",
+    "visits": "الزيارات",
+    "tasks": "المهام",
+    "messages": "الرسائل",
+    "notifications": "الاشعارات",
+    "aboutApp": "عن التطبيق",
+    "settings": "الاعدادات",
+
+    "getStarted": "البدء",
+
+    "lbl_sign_in": "تسجيل الدخول",
+    "msg_sign_in_to_continue": "تسجيل الدخول للمتابعة",
+    "msg_welcome_to_e_com": "مرحبا بكم في إي كوم",
+    "msg_forgot_password": "هل نسيت كلمة السر؟",
+    "msg_don_t_have_an_account2": "ليس لديك حساب؟",
+    "lbl_register": "يسجل",
+
+    "upload_extracts": "رفع المستخلصات",
+    "lbl_date_hijri": "التاريخ الهجري",
+    "lbl_date_gregorian": "التاريخ الميلادي",
+
+
+    "total_count": "إجمالي العدد",
+    "total_cost": "التكلفة الاجمالية",
+
+    "advanced": "مقدم",
+    "normal": "منتظم",
+    "delayed": "متأخر",
+    "stumbled": "متعثر",
+    "initial_receipt": "جاري الإستلام الأبتدائي",
+    "stopped": "متوقف",
+
+    "canceled": "ملغي",
+    "finished": "منتهي",
+    "in_progress": "قيد التنفيذ",
+    "new": "جديد",
+    "redirection": "إعادة التوجيه",
+    "review": "قيد المراجعة",
+
+    "scheduled_visit": "زيادة دورية",
+    "Daily_visit": "زيارة يومية",
+    "weekly_visit": "زيارة اسبوعية",
+    "un_planned_visit": "زيارة مفاجئة",
+    "safety_precaution_visit": "زيارة أمن وسلامة",
+    "inspection_visit(IRD)": "زيارة استلام بنود",
+    "visit_quality_assurances(QA)": "زيارة الجودة",
+    "visit_scheduled_of_contractor": "زيارة اسبوعية للمقاول"
+
+
+}

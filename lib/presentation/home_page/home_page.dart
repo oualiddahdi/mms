@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project/presentation/home_screen/home_screen.dart';
 
 // Importing other content views
 import '../../core/utils/color_constant.dart';
-import '../home_container_screen/home_screen.dart';
 import '../../modules/home/content/about_app/about_app_screen.dart';
-import '../../modules/home/content/delivery_requests/delivery_requests_screen.dart';
 import '../../modules/home/content/messages/messages_screen.dart';
 import '../../modules/home/content/notifications/notifications_screen.dart';
 import '../list_projcts_screen/list_projcts_screen.dart';
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   );
 
   // Default screen and title
-  Widget currentScreen = const HomeScreen();
+  Widget currentScreen =  HomeScreen();
   String appBarTitle = 'home'.tr();
 
   @override
@@ -75,11 +75,11 @@ class _HomePageState extends State<HomePage> {
             userDrawerHeader(),
             // Drawer items for different content screens
             buildListTile(
-                'home', MaterialSymbols.home_app_logo, const HomeScreen()),
+                'home', MaterialSymbols.home_app_logo,  HomeScreen()),
             buildListTile(
                 'projects', MaterialSymbols.grain, const ProjectsScreen()),
             buildListTile('deliveryRequests', MaterialSymbols.folder,
-                const DeliveryRequestsScreen()),
+                const iRRequestsScreen()),
             buildListTile('visits', MaterialSymbols.business_center,
                 const VisitsScreen()),
             buildListTile(

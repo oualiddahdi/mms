@@ -74,7 +74,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     _saveSelectedLanguage(); // Save the selected language when tapped
                     // Apply logic to change the app's locale if needed
 
-                    context.locale = const Locale('ar', 'AR');
+                    context.locale = const Locale('ar', 'DZ');
 
                     controller.onLanguageChanged();
                   });
