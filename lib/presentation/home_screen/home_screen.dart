@@ -33,42 +33,39 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        color: Colors.white,
-        child: CupertinoTabScaffold(
-            tabBar: CupertinoTabBar(
-              height: 60,
+      child: CupertinoTabScaffold(
+          tabBar: CupertinoTabBar(
+            height: 60,
 
-              backgroundColor: Colors.white,
-              //change here
-              activeColor: ColorConstant.blue500,
-              // here
-              inactiveColor: Colors.black,
-              // here too
-              items: [
+            backgroundColor: Colors.white,
+            //change here
+            activeColor: ColorConstant.blue500,
+            // here
+            inactiveColor: Colors.black,
+            // here too
+            items: [
 
-                BottomNavigationBarItem(
-                  icon: Icon(MaterialSymbols.grain, size: 25.v),
-                  label: 'projects'.tr(),
+              BottomNavigationBarItem(
+                icon: Icon(MaterialSymbols.grain, size: 25.v),
+                label: 'projects'.tr(),
 
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(MaterialSymbols.folder, size: 25.v),
+                label: 'iR-Requests'.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  MaterialSymbols.business_center,
+                  size: 25.v,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(MaterialSymbols.folder, size: 25.v),
-                  label: 'iR-Requests'.tr(),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    MaterialSymbols.business_center,
-                    size: 25.v,
-                  ),
-                  label: 'visits'.tr(),
-                ),
-              ],
-            ),
-            tabBuilder: (BuildContext context, index) {
-              return _tabs[index];
-            }),
-      ),
+                label: 'visits'.tr(),
+              ),
+            ],
+          ),
+          tabBuilder: (BuildContext context, index) {
+            return _tabs[index];
+          }),
     );
   }
 }

@@ -6,6 +6,18 @@ class ColorConstant {
   static const Color secondaryColor = Color(0xFF2ecc71);
   static const Color accentColor = Color(0xFFe74c3c);
   static const Color textColor = Color(0xFF333333);
+  static const Color yellow700 = Color(0xFFfabe3c);
+  static const Color teal900 = Color(0xFF082d53);
+
+  static const Color redColor = Color(0xFFFF0000);      // Red
+  static const Color orangeColor = Color(0xFFFFA500);   // Orange
+  static const Color yellowColor = Color(0xFFFFFF00);   // Yellow
+  static const Color greenColor = Color(0xFF008000);    // Green
+  static const Color blueColor = Color(0xFF0000FF);     // Blue
+  static const Color indigoColor = Color(0xFF4B0082);   // Indigo
+  static const Color violetColor = Color(0xFF9400D3);   // Violet
+
+
   static const Color whiteA700 = Color(0xFFFFFFFF);
 
   static const Color gray5066 = Color(0xFF66fbfcfc);
@@ -20,11 +32,10 @@ class ColorConstant {
   static const Color black9003f = Color(0xFF3f000000);
   static const Color gray50 = Color(0xFFf9f9fa);
   static const Color green500 = Color(0xFF48bc65);
+  static const Color green200 = Color(0x6448bc65);
   static const Color gray30099 = Color(0xFF99d8dae2);
   static const Color red40019 = Color(0xFF19eb5a5a);
   static const Color black900 = Color(0xFF000000);
-  static const Color yellow700 = Color(0xFFfabe3c);
-  static const Color teal900 = Color(0xFF082d53);
   static const Color blueGray40014 = Color(0xFF14718096);
   static const Color blueGray900 = Color(0xFF29303c);
   static const Color red4000c = Color(0xFF0ceb5a5a);

@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 'home', MaterialSymbols.home_app_logo,  HomeScreen()),
             buildListTile(
                 'projects', MaterialSymbols.grain, const ProjectsScreen()),
-            buildListTile('deliveryRequests', MaterialSymbols.folder,
+            buildListTile('iR-Requests', MaterialSymbols.folder,
                 const iRRequestsScreen()),
             buildListTile('visits', MaterialSymbols.business_center,
                 const VisitsScreen()),
