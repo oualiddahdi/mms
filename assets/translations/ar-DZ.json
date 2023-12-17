@@ -3,6 +3,8 @@
     "english": "الانجلزية",
     "language": "اللغة",
 
+    "use_fingerprint": "استخدم بصمة الإصبع",
+
     "sr": " ر.س ",
 
     "appVersion": "نسخة التطبيق",
@@ -24,7 +26,7 @@
 
     "lbl_sign_in": "تسجيل الدخول",
     "msg_sign_in_to_continue": "تسجيل الدخول للمتابعة",
-    "msg_welcome_to_e_com": "مرحبا بكم في إي كوم",
+    "msg_welcome_to_e_com": "مرحبا بكم في ----",
     "msg_forgot_password": "هل نسيت كلمة السر؟",
     "msg_don_t_have_an_account2": "ليس لديك حساب؟",
     "lbl_register": "يسجل",

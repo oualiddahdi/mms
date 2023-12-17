@@ -17,6 +17,8 @@ class ColorConstant {
   static const Color indigoColor = Color(0xFF4B0082);   // Indigo
   static const Color violetColor = Color(0xFF9400D3);   // Violet
 
+  static const Color mysticWhite = Color(0xFFF0EFF4);
+
 
   static const Color whiteA700 = Color(0xFFFFFFFF);
 

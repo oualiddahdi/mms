@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:project/core/utils/image_constant.dart';
+import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/presentation/home_page/home_page.dart';
 import 'package:project/presentation/language_screen/language_screen.dart';
@@ -37,6 +38,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,

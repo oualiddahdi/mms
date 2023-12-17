@@ -16,37 +16,37 @@ class ProjectsReportsScreen extends StatefulWidget {
 class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   List<Map<String, dynamic>> data = [
     {
-      'value': 0,
+      'value': 16,
       'label': 'advanced',
       'cost': 00.0,
       'color': ColorConstant.primaryColor
     },
     {
-      'value': 0,
+      'value': 16,
       'label': 'normal',
       'cost': 00.0,
       'color': ColorConstant.secondaryColor
     },
     {
-      'value': 0,
+      'value': 16,
       'label': 'delayed',
       'cost': 00.0,
       'color': ColorConstant.accentColor
     },
     {
-      'value': 0,
+      'value': 16,
       'label': 'stumbled',
       'cost': 00.0,
       'color': ColorConstant.textColor
     },
     {
-      'value': 0,
+      'value': 16,
       'label': 'initial_receipt',
       'cost': 00.0,
       'color': ColorConstant.yellow700
     },
     {
-      'value': 0,
+      'value': 16,
       'label': 'stopped',
       'cost': 00.0,
       'color': ColorConstant.blueGray500
@@ -58,6 +58,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Center(
         child: Container(
             margin: EdgeInsets.fromLTRB(4.v, 0.v, 4.v, 4.v),
@@ -73,7 +74,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
         children: [
           Row(
             children: [
-                Flexible(fit: FlexFit.tight, child: _buildTotalCountRow()),
+              Flexible(fit: FlexFit.tight, child: _buildTotalCountRow()),
               Flexible(fit: FlexFit.tight, child: _buildChart()),
             ],
           ),
@@ -194,10 +195,15 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                           maxLines: 1,
                         ).tr(),
                       ),
-                      Text(label, style: theme.textTheme.titleSmall).tr(),
-                      Text('$cost ${'sr'.tr()}',
-                              style: theme.textTheme.titleSmall)
-                          .tr(),
+                      Text(
+                        label,
+                        style: theme.textTheme.titleSmall,
+                        textAlign: TextAlign.center,
+                      ).tr(),
+                      Text(
+                        '$cost ${'sr'.tr()}',
+                        style: theme.textTheme.titleSmall,
+                      ).tr(),
                     ],
                   ),
                 ),
@@ -210,13 +216,15 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
             top: 1.0.v, // Adjust the top position as needed
             right: 0.0.v, // Adjust the right position as needed
             child: Container(
-
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 color: color, // Set the desired color
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: const Icon(size: 15,CupertinoIcons.chart_bar_alt_fill,color: ColorConstant.whiteA700),
+              child: const Icon(
+                  size: 15,
+                  CupertinoIcons.chart_bar_alt_fill,
+                  color: ColorConstant.whiteA700),
             ),
           ),
         ],

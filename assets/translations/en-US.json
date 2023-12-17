@@ -3,6 +3,8 @@
     "arabic": "Arabic",
     "language": "Language",
 
+    "use_fingerprint": "Use Fingerprint",
+
     "sr": " SR ",
 
     "appVersion": "App version",
@@ -24,7 +26,7 @@
 
     "lbl_sign_in": "Sign In",
     "msg_sign_in_to_continue": "Sign in to continue",
-    "msg_welcome_to_e_com": "Welcome to E-com",
+    "msg_welcome_to_e_com": "Welcome to ----",
     "msg_forgot_password": "Forgot Password?",
     "msg_don_t_have_an_account2": "Don’t have an account?",
     "lbl_register": "Register",
@@ -39,12 +41,12 @@
     "advanced": "Advanced",
     "normal": "Normal",
     "delayed": "Delayed",
-    "stumbled": "stumbled",
-    "initial_receipt": "initial_receipt",
-    "stopped": "stopped",
+    "stumbled": "Stumbled",
+    "initial_receipt": "Initial Receipt",
+    "stopped": "Stopped",
 
-    "canceled": "canceled",
-    "finished": "finished",
+    "canceled": "Canceled",
+    "finished": "Finished",
     "in_progress": "In Progress",
     "new": "New",
     "redirection": "Redirection",

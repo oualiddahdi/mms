@@ -7,7 +7,7 @@ import 'package:project/modules/home/content/about_app/about_app_screen.dart';
 import 'package:project/modules/home/content/messages/messages_screen.dart';
 import 'package:project/modules/home/content/notifications/notifications_screen.dart';
 import 'package:project/presentation/list_projcts_screen/list_projcts_screen.dart';
-import 'package:project/modules/home/content/settings/settings_screen.dart';
+import 'package:project/presentation/settings_screen/settings_screen.dart';
 import 'package:project/modules/home/content/tasks/tasks_screen.dart';
 import 'package:project/modules/home/content/visits/visits_screen.dart';
 import 'package:project/presentation/home_page/home_page.dart';

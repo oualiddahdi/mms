@@ -2,17 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project/presentation/add_extraction_screen/add_extraction_screen.dart';
+import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 
-import 'package:hijri/hijri_calendar.dart';
-import 'package:hijri_picker/hijri_picker.dart';
+
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 void main() async {
   // Ensure that Flutter is initialized
@@ -48,6 +46,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   // Constructor for MyApp, making it const for performance optimization
   const MyApp({super.key});
+
 
   // Build method to define the structure of the widget
   @override
@@ -114,9 +113,3 @@ class _MyHomePageState extends State<_MyHomePage> {
   }
 }
 
-class _SalesData {
-  _SalesData(this.year, this.sales);
-
-  final String year;
-  final double sales;
-}

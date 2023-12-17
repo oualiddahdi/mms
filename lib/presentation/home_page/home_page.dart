@@ -13,7 +13,7 @@ import '../../modules/home/content/about_app/about_app_screen.dart';
 import '../../modules/home/content/messages/messages_screen.dart';
 import '../../modules/home/content/notifications/notifications_screen.dart';
 import '../list_projcts_screen/list_projcts_screen.dart';
-import '../../modules/home/content/settings/settings_screen.dart';
+import '../settings_screen/settings_screen.dart';
 import '../../modules/home/content/tasks/tasks_screen.dart';
 import '../../modules/home/content/visits/visits_screen.dart';
 

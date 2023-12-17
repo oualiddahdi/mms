@@ -196,10 +196,15 @@ class _IRRequestsReportsScreenState extends State<IRRequestsReportsScreen> {
                           maxLines: 1,
                         ).tr(),
                       ),
-                      Text(label, style: theme.textTheme.titleSmall).tr(),
-                      Text('$cost ${'sr'.tr()}',
-                          style: theme.textTheme.titleSmall)
-                          .tr(),
+                      Text(
+                        label,
+                        style: theme.textTheme.titleSmall,
+                        textAlign: TextAlign.center,
+                      ).tr(),
+                      Text(
+                        '$cost ${'sr'.tr()}',
+                        style: theme.textTheme.titleSmall,
+                      ).tr(),
                     ],
                   ),
                 ),

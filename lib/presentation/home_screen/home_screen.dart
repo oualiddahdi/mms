@@ -35,14 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
-            height: 60,
+
 
             backgroundColor: Colors.white,
-            //change here
             activeColor: ColorConstant.blue500,
-            // here
-            inactiveColor: Colors.black,
-            // here too
+
             items: [
 
               BottomNavigationBarItem(

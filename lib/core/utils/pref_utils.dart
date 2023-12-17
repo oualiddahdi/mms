@@ -3,11 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore_for_file: must_be_immutable
+
+
 class PrefUtils {
   PrefUtils() {
-    SharedPreferences.getInstance().then((value) {
-      _sharedPreferences = value;
-    });
+    init();
+  }
+  static Future<void> initialize() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+  }
+  // Ensure this method is static
+  static PrefUtils getInstance() {
+    return PrefUtils();
   }
 
   static SharedPreferences? _sharedPreferences;
@@ -26,11 +33,11 @@ class PrefUtils {
 
   /// Clears all data from the SharedPreferences instance.
   void clearPreferencesData() async {
-    _sharedPreferences!.clear();
+    await _sharedPreferences!.clear();
   }
 
-  Future<void> setToken(String value) {
-    return _sharedPreferences!.setString('token', value);
+  Future<void> setToken(String value) async {
+    await _sharedPreferences!.setString('token', value);
   }
 
   String getToken() {
@@ -41,8 +48,8 @@ class PrefUtils {
     }
   }
 
-  Future<void> setId(String value) {
-    return _sharedPreferences!.setString('id', value);
+  Future<void> setId(String value) async {
+    await _sharedPreferences!.setString('id', value);
   }
 
   String getId() {
@@ -50,6 +57,21 @@ class PrefUtils {
       return _sharedPreferences!.getString('id') ?? '';
     } catch (e) {
       return '';
+    }
+  }
+
+  Future<void> setSwitchValue(bool value) async {
+    await _sharedPreferences!.setBool('switchValue', value);
+  }
+
+
+  Future<bool> getSwitchValue() async {
+    try {
+      await initialize(); // Ensure _sharedPreferences is initialized
+      return _sharedPreferences?.getBool('switchValue') ?? false;
+    } catch (e) {
+      print("Error reading switch value: $e");
+      return false;
     }
   }
 }

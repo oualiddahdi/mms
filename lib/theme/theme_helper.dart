@@ -144,16 +144,18 @@ class TextThemes {
 }
 
 /// Class containing the supported color schemes.
+/// Class containing supported color schemes.
 class ColorSchemes {
   static final primaryColorScheme = ColorScheme.light(
-    // Primary colors
-    primary: Color(0X3D40BFFF),
+    // Set the primary color
+    primary: Color(0xFF1786f9),
 
-    // On colors(text colors)
+    // On colors (text colors)
     onPrimary: Color(0X87223263),
     onPrimaryContainer: Color(0X87FFFFFF),
   );
 }
+
 
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
