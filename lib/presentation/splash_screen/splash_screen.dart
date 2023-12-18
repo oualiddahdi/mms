@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     try {
       // Check if fingerprint authentication is enabled
       bool isFingerprintEnabled = await PrefUtils().getSwitchValue();
-      print(isFingerprintEnabled.toString()+'isFingerprintEnabled');
 
+      
       if (isFingerprintEnabled) {
         authenticated = await _auth.authenticate(
           localizedReason: "Scan your finger to authenticate",

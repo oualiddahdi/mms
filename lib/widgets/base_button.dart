@@ -10,6 +10,7 @@ class BaseButton extends StatelessWidget {
     this.isDisabled,
     this.height,
     this.width,
+    this.color,
     this.margin,
     this.alignment,
   }) : super(
@@ -27,6 +28,9 @@ class BaseButton extends StatelessWidget {
   final bool? isDisabled;
 
   final double? height;
+
+  final Color? color;
+
 
   final double? width;
 

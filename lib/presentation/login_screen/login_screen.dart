@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:delightful_toast/delight_toast.dart';
+import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
+import 'package:project/core/utils/delight_toast_bar.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/core/utils/size_utils.dart';
@@ -11,18 +15,17 @@ import 'package:project/presentation/home_page/home_page.dart';
 import 'package:project/presentation/language_screen/language_screen.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
+import 'package:project/widgets/base_button.dart';
 import 'package:project/widgets/custom_elevated_button.dart';
 import 'package:project/widgets/custom_icon_button.dart';
 import 'package:project/widgets/custom_image_view.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 
 import '../../core/errors/exceptions.dart';
-import '../../core/utils/progress_dialog_utils.dart';
 import '../../data/models/login/post_login_resp.dart';
 import '../../routes/app_routes.dart';
 import 'controller/login_controller.dart';
 
-import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -86,11 +89,17 @@ class LoginScreen extends StatelessWidget {
                           contentPadding: EdgeInsets.only(
                               top: 15.v, right: 30.h, bottom: 15.v)),
                       SizedBox(height: 16.v),
+
+
                       CustomElevatedButton(
                           text: "lbl_sign_in".tr(),
                           onPressed: () {
-                            onTapSignin();
+                            onTapSignin(context);
                           }),
+
+                      SizedBox(height: 18.v),
+
+
                       SizedBox(height: 18.v),
                       SizedBox(height: 16.v),
                       SizedBox(height: 17.v),
@@ -133,7 +142,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   ///Future
-  Future<void> onTapSignin() async {
+  Future<void> onTapSignin(context) async {
 
     Get.to(HomePage());
 
@@ -148,7 +157,7 @@ class LoginScreen extends StatelessWidget {
       );
       _onOnTapSignInSuccess();
     } on PostLoginResp {
-      _onOnTapSignInError();
+      DelightToast.onOnTapSignInError(context);
     } on NoInternetException catch (e) {
       Get.rawSnackbar(message: e.toString());
     } catch (e) {
@@ -160,9 +169,4 @@ class LoginScreen extends StatelessWidget {
     Get.offNamed(AppRoutes.homePage, arguments: {});
   }
 
-  void _onOnTapSignInError() {
-    Fluttertoast.showToast(
-      msg: "Invalid username or password!",
-    );
-  }
 }

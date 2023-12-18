@@ -31,46 +31,53 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # مكتبة للحصول على معلومات الحزمة والتطبيق
   package_info_plus: ^4.2.0
 
-  # Dependency for state management, route management, and dependency injection
+  # إدارة الحالة والتوجيه وحقن التبعيات
   get: ^4.6.5
 
-  # Package for making HTTP requests in a Flutter app
+  # مكتبة لإجراء طلبات HTTP في تطبيق Flutter
   http: ^1.1.2
 
-  # Secure storage mechanism for sensitive information (e.g., tokens, passwords)
+  # آلية تخزين آمنة للمعلومات الحساسة (مثل الرموز وكلمات المرور)
   flutter_secure_storage: ^9.0.0
 
-  # Cupertino-styled icons for iOS applications
+  # أيقونات بنمط Cupertino لتطبيقات iOS
   cupertino_icons: ^1.0.2
 
-  # Package for easy localization and internationalization
+  # مكتبة للترجمة والتعدد اللغوي بسهولة
   easy_localization: ^3.0.3
 
-  # Loader for the easy_localization package
+  # مكتبة لتحميل الترجمات لـ easy_localization
   easy_localization_loader: ^2.0.0
 
-  # Package for value equality in Dart, simplifying implementation for complex objects
+  # مكتبة للمساواة بين القيم في Dart، تبسيط التنفيذ للكائنات المعقدة
   equatable: ^2.0.5
 
-  # State management package for Flutter, providing a simple and efficient way to manage app state
+  # مكتبة إدارة الحالة لـ Flutter، توفير وسيلة بسيطة وفعّالة لإدارة حالة التطبيق
   provider: ^6.1.1
+
+  # رموز المواد لتطبيقات Flutter
   flutter_material_symbols: ^0.0.4
 
-  # add this line to your dependencies
-  fluttertoast: ^8.2.3
+  # إضافة هذا السطر إلى التبعيات الخاصة بك https://pub.dev/packages/delightful_toast
+  delightful_toast: ^1.1.0
 
+  # صور الشبكة المخزنة مؤقتًا
   cached_network_image: ^3.2.0
 
+  # مكتبة لعرض الصور SVG
   flutter_svg: ^1.1.6
-  hijri_picker: ^3.0.0
 
+  # تقويم هجري
+  jhijri: ">=0.0.4 <2.0.0"
+
+  # مكتبة رسوم الرسوم البيانية من Syncfusion
   syncfusion_flutter_charts: ^23.2.7
 
+  # مكتبة المصادقة المحلية
   local_auth: ^2.1.7
-
-
 
 
 

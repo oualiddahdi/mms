@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:project/core/utils/color_constant.dart';
 
 String _appTheme = "primary";
 
@@ -148,7 +149,7 @@ class TextThemes {
 class ColorSchemes {
   static final primaryColorScheme = ColorScheme.light(
     // Set the primary color
-    primary: Color(0xFF1786f9),
+    primary: ColorConstant.primaryColor,
 
     // On colors (text colors)
     onPrimary: Color(0X87223263),

@@ -2,15 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/pref_utils.dart';
+import 'package:jhijri/_src/_jHijri.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
+import 'package:project/src/jhijri/jhijri_widgets.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 
 
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 void main() async {
   // Ensure that Flutter is initialized
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         // Disable the debug banner in development mode
         debugShowCheckedModeBanner: false,
 
-       // home: _MyHomePage(),
+      //  home: _MyHomePage(),
 
         // // Localization settings
         localizationsDelegates: context.localizationDelegates,
@@ -90,26 +90,65 @@ class _MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<_MyHomePage> {
 
-
   @override
   Widget build(BuildContext context) {
-    return   SfCircularChart(
-      series: <CircularSeries>[
-      DoughnutSeries<Map<String, dynamic>, String>(
-        dataSource: <Map<String, dynamic>>[
-        {'label': 'A', 'value': 10},
-        {'label': 'B', 'value': 20},
-        {'label': 'C', 'value': 15},
-        {'label': 'D', 'value': 25},
-        ],
-        xValueMapper: (Map<String, dynamic> data, _) => data['label'],
-      yValueMapper: (Map<String, dynamic> data, _) => data['value'],
-      dataLabelSettings: DataLabelSettings(
-        isVisible: true,
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            // Use await to get the result from the openDialog function
+            final result = await openDialog(context);
+
+            // You can handle the result here if needed
+            if (result != null) {
+              // Do something with the result
+              print("Selected date: ${result}");
+            } else {
+              // User canceled the date picker
+              print("Date picker was canceled");
+            }
+          },
+          child: Text('Open Date Picker'),
+        ),
       ),
-    ),
-    ],
     );
   }
 }
+
+Future<JPickerValue?> openDialog(BuildContext context)async{
+  return await showGlobalDatePicker(
+    context: context,
+    startDate: JDateModel(
+        jhijri: JHijri(
+          fYear: 1442,
+          fMonth: 12,
+          fDay: 10,
+        )),
+    selectedDate: JDateModel(jhijri: JHijri.now()),
+    endDate: JDateModel(
+        jhijri: JHijri.now()),
+    pickerMode: DatePickerMode.day,
+    pickerTheme: Theme.of(context),
+
+    //locale: const Locale("ar", "SA"),
+    okButtonText: "save",
+    cancelButtonText: "cancel",
+    onOk: (value) {
+      debugPrint(value.toString());
+      Navigator.pop(context);
+    },
+    onCancel: () {
+      Navigator.pop(context);
+    },
+    primaryColor: Colors.blue,
+    calendarTextColor: Colors.white,
+    backgroundColor: Colors.black,
+    borderRadius: const Radius.circular(10),
+    buttonTextColor: Colors.white,
+    headerTitle: const Center(
+      child: Text("التقويم الهجري", style: TextStyle(color: Colors.white),),
+    ),
+  );
+}
+
 
