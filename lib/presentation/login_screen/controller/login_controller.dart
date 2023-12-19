@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project/core/errors/exceptions.dart';
+import 'package:project/core/utils/delight_toast_bar.dart';
+import 'package:project/presentation/home_page/home_page.dart';
+import 'package:project/routes/app_routes.dart';
 
 import '../../../core/utils/pref_utils.dart';
 import '../../../data/apiClient/api_client.dart';
@@ -8,9 +12,7 @@ import '../../../data/models/login/post_login_resp.dart';
 class LoginModel {}
 
 class LoginController extends GetxController {
-  TextEditingController emailController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
 
   Rx<LoginModel> signInModelObj = LoginModel().obs;
 
@@ -18,20 +20,8 @@ class LoginController extends GetxController {
 
   PostLoginResp postLoginResp = PostLoginResp();
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    emailController.dispose();
-    passwordController.dispose();
-  }
 
   Future<void> callCreateLogin(Map req) async {
-
 
     try {
       postLoginResp = await Get.find<ApiClient>().createLogin(
@@ -46,7 +36,41 @@ class LoginController extends GetxController {
     }
   }
 
+  void onTapSignIn(username,password,context) async {
+
+    Get.to(HomePage());
+
+    final postLoginReq = {
+      "username": username,
+      "password": password
+    };
+
+    try {
+      await callCreateLogin(
+        postLoginReq,
+      );
+
+      Get.find<LoginController>().onOnTapSignInSuccess();
+
+    } on PostLoginResp {
+      DelightToast.onOnTapSignInError(context);
+    } on NoInternetException catch (e) {
+      Get.rawSnackbar(message: e.toString());
+    } catch (e) {
+      //TODO: Handle generic errors
+    }
+  }
+
   void _handleCreateLoginSuccess() {
     Get.find<PrefUtils>().setToken(postLoginResp.data!.token!.toString());
   }
+
+  void onOnTapSignInSuccess() {
+    Get.offNamed(AppRoutes.homePage, arguments: {});
+  }
+
+  void onOnTapForgotPasswordScreen() {
+    Get.toNamed(AppRoutes.forgotPasswordScreen, arguments: {});
+  }
+
 }

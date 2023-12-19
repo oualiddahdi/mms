@@ -77,7 +77,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   /// Section Widget
   Widget _buildAddAddress(BuildContext context) {
     return CustomElevatedButton(
-      onPressed: (){
+      onTap: (){
       },
         text: "lbl_add_address",
         margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 50.v));

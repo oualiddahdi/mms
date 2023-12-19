@@ -10,7 +10,7 @@ class DelightToast {
  static onOnTapSignInError(context) {
 
     DelightToastBar(
-      autoDismiss: true,
+      autoDismiss: false,
       builder: (context) =>  const ToastCard(
         leading: Icon(
           Icons.error_outlined,
