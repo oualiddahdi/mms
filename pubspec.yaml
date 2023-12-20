@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+
+
   # مكتبة للحصول على معلومات الحزمة والتطبيق
   package_info_plus: ^4.2.0
 
@@ -78,13 +80,23 @@ dependencies:
 
   # مكتبة المصادقة المحلية
   local_auth: ^2.1.7
+
   flutter_otp_text_field: ^1.1.1
+
+  connectivity_plus: ^5.0.1
+
+  json_annotation: ^4.8.0
+
+  json_serializable: ^6.7.0
 
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
