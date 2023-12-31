@@ -40,19 +40,13 @@ class ThemeHelper {
       throw Exception(
           "$_appTheme is not found.Make sure you have added this theme class in JSON Try running flutter pub run build_runner");
     }
-    //return theme from map
 
     var colorScheme =
         _supportedColorScheme[_appTheme] ?? ColorSchemes.primaryColorScheme;
     return ThemeData(
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,
-      textTheme: TextTheme(
-        bodyText2: TextStyle(
-          fontFamily:
-              'Kufam', // Change this to your desired font family
-        ),
-      ),
+      fontFamily: 'Kufam', // Change this to your desired font family
       scaffoldBackgroundColor: colorScheme.onPrimaryContainer.withOpacity(1),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -193,7 +187,4 @@ class PrimaryColors {
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();
 
-ThemeData get theme => ThemeData(
-  fontFamily: 'Kufam', // Change this to your desired font family
-  // Add other theme configurations as needed
-);
+ThemeData get theme => ThemeHelper().themeData();

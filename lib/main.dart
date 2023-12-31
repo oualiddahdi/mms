@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         //
         initialBinding: SplashBinding(),
-        initialRoute: AppRoutes.projectDetailsScreen,
+        initialRoute: AppRoutes.splashScreen,
         getPages: AppRoutes.pages,
 
       ),
