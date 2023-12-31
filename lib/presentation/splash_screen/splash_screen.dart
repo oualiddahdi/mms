@@ -20,10 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Execute authentication logic after the frame has been rendered
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Get.find<SplashController>().authenticate(context);
-    });
+    Get.find<SplashController>().navigateToNextScreen();
 
   }
 
@@ -31,14 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.teal900,
-        body: Center(
-          child: Container(
-            height: 72.adaptSize,
-            width: 72.adaptSize,
-            alignment: Alignment.center,
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(ImageConstant.background_12312023),
+              fit: BoxFit.fill, // Adjust the fit as needed
+            ),
+          ),
+          child: Center(
             child: CustomImageView(
               imagePath: ImageConstant.imgLogo,
+              fit: BoxFit.fill, // Adjust the fit as needed
               height: 72.adaptSize,
               width: 72.adaptSize,
             ),

@@ -12,6 +12,8 @@ import 'package:project/modules/home/content/messages/messages_screen.dart';
 import 'package:project/modules/home/content/notifications/notifications_screen.dart';
 import 'package:project/presentation/list_projcts_screen/list_projcts_screen.dart';
 import 'package:project/presentation/otp_screen/otp_screen.dart';
+import 'package:project/presentation/project_details_screen/binding/project_details_binding.dart';
+import 'package:project/presentation/project_details_screen/project_details_screen.dart';
 import 'package:project/presentation/recover_password_screen/binding/recover_password_binding.dart';
 import 'package:project/presentation/recover_password_screen/recover_password_screen.dart';
 import 'package:project/presentation/settings_screen/settings_screen.dart';
@@ -39,6 +41,8 @@ class AppRoutes {
   static const String homePage = '/home_page';
 
   static const String homeScreen = '/home_screen';
+
+  static const String projectDetailsScreen = '/project_details_screen';
 
   static const String languageScreen = '/language_screen';
 
@@ -121,6 +125,13 @@ class AppRoutes {
       ],
     ),
 
+    GetPage(
+      name: projectDetailsScreen,
+      page: () =>  ProjectDetailsScreen(),
+      bindings: [
+        ProjectDetailsBinding(),
+      ],
+    ),
 
 
 

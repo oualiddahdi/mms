@@ -286,7 +286,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.38,
@@ -298,7 +297,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.38,
@@ -310,7 +308,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.38,
@@ -322,7 +319,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.38,
@@ -334,7 +330,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w600,
           height: getVerticalSize(
             1.38,
@@ -346,7 +341,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w600,
           height: getVerticalSize(
             1.43,
@@ -358,7 +352,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.43,
@@ -370,7 +363,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w500,
           height: getVerticalSize(
             1.43,
@@ -382,7 +374,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.43,
@@ -394,7 +385,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w600,
           height: getVerticalSize(
             1.43,
@@ -406,7 +396,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             12,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w500,
           height: getVerticalSize(
             1.42,
@@ -418,7 +407,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             10,
           ),
-          fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w500,
           height: getVerticalSize(
             1.20,
@@ -430,7 +418,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             12,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.42,
@@ -442,7 +429,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             12,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.42,
@@ -454,7 +440,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.43,
@@ -466,7 +451,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             16,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.38,
@@ -478,7 +462,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w600,
           height: getVerticalSize(
             1.43,
@@ -490,7 +473,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             10,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w800,
           height: getVerticalSize(
             1.40,
@@ -502,7 +484,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             14,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w600,
           height: getVerticalSize(
             1.43,
@@ -514,7 +495,6 @@ class CustomElevatedButton extends StatelessWidget {
           fontSize: getFontSize(
             12,
           ),
-          fontFamily: 'Manrope',
           fontWeight: FontWeight.w700,
           height: getVerticalSize(
             1.42,

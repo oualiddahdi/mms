@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
+import 'package:project/core/utils/color_constant.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
+import 'package:project/presentation/project_details_screen/binding/project_details_binding.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
 import 'package:project/src/jhijri/jhijri_widgets.dart';
@@ -51,6 +54,12 @@ class MyApp extends StatelessWidget {
   // Build method to define the structure of the widget
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: ColorConstant.primaryColor, // Change this color to match your AppBar
+      statusBarIconBrightness: Brightness.dark, // Use Brightness.light for dark status bar icons
+    ));
+
     return MultiProvider(
       providers: [
         // Provider for LanguageController
@@ -70,7 +79,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         //
         initialBinding: SplashBinding(),
-        initialRoute: AppRoutes.splashScreen,
+        initialRoute: AppRoutes.projectDetailsScreen,
         getPages: AppRoutes.pages,
 
       ),
@@ -108,7 +117,7 @@ class _MyHomePageState extends State<_MyHomePage> {
               print("Date picker was canceled");
             }
           },
-          child: Text('Open Date Picker'),
+          child: const Text('Open Date Picker'),
         ),
       ),
     );

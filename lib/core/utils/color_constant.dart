@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class ColorConstant {
-  static const Color primaryColor = Color(0xFF2A9D8F);
+  static const Color primaryColor = Color(0xFF066d66);
+  static const Color primaryGold = Color(0xFFc79b2a);
+  static const Color primarySilver = Color(0xFF52565e);
+
+  static const Color secondaryColor14368E27 = Color(0x14368E27);
+  static const Color secondaryColor368E27 = Color(0xFF368E27);
+
+  static const Color primarySilverB3B3B3 = Color(0x1AB2B2B2);
+
   static const Color secondaryColor = Color(0xFF2ecc71);
   static const Color accentColor = Color(0xFFe74c3c);
   static const Color textColor = Color(0xFF333333);

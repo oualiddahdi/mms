@@ -18,11 +18,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _tabs = [
-
     ProjectsReportsScreen(),
     IRRequestsReportsScreen(),
     VisitsReportsScreen()
-
   ];
 
   @override
@@ -35,17 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
-
-
             backgroundColor: Colors.white,
-            activeColor: ColorConstant.blue500,
-
+            activeColor: ColorConstant.primaryColor,
             items: [
-
               BottomNavigationBarItem(
-                icon: Icon(MaterialSymbols.grain, size: 25.v),
+                icon: Icon(MaterialSymbols.process_chart, size: 25.v),
                 label: 'projects'.tr(),
-
               ),
               BottomNavigationBarItem(
                 icon: Icon(MaterialSymbols.folder, size: 25.v),

@@ -47,7 +47,12 @@ class ThemeHelper {
     return ThemeData(
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,
-      textTheme: TextThemes.textTheme(colorScheme),
+      textTheme: TextTheme(
+        bodyText2: TextStyle(
+          fontFamily:
+              'Kufam', // Change this to your desired font family
+        ),
+      ),
       scaffoldBackgroundColor: colorScheme.onPrimaryContainer.withOpacity(1),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -99,49 +104,49 @@ class ThemeHelper {
 /// Class containing the supported text theme styles.
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
-    bodySmall: TextStyle(
-      color: appTheme.blueGray300,
-      fontSize: 12,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w400,
-    ),
-    headlineSmall: TextStyle(
-      color: colorScheme.onPrimaryContainer.withOpacity(1),
-      fontSize: 24,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-    labelLarge: TextStyle(
-      color: colorScheme.onPrimary.withOpacity(1),
-      fontSize: 12,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-    labelMedium: TextStyle(
-      color: appTheme.pink300,
-      fontSize: 10,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-    titleLarge: TextStyle(
-      color: colorScheme.primary.withOpacity(1),
-      fontSize: 20,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-    titleMedium: TextStyle(
-      color: colorScheme.onPrimary.withOpacity(1),
-      fontSize: 16,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-    titleSmall: TextStyle(
-      color: colorScheme.onPrimary.withOpacity(1),
-      fontSize: 14,
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.w700,
-    ),
-  );
+        bodySmall: TextStyle(
+          color: appTheme.blueGray300,
+          fontSize: 12,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w400,
+        ),
+        headlineSmall: TextStyle(
+          color: colorScheme.onPrimaryContainer.withOpacity(1),
+          fontSize: 24,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+        labelLarge: TextStyle(
+          color: colorScheme.onPrimary.withOpacity(1),
+          fontSize: 12,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+        labelMedium: TextStyle(
+          color: appTheme.pink300,
+          fontSize: 10,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+        titleLarge: TextStyle(
+          color: colorScheme.primary.withOpacity(1),
+          fontSize: 20,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+        titleMedium: TextStyle(
+          color: colorScheme.onPrimary.withOpacity(1),
+          fontSize: 16,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+        titleSmall: TextStyle(
+          color: colorScheme.onPrimary.withOpacity(1),
+          fontSize: 14,
+          fontFamily: 'Kufam',
+          fontWeight: FontWeight.w700,
+        ),
+      );
 }
 
 /// Class containing the supported color schemes.
@@ -157,7 +162,6 @@ class ColorSchemes {
   );
 }
 
-
 /// Class containing custom colors for a primary theme.
 class PrimaryColors {
   // Amber
@@ -165,6 +169,7 @@ class PrimaryColors {
 
   // Blue
   Color get blue50 => Color(0XFFEAEFFF);
+
   Color get blueA200 => Color(0XFF4091FF);
 
   // BlueGray
@@ -187,4 +192,8 @@ class PrimaryColors {
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();
-ThemeData get theme => ThemeHelper().themeData();
+
+ThemeData get theme => ThemeData(
+  fontFamily: 'Kufam', // Change this to your desired font family
+  // Add other theme configurations as needed
+);

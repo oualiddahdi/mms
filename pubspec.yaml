@@ -89,6 +89,8 @@ dependencies:
 
   json_serializable: ^6.7.0
 
+  animated_custom_dropdown: ^1.5.0
+
 
 
 dev_dependencies:
@@ -131,9 +133,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: cairo
+    - family: Kufam
       fonts:
-        - asset: assets/font/cairo.ttf
+        - asset: assets/font/Kufam.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

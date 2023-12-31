@@ -5,6 +5,9 @@ class ImageConstant {
   // Splash Screen images
   static String imgLogo = '$imagePath/img_logo.png';
 
+  static String background_12312023 = '$imagePath/background_12312023.png';
+
+
   static String imgMail = '$imagePath/img_mail.svg';
 
   static String imgLock = '$imagePath/img_lock.svg';

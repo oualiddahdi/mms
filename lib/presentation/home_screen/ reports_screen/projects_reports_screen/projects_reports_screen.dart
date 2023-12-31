@@ -1,8 +1,11 @@
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/controllers/home_controller.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -55,10 +58,12 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
     // Add more data as needed
   ];
 
+  final jobRoleCtrl = TextEditingController();
+  var itemSections = ['first_sections'.tr(), 'second_sections'.tr(), 'third_sections'.tr(), 'fourth_sections'.tr(), 'all_sections'.tr()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Center(
         child: Container(
             margin: EdgeInsets.fromLTRB(4.v, 0.v, 4.v, 4.v),
@@ -68,63 +73,59 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   }
 
   Widget _buildReportBody() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              Flexible(fit: FlexFit.tight, child: _buildTotalCountRow()),
-              Flexible(fit: FlexFit.tight, child: _buildChart()),
-            ],
-          ),
-          SizedBox(height: 14.h),
-          _buildAdvancedContainers(),
-        ],
-      ),
+    return Column(
+      children: [
+        _buildTotalCountRow(),
+        _buildChart(),
+        SizedBox(height: 14.h),
+        // _listItem()
+      ],
     );
   }
 
   Widget _buildChart() {
-    return SizedBox(
-      width: 200.0, // Set your desired width
-      height: 200.0, // Set your desired height
-      child: SfCircularChart(
-        series: <CircularSeries>[
-          DoughnutSeries<Map<String, dynamic>, String>(
-            dataSource: data,
-            xValueMapper: (Map<String, dynamic> data, _) => data['label'],
-            yValueMapper: (Map<String, dynamic> data, _) => data['value'],
-            pointColorMapper: (Map<String, dynamic> data, _) => data['color'],
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-            emptyPointSettings: EmptyPointSettings(
-                mode: EmptyPointMode.average,
-                color: Colors.red,
-                borderColor: Colors.black,
-                borderWidth: 2),
+    return Container(
+      margin: const EdgeInsets.all(10),
+      decoration: ShapeDecoration(
+        color: const Color(0xFFF5F5F5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _buildAdvancedContainers(),
+            ),
+          ),
+          Expanded(
+            child: SizedBox(
+              height: 200.0, // Set your desired height
+              child: SfCircularChart(
+                series: <CircularSeries>[
+                  DoughnutSeries<Map<String, dynamic>, String>(
+                    dataSource: data,
+                    xValueMapper: (Map<String, dynamic> data, _) =>
+                        data['label'],
+                    yValueMapper: (Map<String, dynamic> data, _) =>
+                        data['value'],
+                    pointColorMapper: (Map<String, dynamic> data, _) =>
+                        data['color'],
+                    dataLabelSettings: const DataLabelSettings(isVisible: true),
+                    emptyPointSettings: EmptyPointSettings(
+                        mode: EmptyPointMode.average,
+                        color: Colors.red,
+                        borderColor: Colors.black,
+                        borderWidth: 2),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildTotalCountRow() {
-    return Column(
-      children: [
-        _buildDataRow('total_count', '00'),
-        SizedBox(height: 14.h),
-        _buildDataRow('total_cost', '00.0${'sr'.tr()}'),
-      ],
-    );
-  }
-
-  Widget _buildDataRow(String label, String value) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(value, style: TextStyle(fontSize: 20.v)).tr(),
-        Text(label, style: theme.textTheme.labelLarge).tr(),
-      ],
     );
   }
 
@@ -132,103 +133,173 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: (data.length / 2).ceil(),
+      itemCount: data.length,
       itemBuilder: (context, index) {
-        int startIndex = index * 2;
-        int endIndex = (index * 2) + 1;
-        endIndex = endIndex >= data.length ? data.length - 1 : endIndex;
+        return  _buildData(data[index]['label']!.toString(),
+              data[index]['value']!.toString(), data[index]['color']);
 
-        return Container(
-          margin: const EdgeInsets.all(4),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Flexible(
-                child: _buildAdvancedContainer(
-                    data[startIndex]['value']!.toString(),
-                    data[startIndex]['label']!.toString(),
-                    data[startIndex]['cost']!.toString(),
-                    data[startIndex]['color']!),
-              ),
-              const SizedBox(
-                width: 4,
-              ),
-              if (startIndex != endIndex) // Handle odd number of items
-                Flexible(
-                  child: _buildAdvancedContainer(
-                      data[endIndex]['value']!.toString(),
-                      data[endIndex]['label']!.toString(),
-                      data[endIndex]['cost']!.toString(),
-                      data[endIndex]['color']!),
-                ),
-            ],
-          ),
-        );
       },
     );
   }
 
-  Widget _buildAdvancedContainer(
-      String value, String label, String cost, color) {
-    return Card(
-      elevation: 4,
-      child: Stack(
+  Widget _buildData(String label, String value, Color? color) {
+    return Row(
+      children: [
+        Container(
+          width: 16,
+          height: 16,
+          decoration: ShapeDecoration(
+            color: color,
+            shape: const OvalBorder(),
+          ),
+        ),
+        SizedBox(width: 14.h),
+        _buildDataRow(label, value),
+      ],
+    );
+  }
+
+  Widget _buildTotalCountRow() {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Your main content here
-          Container(
-            padding: EdgeInsets.fromLTRB(18.v, 18.v, 18.v, 18.v),
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              color: ColorConstant.whiteA700,
-              borderRadius: BorderRadius.all(Radius.circular(14.v)),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Expanded(
+            child: Column(
               children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Text(
-                          value,
-                          style: theme.textTheme.titleMedium,
-                          maxLines: 1,
-                        ).tr(),
-                      ),
-                      Text(
-                        label,
-                        style: theme.textTheme.titleSmall,
-                        textAlign: TextAlign.center,
-                      ).tr(),
-                      Text(
-                        '$cost ${'sr'.tr()}',
-                        style: theme.textTheme.titleSmall,
-                      ).tr(),
-                    ],
-                  ),
-                ),
+                _buildDataRow('total_count', '00'),
+                SizedBox(height: 14.h),
+                _buildDataRow('total_cost', '00.0${'sr'.tr()}'),
               ],
             ),
           ),
 
-          // Positioned widget to place the floating element
-          Positioned(
-            top: 1.0.v, // Adjust the top position as needed
-            right: 0.0.v, // Adjust the right position as needed
+          Expanded(
             child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                color: color, // Set the desired color
-                borderRadius: BorderRadius.circular(8.0),
+              padding: EdgeInsets.only(right: 10.v,left: 10.v),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(width: 1, color: ColorConstant.primaryGold),
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
-              child: const Icon(
-                  size: 15,
-                  CupertinoIcons.chart_bar_alt_fill,
-                  color: ColorConstant.whiteA700),
+              child: CustomDropdown(
+                items:itemSections,
+                hintText: 'all_sections'.tr(),
+                controller: jobRoleCtrl,
+              ),
             ),
-          ),
+          )
         ],
       ),
+    );
+  }
+
+  Widget _buildDataRow(String label, String value) {
+    return Row(
+      children: [
+        Text(label, style: theme.textTheme.labelLarge).tr(),
+        SizedBox(width: 14.h),
+        Text(value,
+                style: TextStyle(
+                    fontSize: 14.v, color: ColorConstant.primaryColor))
+            .tr(),
+      ],
+    );
+  }
+
+
+  Widget _listItem() {
+    return Column(
+      children: [
+        Container(
+          width: 344,
+          height: 500,
+          decoration: ShapeDecoration(
+            color: const Color(0x14A0AF9D),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+        ),
+        const Text(
+          'مشروع 04122022',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF358E27),
+            fontSize: 14,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          'الحالة',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 14,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          'منتظم 0.006%',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 12,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          '15 يوم',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 12,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          '454,500.00 ر.س',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 12,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          'المدة الفعلية',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 14,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+        const Text(
+          'القيمة',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xFF368E27),
+            fontSize: 14,
+            fontFamily: 'Neo Sans Arabic',
+            fontWeight: FontWeight.w400,
+            height: 0,
+          ),
+        ),
+      ],
     );
   }
 }
