@@ -6,14 +6,11 @@ import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
-import 'package:project/presentation/project_details_screen/binding/project_details_binding.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
 import 'package:project/src/jhijri/jhijri_widgets.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
-
-
 
 void main() async {
   // Ensure that Flutter is initialized
@@ -32,7 +29,6 @@ void main() async {
 
   ThemeHelper().changeTheme('primary');
 
-
   // Run the app with localization settings
   runApp(
     EasyLocalization(
@@ -50,14 +46,14 @@ class MyApp extends StatelessWidget {
   // Constructor for MyApp, making it const for performance optimization
   const MyApp({super.key});
 
-
   // Build method to define the structure of the widget
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: ColorConstant.primaryColor, // Change this color to match your AppBar
-      statusBarIconBrightness: Brightness.dark, // Use Brightness.light for dark status bar icons
+      statusBarColor:
+          ColorConstant.primaryColor, // Change this color to match your AppBar
+      statusBarIconBrightness:
+          Brightness.dark, // Use Brightness.light for dark status bar icons
     ));
 
     return MultiProvider(
@@ -71,7 +67,7 @@ class MyApp extends StatelessWidget {
         // Disable the debug banner in development mode
         debugShowCheckedModeBanner: false,
 
-      //  home: _MyHomePage(),
+        //  home: _MyHomePage(),
 
         // // Localization settings
         localizationsDelegates: context.localizationDelegates,
@@ -81,10 +77,7 @@ class MyApp extends StatelessWidget {
         initialBinding: SplashBinding(),
         initialRoute: AppRoutes.splashScreen,
         getPages: AppRoutes.pages,
-
       ),
-
-
     );
   }
 }
@@ -98,7 +91,6 @@ class _MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<_MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,18 +116,17 @@ class _MyHomePageState extends State<_MyHomePage> {
   }
 }
 
-Future<JPickerValue?> openDialog(BuildContext context)async{
+Future<JPickerValue?> openDialog(BuildContext context) async {
   return await showGlobalDatePicker(
     context: context,
     startDate: JDateModel(
         jhijri: JHijri(
-          fYear: 1442,
-          fMonth: 12,
-          fDay: 10,
-        )),
+      fYear: 1442,
+      fMonth: 12,
+      fDay: 10,
+    )),
     selectedDate: JDateModel(jhijri: JHijri.now()),
-    endDate: JDateModel(
-        jhijri: JHijri.now()),
+    endDate: JDateModel(jhijri: JHijri.now()),
     pickerMode: DatePickerMode.day,
     pickerTheme: Theme.of(context),
 
@@ -155,9 +146,10 @@ Future<JPickerValue?> openDialog(BuildContext context)async{
     borderRadius: const Radius.circular(10),
     buttonTextColor: Colors.white,
     headerTitle: const Center(
-      child: Text("التقويم الهجري", style: TextStyle(color: Colors.white),),
+      child: Text(
+        "التقويم الهجري",
+        style: TextStyle(color: Colors.white),
+      ),
     ),
   );
 }
-
-

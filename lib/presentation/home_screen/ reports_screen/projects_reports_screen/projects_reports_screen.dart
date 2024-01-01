@@ -1,13 +1,10 @@
-import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/controllers/home_controller.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:project/src/dropdown_overlay/custom_dropdown.dart';
 
 class ProjectsReportsScreen extends StatefulWidget {
   const ProjectsReportsScreen({Key? key}) : super(key: key);
@@ -59,7 +56,14 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   ];
 
   final jobRoleCtrl = TextEditingController();
-  var itemSections = ['first_sections'.tr(), 'second_sections'.tr(), 'third_sections'.tr(), 'fourth_sections'.tr(), 'all_sections'.tr()];
+
+  var itemSections = [
+    'first_sections'.tr(),
+    'second_sections'.tr(),
+    'third_sections'.tr(),
+    'fourth_sections'.tr(),
+    'all_sections'.tr()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +139,8 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return  _buildData(data[index]['label']!.toString(),
-              data[index]['value']!.toString(), data[index]['color']);
-
+        return _buildData(data[index]['label']!.toString(),
+            data[index]['value']!.toString(), data[index]['color']);
       },
     );
   }
@@ -162,37 +165,45 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   Widget _buildTotalCountRow() {
     return Container(
       margin: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Column(
+      child: Column(
               children: [
-                _buildDataRow('total_count', '00'),
+                Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown, // or BoxFit.contain depending on your preference
+                        child: _buildDataRow('total_count', '00'),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width *
+                              0.02, // تعديل النسبة حسب احتياجات التصميم
+                        ),
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                width: 1, color: ColorConstant.primaryGold),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: CustomDropdown(
+                          listItemStyle: const TextStyle(fontSize: 14),
+                          items: itemSections,
+                          hintText: 'all_sections'.tr(),
+                          controller: jobRoleCtrl,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 SizedBox(height: 14.h),
                 _buildDataRow('total_cost', '00.0${'sr'.tr()}'),
               ],
             ),
-          ),
 
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.only(right: 10.v,left: 10.v),
-              decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 1, color: ColorConstant.primaryGold),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: CustomDropdown(
-                items:itemSections,
-                hintText: 'all_sections'.tr(),
-                controller: jobRoleCtrl,
-              ),
-            ),
-          )
-        ],
-      ),
+
     );
   }
 
@@ -208,7 +219,6 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
       ],
     );
   }
-
 
   Widget _listItem() {
     return Column(
