@@ -21,6 +21,8 @@ class ImageConstant {
   static String datetime = 'assets/images/datetime.svg';
   static String calendarAdd = 'assets/images/calendar_add.svg';
 
+  static String rocketchat = '$imagePath/rocketchat.svg';
+  static String bell = '$imagePath/bell-solid.svg';
 
 
 }

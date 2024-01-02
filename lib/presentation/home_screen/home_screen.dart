@@ -18,9 +18,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _tabs = [
-    ProjectsReportsScreen(),
-    IRRequestsReportsScreen(),
-    VisitsReportsScreen()
+    const ProjectsReportsScreen(),
+    const IRRequestsReportsScreen(),
+    const VisitsReportsScreen()
   ];
 
   @override

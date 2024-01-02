@@ -2,10 +2,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
 import 'package:project/presentation/home_screen/home_screen.dart';
+import 'package:project/widgets/custom_image_view.dart';
 
 // Importing other content views
 import '../../core/utils/color_constant.dart';
@@ -58,16 +62,47 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // App bar with the current title
       appBar: AppBar(
-        title: Text(
-          appBarTitle,
-          style: TextStyle(
-            fontSize: 16.v,
-          ),
+        backgroundColor: ColorConstant.primaryColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              appBarTitle,
+              style: TextStyle(
+                fontSize: 16.v,
+                color: ColorConstant.whiteA700,
+              ),
+            ),
+            const SizedBox(width: 8.0), // Add some spacing between title and icons
+            const Spacer(),
+            IconButton(
+              onPressed: () {
+                // Handle chat messages icon tap
+              },
+              icon: CustomImageView(
+                  imagePath: ImageConstant.bell,
+                  color: ColorConstant.whiteA700,
+                  height: 24.adaptSize,
+                  width: 24.adaptSize),
+
+            ),
+            IconButton(
+              onPressed: () {
+                // Handle notifications icon tap
+              },
+              icon: CustomImageView(
+                  imagePath: ImageConstant.rocketchat,
+                  color: ColorConstant.whiteA700,
+                  height: 24.adaptSize,
+                  width: 24.adaptSize),
+            ),
+          ],
         ),
       ),
       // Drawer navigation menu
       drawer: Drawer(
         backgroundColor: ColorConstant.whiteA700,
+
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
