@@ -5,20 +5,21 @@ import 'package:project/core/utils/size_utils.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   CustomElevatedButton(
-      {super.key, this.shape,
-        this.padding,
-        this.variant,
-        this.fontStyle,
-        this.backgroundColor,
-        this.shadowColor,
-        this.alignment,
-        this.margin,
-        this.onTap,
-        this.width,
-        this.height,
-        this.text,
-        this.prefixWidget,
-        this.suffixWidget});
+      {super.key,
+      this.shape,
+      this.padding,
+      this.variant,
+      this.fontStyle,
+      this.backgroundColor,
+      this.shadowColor,
+      this.alignment,
+      this.margin,
+      this.onTap,
+      this.width,
+      this.height,
+      this.text,
+      this.prefixWidget,
+      this.suffixWidget});
 
   ButtonShape? shape;
 
@@ -52,9 +53,9 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return alignment != null
         ? Align(
-      alignment: alignment!,
-      child: _buildButtonWidget(),
-    )
+            alignment: alignment!,
+            child: _buildButtonWidget(),
+          )
         : _buildButtonWidget();
   }
 
@@ -99,14 +100,13 @@ class CustomElevatedButton extends StatelessWidget {
         height ?? getVerticalSize(40),
       ),
       padding: _setPadding(),
-      backgroundColor:backgroundColor,
+      backgroundColor: backgroundColor,
       side: _setTextButtonBorder(),
       shadowColor: shadowColor,
       shape: RoundedRectangleBorder(
         borderRadius: _setBorderRadius(),
         side: BorderSide(color: ColorConstant.primaryColor),
       ),
-
     );
   }
 

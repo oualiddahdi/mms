@@ -10,8 +10,6 @@ import 'package:provider/provider.dart';
 
 import 'controllers/language_controller.dart';
 
-
-
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
 
@@ -55,7 +53,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title:  Text(
+        title: Text(
           "language",
           style: TextStyle(
             fontSize: 14.v,
@@ -88,7 +86,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 .gray90033 // Change the color as needed
                             : ColorConstant.whiteA700,
                         borderRadius: BorderRadius.circular(10)),
-                    child:  Text(
+                    child: Text(
                       'arabic',
                       style: TextStyle(fontSize: 14.v),
                     ).tr()),
@@ -116,7 +114,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                 .gray90033 // Change the color as needed
                             : ColorConstant.whiteA700,
                         borderRadius: BorderRadius.circular(10)),
-                    child:  Text(
+                    child: Text(
                       'english',
                       style: TextStyle(fontSize: 14.v),
                     ).tr()),
@@ -126,9 +124,5 @@ class _LanguageScreenState extends State<LanguageScreen> {
         ),
       ),
     );
-
   }
-
-
-
 }

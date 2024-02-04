@@ -44,19 +44,19 @@ class Data {
 
   Data(
       {this.loginRetryLimit,
-        this.username,
-        this.email,
-        this.name,
-        this.profile,
-        this.role,
-        this.createdAt,
-        this.updatedAt,
-        this.isDeleted,
-        this.isActive,
-        this.loginReactiveTime,
-        this.userType,
-        this.id,
-        this.token});
+      this.username,
+      this.email,
+      this.name,
+      this.profile,
+      this.role,
+      this.createdAt,
+      this.updatedAt,
+      this.isDeleted,
+      this.isActive,
+      this.loginReactiveTime,
+      this.userType,
+      this.id,
+      this.token});
 
   Data.fromJson(Map<String, dynamic> json) {
     loginRetryLimit = json['loginRetryLimit'];

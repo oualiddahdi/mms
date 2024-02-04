@@ -1,5 +1,3 @@
-
-
 abstract class DataManagerInterface {
   Future<bool> isInternetConnected();
   // Future<void> saveDataLocally(List<DataModel> data);

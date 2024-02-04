@@ -4,181 +4,178 @@ import 'package:project/core/utils/size_utils.dart';
 import 'package:project/theme/theme_helper.dart';
 
 class AppDecoration {
-
   static BoxDecoration get fillOnPrimaryContainer => BoxDecoration(
-    color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
-  );
+        color: theme.colorScheme.onPrimaryContainer.withOpacity(1),
+      );
   static BoxDecoration get txtFillGreen50019 => BoxDecoration(
-    color: ColorConstant.green50019,
-  );
+        color: ColorConstant.green50019,
+      );
   static BoxDecoration get fillBluegray5099 => BoxDecoration(
-    color: ColorConstant.blueGray5099,
-  );
+        color: ColorConstant.blueGray5099,
+      );
   static BoxDecoration get fillGray50 => BoxDecoration(
-    color: ColorConstant.gray50,
-  );
+        color: ColorConstant.gray50,
+      );
   static BoxDecoration get fillBluegray5087 => BoxDecoration(
-    color: ColorConstant.blueGray5087,
-  );
+        color: ColorConstant.blueGray5087,
+      );
   static BoxDecoration get outlineGray3002 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.gray300,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-  );
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.gray300,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get outlineBlue500 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.blue500,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.blueGray40014,
-        spreadRadius: getHorizontalSize(
-          2,
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.blue500,
+          width: getHorizontalSize(
+            1,
+          ),
         ),
-        blurRadius: getHorizontalSize(
-          2,
-        ),
-        offset: Offset(
-          0,
-          4,
-        ),
-      ),
-    ],
-  );
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.blueGray40014,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              4,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get fillTeal900 => BoxDecoration(
-    color: ColorConstant.teal900,
-  );
+        color: ColorConstant.teal900,
+      );
   static BoxDecoration get outlineGray3001 => BoxDecoration(
-    color: ColorConstant.gray5002,
-    border: Border.all(
-      color: ColorConstant.gray300,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-  );
+        color: ColorConstant.gray5002,
+        border: Border.all(
+          color: ColorConstant.gray300,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get outlineGray3003 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.gray300,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.blueGray40014,
-        spreadRadius: getHorizontalSize(
-          2,
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.gray300,
+          width: getHorizontalSize(
+            1,
+          ),
         ),
-        blurRadius: getHorizontalSize(
-          2,
-        ),
-        offset: Offset(
-          0,
-          4,
-        ),
-      ),
-    ],
-  );
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.blueGray40014,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              4,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get fillBlue50061 => BoxDecoration(
-    color: ColorConstant.blue50061,
-  );
+        color: ColorConstant.blue50061,
+      );
   static BoxDecoration get fillWhiteA700 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-  );
+        color: ColorConstant.whiteA700,
+      );
   static BoxDecoration get fillBluegray50 => BoxDecoration(
-    color: ColorConstant.blueGray50,
-  );
+        color: ColorConstant.blueGray50,
+      );
   static BoxDecoration get fillRed4000c => BoxDecoration(
-    color: ColorConstant.red4000c,
-  );
+        color: ColorConstant.red4000c,
+      );
   static BoxDecoration get outlineGray300 => BoxDecoration(
-    color: ColorConstant.gray5001,
-    border: Border.all(
-      color: ColorConstant.gray300,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-  );
+        color: ColorConstant.gray5001,
+        border: Border.all(
+          color: ColorConstant.gray300,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get txtFillRed40019 => BoxDecoration(
-    color: ColorConstant.red40019,
-  );
+        color: ColorConstant.red40019,
+      );
   static BoxDecoration get fillBlue500 => BoxDecoration(
-    color: ColorConstant.blue500,
-  );
+        color: ColorConstant.blue500,
+      );
   static BoxDecoration get txtOutlineBluegray500 => BoxDecoration(
-    color: ColorConstant.gray900,
-    border: Border.all(
-      color: ColorConstant.blueGray500,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-  );
+        color: ColorConstant.gray900,
+        border: Border.all(
+          color: ColorConstant.blueGray500,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get fillBlue50 => BoxDecoration(
-    color: ColorConstant.blue50,
-  );
+        color: ColorConstant.blue50,
+      );
   static BoxDecoration get txtOutlineBlack9003f => BoxDecoration();
   static BoxDecoration get fillGray9007e => BoxDecoration(
-    color: ColorConstant.gray9007e,
-  );
+        color: ColorConstant.gray9007e,
+      );
   static BoxDecoration get outlineBluegray40014 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.blueGray40014,
-        spreadRadius: getHorizontalSize(
-          2,
-        ),
-        blurRadius: getHorizontalSize(
-          2,
-        ),
-        offset: Offset(
-          0,
-          4,
-        ),
-      ),
-    ],
-  );
+        color: ColorConstant.whiteA700,
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.blueGray40014,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              4,
+            ),
+          ),
+        ],
+      );
   static BoxDecoration get txtOutlineGray300 => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    border: Border.all(
-      color: ColorConstant.gray300,
-      width: getHorizontalSize(
-        1,
-      ),
-    ),
-  );
+        color: ColorConstant.whiteA700,
+        border: Border.all(
+          color: ColorConstant.gray300,
+          width: getHorizontalSize(
+            1,
+          ),
+        ),
+      );
   static BoxDecoration get outlineBluegray1000f => BoxDecoration(
-    color: ColorConstant.whiteA700,
-    boxShadow: [
-      BoxShadow(
-        color: ColorConstant.blueGray1000f,
-        spreadRadius: getHorizontalSize(
-          2,
-        ),
-        blurRadius: getHorizontalSize(
-          2,
-        ),
-        offset: Offset(
-          0,
-          -8,
-        ),
-      ),
-    ],
-  );
-
-
+        color: ColorConstant.whiteA700,
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstant.blueGray1000f,
+            spreadRadius: getHorizontalSize(
+              2,
+            ),
+            blurRadius: getHorizontalSize(
+              2,
+            ),
+            offset: Offset(
+              0,
+              -8,
+            ),
+          ),
+        ],
+      );
 }
 
 class BorderRadiusStyle {

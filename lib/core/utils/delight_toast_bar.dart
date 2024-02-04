@@ -1,17 +1,13 @@
-
-
 import 'package:delightful_toast/delight_toast.dart';
 import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DelightToast {
-
- static onOnTapSignInError(context) {
-
+  static onOnTapSignInError(context) {
     DelightToastBar(
       autoDismiss: false,
-      builder: (context) =>  const ToastCard(
+      builder: (context) => const ToastCard(
         leading: Icon(
           Icons.error_outlined,
           color: Colors.red,
@@ -26,8 +22,5 @@ class DelightToast {
         ),
       ),
     ).show(context);
-
   }
-
-
 }

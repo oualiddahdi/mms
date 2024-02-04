@@ -35,7 +35,6 @@ class ApiClient extends GetConnect {
   }
 
   Future<PostLoginResp> createLogin(requestData) async {
-
     ProgressDialogUtils.showProgressDialog();
     try {
       await isNetworkConnected();

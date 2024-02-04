@@ -73,7 +73,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: ListTile(
         leading: Icon(icon, color: ColorConstant.primaryColor),
         title: Text(titleKey).tr(),
-        trailing: Switch(activeTrackColor: ColorConstant.mysticWhite,
+        trailing: Switch(
+          activeTrackColor: ColorConstant.mysticWhite,
           value: isEnabled,
           onChanged: (value) {
             _saveSettings(value);

@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:project/core/utils/delight_toast_bar.dart';
 import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/routes/app_routes.dart';
+
 class SplashModel {}
 
 class GetStartedController extends GetxController {
@@ -31,28 +32,19 @@ class GetStartedController extends GetxController {
         );
 
         if (authenticated) {
-
           Get.offNamed(
             AppRoutes.getStartedScreen,
           );
-
         } else {
           // Retry authentication on failure
 
           DelightToast.onOnTapSignInError(context);
-
         }
       } else {
-
         Get.offNamed(
           AppRoutes.getStartedScreen,
         );
-
       }
-    } on PlatformException catch (e) {
-
-    }
+    } on PlatformException catch (e) {}
   }
-
-
 }

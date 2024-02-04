@@ -100,7 +100,6 @@ class AppRoutes {
         LoginBinding(),
       ],
     ),
-
     GetPage(
       name: forgotPasswordScreen,
       page: () => ForgotPasswordScreen(),
@@ -108,7 +107,6 @@ class AppRoutes {
         ForgotPasswordBinding(),
       ],
     ),
-
     GetPage(
       name: otpScreen,
       page: () => const OtpScreen(),
@@ -116,25 +114,19 @@ class AppRoutes {
         ForgotPasswordBinding(),
       ],
     ),
-
     GetPage(
       name: recoverPasswordScreen,
-      page: () =>  RecoverPasswordScreen(),
+      page: () => RecoverPasswordScreen(),
       bindings: [
         RecoverPasswordBinding(),
       ],
     ),
-
     GetPage(
       name: projectDetailsScreen,
-      page: () =>  ProjectDetailsScreen(),
+      page: () => ProjectDetailsScreen(),
       bindings: [
         ProjectDetailsBinding(),
       ],
     ),
-
-
-
-
   ];
 }

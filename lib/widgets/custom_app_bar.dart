@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Navigator.of(context).pop();
             },
           ),
-           Text(
+          Text(
             title,
             style: const TextStyle(color: Colors.white, fontSize: 18),
           ).tr(),
@@ -45,5 +45,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(56); // Adjust the height as needed
+  Size get preferredSize =>
+      const Size.fromHeight(56); // Adjust the height as needed
 }

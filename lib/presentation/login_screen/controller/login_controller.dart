@@ -12,17 +12,13 @@ import '../../../data/models/login/post_login_resp.dart';
 class LoginModel {}
 
 class LoginController extends GetxController {
-
-
   Rx<LoginModel> signInModelObj = LoginModel().obs;
 
   Rx<bool> isShowPassword = true.obs;
 
   PostLoginResp postLoginResp = PostLoginResp();
 
-
   Future<void> callCreateLogin(Map req) async {
-
     try {
       postLoginResp = await Get.find<ApiClient>().createLogin(
         req,
@@ -36,14 +32,10 @@ class LoginController extends GetxController {
     }
   }
 
-  void onTapSignIn(username,password,context) async {
-
+  void onTapSignIn(username, password, context) async {
     Get.to(HomePage());
 
-    final postLoginReq = {
-      "username": username,
-      "password": password
-    };
+    final postLoginReq = {"username": username, "password": password};
 
     try {
       await callCreateLogin(
@@ -51,7 +43,6 @@ class LoginController extends GetxController {
       );
 
       Get.find<LoginController>().onOnTapSignInSuccess();
-
     } on PostLoginResp {
       DelightToast.onOnTapSignInError(context);
     } on NoInternetException catch (e) {
@@ -72,5 +63,4 @@ class LoginController extends GetxController {
   void onOnTapForgotPasswordScreen() {
     Get.toNamed(AppRoutes.forgotPasswordScreen, arguments: {});
   }
-
 }

@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore_for_file: must_be_immutable
 
-
 class PrefUtils {
   PrefUtils() {
     init();
@@ -12,6 +11,7 @@ class PrefUtils {
   static Future<void> initialize() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
+
   // Ensure this method is static
   static PrefUtils getInstance() {
     return PrefUtils();
@@ -63,7 +63,6 @@ class PrefUtils {
   Future<void> setSwitchValue(bool value) async {
     await _sharedPreferences!.setBool('switchValue', value);
   }
-
 
   Future<bool> getSwitchValue() async {
     try {

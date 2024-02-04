@@ -10,7 +10,6 @@ import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-
 class VisitsReportsScreen extends StatefulWidget {
   const VisitsReportsScreen({super.key});
 
@@ -19,7 +18,6 @@ class VisitsReportsScreen extends StatefulWidget {
 }
 
 class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
-
   List<Map<String, dynamic>> data = [
     {
       'value': 0,
@@ -58,23 +56,28 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
       'color': ColorConstant.blueGray500
     },
     {
-    'value': 0,
-    'label': 'visit_quality_assurances(QA)',
-    'cost': 00.0,
-    'color': ColorConstant.blueColor
+      'value': 0,
+      'label': 'visit_quality_assurances(QA)',
+      'cost': 00.0,
+      'color': ColorConstant.blueColor
     },
     {
-    'value': 0,
-    'label': 'visit_scheduled_of_contractor',
-    'cost': 00.0,
-    'color': ColorConstant.violetColor
+      'value': 0,
+      'label': 'visit_scheduled_of_contractor',
+      'cost': 00.0,
+      'color': ColorConstant.violetColor
     },
     // Add more data as needed
   ];
 
   final jobRoleCtrl = TextEditingController();
-  var itemSections = ['first_sections'.tr(), 'second_sections'.tr(), 'third_sections'.tr(), 'fourth_sections'.tr(), 'all_sections'.tr()];
-
+  var itemSections = [
+    'first_sections'.tr(),
+    'second_sections'.tr(),
+    'third_sections'.tr(),
+    'fourth_sections'.tr(),
+    'all_sections'.tr()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -123,11 +126,11 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
                   DoughnutSeries<Map<String, dynamic>, String>(
                     dataSource: data,
                     xValueMapper: (Map<String, dynamic> data, _) =>
-                    data['label'],
+                        data['label'],
                     yValueMapper: (Map<String, dynamic> data, _) =>
-                    data['value'],
+                        data['value'],
                     pointColorMapper: (Map<String, dynamic> data, _) =>
-                    data['color'],
+                        data['color'],
                     dataLabelSettings: const DataLabelSettings(isVisible: true),
                     emptyPointSettings: EmptyPointSettings(
                         mode: EmptyPointMode.average,
@@ -182,40 +185,39 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
     return Container(
       margin: const EdgeInsets.all(10),
       child: Row(
-            children: [
-              Expanded(
-                child: FittedBox(
-                  alignment:
+        children: [
+          Expanded(
+            child: FittedBox(
+              alignment:
                   isArabic ? Alignment.centerRight : Alignment.centerLeft,
-                  fit: BoxFit.scaleDown,
-                  // or BoxFit.contain depending on your preference
-                  child: _buildDataRow('total_count', '00'),
+              fit: BoxFit.scaleDown,
+              // or BoxFit.contain depending on your preference
+              child: _buildDataRow('total_count', '00'),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width *
+                    0.02, // تعديل النسبة حسب احتياجات التصميم
+              ),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(
+                      width: 1, color: ColorConstant.primaryGold),
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width *
-                        0.02, // تعديل النسبة حسب احتياجات التصميم
-                  ),
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                          width: 1, color: ColorConstant.primaryGold),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: CustomDropdown(
-                    listItemStyle: const TextStyle(fontSize: 14),
-                    items: itemSections,
-                    hintText: 'all_sections'.tr(),
-                    controller: jobRoleCtrl,
-                  ),
-                ),
-              )
-            ],
-          ),
-
+              child: CustomDropdown(
+                listItemStyle: const TextStyle(fontSize: 14),
+                items: itemSections,
+                hintText: 'all_sections'.tr(),
+                controller: jobRoleCtrl,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -223,12 +225,12 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
     return Row(
       children: [
         Text(label,
-            style: theme.textTheme.labelLarge!.copyWith(fontSize: 12.fSize))
+                style: theme.textTheme.labelLarge!.copyWith(fontSize: 12.fSize))
             .tr(),
         SizedBox(width: 14.h),
         Text(value,
-            style: TextStyle(
-                fontSize: 14.v, color: ColorConstant.primaryColor))
+                style: TextStyle(
+                    fontSize: 14.v, color: ColorConstant.primaryColor))
             .tr(),
       ],
     );
@@ -236,7 +238,7 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
 
   Widget _buildScrollableList() {
     const itemCount =
-    5; // Change this to the actual number of items in your list
+        5; // Change this to the actual number of items in your list
     return ListView.builder(
       physics: NeverScrollableScrollPhysics(),
       // Disable scrolling for the inner list
@@ -247,7 +249,7 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
       itemBuilder: (BuildContext context, int index) {
         // Replace the return statement with your list item widget
         return InkWell(
-          onTap: (){
+          onTap: () {
             Get.to(const ProjectDetailsScreen());
           },
           child: Padding(
@@ -264,7 +266,7 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
                 children: [
                   Container(
                     margin:
-                    const EdgeInsets.only(right: 18, left: 18, bottom: 10),
+                        const EdgeInsets.only(right: 18, left: 18, bottom: 10),
                     child: Text(
                       "مشروع 04122022".tr(),
                       style: CustomTextStyles.labelMediumBluegray300.copyWith(
@@ -318,6 +320,4 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
       ],
     );
   }
-
-
 }

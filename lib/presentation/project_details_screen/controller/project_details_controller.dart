@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 class ProjectDetailsModel {}
 
 class ProjectDetailsController extends GetxController {
@@ -7,8 +8,5 @@ class ProjectDetailsController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-
-
   }
-
 }

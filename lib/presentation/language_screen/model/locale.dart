@@ -21,6 +21,6 @@ class AppLocale extends Equatable {
   // Overriding the props getter from Equatable to compare instances by their locale.
   @override
   List<Object?> get props => [
-    locale,
-  ];
+        locale,
+      ];
 }

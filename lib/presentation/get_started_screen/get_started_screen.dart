@@ -26,7 +26,6 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<GetStartedController>().authenticate(context);
     });
-
   }
 
   @override
@@ -55,9 +54,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     height: 100.adaptSize,
                     width: 100.adaptSize,
                   ),
-
                   SizedBox(height: 50.v),
-
                   CustomElevatedButton(
                     height: getVerticalSize(56),
                     text: "lbl_sign_in",
@@ -67,9 +64,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     padding: ButtonPadding.PaddingAll16,
                     fontStyle: ButtonFontStyle.ManropeBold16Gray50_1,
                     onTap: () {
-
                       Get.find<GetStartedController>().goToSecondPage();
-
                     },
                   ),
                   CustomElevatedButton(
@@ -81,9 +76,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                       padding: ButtonPadding.PaddingAll16,
                       fontStyle: ButtonFontStyle.ManropeBold16PrimaryColor,
                       onTap: () {
-
                         Get.to(RecoverPasswordScreen());
-
                       }),
                   SizedBox(height: 18.v),
                 ],
@@ -95,4 +88,3 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     );
   }
 }
-

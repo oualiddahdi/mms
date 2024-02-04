@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   );
 
   // Default screen and title
-  Widget currentScreen =  HomeScreen();
+  Widget currentScreen = HomeScreen();
   String appBarTitle = 'home'.tr();
 
   @override
@@ -73,7 +73,8 @@ class _HomePageState extends State<HomePage> {
                 color: ColorConstant.whiteA700,
               ),
             ),
-            const SizedBox(width: 8.0), // Add some spacing between title and icons
+            const SizedBox(
+                width: 8.0), // Add some spacing between title and icons
             const Spacer(),
             IconButton(
               onPressed: () {
@@ -84,7 +85,6 @@ class _HomePageState extends State<HomePage> {
                   color: ColorConstant.whiteA700,
                   height: 24.adaptSize,
                   width: 24.adaptSize),
-
             ),
             IconButton(
               onPressed: () {
@@ -102,15 +102,13 @@ class _HomePageState extends State<HomePage> {
       // Drawer navigation menu
       drawer: Drawer(
         backgroundColor: ColorConstant.whiteA700,
-
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             // Drawer header with user information
             userDrawerHeader(),
             // Drawer items for different content screens
-            buildListTile(
-                'home', MaterialSymbols.home_app_logo,  HomeScreen()),
+            buildListTile('home', MaterialSymbols.home_app_logo, HomeScreen()),
             buildListTile(
                 'projects', MaterialSymbols.grain, const ProjectsScreen()),
             buildListTile('iR-Requests', MaterialSymbols.folder,

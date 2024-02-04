@@ -62,7 +62,6 @@ class CustomTextFormField extends StatelessWidget {
 
   final onChanged;
 
-
   final String? hintText;
 
   final TextStyle? hintStyle;
@@ -105,7 +104,8 @@ class CustomTextFormField extends StatelessWidget {
           enabled: enabled,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
-          style: textStyle ?? CustomTextStyles.labelLargeOnPrimary.copyWith(fontSize: 16.v),
+          style: textStyle ??
+              CustomTextStyles.labelLargeOnPrimary.copyWith(fontSize: 16.v),
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,
@@ -118,10 +118,10 @@ class CustomTextFormField extends StatelessWidget {
 
   InputDecoration get decoration => InputDecoration(
         hintText: hintText!.tr() ?? "".tr(),
-        hintStyle: hintStyle ?? CustomTextStyles.labelLargeOnPrimary.copyWith(fontSize: 16.v),
+        hintStyle: hintStyle ??
+            CustomTextStyles.labelLargeOnPrimary.copyWith(fontSize: 16.v),
         prefixIcon: prefix,
         prefixText: prefixText,
-
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,

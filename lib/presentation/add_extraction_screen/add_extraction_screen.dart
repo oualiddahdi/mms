@@ -6,8 +6,6 @@ import 'package:project/widgets/custom_elevated_button.dart';
 import 'package:project/widgets/custom_image_view.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 
-
-
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({super.key});
 
@@ -16,13 +14,11 @@ class AddAddressScreen extends StatefulWidget {
 }
 
 class _AddAddressScreenState extends State<AddAddressScreen> {
-
   TextEditingController dateHijriController = TextEditingController();
   TextEditingController dateGregorianController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -38,15 +34,12 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 child: Container(
                     width: double.maxFinite,
                     padding:
-                    EdgeInsets.only(left: 16.v, top: 16.v, right: 16.v),
+                        EdgeInsets.only(left: 16.v, top: 16.v, right: 16.v),
                     child: Column(children: [
                       SizedBox(height: 29.v),
-
-
                       SizedBox(height: 29.v),
-
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           _selectDateGregorian(context);
                         },
                         child: CustomTextFormField(
@@ -58,8 +51,8 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             textStyle: TextStyle(fontSize: 16.v),
                             prefix: Container(
                               margin:
-                              EdgeInsets.fromLTRB(16.v, 12.v, 10.v, 12.v),
-                              child:  CustomImageView(
+                                  EdgeInsets.fromLTRB(16.v, 12.v, 10.v, 12.v),
+                              child: CustomImageView(
                                   imagePath: ImageConstant.calendarAdd,
                                   height: 24.adaptSize,
                                   width: 24.adaptSize),
@@ -68,8 +61,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             contentPadding: EdgeInsets.only(
                                 top: 15.v, right: 30.h, bottom: 15.v)),
                       ),
-
-
                     ]))),
             bottomNavigationBar: _buildAddAddress(context)));
   }
@@ -77,12 +68,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   /// Section Widget
   Widget _buildAddAddress(BuildContext context) {
     return CustomElevatedButton(
-      onTap: (){
-      },
+        onTap: () {},
         text: "lbl_add_address",
         margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 50.v));
   }
-
 
   Future<Null> _selectDateGregorian(BuildContext context) async {
     await showDatePicker(
@@ -93,15 +82,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     ).then((selectedDate) {
       if (selectedDate != null) {
         dateGregorianController.text =
-            DateFormat('d-MM-y')
-                .format(selectedDate)
-                .toString();
+            DateFormat('d-MM-y').format(selectedDate).toString();
       }
       return null;
     });
-
   }
-
-
-
 }

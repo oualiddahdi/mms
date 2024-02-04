@@ -42,9 +42,6 @@ extension ResponsiveExtension on num {
 
   ///This method is used to set text font size according to Viewport
   double get fSize => adaptSize;
-
-
-
 }
 
 extension FormatExtension on double {
@@ -53,7 +50,6 @@ extension FormatExtension on double {
     return double.parse(this.toStringAsFixed(fractionDigits));
   }
 }
-
 
 // This is where the magic happens.
 // This functions are responsible to make UI responsive across all the mobile devices.

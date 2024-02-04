@@ -46,7 +46,6 @@ class _OtpScreenState extends State<OtpScreen> {
                       .copyWith(fontSize: 14.0.v),
                 ).tr(),
                 SizedBox(height: 30.v),
-
                 Directionality(
                   textDirection: ui.TextDirection.ltr,
                   child: OtpTextField(
@@ -60,12 +59,11 @@ class _OtpScreenState extends State<OtpScreen> {
                       //handle validation or checks here
                     },
                     //runs when every textfield is filled
-                    onSubmit: (String verificationCode){
+                    onSubmit: (String verificationCode) {
                       _otpController.text = verificationCode.toString();
                     }, // end onSubmit
                   ),
                 ),
-
                 SizedBox(height: 16.v),
                 CustomElevatedButton(
                   height: getVerticalSize(56),

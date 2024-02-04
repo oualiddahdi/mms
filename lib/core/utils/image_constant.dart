@@ -7,13 +7,11 @@ class ImageConstant {
 
   static String background_12312023 = '$imagePath/background_12312023.png';
 
-
   static String imgMail = '$imagePath/img_mail.svg';
 
   static String imgLock = '$imagePath/img_lock.svg';
 
   static String imgOnboarding = 'assets/images/img_onboarding.png';
-
 
   static String imgArrowLeftBlueGray300 =
       '$imagePath/img_arrow_left_blue_gray_300.svg';
@@ -23,6 +21,4 @@ class ImageConstant {
 
   static String rocketchat = '$imagePath/rocketchat.svg';
   static String bell = '$imagePath/bell-solid.svg';
-
-
 }

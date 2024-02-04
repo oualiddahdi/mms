@@ -15,10 +15,12 @@ class ProjectDetailsScreen extends StatefulWidget {
 class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
-        appBar: const CustomAppBar(title: 'projectDetails',),
+        appBar: const CustomAppBar(
+          title: 'projectDetails',
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,13 +32,13 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                     .copyWith(fontSize: 12.0.v),
               ).tr(),
             ),
-
             Container(
-              padding: const EdgeInsets.only(bottom: 18,top: 18),
-              margin:EdgeInsets.all(8.v) ,
+              padding: const EdgeInsets.only(bottom: 18, top: 18),
+              margin: EdgeInsets.all(8.v),
               decoration: ShapeDecoration(
                 color: ColorConstant.secondaryColor14368E27,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
               ),
               child: Row(
                 children: [
@@ -52,13 +54,13 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                 ],
               ),
             ),
-
             Container(
               padding: const EdgeInsets.only(bottom: 18, top: 18),
               margin: EdgeInsets.all(8.v),
               decoration: ShapeDecoration(
                 color: ColorConstant.primarySilverB3B3B3,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,10 +72,9 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildInfoText('code',''),
-                            _buildInfoText('startDate',''),
-                            _buildInfoText('owner',''),
-
+                            _buildInfoText('code', ''),
+                            _buildInfoText('startDate', ''),
+                            _buildInfoText('owner', ''),
                           ],
                         ),
                       ),
@@ -82,36 +83,30 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildInfoText('type',''),
-                            _buildInfoText('endDate',''),
-                            _buildInfoText('contractor',''),
+                            _buildInfoText('type', ''),
+                            _buildInfoText('endDate', ''),
+                            _buildInfoText('contractor', ''),
                           ],
                         ),
                       ),
                     ],
                   ),
-
-                  _buildInfoText('executiveConsultant',''),
-
+                  _buildInfoText('executiveConsultant', ''),
                 ],
               ),
             ),
-
             Container(
               padding: const EdgeInsets.only(bottom: 18, top: 18),
               margin: EdgeInsets.all(8.v),
               decoration: ShapeDecoration(
                 color: ColorConstant.primarySilverB3B3B3,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
               ),
-              child: _buildInfoText('dueForPayment',''),
+              child: _buildInfoText('dueForPayment', ''),
             )
-
-
           ],
         ),
-
-
       ),
     );
   }
@@ -122,14 +117,18 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
       children: [
         Text(
           label,
-          style:  TextStyle(color: ColorConstant.secondaryColor368E27,fontSize: 12.v),
+          style: TextStyle(
+              color: ColorConstant.secondaryColor368E27, fontSize: 12.v),
           overflow: TextOverflow.ellipsis, // or TextOverflow.clip
           maxLines: 1,
         ).tr(),
-        SizedBox(height: 10.v,),
+        SizedBox(
+          height: 10.v,
+        ),
         Text(
           "value",
-          style:  TextStyle(color: ColorConstant.secondaryColor368E27,fontSize: 12.v),
+          style: TextStyle(
+              color: ColorConstant.secondaryColor368E27, fontSize: 12.v),
           overflow: TextOverflow.ellipsis, // or TextOverflow.clip
           maxLines: 1,
         ).tr(),
@@ -137,7 +136,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
     );
   }
 
-  Widget _buildInfoText(String label,String value) {
+  Widget _buildInfoText(String label, String value) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -152,15 +151,15 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ).tr(),
-          SizedBox(width: 10.v,),
-          Text(
-            " : ",
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: ColorConstant.primaryColor,
-              fontSize: 12.v,
-            )
+          SizedBox(
+            width: 10.v,
           ),
+          Text(" : ",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: ColorConstant.primaryColor,
+                fontSize: 12.v,
+              )),
           Text(
             "value",
             textAlign: TextAlign.start,
@@ -175,6 +174,4 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
       ),
     );
   }
-
-
 }

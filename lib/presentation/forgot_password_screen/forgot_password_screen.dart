@@ -44,15 +44,17 @@ class ForgotPasswordScreen extends StatelessWidget {
                 textDirection: ui.TextDirection.ltr,
                 // Use the fully qualified name
                 child: CustomTextFormField(
-
                     autofocus: false,
                     controller: _phoneNumberController,
                     onChanged: (text) {
                       if (text.length > maxLength) {
                         // إذا تم تجاوز الحد الأقصى، قم بإلغاء أي حروف إضافية
-                        _phoneNumberController.text = text.substring(0, maxLength);
-                        _phoneNumberController.selection = TextSelection.fromPosition(
-                          TextPosition(offset: _phoneNumberController.text.length),
+                        _phoneNumberController.text =
+                            text.substring(0, maxLength);
+                        _phoneNumberController.selection =
+                            TextSelection.fromPosition(
+                          TextPosition(
+                              offset: _phoneNumberController.text.length),
                         );
                       }
                     },

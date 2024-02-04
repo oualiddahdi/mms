@@ -8,7 +8,8 @@ import 'data_manager_interface.dart';
 
 class DataManager implements DataManagerInterface {
   static const String dataKey = 'stored_data';
-  static const String apiUrl = 'https://example.com/api/data'; // قم بتعديل الرابط إلى رابط API الفعلي
+  static const String apiUrl =
+      'https://example.com/api/data'; // قم بتعديل الرابط إلى رابط API الفعلي
 
   @override
   Future<bool> isInternetConnected() async {
@@ -57,4 +58,3 @@ class DataManager implements DataManagerInterface {
   }
 */
 }
-

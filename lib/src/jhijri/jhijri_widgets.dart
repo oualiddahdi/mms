@@ -77,18 +77,18 @@ Future<JPickerValue?> showGlobalDatePicker({
   JDateModel _startDate = startDate != null
       ? startDate
       : pickerType == PickerType.JHijri
-      ? JDateModel(jhijri: _start)
-      : JDateModel(dateTime: _start.dateTime);
+          ? JDateModel(jhijri: _start)
+          : JDateModel(dateTime: _start.dateTime);
   JDateModel _endDate = endDate != null
       ? endDate
       : pickerType == PickerType.JHijri
-      ? JDateModel(jhijri: _end)
-      : JDateModel(dateTime: _end.dateTime);
+          ? JDateModel(jhijri: _end)
+          : JDateModel(dateTime: _end.dateTime);
   JDateModel _selectedDate = selectedDate != null
       ? selectedDate
       : pickerType == PickerType.JHijri
-      ? JDateModel(jhijri: _select)
-      : JDateModel(dateTime: _select.dateTime);
+          ? JDateModel(jhijri: _select)
+          : JDateModel(dateTime: _select.dateTime);
   return showDialog<JPickerValue?>(
     context: context,
     builder: (BuildContext context) {
@@ -136,9 +136,9 @@ class _JLocalDirection extends StatelessWidget {
       locale: locale,
       child: textDirection != null
           ? Directionality(
-        textDirection: textDirection!,
-        child: child,
-      )
+              textDirection: textDirection!,
+              child: child,
+            )
           : child,
     );
   }
@@ -197,31 +197,31 @@ class JGlobalDatePicker extends StatelessWidget {
   final JSelectableDayPredicate? jSelectableDayPredicate;
   const JGlobalDatePicker(
       {Key? key,
-        this.pickerType = PickerType.JHijri,
-        this.startDate,
-        this.endDate,
-        this.selectedDate,
-        this.pickerMode,
-        this.headerTitle,
-        this.onOk,
-        this.onChange,
-        this.onCancel,
-        this.primaryColor,
-        this.backgroundColor,
-        this.calendarTextColor,
-        this.buttonTextColor,
-        this.borderRadius,
-        this.buttons,
-        this.widgetType = WidgetType.JDialog,
-        this.textDirection,
-        this.locale,
-        this.cancelButtonColor,
-        this.okButtonColor,
-        this.selectableDayPredicate,
-        this.jSelectableDayPredicate,
-        this.okButtonText,
-        this.cancelButtonText,
-        this.pickerTheme})
+      this.pickerType = PickerType.JHijri,
+      this.startDate,
+      this.endDate,
+      this.selectedDate,
+      this.pickerMode,
+      this.headerTitle,
+      this.onOk,
+      this.onChange,
+      this.onCancel,
+      this.primaryColor,
+      this.backgroundColor,
+      this.calendarTextColor,
+      this.buttonTextColor,
+      this.borderRadius,
+      this.buttons,
+      this.widgetType = WidgetType.JDialog,
+      this.textDirection,
+      this.locale,
+      this.cancelButtonColor,
+      this.okButtonColor,
+      this.selectableDayPredicate,
+      this.jSelectableDayPredicate,
+      this.okButtonText,
+      this.cancelButtonText,
+      this.pickerTheme})
       : super(key: key);
 
   @override
@@ -249,13 +249,13 @@ class JGlobalDatePicker extends StatelessWidget {
                     if (headerTitle != null) headerTitle!,
                     Container(
                       constraints:
-                      BoxConstraints(maxHeight: media.size.height - 120),
+                          BoxConstraints(maxHeight: media.size.height - 120),
                       decoration: BoxDecoration(
                         color: backgroundColor ?? Colors.white,
                         borderRadius: BorderRadius.only(
                             topLeft: borderRadius ?? const Radius.circular(16),
                             topRight:
-                            borderRadius ?? const Radius.circular(16)),
+                                borderRadius ?? const Radius.circular(16)),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -266,18 +266,18 @@ class JGlobalDatePicker extends StatelessWidget {
                               localeCode: locale?.languageCode ?? "en",
                               firstDate: jCheckDate(startDate),
                               initialCalendarMode:
-                              pickerMode ?? DatePickerMode.day,
+                                  pickerMode ?? DatePickerMode.day,
                               lastDate: jCheckDate(endDate),
                               selectableDayPredicate: jSelectableDayPredicate,
                               onDateChanged: onChange != null
                                   ? (dateTime) => onChange!(JPickerValue.value(
-                                  JDateModel(
-                                      jhijri: JHijri(
-                                          fDate: dateTime.dateTime))))
+                                      JDateModel(
+                                          jhijri: JHijri(
+                                              fDate: dateTime.dateTime))))
                                   : (dateTime) => selected = JPickerValue.value(
-                                  JDateModel(
-                                      jhijri: JHijri(
-                                          fDate: dateTime.dateTime))),
+                                      JDateModel(
+                                          jhijri: JHijri(
+                                              fDate: dateTime.dateTime))),
                             ),
                           if (pickerType == PickerType.JNormal)
                             CalendarDatePicker(
@@ -285,13 +285,13 @@ class JGlobalDatePicker extends StatelessWidget {
                               firstDate: checkDate(startDate),
                               lastDate: checkDate(endDate),
                               initialCalendarMode:
-                              pickerMode ?? DatePickerMode.day,
+                                  pickerMode ?? DatePickerMode.day,
                               selectableDayPredicate: selectableDayPredicate,
                               onDateChanged: onChange != null
                                   ? (dateTime) => onChange!(JPickerValue.value(
-                                  JDateModel(dateTime: dateTime)))
+                                      JDateModel(dateTime: dateTime)))
                                   : (dateTime) => selected = JPickerValue.value(
-                                  JDateModel(dateTime: dateTime)),
+                                      JDateModel(dateTime: dateTime)),
                             ),
                         ],
                       ),
@@ -303,9 +303,9 @@ class JGlobalDatePicker extends StatelessWidget {
                           color: backgroundColor ?? Colors.white,
                           borderRadius: BorderRadius.only(
                             bottomLeft:
-                            borderRadius ?? const Radius.circular(16),
+                                borderRadius ?? const Radius.circular(16),
                             bottomRight:
-                            borderRadius ?? const Radius.circular(16),
+                                borderRadius ?? const Radius.circular(16),
                           ),
                         ),
                         child: Row(
@@ -319,7 +319,7 @@ class JGlobalDatePicker extends StatelessWidget {
                                       cancelButtonColor),
                                 ),
                                 onPressed: onCancel ??
-                                        () {
+                                    () {
                                       Navigator.pop(context);
                                     },
                                 child: Text(
@@ -339,17 +339,17 @@ class JGlobalDatePicker extends StatelessWidget {
                               child: TextButton(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateProperty.all(okButtonColor),
+                                      MaterialStateProperty.all(okButtonColor),
                                 ),
                                 onPressed: onOk != null
                                     ? selected != null
-                                    ? () => onOk!(selected!)
-                                    : () => onOk!(JPickerValue.value(
-                                    JDateModel(
-                                        dateTime: DateTime.now())))
+                                        ? () => onOk!(selected!)
+                                        : () => onOk!(JPickerValue.value(
+                                            JDateModel(
+                                                dateTime: DateTime.now())))
                                     : () {
-                                  Navigator.pop(context, selected);
-                                },
+                                        Navigator.pop(context, selected);
+                                      },
                                 child: Text(
                                   okButtonText ?? "Ok",
                                   style: TextStyle(

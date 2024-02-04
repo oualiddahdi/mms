@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project_status.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/projects.dart';
 import 'package:project/presentation/project_details_screen/project_details_screen.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
@@ -17,6 +21,8 @@ class ProjectsReportsScreen extends StatefulWidget {
 }
 
 class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
+  final ProjectsController _projectsController = ProjectsController();
+
   List<Map<String, dynamic>> data = [
     {
       'value': 16,
@@ -231,62 +237,90 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   }
 
   Widget _buildScrollableList() {
-    const itemCount =
-        5; // Change this to the actual number of items in your list
-    return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      // Disable scrolling for the inner list
-      shrinkWrap: true,
-      // Allow the list to take the height it needs
-      itemCount: itemCount,
-      // projctList.length, // Replace with the actual number of items in your list
-      itemBuilder: (BuildContext context, int index) {
-        // Replace the return statement with your list item widget
-        return InkWell(
-          onTap: (){
-            Get.to(const ProjectDetailsScreen());
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 18, top: 18),
-              decoration: ShapeDecoration(
-                color: ColorConstant.secondaryColor14368E27,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.only(right: 18, left: 18, bottom: 10),
-                    child: Text(
-                      "مشروع 04122022".tr(),
-                      style: CustomTextStyles.labelMediumBluegray300.copyWith(
-                        fontSize: 14.0.v,
-                        color: ColorConstant.secondaryColor368E27,
+    return FutureBuilder<Projects>(
+      future: _projectsController.fetchProjects('23drqwes2334fdfd!dfd'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else if (!snapshot.hasData || snapshot.data!.projects!.isEmpty) {
+          return Text('No projects available.');
+        } else {
+          List<Project> projects = snapshot.data!.projects!;
+          List<ProjectStatus> projectStatus = snapshot.data!.projectStatus!;
+
+          return ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: projects.length,
+            itemBuilder: (BuildContext context, int index) {
+              Project project = projects[index];
+
+              return InkWell(
+                onTap: () {
+                  // You may want to pass the project details to ProjectDetailsScreen
+                  Get.to(const ProjectDetailsScreen());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(bottom: 18, top: 18),
+                    decoration: ShapeDecoration(
+                      color: ColorConstant.secondaryColor14368E27,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(
+                            right: 18,
+                            left: 18,
+                            bottom: 10,
+                          ),
+                          child: Text(
+                            project.contractName.toString(),
+                            style: CustomTextStyles.labelMediumBluegray300
+                                .copyWith(
+                              fontSize: 14.0.v,
+                              color: ColorConstant.secondaryColor368E27,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: _buildInfoColumn(
+                                "status",
+                                _projectsController.getStatusName(
+                                    projectStatus, project.projectStatusId!),
+                              ),
+                            ),
+                            Expanded(
+                              child: _buildInfoColumn(
+                                "actualDuration",
+                                'project.actualDuration',
+                              ),
+                            ),
+                            Expanded(
+                              child: _buildInfoColumn(
+                                "value",
+                                'project.value',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildInfoColumn("status", "Regular 3.76%"),
-                      ),
-                      Expanded(
-                        child: _buildInfoColumn("actualDuration", "365 days"),
-                      ),
-                      Expanded(
-                        child: _buildInfoColumn("value", "4,000,000 SAR"),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+                ),
+              );
+            },
+          );
+        }
       },
     );
   }
