@@ -1,36 +1,51 @@
 import 'package:dio/dio.dart';
+import 'dart:convert'; // قم بإضافة هذا الاستيراد
 import 'package:project/core/utils/api_constants.dart';
+import 'package:project/core/utils/shared_preferences_manager.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project_status.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/projects.dart';
 
 class ProjectsController {
-  Future<Projects> fetchProjects(String token) async {
+  final Dio _dio = Dio();
+  late final SecureStorageManager _storageManager; // تم تعديل هنا
+
+  // Constructor
+  ProjectsController() {
+    _storageManager = SecureStorageManager(); // تم تعديل هنا
+  }
+
+
+  Future<Projects> fetchAndSaveProjects() async {
     try {
-      Dio dio = Dio();
-
-      // Add the token to the headers
-      dio.options.headers['Authorization'] = 'Bearer $token';
-
-      final response = await dio.get(ApiConstants.projectsUrl);
+      await _storageManager.saveToken('23drqwes2334fdfd!dfd');
+      final token = await _storageManager.getToken();
+      final response = await _dio.get(
+        ApiConstants.projectsUrl,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
 
       if (response.statusCode == 200) {
-        // Convert the dynamic list to a Projects object
-        final Projects projects = Projects.fromJson(response.data);
+        final responseData = response.data;
+
+        // تحويل البيانات المسترجعة إلى كائن Projects
+        final Projects projects = Projects.fromJson(responseData);
 
         return projects;
       } else {
-        // If there's an error in the response
         print('Failed to load projects. Status code: ${response.statusCode}');
-        // Throw an exception to be caught by the catch block
         throw Exception('Failed to load projects. Status code: ${response.statusCode}');
       }
     } catch (e) {
-      // If there's an error connecting to the server
       print('Error fetching projects: $e');
-      // Re-throw the exception to be caught by the caller
-      throw e;
+      throw Exception('Error fetching projects: $e');
     }
   }
+
 
   // Function to find statusName using projectStatusId
   String getStatusName(List<ProjectStatus>? projects, int projectStatusId) {

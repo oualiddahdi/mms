@@ -95,6 +95,10 @@ dependencies:
 
   dio: ^4.0.0
 
+  sqflite: ^2.0.0
+  path: ^1.8.0
+
+  material_dialogs: ^1.1.4
 
 dev_dependencies:
   flutter_test:

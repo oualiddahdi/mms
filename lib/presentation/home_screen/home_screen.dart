@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:project/core/utils/shared_preferences_manager.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/ir_requests_reports_screen/ir_requests_reports_screen.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/projects_reports_screen.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/visits_reports_screen/visits_reports_screen.dart';
 
@@ -17,16 +19,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _tabs = [
-    const ProjectsReportsScreen(),
-    const IRRequestsReportsScreen(),
-    const VisitsReportsScreen()
-  ];
+  late final List<Widget> _tabs;
 
   @override
   void initState() {
     super.initState();
+    _initializeTabs();
   }
+  Future<void> _initializeTabs() async {
+    _tabs = [
+      ProjectsReportsScreen(),
+      IRRequestsReportsScreen(),
+      VisitsReportsScreen()
+    ];
+  }
+
 
   @override
   Widget build(BuildContext context) {

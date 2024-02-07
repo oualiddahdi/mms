@@ -1,12 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
+import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
-import 'package:project/theme/custom_text_style.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
 import 'package:project/widgets/custom_app_bar.dart';
+import 'package:material_dialogs/material_dialogs.dart';
+import 'package:project/widgets/custom_image_view.dart';
 
 class ProjectDetailsScreen extends StatefulWidget {
-  const ProjectDetailsScreen({super.key});
+  final Project project;
+  final String status;
+  final int actualDuration;
+
+  const ProjectDetailsScreen(
+      {super.key,
+      required this.project,
+      required this.status,
+      required this.actualDuration});
 
   @override
   State<ProjectDetailsScreen> createState() => _ProjectDetailsScreenState();
@@ -27,9 +38,8 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Text(
-                'establishmentText',
-                style: CustomTextStyles.labelMediumOnPrimaryContainer
-                    .copyWith(fontSize: 12.0.v),
+                widget.project.contractName.toString(),
+                style: const TextStyle(color: Colors.black),
               ).tr(),
             ),
             Container(
@@ -43,13 +53,22 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: _buildInfoColumn("status", "Regular 3.76%"),
+                    child: _buildInfoColumn(
+                      "status",
+                      widget.status.toString(),
+                    ),
                   ),
                   Expanded(
-                    child: _buildInfoColumn("actualDuration", "365 days"),
+                    child: _buildInfoColumn(
+                      "actualDuration",
+                      widget.actualDuration.toString() + 'daily'.tr(),
+                    ),
                   ),
                   Expanded(
-                    child: _buildInfoColumn("value", "4,000,000 SAR"),
+                    child: _buildInfoColumn(
+                      "value",
+                      widget.project.contractValue.toString() + 'sr'.tr(),
+                    ),
                   ),
                 ],
               ),
@@ -72,8 +91,10 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildInfoText('code', ''),
-                            _buildInfoText('startDate', ''),
+                            _buildInfoText('code',
+                                widget.project.contractNumber.toString()),
+                            _buildInfoText('startDate',
+                                widget.project.startDate.toString()),
                             _buildInfoText('owner', ''),
                           ],
                         ),
@@ -84,7 +105,8 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _buildInfoText('type', ''),
-                            _buildInfoText('endDate', ''),
+                            _buildInfoText('endDate',
+                                widget.project.finishDate.toString()),
                             _buildInfoText('contractor', ''),
                           ],
                         ),
@@ -103,9 +125,35 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
               ),
-              child: _buildInfoText('dueForPayment', ''),
-            )
+              child: _buildInfoText(
+                  'dueForPayment', widget.project.contractNumber.toString()),
+            ),
           ],
+        ),
+        floatingActionButton: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            color: ColorConstant.primaryColor,
+          ),
+          child: InkWell(
+            onTap: () {
+              _buildBottomMaterialDialog();
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'types_of_visits',
+                    style: TextStyle(color: Colors.white),
+                  ).tr(),
+                  const SizedBox(width: 5),
+                  const Icon(Icons.visibility, color: ColorConstant.whiteA700),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -126,7 +174,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
           height: 10.v,
         ),
         Text(
-          "value",
+          value,
           style: TextStyle(
               color: ColorConstant.secondaryColor368E27, fontSize: 12.v),
           overflow: TextOverflow.ellipsis, // or TextOverflow.clip
@@ -161,7 +209,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                 fontSize: 12.v,
               )),
           Text(
-            "value",
+            value,
             textAlign: TextAlign.start,
             style: TextStyle(
               color: ColorConstant.textColor,
@@ -171,6 +219,63 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
             maxLines: 1,
           ),
         ],
+      ),
+    );
+  }
+
+  void _buildBottomMaterialDialog() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      // تحديد هذه الخاصية ليتم التحكم في التمرير وعدم تجاوز حدود الشاشة
+      builder: (BuildContext context) {
+        return SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(14)),
+              color: ColorConstant.whiteA700,
+            ),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit),
+                buildListTile(
+                    'periodic_visit', ImageConstant.imgPeriodic_visit),
+                buildListTile(
+                    'surprise_visit', ImageConstant.imgSurprise_visit),
+                buildListTile('safety_visit', ImageConstant.imgSafety_visit),
+                buildListTile('daily_visit', ImageConstant.imgDaily_visit),
+                buildListTile('weekly_contractor_visit',
+                    ImageConstant.imgWeekly_contractor_visit),
+                buildListTile(
+                    'aesthetic_visit', ImageConstant.imgAesthetic_visit),
+                const SizedBox(height: 16.0),
+
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(5))
+                  ),
+                  child: buildListTile(
+                      'cancel', ImageConstant.imgCancel),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Padding buildListTile(String titleKey, image) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: ListTile(
+        leading: CustomImageView(imagePath: image),
+        title: Text(titleKey).tr(),
+        onTap: () {
+          // Add your onTap logic here
+        },
       ),
     );
   }

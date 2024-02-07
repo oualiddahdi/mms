@@ -80,6 +80,14 @@
   "status": "الحالة",
   "actualDuration": "المدة الفعلية",
   "value": "القيمة",
-  "establishmentText": "إنشاء المحطات الرئيسية والفرعية لتوليد الكهرباء"
+  "daily": " يوم ",
+  "types_of_visits": " انواع الزيارات ",
+
+  "periodic_visit": " زيارة دورية ",
+  "surprise_visit": " زيارة مفاجأه ",
+  "safety_visit": " زيارة أمن وسلامة ",
+  "daily_visit": " زيارة يومية ",
+  "weekly_contractor_visit": " زيارة أسبوعية للمقاول ",
+  "aesthetic_visit": " زيارة التشوه البصري "
 
 }

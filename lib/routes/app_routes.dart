@@ -121,12 +121,7 @@ class AppRoutes {
         RecoverPasswordBinding(),
       ],
     ),
-    GetPage(
-      name: projectDetailsScreen,
-      page: () => ProjectDetailsScreen(),
-      bindings: [
-        ProjectDetailsBinding(),
-      ],
-    ),
+
+
   ];
 }

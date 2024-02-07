@@ -1,6 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:project/core/utils/calculate_date_difference.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
@@ -21,7 +22,8 @@ class ProjectsReportsScreen extends StatefulWidget {
 }
 
 class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
-  final ProjectsController _projectsController = ProjectsController();
+  late final ProjectsController _projectsController = ProjectsController();
+  final jobRoleCtrl = TextEditingController();
 
   List<Map<String, dynamic>> data = [
     {
@@ -60,11 +62,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
       'cost': 00.0,
       'color': ColorConstant.blueGray500
     },
-
-    // Add more data as needed
   ];
-
-  final jobRoleCtrl = TextEditingController();
 
   var itemSections = [
     'first_sections'.tr(),
@@ -79,7 +77,9 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
     return Scaffold(
       body: Center(
         child: Container(
-            alignment: Alignment.topCenter, child: _buildReportBody()),
+          alignment: Alignment.topCenter,
+          child: _buildReportBody(),
+        ),
       ),
     );
   }
@@ -90,8 +90,8 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
         children: [
           _buildTotalCountRow(),
           _buildChart(),
-          SizedBox(height: 14.h),
-          _buildScrollableList()
+          SizedBox(height: 14),
+          _buildScrollableList(),
         ],
       ),
     );
@@ -127,10 +127,11 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                         data['color'],
                     dataLabelSettings: const DataLabelSettings(isVisible: true),
                     emptyPointSettings: EmptyPointSettings(
-                        mode: EmptyPointMode.average,
-                        color: Colors.red,
-                        borderColor: Colors.black,
-                        borderWidth: 2),
+                      mode: EmptyPointMode.average,
+                      color: Colors.red,
+                      borderColor: Colors.black,
+                      borderWidth: 2,
+                    ),
                   ),
                 ],
               ),
@@ -147,8 +148,11 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: data.length,
       itemBuilder: (context, index) {
-        return _buildData(data[index]['label']!.toString(),
-            data[index]['value']!.toString(), data[index]['color']);
+        return _buildData(
+          data[index]['label']!.toString(),
+          data[index]['value']!.toString(),
+          data[index]['color'],
+        );
       },
     );
   }
@@ -166,7 +170,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
               shape: const OvalBorder(),
             ),
           ),
-          SizedBox(width: 14.h),
+          SizedBox(width: 14),
           _buildDataRow(label, value),
         ],
       ),
@@ -187,15 +191,13 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                   alignment:
                       isArabic ? Alignment.centerRight : Alignment.centerLeft,
                   fit: BoxFit.scaleDown,
-                  // or BoxFit.contain depending on your preference
                   child: _buildDataRow('total_count', '00'),
                 ),
               ),
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width *
-                        0.02, // تعديل النسبة حسب احتياجات التصميم
+                    horizontal: MediaQuery.of(context).size.width * 0.02,
                   ),
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
@@ -205,16 +207,16 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                     ),
                   ),
                   child: CustomDropdown(
-                    listItemStyle: const TextStyle(fontSize: 14),
+                    listItemStyle: TextStyle(fontSize: 14.v),
                     items: itemSections,
                     hintText: 'all_sections'.tr(),
                     controller: jobRoleCtrl,
                   ),
                 ),
-              )
+              ),
             ],
           ),
-          SizedBox(height: 14.h),
+          SizedBox(height: 14),
           _buildDataRow('total_cost', '00.0${'sr'.tr()}'),
         ],
       ),
@@ -224,28 +226,31 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
   Widget _buildDataRow(String label, String value) {
     return Row(
       children: [
-        Text(label,
-                style: theme.textTheme.labelLarge!.copyWith(fontSize: 12.fSize))
-            .tr(),
-        SizedBox(width: 14.h),
-        Text(value,
-                style: TextStyle(
-                    fontSize: 14.v, color: ColorConstant.primaryColor))
-            .tr(),
+        Text(
+          label.tr(),
+          style: theme.textTheme.labelLarge!.copyWith(fontSize: 12.v),
+        ),
+        SizedBox(width: 14),
+        Text(
+          value.tr(),
+          style: TextStyle(fontSize: 14.v, color: ColorConstant.primaryColor),
+        ),
       ],
     );
   }
 
   Widget _buildScrollableList() {
     return FutureBuilder<Projects>(
-      future: _projectsController.fetchProjects('23drqwes2334fdfd!dfd'),
+      future: _projectsController.fetchAndSaveProjects(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else if (!snapshot.hasData || snapshot.data!.projects!.isEmpty) {
-          return Text('No projects available.');
+          return Center(child: Text('No projects available.'));
+        } else if (snapshot.hasData &&
+            snapshot.data != null &&
+            snapshot.data!.projects!.isEmpty) {
+          return Center(child: Text('No projects available.'));
         } else {
           List<Project> projects = snapshot.data!.projects!;
           List<ProjectStatus> projectStatus = snapshot.data!.projectStatus!;
@@ -257,10 +262,24 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
             itemBuilder: (BuildContext context, int index) {
               Project project = projects[index];
 
+              Duration difference = CalculateDateDifference()
+                  .calculateDateDifference(
+                      project.startDate!, project.finishDate!);
+
+              var status = _projectsController.getStatusName(
+                  projectStatus, project.projectStatusId!);
+
               return InkWell(
                 onTap: () {
-                  // You may want to pass the project details to ProjectDetailsScreen
-                  Get.to(const ProjectDetailsScreen());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProjectDetailsScreen(
+                            project: project,
+                            status: status,
+                            actualDuration: difference.inDays,
+                            ),
+                    ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
@@ -285,7 +304,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                             project.contractName.toString(),
                             style: CustomTextStyles.labelMediumBluegray300
                                 .copyWith(
-                              fontSize: 14.0.v,
+                              fontSize: 14.v,
                               color: ColorConstant.secondaryColor368E27,
                             ),
                           ),
@@ -295,20 +314,19 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                             Expanded(
                               child: _buildInfoColumn(
                                 "status",
-                                _projectsController.getStatusName(
-                                    projectStatus, project.projectStatusId!),
+                                status,
                               ),
                             ),
                             Expanded(
                               child: _buildInfoColumn(
                                 "actualDuration",
-                                'project.actualDuration',
+                                difference.inDays.toString()+'daily'.tr(),
                               ),
                             ),
                             Expanded(
                               child: _buildInfoColumn(
                                 "value",
-                                'project.value',
+                                project.contractValue.toString() + 'sr'.tr(),
                               ),
                             ),
                           ],
@@ -329,22 +347,22 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
     return Column(
       children: [
         Text(
-          label,
+          label.tr(),
           style: TextStyle(
               color: ColorConstant.secondaryColor368E27, fontSize: 12.v),
-          overflow: TextOverflow.ellipsis, // or TextOverflow.clip
+          overflow: TextOverflow.ellipsis,
           maxLines: 1,
-        ).tr(),
-        SizedBox(
-          height: 10.v,
+        ),
+        const SizedBox(
+          height: 10,
         ),
         Text(
-          "value",
+          value.tr(),
           style: TextStyle(
               color: ColorConstant.secondaryColor368E27, fontSize: 12.v),
-          overflow: TextOverflow.ellipsis, // or TextOverflow.clip
+          overflow: TextOverflow.ellipsis,
           maxLines: 1,
-        ).tr(),
+        ),
       ],
     );
   }

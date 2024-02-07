@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
 import 'package:project/core/utils/api_constants.dart';
 import 'package:project/core/utils/color_constant.dart';
+import 'package:project/core/utils/shared_preferences_manager.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
@@ -16,6 +17,7 @@ import 'package:provider/provider.dart';
 void main() async {
   // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
+
 
   // Initialize FlutterSecureStorage for storing the selected language
   const storage = FlutterSecureStorage();
@@ -56,6 +58,7 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness:
           Brightness.dark, // Use Brightness.light for dark status bar icons
     ));
+
 
     return MultiProvider(
       providers: [
