@@ -1,14 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
 import 'package:project/widgets/custom_app_bar.dart';
-import 'package:material_dialogs/material_dialogs.dart';
 import 'package:project/widgets/custom_image_view.dart';
 
+import 'controller/project_details_controller.dart';
+
 class ProjectDetailsScreen extends StatefulWidget {
+
   final Project project;
   final String status;
   final int actualDuration;
@@ -24,6 +27,9 @@ class ProjectDetailsScreen extends StatefulWidget {
 }
 
 class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
+  final ProjectDetailsController controller = Get.put(ProjectDetailsController());
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -137,7 +143,10 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
           ),
           child: InkWell(
             onTap: () {
-              _buildBottomMaterialDialog();
+
+              controller.onOnTapVisitsToProjectDetailsScreen(widget.project);
+
+              //_buildBottomMaterialDialog();
             },
             child: Padding(
               padding: const EdgeInsets.all(10),
@@ -223,49 +232,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
     );
   }
 
-  void _buildBottomMaterialDialog() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      // تحديد هذه الخاصية ليتم التحكم في التمرير وعدم تجاوز حدود الشاشة
-      builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(14)),
-              color: ColorConstant.whiteA700,
-            ),
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit),
-                buildListTile(
-                    'periodic_visit', ImageConstant.imgPeriodic_visit),
-                buildListTile(
-                    'surprise_visit', ImageConstant.imgSurprise_visit),
-                buildListTile('safety_visit', ImageConstant.imgSafety_visit),
-                buildListTile('daily_visit', ImageConstant.imgDaily_visit),
-                buildListTile('weekly_contractor_visit',
-                    ImageConstant.imgWeekly_contractor_visit),
-                buildListTile(
-                    'aesthetic_visit', ImageConstant.imgAesthetic_visit),
-                const SizedBox(height: 16.0),
-
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5))
-                  ),
-                  child: buildListTile(
-                      'cancel', ImageConstant.imgCancel),
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
 
   Padding buildListTile(String titleKey, image) {
     return Padding(

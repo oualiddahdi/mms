@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/presentation/otp_screen/controller/otp_controller.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/widgets/custom_elevated_button.dart';
 import 'dart:ui' as ui;
@@ -15,10 +17,14 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
+  final OtpController controller =
+  Get.put(OtpController());
+
   TextEditingController _otpController = TextEditingController();
 
   final int maxLength = 7;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {

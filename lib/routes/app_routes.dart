@@ -5,6 +5,7 @@ import 'package:project/presentation/forgot_password_screen/binding/forgot_passw
 import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:project/presentation/get_started_screen/binding/get_started_binding.dart';
 import 'package:project/presentation/get_started_screen/get_started_screen.dart';
+import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
 import 'package:project/presentation/home_screen/home_screen.dart';
 import 'package:project/presentation/login_screen/login_screen.dart';
 import 'package:project/modules/home/content/about_app/about_app_screen.dart';
@@ -24,6 +25,8 @@ import 'package:project/presentation/language_screen/language_screen.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
 import '../presentation/splash_screen/binding/splash_binding.dart';
 import '../presentation/splash_screen/splash_screen.dart';
+import '../presentation/visits_to_project_screen/binding/visits_to_project_details_binding.dart';
+import '../presentation/visits_to_project_screen/visits_to_project_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -43,6 +46,8 @@ class AppRoutes {
   static const String homeScreen = '/home_screen';
 
   static const String projectDetailsScreen = '/project_details_screen';
+
+  static const String visitsToProjectDetailsScreen = '/visits_to_project_screen';
 
   static const String languageScreen = '/language_screen';
 
@@ -78,7 +83,10 @@ class AppRoutes {
     tasksScreen: (context) => const TasksScreen(),
   };
 
+
+
   static List<GetPage> pages = [
+
     GetPage(
       name: splashScreen,
       page: () => const SplashScreen(),
@@ -88,7 +96,7 @@ class AppRoutes {
     ),
     GetPage(
       name: getStartedScreen,
-      page: () => GetStartedScreen(),
+      page: () => const GetStartedScreen(),
       bindings: [
         GetStartedBinding(),
       ],
@@ -119,6 +127,14 @@ class AppRoutes {
       page: () => RecoverPasswordScreen(),
       bindings: [
         RecoverPasswordBinding(),
+      ],
+    ),
+
+    GetPage(
+      name: visitsToProjectDetailsScreen,
+      page: () => const VisitsToProjectDetailsScreen(),
+      bindings: [
+        VisitsToProjectDetailsBinding(),
       ],
     ),
 
