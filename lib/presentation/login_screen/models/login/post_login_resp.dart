@@ -36,10 +36,10 @@ class PostLoginResp {
   }
 }
 
-
 class Data {
   int? loginRetryLimit;
   String? username;
+  String? password;
   String? email;
   String? name;
   String? profile;
@@ -56,6 +56,7 @@ class Data {
   Data(
       {this.loginRetryLimit,
       this.username,
+      this.password,
       this.email,
       this.name,
       this.profile,
@@ -72,6 +73,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     loginRetryLimit = json['loginRetryLimit'];
     username = json['username'];
+    password = json['password'];
     email = json['email'];
     name = json['name'];
     profile = json['profile'];
@@ -94,6 +96,10 @@ class Data {
     if (this.username != null) {
       data['username'] = this.username;
     }
+    if (this.password != null) {
+      data['password'] = this.password;
+    }
+
     if (this.email != null) {
       data['email'] = this.email;
     }

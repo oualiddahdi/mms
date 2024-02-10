@@ -80,13 +80,16 @@
   "value": "Value",
   "daily": " Daily ",
   "types_of_visits": " Types of visits ",
-
   "periodic_visit": " Periodic Visit ",
   "surprise_visit": " Surprise Visit ",
   "safety_visit": " Safety Visit ",
   "daily_visit": " Daily Visit ",
   "weekly_contractor_visit": " Weekly Contractor Visit ",
-  "aesthetic_visit": " Aesthetic Visit "
+  "aesthetic_visit": " Aesthetic Visit ",
+  "add_a_visit": " Add a visit ",
+  "basic_information": " Basic Information ",
+  "next": " Next ",
+  "previous": " Previous "
 
 
 }

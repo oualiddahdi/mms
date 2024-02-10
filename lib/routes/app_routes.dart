@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/add_periodic_visit_to_project_screen.dart';
 import 'package:project/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
 import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:project/presentation/get_started_screen/binding/get_started_binding.dart';
@@ -22,6 +23,7 @@ import 'package:project/modules/home/content/tasks/tasks_screen.dart';
 import 'package:project/modules/home/content/visits/visits_screen.dart';
 import 'package:project/presentation/home_page/home_page.dart';
 import 'package:project/presentation/language_screen/language_screen.dart';
+import '../presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/binding/visits_to_project_details_binding.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
 import '../presentation/splash_screen/binding/splash_binding.dart';
 import '../presentation/splash_screen/splash_screen.dart';
@@ -67,10 +69,10 @@ class AppRoutes {
 
   static const String aboutAppScreen = '/about_app_screen';
 
+  static const String addPeriodicVisitToProjectScreen = '/add_visits_to_project_screen';
+
   static Map<String, WidgetBuilder> routes = {
-    splashScreen: (context) => const SplashScreen(),
-    loginScreen: (context) => LoginScreen(),
-    homePage: (context) => const HomePage(),
+
     languageScreen: (context) => const LanguageScreen(),
     aboutAppScreen: (context) => const AboutAppScreen(),
     iRRequests_screen: (context) => const iRRequestsScreen(),
@@ -138,6 +140,15 @@ class AppRoutes {
       ],
     ),
 
+    GetPage(
+      name: addPeriodicVisitToProjectScreen,
+      page: () =>  const AddPeriodicVisitToProjectScreen(),
+      bindings: [
+        AddPeriodicVisitToProjectBinding(),
+      ],
+    ),
 
   ];
 }
+
+

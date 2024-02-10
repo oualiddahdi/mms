@@ -90,7 +90,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
         children: [
           _buildTotalCountRow(),
           _buildChart(),
-          SizedBox(height: 14),
+          const SizedBox(height: 14),
           _buildScrollableList(),
         ],
       ),
@@ -170,7 +170,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
               shape: const OvalBorder(),
             ),
           ),
-          SizedBox(width: 14),
+          const SizedBox(width: 14),
           _buildDataRow(label, value),
         ],
       ),
@@ -216,7 +216,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
               ),
             ],
           ),
-          SizedBox(height: 14),
+          const SizedBox(height: 14),
           _buildDataRow('total_cost', '00.0${'sr'.tr()}'),
         ],
       ),
@@ -230,7 +230,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
           label.tr(),
           style: theme.textTheme.labelLarge!.copyWith(fontSize: 12.v),
         ),
-        SizedBox(width: 14),
+        const SizedBox(width: 14),
         Text(
           value.tr(),
           style: TextStyle(fontSize: 14.v, color: ColorConstant.primaryColor),
@@ -244,19 +244,19 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
       future: _projectsController.fetchAndSaveProjects(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return Center(child: Text('No projects available.'));
+          return const Center(child: Text('No projects available.'));
         } else if (snapshot.hasData &&
             snapshot.data != null &&
             snapshot.data!.projects!.isEmpty) {
-          return Center(child: Text('No projects available.'));
+          return const Center(child: Text('No projects available.'));
         } else {
           List<Project> projects = snapshot.data!.projects!;
           List<ProjectStatus> projectStatus = snapshot.data!.projectStatus!;
 
           return ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: projects.length,
             itemBuilder: (BuildContext context, int index) {

@@ -1,6 +1,7 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
@@ -9,6 +10,8 @@ import 'package:project/widgets/custom_app_bar.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/widgets/custom_image_view.dart';
 
+import '../../routes/app_routes.dart';
+
 class VisitsToProjectDetailsScreen extends StatefulWidget {
   const VisitsToProjectDetailsScreen({Key? key}) : super(key: key);
 
@@ -16,8 +19,6 @@ class VisitsToProjectDetailsScreen extends StatefulWidget {
   State<VisitsToProjectDetailsScreen> createState() =>
       _VisitsToProjectDetailsScreenState();
 }
-
-
 
 class _VisitsToProjectDetailsScreenState
     extends State<VisitsToProjectDetailsScreen> {
@@ -33,7 +34,6 @@ class _VisitsToProjectDetailsScreenState
     'daily_visit'.tr(),
     'weekly_contractor_visit'.tr(),
     'aesthetic_visit'.tr()
-
   ];
 
   @override
@@ -51,52 +51,49 @@ class _VisitsToProjectDetailsScreenState
               margin: const EdgeInsets.all(5),
               child: Row(
                 children: [
-                  Container(
-                    width: 180,
-                    height: 50,
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: CustomDropdown(
-                        listItemStyle: TextStyle(fontSize: 12.v),
-                        items: itemSections,
-                        hintText: 'types_of_visits'.tr(),
-                        hintStyle: TextStyle(fontSize: 12.v),
-                        controller: jobRoleCtrl,
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1, color: Colors.grey),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: CustomDropdown(
+                          listItemStyle: TextStyle(fontSize: 12.v),
+                          items: itemSections,
+                          hintText: 'types_of_visits'.tr(),
+                          hintStyle: TextStyle(fontSize: 12.v),
+                          controller: jobRoleCtrl,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: 160,
-                    height: 50,
-
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: ColorConstant.primaryColor,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        _buildBottomMaterialDialog();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text(
-                              'types_of_visits',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
-                            ).tr(),
-                            const SizedBox(width: 5),
-                            const Icon(Icons.visibility,
-                                color: ColorConstant.whiteA700),
-                          ],
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: ColorConstant.primaryColor,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          _buildBottomMaterialDialog();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const Text(
+                                'add_a_visit',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
+                              ).tr(),
+                              const Icon(Icons.visibility,
+                                  color: ColorConstant.whiteA700),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -104,6 +101,10 @@ class _VisitsToProjectDetailsScreenState
                 ],
               ),
             ),
+
+
+
+
           ],
         ),
       ),
@@ -126,22 +127,22 @@ class _VisitsToProjectDetailsScreenState
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit),
+                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit,AppRoutes.loginScreen),
                 buildListTile(
-                    'periodic_visit', ImageConstant.imgPeriodic_visit),
+                    'periodic_visit', ImageConstant.imgPeriodic_visit,AppRoutes.addPeriodicVisitToProjectScreen),
                 buildListTile(
-                    'surprise_visit', ImageConstant.imgSurprise_visit),
-                buildListTile('safety_visit', ImageConstant.imgSafety_visit),
-                buildListTile('daily_visit', ImageConstant.imgDaily_visit),
+                    'surprise_visit', ImageConstant.imgSurprise_visit,AppRoutes.loginScreen),
+                buildListTile('safety_visit', ImageConstant.imgSafety_visit,AppRoutes.loginScreen),
+                buildListTile('daily_visit', ImageConstant.imgDaily_visit,AppRoutes.loginScreen),
                 buildListTile('weekly_contractor_visit',
-                    ImageConstant.imgWeekly_contractor_visit),
+                    ImageConstant.imgWeekly_contractor_visit,AppRoutes.loginScreen),
                 buildListTile(
-                    'aesthetic_visit', ImageConstant.imgAesthetic_visit),
+                    'aesthetic_visit', ImageConstant.imgAesthetic_visit,AppRoutes.loginScreen),
                 const SizedBox(height: 16.0),
                 Container(
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5))),
-                  child: buildListTile('cancel', ImageConstant.imgCancel),
+                  child: buildListTile('cancel', ImageConstant.imgCancel,AppRoutes.loginScreen),
                 )
               ],
             ),
@@ -151,16 +152,19 @@ class _VisitsToProjectDetailsScreenState
     );
   }
 
-  Padding buildListTile(String titleKey, image) {
+  Padding buildListTile(String titleKey, image, screen) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
         leading: CustomImageView(imagePath: image),
         title: Text(titleKey).tr(),
         onTap: () {
-          // Add your onTap logic here
+          Get.find<VisitsToProjectDetailsController>().goToSecondPage(screen);
         },
       ),
     );
   }
+
+
+
 }

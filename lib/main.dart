@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
 import 'package:project/core/utils/api_constants.dart';
 import 'package:project/core/utils/color_constant.dart';
+import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/core/utils/shared_preferences_manager.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
@@ -18,6 +19,7 @@ void main() async {
   // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
 
+  Get.put(PrefUtils());
 
   // Initialize FlutterSecureStorage for storing the selected language
   const storage = FlutterSecureStorage();
@@ -70,8 +72,6 @@ class MyApp extends StatelessWidget {
 
         // Disable the debug banner in development mode
         debugShowCheckedModeBanner: false,
-
-        //  home: _MyHomePage(),
 
         // // Localization settings
         localizationsDelegates: context.localizationDelegates,

@@ -19,9 +19,6 @@ class LoginModel {}
 
 class LoginController extends GetxController {
 
-
-  Rx<LoginModel> signInModelObj = LoginModel().obs;
-
   Rx<bool> isShowPassword = true.obs;
 
 
@@ -35,7 +32,6 @@ class LoginController extends GetxController {
 
     try {
       await fetchLogin(body);
-      onOnTapSignInSuccess();
     } on PostLoginResp {
       DelightToast.onOnTapSignInError(context);
     } on NoInternetException catch (e) {
@@ -58,9 +54,7 @@ class LoginController extends GetxController {
 
       ProgressDialogUtils.hideProgressDialog();
       if ( response.statusCode == 200) {
-        final responseData = json.decode(response.body);
-        _handleCreateLoginSuccess(responseData);
-
+        _handleCreateLoginSuccess(body);
       } else {
         throw response.body != null
             ? PostLoginResp.fromJson(json.decode(response.body))
@@ -77,19 +71,11 @@ class LoginController extends GetxController {
     }
   }
 
-  void _handleCreateLoginSuccess(dynamic responseData) {
+  void _handleCreateLoginSuccess(responseData) {
 
-
-    Get.toNamed(AppRoutes.otpScreen, arguments: responseData);
-
-      // final postLoginResp = PostLoginResp.fromJson(responseData);
-  //  Get.find<PrefUtils>().setToken(postLoginResp.data!.token!.toString());
-
+    Get.toNamed(AppRoutes.otpScreen,arguments: responseData);
   }
 
-  void onOnTapSignInSuccess() {
-    Get.offNamed(AppRoutes.homePage, arguments: {});
-  }
 
   void onOnTapForgotPasswordScreen() {
     Get.toNamed(AppRoutes.forgotPasswordScreen, arguments: {});

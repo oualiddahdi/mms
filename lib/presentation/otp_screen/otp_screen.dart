@@ -20,7 +20,7 @@ class _OtpScreenState extends State<OtpScreen> {
   final OtpController controller =
   Get.put(OtpController());
 
-  TextEditingController _otpController = TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
 
   final int maxLength = 7;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -79,7 +79,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   shape: ButtonShape.RoundedBorder10,
                   padding: ButtonPadding.PaddingAll16,
                   fontStyle: ButtonFontStyle.ManropeBold16Gray50_1,
-                  onTap: () {},
+                  onTap: () {
+                    controller.onTapOtp(_otpController.text.toString(), context);
+                  },
                 ),
               ],
             ),

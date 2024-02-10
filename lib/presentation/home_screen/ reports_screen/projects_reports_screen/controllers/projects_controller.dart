@@ -1,25 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/shared_preferences_manager.dart';
+import 'package:project/core/utils/pref_utils.dart';
+
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project_status.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/projects.dart';
-import 'package:project/routes/app_routes.dart';
 
 class ProjectsController extends GetxController {
   final Dio _dio = Dio();
-  late final SecureStorageManager _storageManager; // تم تعديل هنا
-
-  // Constructor
-  ProjectsController() {
-    _storageManager = SecureStorageManager(); // تم تعديل هنا
-  }
 
 
   Future<Projects> fetchAndSaveProjects() async {
     try {
-      await _storageManager.saveToken('23drqwes2334fdfd!dfd');
-      final token = await _storageManager.getToken();
+
+      final token =  Get.find<PrefUtils>().getToken();
+
       final response = await _dio.get(
         ApiConstants.projectsUrl,
         options: Options(
