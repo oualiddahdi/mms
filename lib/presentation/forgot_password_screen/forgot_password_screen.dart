@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/core/utils/sizes.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/widgets/custom_elevated_button.dart';
 import 'package:project/widgets/custom_image_view.dart';
@@ -25,7 +26,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           key: _formKey,
           child: Container(
             width: double.maxFinite,
-            padding: EdgeInsets.only(left: 16.v, top: 68.v, right: 16.v),
+            padding: EdgeInsets.only(left: largePaddingSize, top: 68.v, right: largePaddingSize),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(

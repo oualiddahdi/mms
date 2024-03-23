@@ -13,12 +13,9 @@ import '../../../core/utils/pref_utils.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
 class OtpModel {}
 
 class OtpController extends GetxController {
-
-
   late Map<String, String> mBody;
 
   @override
@@ -27,16 +24,12 @@ class OtpController extends GetxController {
     mBody = Get.arguments as Map<String, String>;
   }
 
-
   void onTapOtp(otp, context) async {
-
-
     final body = {
       'username': mBody['username'],
       'password': mBody['password'],
       'otp': otp,
     };
-
 
     try {
       await fetchOtp(body);
@@ -81,22 +74,13 @@ class OtpController extends GetxController {
     }
   }
 
-
   void _handleCreateLoginSuccess(token) {
-
-      if (token != null) {
-        Get.find<PrefUtils>().setToken(token.toString());
-      }
-
+    if (token != null) {
+      Get.find<PrefUtils>().setToken(token.toString());
+    }
   }
-
-
 
   void onOnTapOtpSuccess() {
     Get.offAll(const HomePage());
   }
-
-
-
 }
-

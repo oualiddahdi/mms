@@ -22,14 +22,13 @@ class ImageConstant {
   static String rocketchat = '$imagePath/rocketchat.svg';
   static String bell = '$imagePath/bell-solid.svg';
 
-
   static String imgWeekly_visit = '$imagePath/weekly_visit.png';
   static String imgPeriodic_visit = '$imagePath/periodic_visit.png';
   static String imgSurprise_visit = '$imagePath/surprise_visit.png';
   static String imgSafety_visit = '$imagePath/safety_visit.png';
   static String imgDaily_visit = '$imagePath/daily_visit.png';
-  static String imgWeekly_contractor_visit = '$imagePath/weekly_contractor_visit.png';
+  static String imgWeekly_contractor_visit =
+      '$imagePath/weekly_contractor_visit.png';
   static String imgAesthetic_visit = '$imagePath/aesthetic_visit.png';
   static String imgCancel = '$imagePath/cancel.png';
-
 }

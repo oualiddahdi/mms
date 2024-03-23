@@ -6,7 +6,6 @@ import 'package:project/presentation/forgot_password_screen/binding/forgot_passw
 import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:project/presentation/get_started_screen/binding/get_started_binding.dart';
 import 'package:project/presentation/get_started_screen/get_started_screen.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
 import 'package:project/presentation/home_screen/home_screen.dart';
 import 'package:project/presentation/login_screen/login_screen.dart';
 import 'package:project/modules/home/content/about_app/about_app_screen.dart';
@@ -14,14 +13,11 @@ import 'package:project/modules/home/content/messages/messages_screen.dart';
 import 'package:project/modules/home/content/notifications/notifications_screen.dart';
 import 'package:project/presentation/list_projcts_screen/list_projcts_screen.dart';
 import 'package:project/presentation/otp_screen/otp_screen.dart';
-import 'package:project/presentation/project_details_screen/binding/project_details_binding.dart';
-import 'package:project/presentation/project_details_screen/project_details_screen.dart';
 import 'package:project/presentation/recover_password_screen/binding/recover_password_binding.dart';
 import 'package:project/presentation/recover_password_screen/recover_password_screen.dart';
 import 'package:project/presentation/settings_screen/settings_screen.dart';
 import 'package:project/modules/home/content/tasks/tasks_screen.dart';
 import 'package:project/modules/home/content/visits/visits_screen.dart';
-import 'package:project/presentation/home_page/home_page.dart';
 import 'package:project/presentation/language_screen/language_screen.dart';
 import '../presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/binding/visits_to_project_details_binding.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
@@ -49,7 +45,8 @@ class AppRoutes {
 
   static const String projectDetailsScreen = '/project_details_screen';
 
-  static const String visitsToProjectDetailsScreen = '/visits_to_project_screen';
+  static const String visitsToProjectDetailsScreen =
+      '/visits_to_project_screen';
 
   static const String languageScreen = '/language_screen';
 
@@ -69,10 +66,10 @@ class AppRoutes {
 
   static const String aboutAppScreen = '/about_app_screen';
 
-  static const String addPeriodicVisitToProjectScreen = '/add_visits_to_project_screen';
+  static const String addPeriodicVisitToProjectScreen =
+      '/add_visits_to_project_screen';
 
   static Map<String, WidgetBuilder> routes = {
-
     languageScreen: (context) => const LanguageScreen(),
     aboutAppScreen: (context) => const AboutAppScreen(),
     iRRequests_screen: (context) => const iRRequestsScreen(),
@@ -85,10 +82,7 @@ class AppRoutes {
     tasksScreen: (context) => const TasksScreen(),
   };
 
-
-
   static List<GetPage> pages = [
-
     GetPage(
       name: splashScreen,
       page: () => const SplashScreen(),
@@ -131,7 +125,6 @@ class AppRoutes {
         RecoverPasswordBinding(),
       ],
     ),
-
     GetPage(
       name: visitsToProjectDetailsScreen,
       page: () => const VisitsToProjectDetailsScreen(),
@@ -139,16 +132,12 @@ class AppRoutes {
         VisitsToProjectDetailsBinding(),
       ],
     ),
-
     GetPage(
       name: addPeriodicVisitToProjectScreen,
-      page: () =>  const AddPeriodicVisitToProjectScreen(),
+      page: () => const AddPeriodicVisitToProjectScreen(),
       bindings: [
         AddPeriodicVisitToProjectBinding(),
       ],
     ),
-
   ];
 }
-
-

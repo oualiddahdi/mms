@@ -5,9 +5,7 @@ import 'package:project/core/utils/calculate_date_difference.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project_status.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/projects.dart';
+import 'package:project/model/projects/projects.dart';
 import 'package:project/presentation/project_details_screen/project_details_screen.dart';
 import 'package:project/theme/custom_text_style.dart';
 import 'package:project/theme/theme_helper.dart';
@@ -249,37 +247,39 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
           return const Center(child: Text('No projects available.'));
         } else if (snapshot.hasData &&
             snapshot.data != null &&
-            snapshot.data!.projects!.isEmpty) {
+            snapshot.data!.projects.isEmpty) {
           return const Center(child: Text('No projects available.'));
         } else {
-          List<Project> projects = snapshot.data!.projects!;
-          List<ProjectStatus> projectStatus = snapshot.data!.projectStatus!;
+          List<Project> project = snapshot.data!.projects;
+          List<ProjectStatus> projectStatus = snapshot.data!.projectStatus;
+          Projects? projects = snapshot.data;
 
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: projects.length,
+            itemCount: project.length,
             itemBuilder: (BuildContext context, int index) {
-              Project project = projects[index];
+              Project item = project[index];
 
               Duration difference = CalculateDateDifference()
                   .calculateDateDifference(
-                      project.startDate!, project.finishDate!);
+                  item.startDate, item.finishDate);
 
               var status = _projectsController.getStatusName(
-                  projectStatus, project.projectStatusId!);
+                  projectStatus, item.projectStatusId);
 
               return InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
+                      context,
+                      MaterialPageRoute(
                         builder: (context) => ProjectDetailsScreen(
-                            project: project,
-                            status: status,
-                            actualDuration: difference.inDays,
-                            ),
-                    ));
+                          projects: projects!,
+                          project: item,
+                          status: status,
+                          actualDuration: difference.inDays,
+                        ),
+                      ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
@@ -301,7 +301,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                             bottom: 10,
                           ),
                           child: Text(
-                            project.contractName.toString(),
+                            item.contractName.toString(),
                             style: CustomTextStyles.labelMediumBluegray300
                                 .copyWith(
                               fontSize: 14.v,
@@ -320,13 +320,13 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                             Expanded(
                               child: _buildInfoColumn(
                                 "actualDuration",
-                                difference.inDays.toString()+'daily'.tr(),
+                                difference.inDays.toString() + 'daily'.tr(),
                               ),
                             ),
                             Expanded(
                               child: _buildInfoColumn(
                                 "value",
-                                project.contractValue.toString() + 'sr'.tr(),
+                                item.contractValue.toString() + 'sr'.tr(),
                               ),
                             ),
                           ],

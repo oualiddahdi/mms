@@ -5,10 +5,8 @@ class PeriodicVisitPageThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
-      child: Container(
-        
-      ),
+    return Center(
+      child: Container(),
     );
   }
 }

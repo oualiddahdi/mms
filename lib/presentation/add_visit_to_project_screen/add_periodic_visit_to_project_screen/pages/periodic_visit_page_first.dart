@@ -33,12 +33,11 @@ class PeriodicVisitPageFirst extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text(
-                        'لوحة المشروع'.tr(),
-                        style: const TextStyle(
-                            color: ColorConstant.black900, fontSize: 14),
-                      ),
-                   
+                    Text(
+                      'لوحة المشروع'.tr(),
+                      style: const TextStyle(
+                          color: ColorConstant.black900, fontSize: 14),
+                    ),
                   ]),
             )
           ],

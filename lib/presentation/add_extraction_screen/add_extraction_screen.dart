@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/custom_elevated_button.dart';
 import 'package:project/widgets/custom_image_view.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
@@ -23,10 +24,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         child: Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
-              title: Text(
+              title: const Text(
                 'upload_extracts',
                 style: TextStyle(
-                  fontSize: 14.v,
+                  fontSize: smallFontSize,
                 ),
               ).tr(),
             ),
@@ -34,7 +35,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 child: Container(
                     width: double.maxFinite,
                     padding:
-                        EdgeInsets.only(left: 16.v, top: 16.v, right: 16.v),
+                        const EdgeInsets.only(left: largePaddingSize, top: largePaddingSize, right: largePaddingSize),
                     child: Column(children: [
                       SizedBox(height: 29.v),
                       SizedBox(height: 29.v),

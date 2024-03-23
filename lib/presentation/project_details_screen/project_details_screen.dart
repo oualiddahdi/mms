@@ -2,22 +2,22 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/model/projects/projects/project.dart';
+import 'package:project/model/projects/projects.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 import 'package:project/widgets/custom_image_view.dart';
 
 import 'controller/project_details_controller.dart';
 
 class ProjectDetailsScreen extends StatefulWidget {
-
+  final Projects projects;
   final Project project;
   final String status;
   final int actualDuration;
 
   const ProjectDetailsScreen(
       {super.key,
+      required this.projects,
       required this.project,
       required this.status,
       required this.actualDuration});
@@ -27,8 +27,8 @@ class ProjectDetailsScreen extends StatefulWidget {
 }
 
 class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
-  final ProjectDetailsController controller = Get.put(ProjectDetailsController());
-
+  final ProjectDetailsController controller =
+      Get.put(ProjectDetailsController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,8 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
         backgroundColor: ColorConstant.whiteA700,
         appBar: const CustomAppBar(
           title: 'projectDetails',
+          showMoreIcon: true, // Set to true to display the more icon
+
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,35 +92,21 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildInfoText('code',
-                                widget.project.contractNumber.toString()),
-                            _buildInfoText('startDate',
-                                widget.project.startDate.toString()),
-                            _buildInfoText('owner', ''),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildInfoText('type', ''),
-                            _buildInfoText('endDate',
-                                widget.project.finishDate.toString()),
-                            _buildInfoText('contractor', ''),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildInfoText(
+                      'code', widget.project.contractNumber.toString()),
+                  _buildInfoText(
+                      'startDate', widget.project.startDate.toString()),
+                  _buildInfoText(
+                      'endDate', widget.project.finishDate.toString()),
+                  _buildInfoText(
+                      'type',
+                      controller.getType(
+                          widget.projects.catList, widget.project.catNo)),
+                  _buildInfoText(
+                      'owner',
+                      controller.getOwners(
+                          widget.projects.owners, widget.project.deptNo)),
+                  _buildInfoText('contractor', ''),
                   _buildInfoText('executiveConsultant', ''),
                 ],
               ),
@@ -143,7 +131,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
           ),
           child: InkWell(
             onTap: () {
-
               controller.onOnTapVisitsToProjectDetailsScreen(widget.project);
 
               //_buildBottomMaterialDialog();
@@ -231,7 +218,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
       ),
     );
   }
-
 
   Padding buildListTile(String titleKey, image) {
     return Padding(

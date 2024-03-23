@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/core/utils/sizes.dart';
 import 'package:project/presentation/visits_to_project_screen/controllers/visits_to_project_controller.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 import 'package:get/instance_manager.dart';
@@ -43,12 +44,13 @@ class _VisitsToProjectDetailsScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: '${'visits'.tr()} (${controller.project.contractName})',
+          showMoreIcon: false,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.all(5),
+              margin: const EdgeInsets.all(smallPaddingSize),
               child: Row(
                 children: [
                   Expanded(
@@ -58,12 +60,12 @@ class _VisitsToProjectDetailsScreenState
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        padding: const EdgeInsets.symmetric(horizontal: smallPaddingSize),
                         child: CustomDropdown(
-                          listItemStyle: TextStyle(fontSize: 12.v),
+                          listItemStyle: const TextStyle(fontSize: smallFontSize),
                           items: itemSections,
                           hintText: 'types_of_visits'.tr(),
-                          hintStyle: TextStyle(fontSize: 12.v),
+                          hintStyle: const TextStyle(fontSize: smallFontSize),
                           controller: jobRoleCtrl,
                         ),
                       ),
@@ -71,26 +73,26 @@ class _VisitsToProjectDetailsScreenState
                   ),
                   Expanded(
                     child: Container(
-                      margin: const EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(smallPaddingSize),
                       decoration: BoxDecoration(
                         color: ColorConstant.primaryColor,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(largeBorderSize),
                       ),
                       child: InkWell(
                         onTap: () {
                           _buildBottomMaterialDialog();
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(largePaddingSize),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               const Text(
                                 'add_a_visit',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
+                                    color: Colors.white, fontSize: smallFontSize),
                               ).tr(),
-                              const Icon(Icons.visibility,
+                              const Icon(Icons.add,
                                   color: ColorConstant.whiteA700),
                             ],
                           ),
@@ -101,10 +103,6 @@ class _VisitsToProjectDetailsScreenState
                 ],
               ),
             ),
-
-
-
-
           ],
         ),
       ),
@@ -120,29 +118,37 @@ class _VisitsToProjectDetailsScreenState
         return SingleChildScrollView(
           child: Container(
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(14)),
+              borderRadius: BorderRadius.all(Radius.circular(largeBorderSize)),
               color: ColorConstant.whiteA700,
             ),
-            padding: const EdgeInsets.all(16.0),
+
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit,AppRoutes.loginScreen),
+                buildListTile('weekly_visit', ImageConstant.imgWeekly_visit,
+                    AppRoutes.loginScreen),
+                buildListTile('periodic_visit', ImageConstant.imgPeriodic_visit,
+                    AppRoutes.addPeriodicVisitToProjectScreen),
+                buildListTile('surprise_visit', ImageConstant.imgSurprise_visit,
+                    AppRoutes.loginScreen),
+                buildListTile('safety_visit', ImageConstant.imgSafety_visit,
+                    AppRoutes.loginScreen),
+                buildListTile('daily_visit', ImageConstant.imgDaily_visit,
+                    AppRoutes.loginScreen),
                 buildListTile(
-                    'periodic_visit', ImageConstant.imgPeriodic_visit,AppRoutes.addPeriodicVisitToProjectScreen),
-                buildListTile(
-                    'surprise_visit', ImageConstant.imgSurprise_visit,AppRoutes.loginScreen),
-                buildListTile('safety_visit', ImageConstant.imgSafety_visit,AppRoutes.loginScreen),
-                buildListTile('daily_visit', ImageConstant.imgDaily_visit,AppRoutes.loginScreen),
-                buildListTile('weekly_contractor_visit',
-                    ImageConstant.imgWeekly_contractor_visit,AppRoutes.loginScreen),
-                buildListTile(
-                    'aesthetic_visit', ImageConstant.imgAesthetic_visit,AppRoutes.loginScreen),
-                const SizedBox(height: 16.0),
+                    'weekly_contractor_visit',
+                    ImageConstant.imgWeekly_contractor_visit,
+                    AppRoutes.loginScreen),
+                buildListTile('aesthetic_visit',
+                    ImageConstant.imgAesthetic_visit, AppRoutes.loginScreen),
+                const SizedBox(height: smallBorderSize),
                 Container(
+                  padding: const EdgeInsets.all(smallPaddingSize),
+
                   decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
-                  child: buildListTile('cancel', ImageConstant.imgCancel,AppRoutes.loginScreen),
+                      borderRadius: BorderRadius.all(Radius.circular(smallBorderSize))),
+                  child: buildListTile(
+                      'cancel', ImageConstant.imgCancel, AppRoutes.loginScreen),
                 )
               ],
             ),
@@ -154,17 +160,14 @@ class _VisitsToProjectDetailsScreenState
 
   Padding buildListTile(String titleKey, image, screen) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(smallPaddingSize),
       child: ListTile(
         leading: CustomImageView(imagePath: image),
-        title: Text(titleKey).tr(),
+        title: Text(titleKey,style: const TextStyle(fontSize: smallFontSize),).tr(),
         onTap: () {
           Get.find<VisitsToProjectDetailsController>().goToSecondPage(screen);
         },
       ),
     );
   }
-
-
-
 }

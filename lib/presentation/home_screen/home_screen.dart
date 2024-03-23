@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _initializeTabs();
   }
+
   Future<void> _initializeTabs() async {
     _tabs = [
       ProjectsReportsScreen(),
@@ -33,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
       VisitsReportsScreen()
     ];
   }
-
 
   @override
   Widget build(BuildContext context) {

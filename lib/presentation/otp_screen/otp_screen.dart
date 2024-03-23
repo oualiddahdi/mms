@@ -17,14 +17,12 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  final OtpController controller =
-  Get.put(OtpController());
+  final OtpController controller = Get.put(OtpController());
 
   final TextEditingController _otpController = TextEditingController();
 
   final int maxLength = 7;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +78,8 @@ class _OtpScreenState extends State<OtpScreen> {
                   padding: ButtonPadding.PaddingAll16,
                   fontStyle: ButtonFontStyle.ManropeBold16Gray50_1,
                   onTap: () {
-                    controller.onTapOtp(_otpController.text.toString(), context);
+                    controller.onTapOtp(
+                        _otpController.text.toString(), context);
                   },
                 ),
               ],

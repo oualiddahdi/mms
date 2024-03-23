@@ -250,7 +250,7 @@ class _VisitsReportsScreenState extends State<VisitsReportsScreen> {
         // Replace the return statement with your list item widget
         return InkWell(
           onTap: () {
-           // Get.to(const ProjectDetailsScreen());
+            // Get.to(const ProjectDetailsScreen());
           },
           child: Padding(
             padding: const EdgeInsets.all(4.0),

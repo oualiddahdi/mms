@@ -61,7 +61,6 @@ class MyApp extends StatelessWidget {
           Brightness.dark, // Use Brightness.light for dark status bar icons
     ));
 
-
     return MultiProvider(
       providers: [
         // Provider for LanguageController

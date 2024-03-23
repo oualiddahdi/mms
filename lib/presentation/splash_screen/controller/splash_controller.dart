@@ -6,7 +6,6 @@ import 'package:project/routes/app_routes.dart';
 class SplashModel {}
 
 class SplashController extends GetxController {
-
   @override
   void onInit() {
     super.onInit();

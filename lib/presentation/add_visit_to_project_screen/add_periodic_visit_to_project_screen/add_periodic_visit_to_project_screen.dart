@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/core/utils/sizes.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
@@ -77,14 +78,14 @@ class _AddPeriodicVisitToProjectScreenState
 
   Widget _buildNavigationRow() {
     return Padding(
-      padding: const EdgeInsets.all(14.0),
+      padding: const EdgeInsets.all(largePaddingSize),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (_currentPageIndex > 0) _buildPreviousButton(),
           Text(
             '${_currentPageIndex + 1} / ${_pages.length}',
-            style: const TextStyle(color: Colors.black, fontSize: 14),
+            style: const TextStyle(color: Colors.black, fontSize: smallFontSize),
           ),
           if (_currentPageIndex < _pages.length - 1) _buildNextButton(),
         ],
@@ -99,8 +100,8 @@ class _AddPeriodicVisitToProjectScreenState
           const Icon(Icons.arrow_back_ios),
           Text(
             'previous'.tr(),
-            style: const TextStyle(
-                color: ColorConstant.primaryGold, fontSize: 14),
+            style:
+                const TextStyle(color: ColorConstant.primaryGold, fontSize: smallFontSize),
           ),
         ],
       ),
@@ -120,7 +121,7 @@ class _AddPeriodicVisitToProjectScreenState
           Text(
             'next'.tr(),
             style: const TextStyle(
-                color: ColorConstant.primaryColor, fontSize: 14),
+                color: ColorConstant.primaryColor, fontSize: smallFontSize),
           ),
           const Icon(Icons.arrow_forward_ios),
         ],
