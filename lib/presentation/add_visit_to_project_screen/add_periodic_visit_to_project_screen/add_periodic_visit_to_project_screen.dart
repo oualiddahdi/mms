@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
 import 'package:project/core/utils/sizes.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
@@ -47,6 +46,9 @@ class _AddPeriodicVisitToProjectScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'periodic_visit'.tr(),
+          showMoreIcon: false,
+          onMorePressed: (){},
+
         ),
         body: Column(
           children: [

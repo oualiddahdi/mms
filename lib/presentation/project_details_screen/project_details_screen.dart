@@ -35,11 +35,15 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
-        appBar: const CustomAppBar(
+        appBar:  CustomAppBar(
           title: 'projectDetails',
-          showMoreIcon: true, // Set to true to display the more icon
+          showMoreIcon: true,
+          onMorePressed: () {
+            controller.onOnTapVisitsToProjectDetailsScreen(widget.project);
 
+          },
         ),
+
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -123,33 +127,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                   'dueForPayment', widget.project.contractNumber.toString()),
             ),
           ],
-        ),
-        floatingActionButton: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-            color: ColorConstant.primaryColor,
-          ),
-          child: InkWell(
-            onTap: () {
-              controller.onOnTapVisitsToProjectDetailsScreen(widget.project);
-
-              //_buildBottomMaterialDialog();
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    'types_of_visits',
-                    style: TextStyle(color: Colors.white),
-                  ).tr(),
-                  const SizedBox(width: 5),
-                  const Icon(Icons.visibility, color: ColorConstant.whiteA700),
-                ],
-              ),
-            ),
-          ),
         ),
       ),
     );

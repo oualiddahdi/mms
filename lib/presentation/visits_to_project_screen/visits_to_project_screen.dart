@@ -45,6 +45,9 @@ class _VisitsToProjectDetailsScreenState
         appBar: CustomAppBar(
           title: '${'visits'.tr()} (${controller.project.contractName})',
           showMoreIcon: false,
+          onMorePressed: (){
+
+          },
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +60,7 @@ class _VisitsToProjectDetailsScreenState
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(width: 1, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(smallPaddingSize),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: smallPaddingSize),
@@ -76,7 +79,7 @@ class _VisitsToProjectDetailsScreenState
                       margin: const EdgeInsets.all(smallPaddingSize),
                       decoration: BoxDecoration(
                         color: ColorConstant.primaryColor,
-                        borderRadius: BorderRadius.circular(largeBorderSize),
+                        borderRadius: BorderRadius.circular(smallPaddingSize),
                       ),
                       child: InkWell(
                         onTap: () {
