@@ -6,19 +6,18 @@ import 'package:project/core/utils/size_utils.dart';
 import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 
-import '../controllers/add_periodic_visit_to_project_controller.dart';
+import '../controllers/add_unplanned_visit_to_project_controller.dart';
 
-class PeriodicVisitPageThree extends StatefulWidget {
-  const PeriodicVisitPageThree({Key? key}) : super(key: key);
+class UnplannedVisitPageThree extends StatefulWidget {
+  const UnplannedVisitPageThree({Key? key}) : super(key: key);
 
   @override
-  _PeriodicVisitPageThreeState createState() => _PeriodicVisitPageThreeState();
+  _UnplannedVisitPageThreeState createState() =>
+      _UnplannedVisitPageThreeState();
 }
 
-class _PeriodicVisitPageThreeState extends State<PeriodicVisitPageThree> {
-
-  final controller = Get.find<AddPeriodicVisitToProjectController>();
-
+class _UnplannedVisitPageThreeState extends State<UnplannedVisitPageThree> {
+  final controller = Get.find<AddUnplannedVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +31,9 @@ class _PeriodicVisitPageThreeState extends State<PeriodicVisitPageThree> {
             children: [
               Text(
                 '${'الموارد'.tr()} ( 1 / 6 )',
-                style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                style: const TextStyle(
+                    color: ColorConstant.black900, fontSize: 14),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -52,16 +51,17 @@ class _PeriodicVisitPageThreeState extends State<PeriodicVisitPageThree> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'مدير ادارة المشروعات'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(largePaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
-
                       child: Row(
                         children: [
                           Flexible(
@@ -70,25 +70,16 @@ class _PeriodicVisitPageThreeState extends State<PeriodicVisitPageThree> {
                                   autofocus: false,
                                   hintText: "0".tr(),
                                   textInputType: TextInputType.number,
-                                  prefixConstraints: BoxConstraints(maxHeight: 48.v),
+                                  prefixConstraints:
+                                      BoxConstraints(maxHeight: 48.v),
                                   contentPadding: EdgeInsets.only(
-                                      top: 15.v,
-                                      right: 30.h,
-                                      bottom: 15.v
-                                  )
-                              )
-                          ),
-
-
+                                      top: 15.v, right: 30.h, bottom: 15.v))),
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
-
             ],
           ),
         ),

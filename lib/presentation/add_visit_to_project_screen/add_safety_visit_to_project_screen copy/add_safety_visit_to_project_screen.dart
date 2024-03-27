@@ -3,40 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_three.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/controllers/add_safety_visit_to_project_controller.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/pages/safety_visit_page_first.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/pages/safety_visit_page_five.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/pages/safety_visit_page_two.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 
-import 'controllers/add_periodic_visit_to_project_controller.dart';
-import 'pages/periodic_visit_page_first.dart';
-import 'pages/periodic_visit_page_two.dart';
-
-class AddPeriodicVisitToProjectScreen extends StatefulWidget {
-  const AddPeriodicVisitToProjectScreen({Key? key}) : super(key: key);
+class AddSafetyVisitToProjectScreen extends StatefulWidget {
+  const AddSafetyVisitToProjectScreen({Key? key}) : super(key: key);
 
   @override
-  _AddPeriodicVisitToProjectScreenState createState() =>
-      _AddPeriodicVisitToProjectScreenState();
+  _AddSafetyVisitToProjectScreenState createState() =>
+      _AddSafetyVisitToProjectScreenState();
 }
 
-class _AddPeriodicVisitToProjectScreenState
-    extends State<AddPeriodicVisitToProjectScreen> {
-
-  final controller = Get.find<AddPeriodicVisitToProjectController>();
-
+class _AddSafetyVisitToProjectScreenState
+    extends State<AddSafetyVisitToProjectScreen> {
+  final controller = Get.find<AddSafetyVisitToProjectController>();
 
   late PageController _pageController;
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
-    const PeriodicVisitPageFirst(),
-    const PeriodicVisitPageTwo(),
-    const PeriodicVisitPageThree(),
-    const PeriodicVisitPageFour(),
-    const PeriodicVisitPageFive(),
-    const PeriodicVisitPageSix(),
+    const SafetyVisitPageFirst(),
+    const SafetyVisitPageTwo(),
+    const SafetyVisitPageFive(),
   ];
 
   @override
@@ -51,10 +42,9 @@ class _AddPeriodicVisitToProjectScreenState
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
-          title: 'periodic_visit'.tr(),
+          title: 'safety_visit'.tr(),
           showMoreIcon: false,
-          onMorePressed: (){},
-
+          onMorePressed: () {},
         ),
         body: Column(
           children: [
@@ -93,7 +83,8 @@ class _AddPeriodicVisitToProjectScreenState
           if (_currentPageIndex > 0) _buildPreviousButton(),
           Text(
             '${_currentPageIndex + 1} / ${_pages.length}',
-            style: const TextStyle(color: Colors.black, fontSize: smallFontSize),
+            style:
+                const TextStyle(color: Colors.black, fontSize: smallFontSize),
           ),
           if (_currentPageIndex < _pages.length - 1) _buildNextButton(),
         ],
@@ -108,8 +99,8 @@ class _AddPeriodicVisitToProjectScreenState
           const Icon(Icons.arrow_back_ios),
           Text(
             'previous'.tr(),
-            style:
-                const TextStyle(color: ColorConstant.primaryGold, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryGold, fontSize: smallFontSize),
           ),
         ],
       ),
@@ -128,7 +119,8 @@ class _AddPeriodicVisitToProjectScreenState
         children: [
           Text(
             'next'.tr(),
-            style: const TextStyle(color: ColorConstant.primaryColor, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryColor, fontSize: smallFontSize),
           ),
           const Icon(Icons.arrow_forward_ios),
         ],
@@ -143,7 +135,6 @@ class _AddPeriodicVisitToProjectScreenState
         } else {
           // أظهر رسالة أو اتخذ إجراء إذا لم تكن البيانات مكتملة
           ScaffoldMessenger.of(context).showSnackBar(
-
             SnackBar(
               content: Text('complete_data_warning').tr(),
             ),
@@ -160,13 +151,8 @@ class _AddPeriodicVisitToProjectScreenState
       case 1:
         return controller.isSecondPageDataComplete();
       case 2:
-        return controller.isThirdPageDataComplete();
-      case 3:
-        return controller.isFourthPageDataComplete();
-      case 4:
         return controller.isFifthPageDataComplete();
-      case 5:
-        return controller.isSixthPageDataComplete();
+
       default:
         return false;
     }

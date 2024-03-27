@@ -1,6 +1,6 @@
 // constants.dart
 
-const double smallFontSize = 10.0;
+const double smallFontSize = 11.0;
 const double mediumFontSize = 16.0;
 const double largeFontSize = 20.0;
 

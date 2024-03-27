@@ -5,20 +5,17 @@ import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/cupertino_radio_button_list_tile.dart';
 
-import '../controllers/add_periodic_visit_to_project_controller.dart';
+import '../controllers/add_unplanned_visit_to_project_controller.dart';
 
-class PeriodicVisitPageTwo extends StatefulWidget {
-  const PeriodicVisitPageTwo({Key? key}) : super(key: key);
+class UnplannedVisitPageTwo extends StatefulWidget {
+  const UnplannedVisitPageTwo({Key? key}) : super(key: key);
 
   @override
-  _PeriodicVisitPageTwoState createState() => _PeriodicVisitPageTwoState();
+  _UnplannedVisitPageTwoState createState() => _UnplannedVisitPageTwoState();
 }
 
-class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
-
-  final controller = Get.find<AddPeriodicVisitToProjectController>();
-
-
+class _UnplannedVisitPageTwoState extends State<UnplannedVisitPageTwo> {
+  final controller = Get.find<AddUnplannedVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +29,9 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
             children: [
               Text(
                 '${'عوامل الأمن والسلامة'.tr()} ( 1 / 6 )',
-                style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                style: const TextStyle(
+                    color: ColorConstant.black900, fontSize: 14),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -52,16 +49,17 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'سلامة العمال في الموقع'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
-
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -69,11 +67,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 1,
-                              groupValue: controller.workersSafetyValue ,
+                              groupValue: controller.workersSafetyValue,
                               title: 'ملتزم',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.workersSafetyValue = value; // Update the state
+                                  controller.workersSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -82,11 +81,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 2,
-                              groupValue: controller.workersSafetyValue ,
+                              groupValue: controller.workersSafetyValue,
                               title: 'غير ملتزم',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.workersSafetyValue  = value; // Update the state
+                                  controller.workersSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -95,11 +95,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 3,
-                              groupValue: controller.workersSafetyValue ,
+                              groupValue: controller.workersSafetyValue,
                               title: 'لا ينطبق',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.workersSafetyValue  = value; // Update the state
+                                  controller.workersSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -107,11 +108,9 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -129,16 +128,17 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'سلامة الموقع العام'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
-
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -146,11 +146,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 1,
-                              groupValue: controller.siteSafetyValue  ,
+                              groupValue: controller.siteSafetyValue,
                               title: 'ملتزم',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteSafetyValue  = value; // Update the state
+                                  controller.siteSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -159,11 +160,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 2,
-                              groupValue: controller.siteSafetyValue  ,
+                              groupValue: controller.siteSafetyValue,
                               title: 'غير ملتزم',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteSafetyValue  = value; // Update the state
+                                  controller.siteSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -172,11 +174,12 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 3,
-                              groupValue: controller.siteSafetyValue  ,
+                              groupValue: controller.siteSafetyValue,
                               title: 'لا ينطبق',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteSafetyValue   = value; // Update the state
+                                  controller.siteSafetyValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -184,11 +187,9 @@ class _PeriodicVisitPageTwoState extends State<PeriodicVisitPageTwo> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
             ],
           ),
         ),

@@ -67,6 +67,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageController()),
       ],
       child: GetMaterialApp(
+
         theme: theme,
 
         // Disable the debug banner in development mode
@@ -156,3 +157,5 @@ Future<JPickerValue?> openDialog(BuildContext context) async {
     ),
   );
 }
+
+

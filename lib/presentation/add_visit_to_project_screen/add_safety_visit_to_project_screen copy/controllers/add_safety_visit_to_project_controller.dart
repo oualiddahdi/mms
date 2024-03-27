@@ -3,82 +3,76 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddPeriodicVisitToProjectController extends GetxController {
-
+class AddSafetyVisitToProjectController extends GetxController {
   //1
-  int projectPanelValue = 0;
-  int siteCleanlinessValue = 0;
-  int consultantTeamValue = 0;
-  int qualityControlValue = 0;
-  int contractorWorkforceValue = 0;
-  int equipmentValue = 0;
-  bool sampleApproval = false;
-  bool timetableDelayed = false;
+  int? safetySignValue;
+  int? surveillanceCamerasValue;
+  int? firstAidValue;
+  int? temporaryFenceValue;
+  int? entryExitGatesValue;
+  int? onDutyGuardValue;
+  int? offDutyGuardValue;
 
   //2
-  int workersSafetyValue = 0; // State variable for workers' safety
-  int siteSafetyValue = 0; // State variable for site safety
+  int? monitorResponsibleValue;
+  int? firstAidSuppliesValue;
+  int? helmetValue;
+  int? safetyShoesValue;
+  int? safetyGlovesValue;
+  int? safetyFirstSignValue;
+  int? workUniformsValue;
+  int? fireExtinguishersValue;
+  int? safeRoadsAndPassagesValue;
+  int? restAreaValue;
+  int? chargingAreasValue;
+  int? generalCleanlinessValue;
+  int? emergencyVehiclesValue;
+  int? certifiedClinicValue;
+  int? protectionOfHighBalconiesAndExcavationsValue;
+  int? directionalSignsValue;
 
   //3
-  TextEditingController sum = TextEditingController();
-
-  //4
-  int? groupValue1;
-  TextEditingController comment = TextEditingController();
-  TextEditingController actionsRemoveDelaysCauses = TextEditingController();
-
-  //5
   RxList<XFile> images = RxList<XFile>([]);
   RxList<XFile> videos = RxList<XFile>([]);
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
   TextEditingController reportVisualsController = TextEditingController();
 
-
-
   bool isFirstPageDataComplete() {
     // تحقق من اكتمال البيانات هنا
-    if (projectPanelValue == 0 ||
-        siteCleanlinessValue == 0 ||
-        consultantTeamValue == 0 ||
-        qualityControlValue == 0 ||
-        contractorWorkforceValue == 0 ||
-        equipmentValue == 0 ||
-        !sampleApproval ||
-        !timetableDelayed) {
-      return false;
+    if (  safetySignValue == 0 ||
+     surveillanceCamerasValue == 0 ||
+     firstAidValue == 0 ||
+    temporaryFenceValue == 0 ||
+    entryExitGatesValue == 0 ||
+     onDutyGuardValue == 0 ||
+     offDutyGuardValue == 0 ) {
+      return true;
     }
     return true;
   }
 
-
   bool isSecondPageDataComplete() {
     // تحقق من اكتمال البيانات للصفحة الثانية هنا
-    if (workersSafetyValue == 0 ||
-        siteSafetyValue == 0 ) {
+    if (   monitorResponsibleValue == 0 ||
+    firstAidSuppliesValue == 0 ||
+     helmetValue == 0 ||
+     safetyShoesValue == 0 ||
+     safetyGlovesValue == 0 ||
+     safetyFirstSignValue == 0 ||
+     workUniformsValue == 0 ||
+     fireExtinguishersValue == 0 ||
+     safeRoadsAndPassagesValue == 0 ||
+     restAreaValue == 0 ||
+     chargingAreasValue == 0 ||
+     generalCleanlinessValue == 0 ||
+    emergencyVehiclesValue == 0 ||
+     certifiedClinicValue == 0 ||
+     protectionOfHighBalconiesAndExcavationsValue == 0 ||
+     directionalSignsValue == 0 ) {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الثانية
-  }
-
-// اكمل باقي الصفحات بنفس الطريقة
-
-  bool isThirdPageDataComplete() {
-    // تحقق من اكتمال البيانات للصفحة الثالثة هنا
-    if (sum.text == '' ) {
-      return false;
-    }
-    return true; // قم بتحديد شرط اكتمال البيانات للصفحة الثالثة
-  }
-
-  bool isFourthPageDataComplete() {
-    // تحقق من اكتمال البيانات للصفحة الرابعة هنا
-    if (groupValue1 == 0 ||
-        comment.text == '' ||
-        actionsRemoveDelaysCauses.text == '' ) {
-      return false;
-    }
-    return true; // قم بتحديد شرط اكتمال البيانات للصفحة الرابعة
   }
 
 
@@ -86,26 +80,16 @@ class AddPeriodicVisitToProjectController extends GetxController {
     // تحقق من اكتمال البيانات للصفحة الخامسة هنا
     if (images.isNotEmpty ||
         videos.isNotEmpty ||
-        startDateController.text == ''  ||
-        endDateController.text == ''  ||
-        reportVisualsController.text == ''
-    ) {
+        startDateController.text == '' ||
+        endDateController.text == '' ||
+        reportVisualsController.text == '') {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الخامسة
   }
 
-  bool isSixthPageDataComplete() {
-    // تحقق من اكتمال البيانات للصفحة السادسة هنا
-
-    return true; // قم بتحديد شرط اكتمال البيانات للصفحة السادسة
-  }
-
-
 
   ///////////////////////
-
-
 
   Future<void> pickImage(ImageSource source) async {
     final pickedImage = await ImagePicker().pickImage(source: source);
@@ -185,18 +169,18 @@ class AddPeriodicVisitToProjectController extends GetxController {
     );
   }
 
-
-  Future<Null> selectDateGregorian(BuildContext context, TextEditingController textEditingController) async {
+  Future<Null> selectDateGregorian(
+      BuildContext context, TextEditingController textEditingController) async {
     await showDatePicker(
       context: context,
       firstDate: DateTime(2023),
       lastDate: DateTime(2100),
     ).then((selectedDate) {
       if (selectedDate != null) {
-        textEditingController.text = DateFormat('d-MM-y').format(selectedDate).toString();
+        textEditingController.text =
+            DateFormat('d-MM-y').format(selectedDate).toString();
       }
       return null;
     });
   }
-
 }

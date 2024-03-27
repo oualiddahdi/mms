@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddPeriodicVisitToProjectController extends GetxController {
+class AddUnplannedVisitToProjectController extends GetxController {
 
   //1
   int projectPanelValue = 0;

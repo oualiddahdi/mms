@@ -133,9 +133,9 @@ class _VisitsToProjectDetailsScreenState
                 buildListTile('periodic_visit', ImageConstant.imgPeriodic_visit,
                     AppRoutes.addPeriodicVisitToProjectScreen),
                 buildListTile('surprise_visit', ImageConstant.imgSurprise_visit,
-                    AppRoutes.loginScreen),
+                    AppRoutes.addUnplannedVisitToProjectScreen),
                 buildListTile('safety_visit', ImageConstant.imgSafety_visit,
-                    AppRoutes.loginScreen),
+                    AppRoutes.addSafetyVisitToProjectScreen),
                 buildListTile('daily_visit', ImageConstant.imgDaily_visit,
                     AppRoutes.loginScreen),
                 buildListTile(

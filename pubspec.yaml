@@ -102,6 +102,13 @@ dependencies:
 
   timeago: ^3.0.2
 
+  image_picker: ^0.8.4+4
+  video_player: ^2.2.14
+
+
+  permission_handler: ^9.1.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

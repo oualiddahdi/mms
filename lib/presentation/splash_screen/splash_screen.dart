@@ -20,6 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Get.find<SplashController>().navigateToNextScreen();
+
+    Get.find<SplashController>().requestPermissions();
+
   }
 
   @override

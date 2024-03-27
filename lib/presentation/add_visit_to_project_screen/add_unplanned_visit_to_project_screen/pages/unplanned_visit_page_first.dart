@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/controllers/add_periodic_visit_to_project_controller.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/controllers/add_unplanned_visit_to_project_controller.dart';
 import 'package:project/widgets/cupertino_radio_button_list_tile.dart';
 import 'package:project/widgets/custom_radio_button_list_tile.dart';
 
-class PeriodicVisitPageFirst extends StatefulWidget {
-  const PeriodicVisitPageFirst({Key? key}) : super(key: key);
+class UnplannedVisitPageFirst extends StatefulWidget {
+  const UnplannedVisitPageFirst({Key? key}) : super(key: key);
 
   @override
-  _PeriodicVisitPageFirstState createState() => _PeriodicVisitPageFirstState();
+  _UnplannedVisitPageFirstState createState() => _UnplannedVisitPageFirstState();
 }
 
-class _PeriodicVisitPageFirstState extends State<PeriodicVisitPageFirst> {
+class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
 
-  final controller = Get.find<AddPeriodicVisitToProjectController>();
+  final controller = Get.find<AddUnplannedVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {

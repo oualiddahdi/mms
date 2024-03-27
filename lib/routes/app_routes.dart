@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/add_periodic_visit_to_project_screen.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/add_safety_visit_to_project_screen.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/binding/add_safety_visit_to_project_binding.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/add_unplanned_visit_to_project_screen.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/binding/add_unplanned_visit_to_project_binding.dart';
 import 'package:project/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
 import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:project/presentation/get_started_screen/binding/get_started_binding.dart';
@@ -67,7 +71,13 @@ class AppRoutes {
   static const String aboutAppScreen = '/about_app_screen';
 
   static const String addPeriodicVisitToProjectScreen =
-      '/add_visits_to_project_screen';
+      '/add_periodic_visit_to_project_screen';
+
+  static const String addUnplannedVisitToProjectScreen =
+      '/add_unplanned_visit_to_project_screen';
+
+  static const String addSafetyVisitToProjectScreen =
+      '/add_safety_visit_to_project_screen';
 
   static Map<String, WidgetBuilder> routes = {
     languageScreen: (context) => const LanguageScreen(),
@@ -137,6 +147,20 @@ class AppRoutes {
       page: () => const AddPeriodicVisitToProjectScreen(),
       bindings: [
         AddPeriodicVisitToProjectBinding(),
+      ],
+    ),
+    GetPage(
+      name: addUnplannedVisitToProjectScreen,
+      page: () => const AddUnplannedVisitToProjectScreen(),
+      bindings: [
+        AddUnplannedVisitToProjectBinding(),
+      ],
+    ),
+    GetPage(
+      name: addSafetyVisitToProjectScreen,
+      page: () => const AddSafetyVisitToProjectScreen(),
+      bindings: [
+        AddSafetyVisitToProjectBinding(),
       ],
     ),
   ];

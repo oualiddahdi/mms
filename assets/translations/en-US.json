@@ -89,7 +89,9 @@
   "add_a_visit": " Add a visit ",
   "basic_information": " Basic Information ",
   "next": " Next ",
-  "previous": " Previous "
+  "previous": " Previous ",
+  "complete_data_warning": "Please complete all data before proceeding."
+
 
 
 }

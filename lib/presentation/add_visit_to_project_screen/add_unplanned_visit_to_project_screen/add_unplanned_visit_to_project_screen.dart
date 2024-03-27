@@ -7,36 +7,39 @@ import 'package:project/presentation/add_visit_to_project_screen/add_periodic_vi
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
 import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_three.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_two.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_first.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_five.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_four.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_three.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_two.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 
-import 'controllers/add_periodic_visit_to_project_controller.dart';
-import 'pages/periodic_visit_page_first.dart';
-import 'pages/periodic_visit_page_two.dart';
+import 'controllers/add_unplanned_visit_to_project_controller.dart';
 
-class AddPeriodicVisitToProjectScreen extends StatefulWidget {
-  const AddPeriodicVisitToProjectScreen({Key? key}) : super(key: key);
+class AddUnplannedVisitToProjectScreen extends StatefulWidget {
+  const AddUnplannedVisitToProjectScreen({Key? key}) : super(key: key);
 
   @override
-  _AddPeriodicVisitToProjectScreenState createState() =>
-      _AddPeriodicVisitToProjectScreenState();
+  _AddUnplannedVisitToProjectScreenState createState() =>
+      _AddUnplannedVisitToProjectScreenState();
 }
 
-class _AddPeriodicVisitToProjectScreenState
-    extends State<AddPeriodicVisitToProjectScreen> {
+class _AddUnplannedVisitToProjectScreenState
+    extends State<AddUnplannedVisitToProjectScreen> {
 
-  final controller = Get.find<AddPeriodicVisitToProjectController>();
+  final controller = Get.find<AddUnplannedVisitToProjectController>();
 
 
   late PageController _pageController;
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
-    const PeriodicVisitPageFirst(),
-    const PeriodicVisitPageTwo(),
-    const PeriodicVisitPageThree(),
-    const PeriodicVisitPageFour(),
-    const PeriodicVisitPageFive(),
-    const PeriodicVisitPageSix(),
+   // const UnplannedVisitPageFirst(),
+   //  const UnplannedVisitPageTwo(),
+   //  const UnplannedVisitPageThree(),
+   //  const UnplannedVisitPageFour(),
+    const UnplannedVisitPageFive(),
   ];
 
   @override
@@ -51,7 +54,7 @@ class _AddPeriodicVisitToProjectScreenState
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
-          title: 'periodic_visit'.tr(),
+          title: 'surprise_visit'.tr(),
           showMoreIcon: false,
           onMorePressed: (){},
 

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/presentation/home_page/home_page.dart';
 import 'package:project/routes/app_routes.dart';
@@ -26,4 +29,15 @@ class SplashController extends GetxController {
   void onTokenExists() {
     Get.offAll(const HomePage());
   }
+
+   requestPermissions() async {
+    if (Platform.isAndroid) {
+      await Permission.camera.request();
+      await Permission.storage.request();
+    } else if (Platform.isIOS) {
+      await Permission.photos.request();
+      await Permission.camera.request();
+    }
+  }
+
 }
