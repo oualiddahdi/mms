@@ -5,17 +5,17 @@ import 'package:get/get.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/controllers/add_unplanned_visit_to_project_controller.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/controllers/add_weekly_contractor_visit_to_project_controller.dart';
 import 'package:project/widgets/custom_image_view.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 import 'package:project/widgets/video_player.dart';
 
-class UnplannedVisitPageFive extends StatelessWidget {
-  const UnplannedVisitPageFive({Key? key}) : super(key: key);
+class WeeklyContractorVisitPageFive extends StatelessWidget {
+  const WeeklyContractorVisitPageFive({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AddUnplannedVisitToProjectController>();
+    final controller = Get.find<AddWeeklyContractorVisitToProjectController>();
 
     return Center(
       child: Container(
@@ -28,104 +28,104 @@ class UnplannedVisitPageFive extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.all(mediumPaddingSize),
                 child: Text(
-                  '${'المرئيات'.tr} ( 3 / 3 )',
+                  '${'المرئيات'.tr} ( 5 / 6 )',
                   style: const TextStyle(
                       color: ColorConstant.black900, fontSize: 14),
                 ),
               ),
               Obx(() => Container(
-                margin: const EdgeInsets.all(smallPaddingSize),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(
-                    color: ColorConstant.primaryGold,
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'أضافة صورة',
-                            style: TextStyle(
-                                color: ColorConstant.black900,
-                                fontSize: 14),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.add_box,
-                                color: ColorConstant.primaryColor),
-                            onPressed: () =>
-                                controller.showImageSourceDialog(context),
-                          ),
-                        ],
+                    margin: const EdgeInsets.all(smallPaddingSize),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      border: Border.all(
+                        color: ColorConstant.primaryGold,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: controller.images.map((image) {
-                          return Image.file(
-                            File(image.path),
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          );
-                        }).toList(),
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'أضافة صورة',
+                                style: TextStyle(
+                                    color: ColorConstant.black900,
+                                    fontSize: 14),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add_box,
+                                    color: ColorConstant.primaryColor),
+                                onPressed: () =>
+                                    controller.showImageSourceDialog(context),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: controller.images.map((image) {
+                              return Image.file(
+                                File(image.path),
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )),
+                  )),
               Obx(() => Container(
-                margin: const EdgeInsets.all(smallPaddingSize),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(
-                    color: ColorConstant.primaryGold,
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'أضافة فيديو',
-                            style: TextStyle(
-                                color: ColorConstant.black900,
-                                fontSize: 14),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.add_box,
-                                color: ColorConstant.primaryColor),
-                            onPressed: () =>
-                                controller.showVideoSourceDialog(context),
-                          ),
-                        ],
+                    margin: const EdgeInsets.all(smallPaddingSize),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      border: Border.all(
+                        color: ColorConstant.primaryGold,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: controller.videos.map((video) {
-                          return VideoWidget(video: video);
-                        }).toList(),
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'أضافة فيديو',
+                                style: TextStyle(
+                                    color: ColorConstant.black900,
+                                    fontSize: 14),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add_box,
+                                    color: ColorConstant.primaryColor),
+                                onPressed: () =>
+                                    controller.showVideoSourceDialog(context),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: controller.videos.map((video) {
+                              return VideoWidget(video: video);
+                            }).toList(),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )),
+                  )),
               Container(
                 margin: const EdgeInsets.all(smallPaddingSize),
                 width: double.maxFinite,
@@ -175,14 +175,14 @@ class UnplannedVisitPageFive extends StatelessWidget {
                             textStyle: const TextStyle(fontSize: smallFontSize),
                             prefix: Padding(
                               padding:
-                              const EdgeInsets.fromLTRB(16, 12, 10, 12),
+                                  const EdgeInsets.fromLTRB(16, 12, 10, 12),
                               child: CustomImageView(
                                   imagePath: ImageConstant.calendarAdd,
                                   height: largeFontSize,
                                   width: largeFontSize),
                             ),
                             prefixConstraints:
-                            const BoxConstraints(maxHeight: 48),
+                                const BoxConstraints(maxHeight: 48),
                             contentPadding: const EdgeInsets.only(
                                 top: 15, right: 30, bottom: 15)),
                       ),
@@ -216,14 +216,14 @@ class UnplannedVisitPageFive extends StatelessWidget {
                             textStyle: const TextStyle(fontSize: smallFontSize),
                             prefix: Padding(
                               padding:
-                              const EdgeInsets.fromLTRB(16, 12, 10, 12),
+                                  const EdgeInsets.fromLTRB(16, 12, 10, 12),
                               child: CustomImageView(
                                   imagePath: ImageConstant.calendarAdd,
                                   height: largeFontSize,
                                   width: largeFontSize),
                             ),
                             prefixConstraints:
-                            const BoxConstraints(maxHeight: 48),
+                                const BoxConstraints(maxHeight: 48),
                             contentPadding: const EdgeInsets.only(
                                 top: 15, right: 30, bottom: 15)),
                       ),
@@ -259,9 +259,9 @@ class UnplannedVisitPageFive extends StatelessWidget {
                             maxLines: 7,
                             hintText: "",
                             prefixConstraints:
-                            const BoxConstraints(maxHeight: 48),
+                                const BoxConstraints(maxHeight: 48),
                             contentPadding:
-                            const EdgeInsets.all(largePaddingSize)),
+                                const EdgeInsets.all(largePaddingSize)),
                       ),
                     ),
                   ],

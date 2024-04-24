@@ -50,7 +50,9 @@ class CupertinoRadioButtonListTile extends StatelessWidget {
         )
             : Text(
           title,
+
           style: TextStyle(
+
             fontSize: smallFontSize,
             color: isSelected ? ColorConstant.primaryColor :ColorConstant.whiteA700,
           ),

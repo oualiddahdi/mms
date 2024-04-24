@@ -6,17 +6,17 @@ import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/custom_check_boxes.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 
-import '../controllers/add_unplanned_visit_to_project_controller.dart';
+import '../controllers/add_aesthetic_visit_to_project_controller.dart';
 
-class UnplannedVisitPageFour extends StatefulWidget {
-  const UnplannedVisitPageFour({Key? key}) : super(key: key);
+class AestheticVisitPageFour extends StatefulWidget {
+  const AestheticVisitPageFour({Key? key}) : super(key: key);
 
   @override
-  _UnplannedVisitPageFourState createState() => _UnplannedVisitPageFourState();
+  _AestheticVisitPageFourState createState() => _AestheticVisitPageFourState();
 }
 
-class _UnplannedVisitPageFourState extends State<UnplannedVisitPageFour> {
-  final controller = Get.find<AddUnplannedVisitToProjectController>();
+class _AestheticVisitPageFourState extends State<AestheticVisitPageFour> {
+  final controller = Get.find<AddAestheticVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {

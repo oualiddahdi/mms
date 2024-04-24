@@ -129,21 +129,28 @@ class _VisitsToProjectDetailsScreenState
               mainAxisSize: MainAxisSize.min,
               children: [
                 buildListTile('weekly_visit', ImageConstant.imgWeekly_visit,
-                    AppRoutes.loginScreen),
+                    AppRoutes.addWeeklyVisitToProject),
+
                 buildListTile('periodic_visit', ImageConstant.imgPeriodic_visit,
                     AppRoutes.addPeriodicVisitToProjectScreen),
+
                 buildListTile('surprise_visit', ImageConstant.imgSurprise_visit,
                     AppRoutes.addUnplannedVisitToProjectScreen),
+
                 buildListTile('safety_visit', ImageConstant.imgSafety_visit,
                     AppRoutes.addSafetyVisitToProjectScreen),
+
                 buildListTile('daily_visit', ImageConstant.imgDaily_visit,
-                    AppRoutes.loginScreen),
+                    AppRoutes.addDailyVisitToProject),
+
                 buildListTile(
                     'weekly_contractor_visit',
                     ImageConstant.imgWeekly_contractor_visit,
-                    AppRoutes.loginScreen),
+                    AppRoutes.addWeeklyContractorVisitToProject),
+
                 buildListTile('aesthetic_visit',
-                    ImageConstant.imgAesthetic_visit, AppRoutes.loginScreen),
+                    ImageConstant.imgAesthetic_visit, AppRoutes.addAestheticVisitToProject),
+
                 const SizedBox(height: smallBorderSize),
                 Container(
                   padding: const EdgeInsets.all(smallPaddingSize),

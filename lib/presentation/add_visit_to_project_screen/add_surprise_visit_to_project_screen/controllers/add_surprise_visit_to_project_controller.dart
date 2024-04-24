@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddUnplannedVisitToProjectController extends GetxController {
-
+class AddSurpriseVisitToProjectController extends GetxController {
   //1
   int projectPanelValue = 0;
   int siteCleanlinessValue = 0;
@@ -34,8 +33,6 @@ class AddUnplannedVisitToProjectController extends GetxController {
   TextEditingController endDateController = TextEditingController();
   TextEditingController reportVisualsController = TextEditingController();
 
-
-
   bool isFirstPageDataComplete() {
     // تحقق من اكتمال البيانات هنا
     if (projectPanelValue == 0 ||
@@ -51,11 +48,9 @@ class AddUnplannedVisitToProjectController extends GetxController {
     return true;
   }
 
-
   bool isSecondPageDataComplete() {
     // تحقق من اكتمال البيانات للصفحة الثانية هنا
-    if (workersSafetyValue == 0 ||
-        siteSafetyValue == 0 ) {
+    if (workersSafetyValue == 0 || siteSafetyValue == 0) {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الثانية
@@ -65,7 +60,7 @@ class AddUnplannedVisitToProjectController extends GetxController {
 
   bool isThirdPageDataComplete() {
     // تحقق من اكتمال البيانات للصفحة الثالثة هنا
-    if (sum.text == '' ) {
+    if (sum.text == '') {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الثالثة
@@ -75,21 +70,19 @@ class AddUnplannedVisitToProjectController extends GetxController {
     // تحقق من اكتمال البيانات للصفحة الرابعة هنا
     if (groupValue1 == 0 ||
         comment.text == '' ||
-        actionsRemoveDelaysCauses.text == '' ) {
+        actionsRemoveDelaysCauses.text == '') {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الرابعة
   }
 
-
   bool isFifthPageDataComplete() {
     // تحقق من اكتمال البيانات للصفحة الخامسة هنا
     if (images.isNotEmpty ||
         videos.isNotEmpty ||
-        startDateController.text == ''  ||
-        endDateController.text == ''  ||
-        reportVisualsController.text == ''
-    ) {
+        startDateController.text == '' ||
+        endDateController.text == '' ||
+        reportVisualsController.text == '') {
       return false;
     }
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة الخامسة
@@ -101,11 +94,7 @@ class AddUnplannedVisitToProjectController extends GetxController {
     return true; // قم بتحديد شرط اكتمال البيانات للصفحة السادسة
   }
 
-
-
   ///////////////////////
-
-
 
   Future<void> pickImage(ImageSource source) async {
     final pickedImage = await ImagePicker().pickImage(source: source);
@@ -185,18 +174,18 @@ class AddUnplannedVisitToProjectController extends GetxController {
     );
   }
 
-
-  Future<Null> selectDateGregorian(BuildContext context, TextEditingController textEditingController) async {
+  Future<Null> selectDateGregorian(
+      BuildContext context, TextEditingController textEditingController) async {
     await showDatePicker(
       context: context,
       firstDate: DateTime(2023),
       lastDate: DateTime(2100),
     ).then((selectedDate) {
       if (selectedDate != null) {
-        textEditingController.text = DateFormat('d-MM-y').format(selectedDate).toString();
+        textEditingController.text =
+            DateFormat('d-MM-y').format(selectedDate).toString();
       }
       return null;
     });
   }
-
 }

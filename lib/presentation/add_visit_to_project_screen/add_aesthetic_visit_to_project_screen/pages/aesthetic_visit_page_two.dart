@@ -5,17 +5,17 @@ import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/cupertino_radio_button_list_tile.dart';
 
-import '../controllers/add_unplanned_visit_to_project_controller.dart';
+import '../controllers/add_aesthetic_visit_to_project_controller.dart';
 
-class UnplannedVisitPageTwo extends StatefulWidget {
-  const UnplannedVisitPageTwo({Key? key}) : super(key: key);
+class AestheticVisitPageTwo extends StatefulWidget {
+  const AestheticVisitPageTwo({Key? key}) : super(key: key);
 
   @override
-  _UnplannedVisitPageTwoState createState() => _UnplannedVisitPageTwoState();
+  _AestheticVisitPageTwoState createState() => _AestheticVisitPageTwoState();
 }
 
-class _UnplannedVisitPageTwoState extends State<UnplannedVisitPageTwo> {
-  final controller = Get.find<AddUnplannedVisitToProjectController>();
+class _AestheticVisitPageTwoState extends State<AestheticVisitPageTwo> {
+  final controller = Get.find<AddAestheticVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {

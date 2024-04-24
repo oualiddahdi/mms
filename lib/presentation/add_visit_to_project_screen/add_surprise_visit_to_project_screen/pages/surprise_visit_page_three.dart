@@ -6,18 +6,17 @@ import 'package:project/core/utils/size_utils.dart';
 import 'package:project/core/utils/sizes.dart';
 import 'package:project/widgets/custom_text_form_field.dart';
 
-import '../controllers/add_unplanned_visit_to_project_controller.dart';
+import '../controllers/add_surprise_visit_to_project_controller.dart';
 
-class UnplannedVisitPageThree extends StatefulWidget {
-  const UnplannedVisitPageThree({Key? key}) : super(key: key);
+class SurpriseVisitPageThree extends StatefulWidget {
+  const SurpriseVisitPageThree({Key? key}) : super(key: key);
 
   @override
-  _UnplannedVisitPageThreeState createState() =>
-      _UnplannedVisitPageThreeState();
+  _SurpriseVisitPageThreeState createState() => _SurpriseVisitPageThreeState();
 }
 
-class _UnplannedVisitPageThreeState extends State<UnplannedVisitPageThree> {
-  final controller = Get.find<AddUnplannedVisitToProjectController>();
+class _SurpriseVisitPageThreeState extends State<SurpriseVisitPageThree> {
+  final controller = Get.find<AddSurpriseVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {

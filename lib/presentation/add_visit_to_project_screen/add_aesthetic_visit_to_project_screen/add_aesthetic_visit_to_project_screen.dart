@@ -3,43 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_three.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_two.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_first.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_five.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_four.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_three.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/pages/unplanned_visit_page_two.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/pages/aesthetic_visit_page_five.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 
-import 'controllers/add_unplanned_visit_to_project_controller.dart';
+import 'controllers/add_aesthetic_visit_to_project_controller.dart';
 
-class AddUnplannedVisitToProjectScreen extends StatefulWidget {
-  const AddUnplannedVisitToProjectScreen({Key? key}) : super(key: key);
+class AddAestheticVisitToProjectScreen extends StatefulWidget {
+  const AddAestheticVisitToProjectScreen({Key? key}) : super(key: key);
 
   @override
-  _AddUnplannedVisitToProjectScreenState createState() =>
-      _AddUnplannedVisitToProjectScreenState();
+  _AddAestheticVisitToProjectScreenState createState() =>
+      _AddAestheticVisitToProjectScreenState();
 }
 
-class _AddUnplannedVisitToProjectScreenState
-    extends State<AddUnplannedVisitToProjectScreen> {
-
-  final controller = Get.find<AddUnplannedVisitToProjectController>();
-
+class _AddAestheticVisitToProjectScreenState
+    extends State<AddAestheticVisitToProjectScreen> {
+  final controller = Get.find<AddAestheticVisitToProjectController>();
 
   late PageController _pageController;
   int _currentPageIndex = 0;
 
   final List<Widget> _pages = [
-   // const UnplannedVisitPageFirst(),
-   //  const UnplannedVisitPageTwo(),
-   //  const UnplannedVisitPageThree(),
-   //  const UnplannedVisitPageFour(),
-    const UnplannedVisitPageFive(),
+    // const UnplannedVisitPageFirst(),
+    //  const UnplannedVisitPageTwo(),
+    //  const UnplannedVisitPageThree(),
+    //  const UnplannedVisitPageFour(),
+    const AestheticVisitPageFive(),
   ];
 
   @override
@@ -56,8 +45,7 @@ class _AddUnplannedVisitToProjectScreenState
         appBar: CustomAppBar(
           title: 'surprise_visit'.tr(),
           showMoreIcon: false,
-          onMorePressed: (){},
-
+          onMorePressed: () {},
         ),
         body: Column(
           children: [
@@ -96,7 +84,8 @@ class _AddUnplannedVisitToProjectScreenState
           if (_currentPageIndex > 0) _buildPreviousButton(),
           Text(
             '${_currentPageIndex + 1} / ${_pages.length}',
-            style: const TextStyle(color: Colors.black, fontSize: smallFontSize),
+            style:
+                const TextStyle(color: Colors.black, fontSize: smallFontSize),
           ),
           if (_currentPageIndex < _pages.length - 1) _buildNextButton(),
         ],
@@ -111,8 +100,8 @@ class _AddUnplannedVisitToProjectScreenState
           const Icon(Icons.arrow_back_ios),
           Text(
             'previous'.tr(),
-            style:
-                const TextStyle(color: ColorConstant.primaryGold, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryGold, fontSize: smallFontSize),
           ),
         ],
       ),
@@ -131,7 +120,8 @@ class _AddUnplannedVisitToProjectScreenState
         children: [
           Text(
             'next'.tr(),
-            style: const TextStyle(color: ColorConstant.primaryColor, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryColor, fontSize: smallFontSize),
           ),
           const Icon(Icons.arrow_forward_ios),
         ],
@@ -146,7 +136,6 @@ class _AddUnplannedVisitToProjectScreenState
         } else {
           // أظهر رسالة أو اتخذ إجراء إذا لم تكن البيانات مكتملة
           ScaffoldMessenger.of(context).showSnackBar(
-
             SnackBar(
               content: Text('complete_data_warning').tr(),
             ),

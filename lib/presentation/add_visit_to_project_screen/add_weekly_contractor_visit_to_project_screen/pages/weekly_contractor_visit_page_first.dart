@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_unplanned_visit_to_project_screen/controllers/add_unplanned_visit_to_project_controller.dart';
+import 'package:project/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/controllers/add_weekly_contractor_visit_to_project_controller.dart';
 import 'package:project/widgets/cupertino_radio_button_list_tile.dart';
 import 'package:project/widgets/custom_radio_button_list_tile.dart';
 
-class UnplannedVisitPageFirst extends StatefulWidget {
-  const UnplannedVisitPageFirst({Key? key}) : super(key: key);
+class WeeklyContractorVisitPageFirst extends StatefulWidget {
+  const WeeklyContractorVisitPageFirst({Key? key}) : super(key: key);
 
   @override
-  _UnplannedVisitPageFirstState createState() => _UnplannedVisitPageFirstState();
+  _WeeklyContractorVisitPageFirstState createState() =>
+      _WeeklyContractorVisitPageFirstState();
 }
 
-class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
+class _WeeklyContractorVisitPageFirstState
+    extends State<WeeklyContractorVisitPageFirst> {
+  final controller = Get.find<AddWeeklyContractorVisitToProjectController>();
 
-  final controller = Get.find<AddUnplannedVisitToProjectController>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +31,9 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
             children: [
               Text(
                 '${'basic_information'.tr()} ( 1 / 6 )',
-                style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                style: const TextStyle(
+                    color: ColorConstant.black900, fontSize: 14),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -49,7 +51,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'لوحة المشروع'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Row(
@@ -63,7 +66,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             title: 'منفذة',
                             onChanged: (value) {
                               setState(() {
-                                controller.projectPanelValue = value; // Update the state
+                                controller.projectPanelValue =
+                                    value; // Update the state
                               });
                             },
                           ),
@@ -76,19 +80,20 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             title: 'مطابقة للمواصفات',
                             onChanged: (value) {
                               setState(() {
-                                controller.projectPanelValue = value; // Update the state
+                                controller.projectPanelValue =
+                                    value; // Update the state
                               });
                             },
                           ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ),
-
-              const SizedBox(height: largeBorderSize,),
+              const SizedBox(
+                height: largeBorderSize,
+              ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -103,17 +108,17 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'نظافة موقع العمل'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
-
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -121,11 +126,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 1,
-                              groupValue: controller.siteCleanlinessValue ,
+                              groupValue: controller.siteCleanlinessValue,
                               title: 'ممتاز',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteCleanlinessValue  = value; // Update the state
+                                  controller.siteCleanlinessValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -134,11 +140,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 2,
-                              groupValue: controller.siteCleanlinessValue ,
+                              groupValue: controller.siteCleanlinessValue,
                               title: 'مقبول',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteCleanlinessValue  = value; // Update the state
+                                  controller.siteCleanlinessValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -147,11 +154,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 3,
-                              groupValue: controller.siteCleanlinessValue ,
+                              groupValue: controller.siteCleanlinessValue,
                               title: 'غير مقبول',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.siteCleanlinessValue  = value; // Update the state
+                                  controller.siteCleanlinessValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -159,14 +167,13 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
-              const SizedBox(height: largeBorderSize,),
+              const SizedBox(
+                height: largeBorderSize,
+              ),
               Container(
-
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   border: Border.all(
@@ -180,14 +187,15 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'فريق الاستشاري'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
                       child: Row(
@@ -196,11 +204,13 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 1,
-                              groupValue: controller.consultantTeamValue ,
+                              groupValue: controller.consultantTeamValue,
                               title: 'متواجد بالكامل',
+
                               onChanged: (value) {
                                 setState(() {
-                                  controller.consultantTeamValue  = value; // Update the state
+                                  controller.consultantTeamValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -209,11 +219,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 2,
-                              groupValue: controller.consultantTeamValue ,
+                              groupValue: controller.consultantTeamValue,
                               title: 'يوجد غيابات',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.consultantTeamValue  = value; // Update the state
+                                  controller.consultantTeamValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -222,11 +233,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 3,
-                              groupValue: controller.consultantTeamValue ,
+                              groupValue: controller.consultantTeamValue,
                               title: 'غير متواجد',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.consultantTeamValue  = value; // Update the state
+                                  controller.consultantTeamValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -234,12 +246,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
-              const SizedBox(height: largeBorderSize,),
+              const SizedBox(
+                height: largeBorderSize,
+              ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -254,17 +266,17 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'مستوي مراقبة الجودة'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(mediumBorderSize)),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
-
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -272,11 +284,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 1,
-                              groupValue: controller.qualityControlValue ,
+                              groupValue: controller.qualityControlValue,
                               title: 'ممتاز',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.qualityControlValue  = value; // Update the state
+                                  controller.qualityControlValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -285,11 +298,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 2,
-                              groupValue: controller.qualityControlValue ,
+                              groupValue: controller.qualityControlValue,
                               title: 'مقبول',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.qualityControlValue  = value; // Update the state
+                                  controller.qualityControlValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -298,11 +312,12 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                             flex: 1,
                             child: CupertinoRadioButtonListTile(
                               value: 3,
-                              groupValue: controller.qualityControlValue ,
+                              groupValue: controller.qualityControlValue,
                               title: 'غير مقبول',
                               onChanged: (value) {
                                 setState(() {
-                                  controller.qualityControlValue  = value; // Update the state
+                                  controller.qualityControlValue =
+                                      value; // Update the state
                                 });
                               },
                             ),
@@ -310,11 +325,9 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -332,7 +345,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'القوى العاملة للمقاول'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Row(
@@ -342,22 +356,21 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                           flex: 1,
                           child: CustomRadioButtonListTile(
                             value: 1,
-                            groupValue: controller.contractorWorkforceValue ,
+                            groupValue: controller.contractorWorkforceValue,
                             title: 'العدد كافى',
                             onChanged: (value) {
                               setState(() {
-                                controller.contractorWorkforceValue  = value; // Update the state
+                                controller.contractorWorkforceValue =
+                                    value; // Update the state
                               });
                             },
                           ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -375,7 +388,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'المعدات'.tr() + ' * ',
-                        style: const TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: const TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Row(
@@ -385,22 +399,21 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                           flex: 1,
                           child: CustomRadioButtonListTile(
                             value: 1,
-                            groupValue: controller.equipmentValue ,
+                            groupValue: controller.equipmentValue,
                             title: 'العدد كافى',
                             onChanged: (value) {
                               setState(() {
-                                controller.equipmentValue  = value; // Update the state
+                                controller.equipmentValue =
+                                    value; // Update the state
                               });
                             },
                           ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -418,7 +431,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'اعتماد العينات / المخططات',
-                        style: TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Row(
@@ -427,23 +441,22 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                         Flexible(
                           flex: 1,
                           child: SwitchListTile(
-
-                            title: Text(controller.sampleApproval  ? 'متوفر' : 'غير متوفر'),
-                            value: controller.sampleApproval ,
+                            title: Text(controller.sampleApproval
+                                ? 'متوفر'
+                                : 'غير متوفر'),
+                            value: controller.sampleApproval,
                             onChanged: (bool value) {
                               setState(() {
-                                controller.sampleApproval  = value;
+                                controller.sampleApproval = value;
                               });
                             },
                           ),
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: largeBorderSize,
               ),
@@ -461,7 +474,8 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                       padding: EdgeInsets.all(largePaddingSize),
                       child: Text(
                         'الجداول الزمنية',
-                        style: TextStyle(color: ColorConstant.black900, fontSize: 14),
+                        style: TextStyle(
+                            color: ColorConstant.black900, fontSize: 14),
                       ),
                     ),
                     Row(
@@ -470,23 +484,22 @@ class _UnplannedVisitPageFirstState extends State<UnplannedVisitPageFirst> {
                         Flexible(
                           flex: 1,
                           child: SwitchListTile(
-
-                            title: Text(controller.timetableDelayed  ? 'متأخر' : 'غير متأخر'),
-                            value: controller.timetableDelayed ,
+                            title: Text(controller.timetableDelayed
+                                ? 'متأخر'
+                                : 'غير متأخر'),
+                            value: controller.timetableDelayed,
                             onChanged: (bool value) {
                               setState(() {
-                                controller.timetableDelayed  = value;
+                                controller.timetableDelayed = value;
                               });
                             },
                           ),
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
-
             ],
           ),
         ),
