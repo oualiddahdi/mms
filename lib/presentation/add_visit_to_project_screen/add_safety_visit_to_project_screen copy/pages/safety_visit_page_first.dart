@@ -109,6 +109,61 @@ class _SafetyVisitPageFirstState extends State<SafetyVisitPageFirst> {
                   });
                 },
               ),
+
+              // Widget for Off-Duty Guard
+              buildRadioButtonGroup(
+                title: 'لوحة السلامة اولا بالمدخل',
+                value: controller.entranceSafetyBoardValue ,
+                onChanged: (value) {
+                  setState(() {
+                    controller.entranceSafetyBoardValue  = value;
+                  });
+                },
+              ),
+
+              // Widget for Off-Duty Guard
+              buildRadioButtonGroup(
+                title: 'سلامة العمال في الموقع',
+                value: controller.siteWorkersSafetyValue ,
+                onChanged: (value) {
+                  setState(() {
+                    controller.siteWorkersSafetyValue  = value;
+                  });
+                },
+              ),
+
+              // Widget for Off-Duty Guard
+              buildRadioButtonGroup(
+                title: 'سلامة الموقع العام',
+                value: controller.generalSiteSafetyValue ,
+                onChanged: (value) {
+                  setState(() {
+                    controller.generalSiteSafetyValue  = value;
+                  });
+                },
+              ),
+
+              // Widget for Off-Duty Guard
+              buildRadioButtonGroup(
+                title: 'حماية الشرفات العالية والحفر',
+                value: controller.highPlatformProtectionValue ,
+                onChanged: (value) {
+                  setState(() {
+                    controller.highPlatformProtectionValue  = value;
+                  });
+                },
+              ),
+
+              // Widget for Off-Duty Guard
+              buildRadioButtonGroup(
+                title: 'الطرقات والممرات الامنية',
+                value: controller.safePassagesValue,
+                onChanged: (value) {
+                  setState(() {
+                    controller.safePassagesValue = value;
+                  });
+                },
+              ),
             ],
           ),
         ),

@@ -12,6 +12,11 @@ class AddSafetyVisitToProjectController extends GetxController {
   int? entryExitGatesValue;
   int? onDutyGuardValue;
   int? offDutyGuardValue;
+  int? entranceSafetyBoardValue;
+  int? siteWorkersSafetyValue;
+  int? generalSiteSafetyValue;
+  int? highPlatformProtectionValue;
+  int? safePassagesValue;
 
   //2
   int? monitorResponsibleValue;
