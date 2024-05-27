@@ -8,4 +8,5 @@ class ApiConstants extends GetConnect {
   static const String projectsUrl = '${apiUrl}projects';
   static const String loginUrl = '${apiUrl}login';
   static const String otpUrl = '${apiUrl}otp';
+
 }

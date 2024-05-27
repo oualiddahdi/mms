@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
 // Define the state for the HomePage widget
 class _HomePageState extends State<HomePage> {
   PackageInfo _packageInfo = PackageInfo(
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               appBarTitle,
               style: TextStyle(
-                fontSize: 16.v,
+                fontSize: 16 .v,
                 color: ColorConstant.whiteA700,
               ),
             ),

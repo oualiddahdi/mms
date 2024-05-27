@@ -1,171 +1,155 @@
 name: project
 description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+publish_to:
+
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.2.2 <4.0.0'
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
 
-
-
-  # مكتبة للحصول على معلومات الحزمة والتطبيق
   package_info_plus: ^4.2.0
+  # Library for obtaining package and application information.
+  # Useful for displaying information about the app, such as version number and name.
 
-  # إدارة الحالة والتوجيه وحقن التبعيات
   get: ^4.6.5
+  # State management, routing, and dependency injection library.
+  # Provides a simple and efficient way to manage the app's state.
 
-  # مكتبة لإجراء طلبات HTTP في تطبيق Flutter
   http: ^1.1.2
+  # Library for making HTTP requests in a Flutter application.
+  # Essential for interacting with the server and fetching data.
 
-  # آلية تخزين آمنة للمعلومات الحساسة (مثل الرموز وكلمات المرور)
   flutter_secure_storage: ^9.0.0
+  # Secure storage mechanism for sensitive information (e.g., tokens, passwords).
+  # Important for securely storing access tokens and credential information.
 
-  # أيقونات بنمط Cupertino لتطبيقات iOS
   cupertino_icons: ^1.0.2
+  # Cupertino-style icons for iOS apps.
+  # Provides icons in the iOS design language.
 
-  # مكتبة للترجمة والتعدد اللغوي بسهولة
   easy_localization: ^3.0.3
+  # Library for localization and internationalization in Flutter.
+  # Simplifies the process of adding multiple language support to the app.
 
-  # مكتبة لتحميل الترجمات لـ easy_localization
-  easy_localization_loader: ^2.0.0
-
-  # مكتبة للمساواة بين القيم في Dart، تبسيط التنفيذ للكائنات المعقدة
   equatable: ^2.0.5
+  # Library for value equality in Dart, simplifying equality checks for complex objects.
 
-  # مكتبة إدارة الحالة لـ Flutter، توفير وسيلة بسيطة وفعّالة لإدارة حالة التطبيق
   provider: ^6.1.1
+  # State management library for Flutter.
+  # Provides a simple and efficient way to manage app state.
 
-  # رموز المواد لتطبيقات Flutter
   flutter_material_symbols: ^0.0.4
+  # Material Design symbols for Flutter apps.
+  # Provides symbols consistent with Material Design guidelines.
 
-  # إضافة هذا السطر إلى التبعيات الخاصة بك https://pub.dev/packages/delightful_toast
   delightful_toast: ^1.1.0
+  # Add delightful toast messages to your Flutter app.
+  # Provides a customizable and easy-to-use toast message widget.
 
-  # صور الشبكة المخزنة مؤقتًا
   cached_network_image: ^3.2.0
+  # Cached network images for Flutter.
+  # Provides an easy way to load and cache network images.
 
-  # مكتبة لعرض الصور SVG
   flutter_svg: ^1.1.6
+  # Library for displaying SVG images in Flutter.
+  # Allows rendering scalable vector graphics (SVG) in Flutter apps.
 
-  # تقويم هجري
   jhijri: ">=0.0.4 <2.0.0"
+  # Hijri calendar for Flutter.
+  # Provides support for the Hijri (Islamic) calendar system.
 
-  # مكتبة رسوم الرسوم البيانية من Syncfusion
   syncfusion_flutter_charts: ^23.2.7
+  # Syncfusion charts library for Flutter.
+  # Provides a wide range of chart types for data visualization.
 
-  # مكتبة المصادقة المحلية
   local_auth: ^2.1.7
+  # Library for local authentication (e.g., fingerprint, face ID).
+  # Allows integrating biometric authentication into your Flutter app.
 
   flutter_otp_text_field: ^1.1.1
+  # Library for OTP (One-Time Password) input field in Flutter.
+  # Provides a customizable OTP text field widget.
 
   connectivity_plus: ^5.0.1
+  # Library for monitoring network connectivity in Flutter.
+  # Allows checking the device's network connectivity status.
 
   json_annotation: ^4.8.0
+  # Library for JSON serialization and deserialization annotations.
+  # Simplifies the process of converting Dart objects to/from JSON.
 
   json_serializable: ^6.7.0
+  # Library for generating JSON serialization and deserialization code.
+  # Automatically generates code for converting Dart objects to/from JSON.
 
   animated_custom_dropdown: ^1.5.0
+  # Animated dropdown widget for Flutter.
+  # Provides a customizable and animated dropdown widget.
 
   font_awesome_flutter: ^9.1.0
+  # FontAwesome icons for Flutter apps.
+  # Provides a wide range of icon options for use in Flutter apps.
 
   dio: ^4.0.0
+  # Library for making HTTP requests in Flutter.
+  # Similar to the 'http' package but provides additional features like interceptors.
 
   sqflite: ^2.0.0
+  # SQLite database plugin for Flutter.
+  # Allows interacting with SQLite databases in Flutter apps.
+
   path: ^1.8.0
+  # Library for manipulating file paths in Dart.
+  # Provides utilities for working with file paths in a cross-platform manner.
 
   material_dialogs: ^1.1.4
+  # Material Design dialogs for Flutter.
+  # Provides customizable dialog widgets consistent with Material Design guidelines.
 
   timeago: ^3.0.2
+  # Library for formatting time differences as a human-readable string.
+  # Converts timestamps to phrases like "a minute ago" or "2 hours ago".
 
   image_picker: ^0.8.4+4
-  video_player: ^2.2.14
+  # Library for picking images from the device's gallery or camera.
+  # Allows users to select images from their device to use within the app.
 
+  video_player: ^2.2.14
+  # Video player plugin for Flutter.
+  # Allows playing videos in Flutter apps.
 
   permission_handler: ^9.1.0
-
+  # Library for managing permissions in Flutter.
+  # Simplifies the process of requesting and checking permissions on the device.
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^3.0.1
+  # Lint rules for Dart and Flutter.
+  # Provides additional lint rules for ensuring code quality and best practices.
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-# The following section is specific to Flutter packages.
+
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-  # To add assets to your application, add an assets section, like this:
+
   assets:
     - assets/translations/en-US.json
     - assets/translations/ar-DZ.json
 
     - assets/images/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
   fonts:
     - family: Kufam
       fonts:
         - asset: assets/font/Kufam.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+
 flutter_intl:
   enabled: true
-
-
-
-
-
-#flutter build appbundle --target-platform android-arm,android-arm64

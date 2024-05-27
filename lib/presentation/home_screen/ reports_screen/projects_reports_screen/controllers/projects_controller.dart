@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -36,13 +37,12 @@ class ProjectsController extends GetxController {
         throw Exception(
             'Failed to load projects. Status code: ${response.statusCode}');
       }
-    } catch (e) {
-      print('Error fetching projects: $e');
+    } catch (e,s) {
+      log('Error fetching projects',stackTrace: s ,error: e);
       throw Exception('Error fetching projects: $e');
     }
   }
 
-  // Function to find statusName using projectStatusId
   String getStatusName(List<ProjectStatus>? projects, int projectStatusId) {
     if (projects != null) {
       for (var project in projects) {
