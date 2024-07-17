@@ -87,7 +87,17 @@ class _AddSurpriseVisitToProjectScreenState
             style:
                 const TextStyle(color: Colors.black, fontSize: smallFontSize),
           ),
-          if (_currentPageIndex < _pages.length - 1) _buildNextButton(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: (){controller.submitVisit();},
+              child: Text(
+                'save'.tr(),
+                style: const TextStyle(
+                    color: ColorConstant.primaryColor, fontSize: smallFontSize),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -147,16 +157,6 @@ class _AddSurpriseVisitToProjectScreenState
 
   bool _isDataComplete() {
     switch (_currentPageIndex) {
-      case 0:
-        return controller.isFirstPageDataComplete();
-      case 1:
-        return controller.isSecondPageDataComplete();
-      case 2:
-        return controller.isThirdPageDataComplete();
-      case 3:
-        return controller.isFourthPageDataComplete();
-      case 4:
-        return controller.isFifthPageDataComplete();
       case 5:
         return controller.isSixthPageDataComplete();
       default:

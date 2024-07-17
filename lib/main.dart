@@ -8,6 +8,7 @@ import 'package:project/core/utils/api_constants.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/pref_utils.dart';
 import 'package:project/core/utils/shared_preferences_manager.dart';
+import 'package:project/presentation/home_page/controller/home_controller.dart';
 import 'package:project/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project/routes/app_routes.dart';
@@ -20,6 +21,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Get.put(PrefUtils());
+
+  Get.put(HomeController());
 
   // Initialize FlutterSecureStorage for storing the selected language
   const storage = FlutterSecureStorage();
@@ -37,7 +40,7 @@ void main() async {
   // Run the app with localization settings
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'DZ')],
+      supportedLocales: const [Locale('ar', 'DZ') , Locale('en', 'US'), ],
       path: 'assets/translations',
       fallbackLocale: const Locale('ar', 'SA'),
       startLocale: locale,

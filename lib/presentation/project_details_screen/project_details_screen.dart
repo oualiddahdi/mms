@@ -43,7 +43,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
 
           },
         ),
-
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

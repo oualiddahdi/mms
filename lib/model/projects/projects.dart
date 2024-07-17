@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 Projects projectsFromJson(String str) => Projects.fromJson(json.decode(str));
@@ -13,6 +12,9 @@ class Projects {
         required this.success,
         required this.catList,
         required this.owners,
+        required this.projectStops,
+        required this.projectExtensions,
+        required this.projectResum,
     });
 
     String msg;
@@ -21,14 +23,34 @@ class Projects {
     bool success;
     List<CatList> catList;
     List<Owner> owners;
+    List<ProjectStop> projectStops;
+    List<ProjectExtension> projectExtensions;
+    List<ProjectResum> projectResum;
 
     factory Projects.fromJson(Map<dynamic, dynamic> json) => Projects(
         msg: json["msg"],
-        projectStatus: List<ProjectStatus>.from(json["projectStatus"].map((x) => ProjectStatus.fromJson(x))),
-        projects: List<Project>.from(json["projects"].map((x) => Project.fromJson(x))),
+        projectStatus: json["projectStatus"] != null
+            ? List<ProjectStatus>.from(json["projectStatus"].map((x) => ProjectStatus.fromJson(x)))
+            : [],
+        projects: json["projects"] != null
+            ? List<Project>.from(json["projects"].map((x) => Project.fromJson(x)))
+            : [],
         success: json["success"],
-        catList: List<CatList>.from(json["CatList"].map((x) => CatList.fromJson(x))),
-        owners: List<Owner>.from(json["owners"].map((x) => Owner.fromJson(x))),
+        catList: json["CatList"] != null
+            ? List<CatList>.from(json["CatList"].map((x) => CatList.fromJson(x)))
+            : [],
+        owners: json["owners"] != null
+            ? List<Owner>.from(json["owners"].map((x) => Owner.fromJson(x)))
+            : [],
+        projectStops: json["projectStops"] != null
+            ? List<ProjectStop>.from(json["projectStops"].map((x) => ProjectStop.fromJson(x)))
+            : [],
+        projectExtensions: json["projectExtensions"] != null
+            ? List<ProjectExtension>.from(json["projectExtensions"].map((x) => ProjectExtension.fromJson(x)))
+            : [],
+        projectResum: json["projectResum"] != null
+            ? List<ProjectResum>.from(json["projectResum"].map((x) => ProjectResum.fromJson(x)))
+            : [],
     );
 
     Map<dynamic, dynamic> toJson() => {
@@ -38,6 +60,9 @@ class Projects {
         "success": success,
         "CatList": List<dynamic>.from(catList.map((x) => x.toJson())),
         "owners": List<dynamic>.from(owners.map((x) => x.toJson())),
+        "projectStops": List<dynamic>.from(projectStops.map((x) => x.toJson())),
+        "projectExtensions": List<dynamic>.from(projectExtensions.map((x) => x.toJson())),
+        "projectResum": List<dynamic>.from(projectResum.map((x) => x.toJson())),
     };
 }
 
@@ -147,27 +172,27 @@ class Project {
     });
 
     String? note;
-    String contractDate;
-    double budgetedCosts;
-    String awardingDate;
-    int contractorId;
-    String contractNumber;
-    double totalDisbursementEtimad;
-    String mainProjectId;
-    String longLat;
-    int itemNo;
+    int? contractDate;
+    double? budgetedCosts;
+    int? awardingDate;
+    int? contractorId;
+    String? contractNumber;
+    double? totalDisbursementEtimad;
+    String? mainProjectId;
+    String? longLat;
+    int? itemNo;
     int deptNo;
-    String financialYear;
-    double contractValue;
-    String openingEnvelopesDate;
-    int awardingPartyId;
+    String? financialYear;
+    double? contractValue;
+    int openingEnvelopesDate;
+    int? awardingPartyId;
     int catNo;
-    String etimadPlatformRefNo;
-    String contractName;
-    String finishDate;
-    int projectId;
+    String? etimadPlatformRefNo;
+    String? contractName;
+    int? finishDate;
+    int? projectId;
     int impPeriod;
-    String startDate;
+    int? startDate;
     int projectStatusId;
     String? descAr;
     String? descEn;
@@ -200,7 +225,6 @@ class Project {
         descEn: json["descEn"] ?? "", // Provide an empty string as default if descEn is null
     );
 
-
     Map<dynamic, dynamic> toJson() => {
         "note": note,
         "contractDate": contractDate,
@@ -225,23 +249,92 @@ class Project {
         "impPeriod": impPeriod,
         "startDate": startDate,
         "projectStatusId": projectStatusId,
-        "descAr": descArValues.reverse[descAr],
-        "descEn": descEnValues.reverse[descEn],
+        "descAr": descAr,
+        "descEn": descEn,
     };
 }
 
-enum DescAr { EMPTY }
+class ProjectStop {
+    ProjectStop({
+        required this.stopId,
+        required this.projectId,
+        required this.reason,
+        required this.stopDate,
+    });
 
-final descArValues = EnumValues({
-    "وصف المشروع عربي": DescAr.EMPTY
-});
+    int stopId;
+    int projectId;
+    String reason;
+    String stopDate;
 
-enum DescEn { EMPTY }
+    factory ProjectStop.fromJson(Map<dynamic, dynamic> json) => ProjectStop(
+        stopId: json["stopId"],
+        projectId: json["projectId"],
+        reason: json["reason"],
+        stopDate: json["stopDate"],
+    );
 
-final descEnValues = EnumValues({
-    "وصف المشروع انكليزي": DescEn.EMPTY
-});
+    Map<dynamic, dynamic> toJson() => {
+        "stopId": stopId,
+        "projectId": projectId,
+        "reason": reason,
+        "stopDate": stopDate,
+    };
+}
 
+class ProjectExtension {
+    ProjectExtension({
+        required this.extensionId,
+        required this.projectId,
+        required this.extensionReason,
+        required this.extensionPeriod,
+    });
+
+    int extensionId;
+    int projectId;
+    String extensionReason;
+    int extensionPeriod;
+
+    factory ProjectExtension.fromJson(Map<dynamic, dynamic> json) => ProjectExtension(
+        extensionId: json["extensionId"],
+        projectId: json["projectId"],
+        extensionReason: json["extensionReason"],
+        extensionPeriod: json["extensionPeriod"],
+    );
+
+    Map<dynamic, dynamic> toJson() => {
+        "extensionId": extensionId,
+        "projectId": projectId,
+        "extensionReason": extensionReason,
+        "extensionPeriod": extensionPeriod,
+    };
+}
+
+class ProjectResum {
+    ProjectResum({
+        required this.resumId,
+        required this.projectId,
+        required this.resumDate,
+    });
+
+    int resumId;
+    int projectId;
+    String resumDate;
+
+    factory ProjectResum.fromJson(Map<dynamic, dynamic> json) => ProjectResum(
+        resumId: json["resumId"],
+        projectId: json["projectId"],
+        resumDate: json["resumDate"],
+    );
+
+    Map<dynamic, dynamic> toJson() => {
+        "resumId": resumId,
+        "projectId": projectId,
+        "resumDate": resumDate,
+    };
+}
+
+// Helper class to manage enum values
 class EnumValues<T> {
     Map<String, T> map;
     late Map<T, String> reverseMap;

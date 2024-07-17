@@ -254,6 +254,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
           List<ProjectStatus> projectStatus = snapshot.data!.projectStatus;
           Projects? projects = snapshot.data;
 
+
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -261,9 +262,9 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
             itemBuilder: (BuildContext context, int index) {
               Project item = project[index];
 
-              Duration difference = CalculateDateDifference()
-                  .calculateDateDifference(
-                  item.startDate, item.finishDate);
+              // Duration difference = CalculateDateDifference()
+              //     .calculateDateDifference(
+              //     item.startDate, item.finishDate);
 
               var status = _projectsController.getStatusName(
                   projectStatus, item.projectStatusId);
@@ -277,7 +278,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                           projects: projects!,
                           project: item,
                           status: status,
-                          actualDuration: difference.inDays,
+                          actualDuration: item.impPeriod,
                         ),
                       ));
                 },
@@ -320,7 +321,7 @@ class _ProjectsReportsScreenState extends State<ProjectsReportsScreen> {
                             Expanded(
                               child: _buildInfoColumn(
                                 "actualDuration",
-                                difference.inDays.toString() + 'daily'.tr(),
+                                item.impPeriod.toString() + 'daily'.tr(),
                               ),
                             ),
                             Expanded(

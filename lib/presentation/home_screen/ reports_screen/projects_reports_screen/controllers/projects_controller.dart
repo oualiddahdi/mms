@@ -1,11 +1,9 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:project/core/utils/api_constants.dart';
 import 'package:project/core/utils/pref_utils.dart';
-
 import 'package:project/model/projects/projects.dart';
 
 class ProjectsController extends GetxController {
@@ -27,18 +25,21 @@ class ProjectsController extends GetxController {
       if (response.statusCode == 200) {
         final responseData = response.data;
 
-        // تحويل البيانات المسترجعة إلى كائن Projects
-        final responseDataJson = json.decode(responseData);
-        final Projects projects = Projects.fromJson(responseDataJson);
+        // Debug the response data
+        print('Response data: $responseData');
+
+        // Convert the response data directly to Projects
+        final Projects projects = Projects.fromJson(responseData);
+
+        print('Projects object: $projects');
 
         return projects;
       } else {
         print('Failed to load projects. Status code: ${response.statusCode}');
-        throw Exception(
-            'Failed to load projects. Status code: ${response.statusCode}');
+        throw Exception('Failed to load projects. Status code: ${response.statusCode}');
       }
-    } catch (e,s) {
-      log('Error fetching projects',stackTrace: s ,error: e);
+    } catch (e, s) {
+      log('Error fetching projects', stackTrace: s, error: e);
       throw Exception('Error fetching projects: $e');
     }
   }
@@ -47,7 +48,7 @@ class ProjectsController extends GetxController {
     if (projects != null) {
       for (var project in projects) {
         if (project.statusId == projectStatusId) {
-          return project.statusName!;
+          return project.statusName;
         }
       }
     }

@@ -21,6 +21,8 @@ dependencies:
   # Provides a simple and efficient way to manage the app's state.
 
   http: ^1.1.2
+  http_parser: ^4.0.0
+
   # Library for making HTTP requests in a Flutter application.
   # Essential for interacting with the server and fetching data.
 
@@ -63,7 +65,7 @@ dependencies:
   # Hijri calendar for Flutter.
   # Provides support for the Hijri (Islamic) calendar system.
 
-  syncfusion_flutter_charts: ^23.2.7
+  syncfusion_flutter_charts: ^25.2.5
   # Syncfusion charts library for Flutter.
   # Provides a wide range of chart types for data visualization.
 
@@ -119,13 +121,17 @@ dependencies:
   # Library for picking images from the device's gallery or camera.
   # Allows users to select images from their device to use within the app.
 
-  video_player: ^2.2.14
+  video_player: ^2.8.3
   # Video player plugin for Flutter.
   # Allows playing videos in Flutter apps.
 
   permission_handler: ^9.1.0
   # Library for managing permissions in Flutter.
   # Simplifies the process of requesting and checking permissions on the device.
+
+  flutter_inappwebview: ^5.0.0
+
+  chewie: ^1.4.1
 
 dev_dependencies:
   flutter_test:

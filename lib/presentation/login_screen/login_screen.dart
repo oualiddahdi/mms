@@ -104,16 +104,6 @@ class LoginScreen extends StatelessWidget {
                                     passwordController.text,
                                     context);
                               }),
-                          CustomElevatedButton(
-                              height: getVerticalSize(56),
-                              text: "lbl_sign_in".tr(),
-                              margin: getMargin(top: 20),
-                              backgroundColor: ColorConstant.whiteA700,
-                              shape: ButtonShape.RoundedBorder10,
-                              padding: ButtonPadding.PaddingAll16,
-                              fontStyle:
-                                  ButtonFontStyle.ManropeBold16PrimaryColor,
-                              onTap: () {}),
                           SizedBox(height: 18.v),
                           InkWell(
                             onTap: () {

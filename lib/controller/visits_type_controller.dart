@@ -9,7 +9,7 @@ import 'package:project/modules/visit_type_model.dart';
 import 'package:project/presentation/visits_to_project_screen/models/visits_model.dart';
 
 
-class VisitsToProjectDetailsController extends GetxController {
+class VisitsTypeController extends GetxController {
   late final Project project;
   final Dio _dio = Dio();
 
@@ -20,17 +20,13 @@ class VisitsToProjectDetailsController extends GetxController {
   }
 
 
-  Future<VisitsModel> fetchAndSaveVisits() async {
+
+  Future<VisitTypeModel> fetchAndSaveVisitType() async {
     try {
-      final token = Get.find<PrefUtils>().getToken();
 
       final response = await _dio.get(
-        ApiConstants.visits,
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-          },
-        ),
+        ApiConstants.visitType
+
       );
 
       if (response.statusCode == 200) {
@@ -40,11 +36,11 @@ class VisitsToProjectDetailsController extends GetxController {
         print('Response data: $responseData');
 
         // Convert the response data directly to Projects
-        final VisitsModel visitsModel = VisitsModel.fromJson(responseData);
+        final VisitTypeModel visits = VisitTypeModel.fromJson(responseData);
 
-        print('visits object: $visitsModel');
+        print('visits object: $visits');
 
-        return visitsModel;
+        return visits;
       } else {
         print('Failed to load projects. Status code: ${response.statusCode}');
         throw Exception('Failed to load projects. Status code: ${response.statusCode}');
@@ -54,7 +50,6 @@ class VisitsToProjectDetailsController extends GetxController {
       throw Exception('Error fetching projects: $e');
     }
   }
-
 
   // Function to navigate to the second page
   void goToSecondPage(screen) {

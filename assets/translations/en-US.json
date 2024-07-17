@@ -90,8 +90,13 @@
   "basic_information": " Basic Information ",
   "next": " Next ",
   "previous": " Previous ",
-  "complete_data_warning": "Please complete all data before proceeding."
-
-
-
+  "complete_data_warning": "Please complete all data before proceeding.",
+  "type_of_visit": "Type of visit",
+  "visit": "visit",
+  "visitDetail": "Visit Details",
+  "visit_from": "From",
+  "visit_to": "To",
+  "note": "Note",
+  "image_view": "Image view",
+  "video_player": "Video player"
 }

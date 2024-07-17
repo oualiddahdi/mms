@@ -92,6 +92,13 @@
   "basic_information": " البيانات الأساسية ",
   "next": " التالى ",
   "previous": " السابق ",
-  "complete_data_warning": "الرجاء استكمال جميع البيانات قبل المتابعة."
-
+  "complete_data_warning": "الرجاء استكمال جميع البيانات قبل المتابعة.",
+  "type_of_visit": "نوع الزيارة",
+  "visit": "الزيارة",
+  "visitDetail": "تفاصيل الزيارة",
+  "visit_from": "من",
+  "visit_to": "إلى",
+  "note": "ملاحظة",
+  "image_view": "عرض الصورة",
+  "video_player": "مشغل فديوهات"
 }

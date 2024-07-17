@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 1,
-          child: Text('visits').tr(),
+          child: const Text('visits').tr(),
           onTap: () {
             onMorePressed();
           },

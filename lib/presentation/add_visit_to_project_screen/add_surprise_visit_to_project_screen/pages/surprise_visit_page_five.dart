@@ -11,7 +11,7 @@ import 'package:project/widgets/custom_text_form_field.dart';
 import 'package:project/widgets/video_player.dart';
 
 class SurpriseVisitPageFive extends StatelessWidget {
-  const SurpriseVisitPageFive({Key? key}) : super(key: key);
+  const SurpriseVisitPageFive({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,6 @@ class SurpriseVisitPageFive extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: const EdgeInsets.all(mediumPaddingSize),
-                child: Text(
-                  '${'المرئيات'.tr} ( 3 / 3 )',
-                  style: const TextStyle(
-                      color: ColorConstant.black900, fontSize: 14),
-                ),
-              ),
               Obx(() => Container(
                     margin: const EdgeInsets.all(smallPaddingSize),
                     decoration: BoxDecoration(

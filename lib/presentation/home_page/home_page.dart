@@ -2,14 +2,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/instance_manager.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:project/core/utils/image_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
 import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project/presentation/home_page/controller/home_controller.dart';
 import 'package:project/presentation/home_screen/home_screen.dart';
 import 'package:project/widgets/custom_image_view.dart';
+import 'package:get/get.dart';
 
 // Importing other content views
 import '../../core/utils/color_constant.dart';
@@ -29,9 +31,12 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-
 // Define the state for the HomePage widget
 class _HomePageState extends State<HomePage> {
+
+  final HomeController homeController = Get.find<HomeController>();
+
+
   PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
     packageName: 'Unknown',
@@ -43,7 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   // Default screen and title
   Widget currentScreen = HomeScreen();
-  String appBarTitle = 'home'.tr();
+  String appBarTitle = 'home';
 
   @override
   void initState() {
@@ -70,10 +75,10 @@ class _HomePageState extends State<HomePage> {
             Text(
               appBarTitle,
               style: TextStyle(
-                fontSize: 16 .v,
+                fontSize: 16.v,
                 color: ColorConstant.whiteA700,
               ),
-            ),
+            ).tr(),
             const SizedBox(
                 width: 8.0), // Add some spacing between title and icons
             const Spacer(),
@@ -127,6 +132,9 @@ class _HomePageState extends State<HomePage> {
             buildListTile(
                 'settings', MaterialSymbols.settings, const SettingsScreen()),
 
+            // Add the logout tile
+            buildLogoutTile(context),
+
             _infoTile('appVersion', _packageInfo.version)
           ],
         ),
@@ -136,14 +144,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget buildLogoutTile(BuildContext context) {
+    return ListTile(
+      leading: const Icon(MaterialSymbols.logout, color: ColorConstant.primaryColor),
+      title: const Text(
+        'Logout',
+        style: TextStyle(color: ColorConstant.primaryColor),
+      ).tr(),
+      onTap: () {
+        homeController.logout();
+      },
+    );
+  }
+
   // Method to create a ListTile for the drawer
   Padding buildListTile(String titleKey, IconData icon, Widget content) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
         leading: Icon(icon, size: 16.v, color: ColorConstant.blue500),
-        title: Text(titleKey.tr(),
-            style: TextStyle(color: ColorConstant.black900, fontSize: 16.v)),
+        title: Text(titleKey,
+            style: TextStyle(color: ColorConstant.black900, fontSize: 16.v)).tr(),
         trailing: Icon(Icons.arrow_forward_ios,
             size: 16.v, color: ColorConstant.blue500),
         onTap: () {
@@ -151,7 +172,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.pop(context);
           setState(() {
             currentScreen = content;
-            appBarTitle = titleKey.tr();
+            appBarTitle = titleKey;
           });
         },
       ),
@@ -220,12 +241,12 @@ class _HomePageState extends State<HomePage> {
         children: [
           // Title of the row
           Text(
-            title.tr(),
+            title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.adaptSize,
             ),
-          ),
+          ).tr(),
 
           // Subtitle with conditional rendering and custom style
           Text(
@@ -240,3 +261,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

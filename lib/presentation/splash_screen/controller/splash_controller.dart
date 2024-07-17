@@ -21,7 +21,7 @@ class SplashController extends GetxController {
       if (token.isNotEmpty) {
         onTokenExists();
       } else {
-        Get.offNamed(AppRoutes.getStartedScreen);
+        Get.offNamed(AppRoutes.loginScreen);
       }
     });
   }

@@ -16,8 +16,6 @@ import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visi
 import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/binding/add_weekly_visit_to_project_binding.dart';
 import 'package:project/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
 import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
-import 'package:project/presentation/get_started_screen/binding/get_started_binding.dart';
-import 'package:project/presentation/get_started_screen/get_started_screen.dart';
 import 'package:project/presentation/home_screen/home_screen.dart';
 import 'package:project/presentation/login_screen/login_screen.dart';
 import 'package:project/modules/home/content/about_app/about_app_screen.dart';
@@ -124,13 +122,6 @@ class AppRoutes {
       page: () => const SplashScreen(),
       bindings: [
         SplashBinding(),
-      ],
-    ),
-    GetPage(
-      name: getStartedScreen,
-      page: () => const GetStartedScreen(),
-      bindings: [
-        GetStartedBinding(),
       ],
     ),
     GetPage(
