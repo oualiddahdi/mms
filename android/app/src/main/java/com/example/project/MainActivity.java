@@ -1,4 +1,4 @@
-package com.example.project;
+package sa.project_portal.app;
 
 import io.flutter.embedding.android.FlutterFragmentActivity;
 
