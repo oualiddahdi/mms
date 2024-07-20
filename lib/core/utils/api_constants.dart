@@ -17,4 +17,6 @@ class ApiConstants extends GetConnect {
   static const String visits = '${apiUrl}visits';
   static const String visitType = '${apiUrl}visitType';
 
+  static const String workItems = '${apiUrl}workItems';
+
 }

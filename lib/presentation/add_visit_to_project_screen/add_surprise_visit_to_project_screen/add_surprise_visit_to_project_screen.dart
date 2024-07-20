@@ -44,8 +44,8 @@ class _AddSurpriseVisitToProjectScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'surprise_visit'.tr(),
-          showMoreIcon: false,
-          onMorePressed: () {},
+          showMoreIcon: false, controller: null, project: null,
+
         ),
         body: Column(
           children: [

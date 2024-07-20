@@ -19,7 +19,7 @@ import 'package:project/widgets/custom_image_view.dart';
 import '../../routes/app_routes.dart';
 
 class VisitsToProjectDetailsScreen extends StatefulWidget {
-  const VisitsToProjectDetailsScreen({Key? key}) : super(key: key);
+  const VisitsToProjectDetailsScreen({super.key});
 
   @override
   State<VisitsToProjectDetailsScreen> createState() =>
@@ -61,8 +61,7 @@ class _VisitsToProjectDetailsScreenState
               appBar: CustomAppBar(
                 title:
                 '${'visits'.tr()} (${_detailsController.project.contractName})',
-                showMoreIcon: false,
-                onMorePressed: () {},
+                showMoreIcon: false, controller: null, project: null,
               ),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

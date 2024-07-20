@@ -44,8 +44,8 @@ class _AddWeeklyVisitToProjectScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'weekly_visit'.tr(),
-          showMoreIcon: false,
-          onMorePressed: () {},
+          showMoreIcon: false, controller: null, project: null,
+
         ),
         body: Column(
           children: [

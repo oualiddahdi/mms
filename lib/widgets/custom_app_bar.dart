@@ -5,18 +5,21 @@ import 'package:project/core/utils/color_constant.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project/core/utils/color_constant.dart';
+import 'package:project/model/projects/projects.dart';
+import 'package:project/presentation/project_details_screen/controller/project_details_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
-    required this.onMorePressed, // تعريف وظيفة الاكشن كوسيط
-    this.showMoreIcon = false,
-  }) : super(key: key);
+    required this.controller, // تعريف وظيفة الاكشن كوسيط
+    this.showMoreIcon = false, required this.project,
+  });
 
   final String title;
-  final Function onMorePressed; // استخدام وظيفة الاكشن كوسيط
+  final ProjectDetailsController? controller; // استخدام وظيفة الاكشن كوسيط
   final bool showMoreIcon;
+  final Project? project;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           value: 1,
           child: const Text('visits').tr(),
           onTap: () {
-            onMorePressed();
+            controller?.onOnTapVisitsToProjectDetailsScreen(project!);
+          },
+        ),
+        PopupMenuItem(
+          value: 1,
+          child: const Text('quantity_schedule').tr(),
+          onTap: () {
+            controller?.onOnTapQuantityScheduleScreenScreen(project!);
           },
         ),
       ],

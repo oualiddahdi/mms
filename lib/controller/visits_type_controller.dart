@@ -26,7 +26,6 @@ class VisitsTypeController extends GetxController {
 
       final response = await _dio.get(
         ApiConstants.visitType
-
       );
 
       if (response.statusCode == 200) {

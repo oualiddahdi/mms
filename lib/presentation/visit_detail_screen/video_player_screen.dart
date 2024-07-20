@@ -40,8 +40,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'video_player'.tr(),
-          showMoreIcon: false,
-          onMorePressed: () {},
+          showMoreIcon: false, controller: null, project: null,
+          
         ),
         body: FutureBuilder(
           future: _initializeVideoPlayerFuture,

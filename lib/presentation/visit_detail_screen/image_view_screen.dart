@@ -13,8 +13,7 @@ class ImageViewScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'image_view'.tr(),
-          showMoreIcon: false,
-          onMorePressed: () {},
+          showMoreIcon: false, controller: null, project: null,
         ),
         body: Center(
           child: SizedBox(

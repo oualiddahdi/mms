@@ -98,5 +98,10 @@
   "visit_to": "To",
   "note": "Note",
   "image_view": "Image view",
-  "video_player": "Video player"
+  "video_player": "Video player",
+  "quantity_schedule": "Quantity schedule",
+  "grandTotal": "Grand Total",
+  "vat15": "15% VAT",
+  "grandTotalWithVAT": "Grand Total with 15% VAT"
+
 }

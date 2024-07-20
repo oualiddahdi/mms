@@ -100,5 +100,14 @@
   "visit_to": "إلى",
   "note": "ملاحظة",
   "image_view": "عرض الصورة",
-  "video_player": "مشغل فديوهات"
+  "video_player": "مشغل فديوهات",
+  "quantity_schedule": "جدول الكميات",
+  "item": "البند",
+  "unit": "الوحدة",
+  "quantity_in_contract": "الكمية بالعقد",
+  "total_value": "القيمة الاجمالية",
+  "grandTotal": "الاجمالي الكلي",
+  "vat15": "الضريبة المضافة 15%",
+  "grandTotalWithVAT": "الاجمالي الكلي بالضريبة 15%"
+
 }

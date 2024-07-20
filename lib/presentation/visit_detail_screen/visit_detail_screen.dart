@@ -31,8 +31,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'visitDetail'.tr(),
-          showMoreIcon: false,
-          onMorePressed: () {},
+          showMoreIcon: false, controller: null, project: null,
         ),
         body: SingleChildScrollView(
           child: Column(

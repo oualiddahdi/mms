@@ -9,6 +9,10 @@ class ProjectDetailsController extends GetxController {
     Get.toNamed(AppRoutes.visitsToProjectDetailsScreen, arguments: project);
   }
 
+  void onOnTapQuantityScheduleScreenScreen(Project project) {
+    Get.toNamed(AppRoutes.quantityScheduleScreenScreen, arguments: project);
+  }
+
   String getType(List<CatList>? categories, int categoryId) {
     if (categories != null) {
       for (var category in categories) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:project/core/utils/color_constant.dart';
 import 'package:project/core/utils/size_utils.dart';
+import 'package:project/core/utils/sizes.dart';
 import 'package:project/model/projects/projects.dart';
 import 'package:project/widgets/custom_app_bar.dart';
 import 'package:project/widgets/custom_image_view.dart';
@@ -38,10 +39,8 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
         appBar:  CustomAppBar(
           title: 'projectDetails',
           showMoreIcon: true,
-          onMorePressed: () {
-            controller.onOnTapVisitsToProjectDetailsScreen(widget.project);
-
-          },
+          controller: controller, project: widget.project
+         ,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,6 +129,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
       ),
     );
   }
+
 
   // Helper function to create each info column
   Widget _buildInfoColumn(String label, String value) {
