@@ -4,16 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/pref_utils.dart';
-import 'package:project/core/utils/shared_preferences_manager.dart';
-import 'package:project/presentation/home_page/controller/home_controller.dart';
-import 'package:project/presentation/language_screen/controllers/language_controller.dart';
-import 'package:project/presentation/splash_screen/binding/splash_binding.dart';
-import 'package:project/routes/app_routes.dart';
-import 'package:project/src/jhijri/jhijri_widgets.dart';
-import 'package:project/theme/theme_helper.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
+import 'package:project_portal/core/utils/shared_preferences_manager.dart';
+import 'package:project_portal/presentation/home_page/controller/home_controller.dart';
+import 'package:project_portal/presentation/language_screen/controllers/language_controller.dart';
+import 'package:project_portal/presentation/splash_screen/binding/splash_binding.dart';
+import 'package:project_portal/routes/app_routes.dart';
+import 'package:project_portal/src/jhijri/jhijri_widgets.dart';
+import 'package:project_portal/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -40,7 +40,10 @@ void main() async {
   // Run the app with localization settings
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('ar', 'DZ') , Locale('en', 'US'), ],
+      supportedLocales: const [
+        Locale('ar', 'DZ'),
+        Locale('en', 'US'),
+      ],
       path: 'assets/translations',
       fallbackLocale: const Locale('ar', 'SA'),
       startLocale: locale,
@@ -70,7 +73,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageController()),
       ],
       child: GetMaterialApp(
-
         theme: theme,
 
         // Disable the debug banner in development mode
@@ -160,5 +162,3 @@ Future<JPickerValue?> openDialog(BuildContext context) async {
     ),
   );
 }
-
-

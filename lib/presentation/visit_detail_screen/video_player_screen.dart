@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project/widgets/custom_app_bar.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
@@ -20,8 +20,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.networkUrl(
-      Uri.parse(
-          widget.videoUrl),
+      Uri.parse(widget.videoUrl),
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
     _initializeVideoPlayerFuture = _controller.initialize();
@@ -40,8 +39,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'video_player'.tr(),
-          showMoreIcon: false, controller: null, project: null,
-          
+          showMoreIcon: false,
+          controller: null,
+          project: null,
         ),
         body: FutureBuilder(
           future: _initializeVideoPlayerFuture,

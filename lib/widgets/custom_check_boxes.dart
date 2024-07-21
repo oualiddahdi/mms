@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/sizes.dart';
+import 'package:project_portal/core/utils/sizes.dart';
 
 class CustomCheckBoxes extends StatelessWidget {
   final String title;
@@ -23,7 +23,6 @@ class CustomCheckBoxes extends StatelessWidget {
         leading: _customRadioButton(context),
         title: Text(
           title,
-
           style: const TextStyle(fontSize: smallFontSize),
         ),
       ),

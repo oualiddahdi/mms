@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
 
 class CupertinoRadioButtonListTile extends StatelessWidget {
   final String title;
@@ -41,22 +41,21 @@ class CupertinoRadioButtonListTile extends StatelessWidget {
       child: Center(
         child: isSelected
             ? Text(
-          title,
-          style: const TextStyle(
-            fontSize: smallFontSize,
-            color: ColorConstant.primaryColor,
-
-          ),
-        )
+                title,
+                style: const TextStyle(
+                  fontSize: smallFontSize,
+                  color: ColorConstant.primaryColor,
+                ),
+              )
             : Text(
-          title,
-
-          style: TextStyle(
-
-            fontSize: smallFontSize,
-            color: isSelected ? ColorConstant.primaryColor :ColorConstant.whiteA700,
-          ),
-        ),
+                title,
+                style: TextStyle(
+                  fontSize: smallFontSize,
+                  color: isSelected
+                      ? ColorConstant.primaryColor
+                      : ColorConstant.whiteA700,
+                ),
+              ),
       ),
     );
   }

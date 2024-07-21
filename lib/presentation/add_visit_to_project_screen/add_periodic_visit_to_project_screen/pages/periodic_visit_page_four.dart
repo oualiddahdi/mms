@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/widgets/custom_check_boxes.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/widgets/custom_check_boxes.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
 
 import '../controllers/add_periodic_visit_to_project_controller.dart';
 
@@ -16,10 +16,7 @@ class PeriodicVisitPageFour extends StatefulWidget {
 }
 
 class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
-
   final controller = Get.find<AddPeriodicVisitToProjectController>();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,6 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                 'Reasons for Delay',
                 style: TextStyle(color: Colors.black, fontSize: 14),
               ),
-
               const SizedBox(
                 height: 16.0,
               ),
@@ -43,7 +39,8 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   border: Border.all(
-                    color: Colors.orange, // Example color, replace with your color constant
+                    color: Colors
+                        .orange, // Example color, replace with your color constant
                   ),
                 ),
                 child: Column(
@@ -61,7 +58,8 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                                 title: 'Intentional delay',
                                 onChanged: (value) {
                                   setState(() {
-                                    controller.groupValue1 = value; // Update the state
+                                    controller.groupValue1 =
+                                        value; // Update the state
                                   });
                                 },
                               ),
@@ -74,7 +72,8 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                                 title: 'Approval delays',
                                 onChanged: (value) {
                                   setState(() {
-                                    controller.groupValue1 = value; // Update the state
+                                    controller.groupValue1 =
+                                        value; // Update the state
                                   });
                                 },
                               ),
@@ -91,7 +90,8 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                                 title: 'Heavy rainfalls',
                                 onChanged: (value) {
                                   setState(() {
-                                    controller.groupValue1 = value; // Update the state
+                                    controller.groupValue1 =
+                                        value; // Update the state
                                   });
                                 },
                               ),
@@ -104,7 +104,8 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                                 title: 'Others',
                                 onChanged: (value) {
                                   setState(() {
-                                    controller.groupValue1 = value; // Update the state
+                                    controller.groupValue1 =
+                                        value; // Update the state
                                   });
                                 },
                               ),
@@ -116,7 +117,6 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: 16.0,
               ),
@@ -130,17 +130,17 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                       autofocus: false,
                       textInputType: TextInputType.multiline,
                       hintText: "أضافة تعليق".tr(),
-                      hintStyle: const TextStyle(fontSize: smallFontSize,),
-                      textStyle: const TextStyle(fontSize: smallFontSize,),
+                      hintStyle: const TextStyle(
+                        fontSize: smallFontSize,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: smallFontSize,
+                      ),
                       maxLines: 7,
-
-                      prefixConstraints:
-                      BoxConstraints(maxHeight: 48.v),
+                      prefixConstraints: BoxConstraints(maxHeight: 48.v),
                       contentPadding: const EdgeInsets.all(largePaddingSize)),
                 ),
-
               ),
-
               const SizedBox(
                 height: 16.0,
               ),
@@ -154,18 +154,17 @@ class _PeriodicVisitPageFourState extends State<PeriodicVisitPageFour> {
                       autofocus: false,
                       textInputType: TextInputType.multiline,
                       hintText: "الاجراءات المتخذة لازالة اسباب التأخر".tr(),
-                      hintStyle: const TextStyle(fontSize: smallFontSize,),
-                      textStyle: const TextStyle(fontSize: smallFontSize,),
+                      hintStyle: const TextStyle(
+                        fontSize: smallFontSize,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: smallFontSize,
+                      ),
                       maxLines: 7,
-
-                      prefixConstraints:
-                      BoxConstraints(maxHeight: 48.v),
+                      prefixConstraints: BoxConstraints(maxHeight: 48.v),
                       contentPadding: const EdgeInsets.all(largePaddingSize)),
                 ),
-
               ),
-
-
             ],
           ),
         ),

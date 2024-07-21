@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/theme/custom_text_style.dart';
-import 'package:project/theme/theme_helper.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/theme/custom_text_style.dart';
+import 'package:project_portal/theme/theme_helper.dart';
 
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({

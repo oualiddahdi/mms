@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
 
 import '../controllers/add_aesthetic_visit_to_project_controller.dart';
 

@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_three.dart';
-import 'package:project/widgets/custom_app_bar.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_five.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_four.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_six.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/pages/periodic_visit_page_three.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
 
 import 'controllers/add_periodic_visit_to_project_controller.dart';
 import 'pages/periodic_visit_page_first.dart';
@@ -23,9 +23,7 @@ class AddPeriodicVisitToProjectScreen extends StatefulWidget {
 
 class _AddPeriodicVisitToProjectScreenState
     extends State<AddPeriodicVisitToProjectScreen> {
-
   final controller = Get.find<AddPeriodicVisitToProjectController>();
-
 
   late PageController _pageController;
   int _currentPageIndex = 0;
@@ -52,9 +50,9 @@ class _AddPeriodicVisitToProjectScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'periodic_visit'.tr(),
-          showMoreIcon: false, controller: null, project: null,
-
-
+          showMoreIcon: false,
+          controller: null,
+          project: null,
         ),
         body: Column(
           children: [
@@ -93,7 +91,8 @@ class _AddPeriodicVisitToProjectScreenState
           if (_currentPageIndex > 0) _buildPreviousButton(),
           Text(
             '${_currentPageIndex + 1} / ${_pages.length}',
-            style: const TextStyle(color: Colors.black, fontSize: smallFontSize),
+            style:
+                const TextStyle(color: Colors.black, fontSize: smallFontSize),
           ),
           if (_currentPageIndex < _pages.length - 1) _buildNextButton(),
         ],
@@ -108,8 +107,8 @@ class _AddPeriodicVisitToProjectScreenState
           const Icon(Icons.arrow_back_ios),
           Text(
             'previous'.tr(),
-            style:
-                const TextStyle(color: ColorConstant.primaryGold, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryGold, fontSize: smallFontSize),
           ),
         ],
       ),
@@ -128,7 +127,8 @@ class _AddPeriodicVisitToProjectScreenState
         children: [
           Text(
             'next'.tr(),
-            style: const TextStyle(color: ColorConstant.primaryColor, fontSize: smallFontSize),
+            style: const TextStyle(
+                color: ColorConstant.primaryColor, fontSize: smallFontSize),
           ),
           const Icon(Icons.arrow_forward_ios),
         ],
@@ -143,7 +143,6 @@ class _AddPeriodicVisitToProjectScreenState
         } else {
           // أظهر رسالة أو اتخذ إجراء إذا لم تكن البيانات مكتملة
           ScaffoldMessenger.of(context).showSnackBar(
-
             SnackBar(
               content: Text('complete_data_warning').tr(),
             ),

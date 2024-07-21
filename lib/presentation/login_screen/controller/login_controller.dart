@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
-import 'package:project/core/errors/exceptions.dart';
-import 'package:project/core/network/network_info.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/delight_toast_bar.dart';
-import 'package:project/core/utils/logger.dart';
-import 'package:project/core/utils/progress_dialog_utils.dart';
-import 'package:project/presentation/home_page/home_page.dart';
-import 'package:project/presentation/login_screen/models/login/post_login_resp.dart';
-import 'package:project/routes/app_routes.dart';
+import 'package:project_portal/core/errors/exceptions.dart';
+import 'package:project_portal/core/network/network_info.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/delight_toast_bar.dart';
+import 'package:project_portal/core/utils/logger.dart';
+import 'package:project_portal/core/utils/progress_dialog_utils.dart';
+import 'package:project_portal/presentation/home_page/home_page.dart';
+import 'package:project_portal/presentation/login_screen/models/login/post_login_resp.dart';
+import 'package:project_portal/routes/app_routes.dart';
 
 import '../../../core/utils/pref_utils.dart';
 import 'dart:convert';

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project/core/network/network_info.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/logger.dart';
-import 'package:project/core/utils/pref_utils.dart';
+import 'package:project_portal/core/network/network_info.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/logger.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
 import 'package:http/http.dart' as http;
-import 'package:project/core/utils/progress_dialog_utils.dart';
-import 'package:project/model/projects/projects.dart';
+import 'package:project_portal/core/utils/progress_dialog_utils.dart';
+import 'package:project_portal/model/projects/projects.dart';
 import 'package:path/path.dart' as path;
 
 class AddSurpriseVisitToProjectController extends GetxController {
@@ -126,14 +126,13 @@ class AddSurpriseVisitToProjectController extends GetxController {
     try {
       visitFrom = startDateController.text.toString();
       visitTo = endDateController.text.toString();
-      note  = reportVisualsController.text.toString();
+      note = reportVisualsController.text.toString();
 
       if (images.isNotEmpty &&
           videos.isNotEmpty &&
           visitFrom != '' &&
           visitTo != '' &&
           note != '') {
-
         // Combine images and videos into a single list
         List<XFile> allFiles = [];
         allFiles.addAll(images);

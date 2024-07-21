@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:project/core/utils/pref_utils.dart';
-import 'package:project/presentation/home_page/home_page.dart';
-import 'package:project/routes/app_routes.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
+import 'package:project_portal/presentation/home_page/home_page.dart';
+import 'package:project_portal/routes/app_routes.dart';
 
 class SplashModel {}
 
@@ -30,7 +30,7 @@ class SplashController extends GetxController {
     Get.offAll(const HomePage());
   }
 
-   requestPermissions() async {
+  requestPermissions() async {
     if (Platform.isAndroid) {
       await Permission.camera.request();
       await Permission.storage.request();
@@ -39,5 +39,4 @@ class SplashController extends GetxController {
       await Permission.camera.request();
     }
   }
-
 }

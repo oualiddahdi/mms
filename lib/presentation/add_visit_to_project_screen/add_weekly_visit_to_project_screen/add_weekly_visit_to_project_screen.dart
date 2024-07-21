@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/controllers/add_weekly_visit_to_project_controller.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_first.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_five.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_six.dart';
-import 'package:project/widgets/custom_app_bar.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/controllers/add_weekly_visit_to_project_controller.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_first.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_five.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/pages/weekly_visit_page_six.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
 
 class AddWeeklyVisitToProjectScreen extends StatefulWidget {
   const AddWeeklyVisitToProjectScreen({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class _AddWeeklyVisitToProjectScreenState
     const WeeklyVisitPageFirst(),
     const WeeklyVisitPageFive(),
     const WeeklyVisitPageSix(),
-
   ];
 
   @override
@@ -44,8 +43,9 @@ class _AddWeeklyVisitToProjectScreenState
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'weekly_visit'.tr(),
-          showMoreIcon: false, controller: null, project: null,
-
+          showMoreIcon: false,
+          controller: null,
+          project: null,
         ),
         body: Column(
           children: [

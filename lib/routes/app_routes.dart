@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/add_aesthetic_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/binding/add_aesthetic_visit_to_project_binding.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/add_daily_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/binding/add_daily_visit_to_project_binding.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/add_periodic_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/add_safety_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/binding/add_safety_visit_to_project_binding.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_surprise_visit_to_project_screen/add_surprise_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_surprise_visit_to_project_screen/binding/add_surprise_visit_to_project_binding.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/binding/add_weekly_contractor_visit_to_project_binding.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/add_weekly_visit_to_project_screen.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/binding/add_weekly_visit_to_project_binding.dart';
-import 'package:project/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
-import 'package:project/presentation/forgot_password_screen/forgot_password_screen.dart';
-import 'package:project/presentation/home_screen/home_screen.dart';
-import 'package:project/presentation/login_screen/login_screen.dart';
-import 'package:project/modules/home/content/about_app/about_app_screen.dart';
-import 'package:project/modules/home/content/messages/messages_screen.dart';
-import 'package:project/modules/home/content/notifications/notifications_screen.dart';
-import 'package:project/presentation/list_projcts_screen/list_projcts_screen.dart';
-import 'package:project/presentation/otp_screen/otp_screen.dart';
-import 'package:project/presentation/quantity_schedule_screen/quantity_schedule_screen.dart';
-import 'package:project/presentation/recover_password_screen/binding/recover_password_binding.dart';
-import 'package:project/presentation/recover_password_screen/recover_password_screen.dart';
-import 'package:project/presentation/settings_screen/settings_screen.dart';
-import 'package:project/modules/home/content/tasks/tasks_screen.dart';
-import 'package:project/modules/home/content/visits/visits_screen.dart';
-import 'package:project/presentation/language_screen/language_screen.dart';
+import 'package:project_portal/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/add_aesthetic_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/binding/add_aesthetic_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/add_daily_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/binding/add_daily_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/add_periodic_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/add_safety_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/binding/add_safety_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_surprise_visit_to_project_screen/add_surprise_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_surprise_visit_to_project_screen/binding/add_surprise_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/binding/add_weekly_contractor_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/add_weekly_visit_to_project_screen.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/binding/add_weekly_visit_to_project_binding.dart';
+import 'package:project_portal/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
+import 'package:project_portal/presentation/forgot_password_screen/forgot_password_screen.dart';
+import 'package:project_portal/presentation/home_screen/home_screen.dart';
+import 'package:project_portal/presentation/login_screen/login_screen.dart';
+import 'package:project_portal/modules/home/content/about_app/about_app_screen.dart';
+import 'package:project_portal/modules/home/content/messages/messages_screen.dart';
+import 'package:project_portal/modules/home/content/notifications/notifications_screen.dart';
+import 'package:project_portal/presentation/list_projcts_screen/list_projcts_screen.dart';
+import 'package:project_portal/presentation/otp_screen/otp_screen.dart';
+import 'package:project_portal/presentation/quantity_schedule_screen/quantity_schedule_screen.dart';
+import 'package:project_portal/presentation/recover_password_screen/binding/recover_password_binding.dart';
+import 'package:project_portal/presentation/recover_password_screen/recover_password_screen.dart';
+import 'package:project_portal/presentation/settings_screen/settings_screen.dart';
+import 'package:project_portal/modules/home/content/tasks/tasks_screen.dart';
+import 'package:project_portal/modules/home/content/visits/visits_screen.dart';
+import 'package:project_portal/presentation/language_screen/language_screen.dart';
 import '../presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/binding/visits_to_project_details_binding.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
 import '../presentation/splash_screen/binding/splash_binding.dart';
@@ -95,17 +95,11 @@ class AppRoutes {
   static const String addDailyVisitToProject =
       '/add_daily_visit_to_project_screen';
 
-
   static const String addWeeklyContractorVisitToProject =
       '/add_weekly_contractor_visit_to_project_screen';
 
   static const String addAestheticVisitToProject =
       '/add_aesthetic_visit_to_project_screen';
-
-
-
-
-
 
   static Map<String, WidgetBuilder> routes = {
     languageScreen: (context) => const LanguageScreen(),
@@ -163,7 +157,6 @@ class AppRoutes {
         VisitsToProjectDetailsBinding(),
       ],
     ),
-
     GetPage(
       name: quantityScheduleScreenScreen,
       page: () => const QuantityScheduleScreen(),
@@ -171,7 +164,6 @@ class AppRoutes {
         VisitsToProjectDetailsBinding(),
       ],
     ),
-
     GetPage(
       name: addPeriodicVisitToProjectScreen,
       page: () => const AddPeriodicVisitToProjectScreen(),
@@ -179,8 +171,6 @@ class AppRoutes {
         AddPeriodicVisitToProjectBinding(),
       ],
     ),
-
-
     GetPage(
       name: addWeeklyVisitToProject,
       page: () => const AddWeeklyVisitToProjectScreen(),
@@ -202,7 +192,6 @@ class AppRoutes {
         AddSafetyVisitToProjectBinding(),
       ],
     ),
-
     GetPage(
       name: addDailyVisitToProject,
       page: () => const AddDailyVisitToProjectScreen(),
@@ -210,8 +199,6 @@ class AppRoutes {
         AddDailyVisitToProjectBinding(),
       ],
     ),
-
-
     GetPage(
       name: addWeeklyContractorVisitToProject,
       page: () => const AddWeeklyContractorVisitToProjectScreen(),
@@ -219,7 +206,6 @@ class AppRoutes {
         AddWeeklyContractorVisitToProjectBinding(),
       ],
     ),
-
     GetPage(
       name: addAestheticVisitToProject,
       page: () => const AddAestheticVisitToProjectScreen(),
@@ -227,6 +213,5 @@ class AppRoutes {
         AddAestheticVisitToProjectBinding(),
       ],
     ),
-
   ];
 }

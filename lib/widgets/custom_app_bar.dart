@@ -1,19 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/model/projects/projects.dart';
-import 'package:project/presentation/project_details_screen/controller/project_details_controller.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/model/projects/projects.dart';
+import 'package:project_portal/presentation/project_details_screen/controller/project_details_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
     required this.controller, // تعريف وظيفة الاكشن كوسيط
-    this.showMoreIcon = false, required this.project,
+    this.showMoreIcon = false,
+    required this.project,
   });
 
   final String title;
@@ -25,40 +26,40 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     Widget moreIcon = showMoreIcon
         ? PopupMenuButton<int>(
-      icon: const Icon(Icons.more_vert, color: Colors.white),
-      offset: Offset(0, 50),
-      padding: EdgeInsets.zero,
-      itemBuilder: (context) => [
-        PopupMenuItem(
-          value: 1,
-          child: const Text('visits').tr(),
-          onTap: () {
-            controller?.onOnTapVisitsToProjectDetailsScreen(project!);
-          },
-        ),
-        PopupMenuItem(
-          value: 1,
-          child: const Text('quantity_schedule').tr(),
-          onTap: () {
-            controller?.onOnTapQuantityScheduleScreenScreen(project!);
-          },
-        ),
-      ],
-      initialValue: 1,
-      onSelected: (value) {
-        // Handle the selection
-      },
-      onCanceled: () {
-        // Handle the cancellation
-      },
-      tooltip: 'Show menu',
-      elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      color: Colors.grey[200],
-      enabled: true,
-    )
+            icon: const Icon(Icons.more_vert, color: Colors.white),
+            offset: Offset(0, 50),
+            padding: EdgeInsets.zero,
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 1,
+                child: const Text('visits').tr(),
+                onTap: () {
+                  controller?.onOnTapVisitsToProjectDetailsScreen(project!);
+                },
+              ),
+              PopupMenuItem(
+                value: 1,
+                child: const Text('quantity_schedule').tr(),
+                onTap: () {
+                  controller?.onOnTapQuantityScheduleScreenScreen(project!);
+                },
+              ),
+            ],
+            initialValue: 1,
+            onSelected: (value) {
+              // Handle the selection
+            },
+            onCanceled: () {
+              // Handle the cancellation
+            },
+            tooltip: 'Show menu',
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            color: Colors.grey[200],
+            enabled: true,
+          )
         : Container(); // أو أي عنصر غير مرئي
 
     return Container(

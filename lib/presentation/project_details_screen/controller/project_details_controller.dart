@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:project/model/projects/projects.dart';
-import 'package:project/routes/app_routes.dart';
+import 'package:project_portal/model/projects/projects.dart';
+import 'package:project_portal/routes/app_routes.dart';
 
 class ProjectDetailsModel {}
 
@@ -34,5 +34,4 @@ class ProjectDetailsController extends GetxController {
     }
     return "Unknown";
   }
-
 }

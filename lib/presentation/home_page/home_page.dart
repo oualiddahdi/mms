@@ -5,12 +5,12 @@ import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:get/instance_manager.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:project/core/utils/image_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/modules/home/content/ir_requests/ir_requests_screen.dart';
-import 'package:project/presentation/home_page/controller/home_controller.dart';
-import 'package:project/presentation/home_screen/home_screen.dart';
-import 'package:project/widgets/custom_image_view.dart';
+import 'package:project_portal/core/utils/image_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project_portal/presentation/home_page/controller/home_controller.dart';
+import 'package:project_portal/presentation/home_screen/home_screen.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
 import 'package:get/get.dart';
 
 // Importing other content views
@@ -33,9 +33,7 @@ class HomePage extends StatefulWidget {
 
 // Define the state for the HomePage widget
 class _HomePageState extends State<HomePage> {
-
   final HomeController homeController = Get.find<HomeController>();
-
 
   PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
@@ -146,7 +144,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildLogoutTile(BuildContext context) {
     return ListTile(
-      leading: const Icon(MaterialSymbols.logout, color: ColorConstant.primaryColor),
+      leading:
+          const Icon(MaterialSymbols.logout, color: ColorConstant.primaryColor),
       title: const Text(
         'Logout',
         style: TextStyle(color: ColorConstant.primaryColor),
@@ -164,7 +163,8 @@ class _HomePageState extends State<HomePage> {
       child: ListTile(
         leading: Icon(icon, size: 16.v, color: ColorConstant.blue500),
         title: Text(titleKey,
-            style: TextStyle(color: ColorConstant.black900, fontSize: 16.v)).tr(),
+                style: TextStyle(color: ColorConstant.black900, fontSize: 16.v))
+            .tr(),
         trailing: Icon(Icons.arrow_forward_ios,
             size: 16.v, color: ColorConstant.blue500),
         onTap: () {
@@ -261,5 +261,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-

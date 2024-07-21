@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/controllers/add_safety_visit_to_project_controller.dart';
-import 'package:project/widgets/custom_radio_button_list_tile.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/controllers/add_safety_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/custom_radio_button_list_tile.dart';
 
 class SafetyVisitPageFirst extends StatefulWidget {
   const SafetyVisitPageFirst({Key? key}) : super(key: key);
@@ -113,10 +113,10 @@ class _SafetyVisitPageFirstState extends State<SafetyVisitPageFirst> {
               // Widget for Off-Duty Guard
               buildRadioButtonGroup(
                 title: 'لوحة السلامة اولا بالمدخل',
-                value: controller.entranceSafetyBoardValue ,
+                value: controller.entranceSafetyBoardValue,
                 onChanged: (value) {
                   setState(() {
-                    controller.entranceSafetyBoardValue  = value;
+                    controller.entranceSafetyBoardValue = value;
                   });
                 },
               ),
@@ -124,10 +124,10 @@ class _SafetyVisitPageFirstState extends State<SafetyVisitPageFirst> {
               // Widget for Off-Duty Guard
               buildRadioButtonGroup(
                 title: 'سلامة العمال في الموقع',
-                value: controller.siteWorkersSafetyValue ,
+                value: controller.siteWorkersSafetyValue,
                 onChanged: (value) {
                   setState(() {
-                    controller.siteWorkersSafetyValue  = value;
+                    controller.siteWorkersSafetyValue = value;
                   });
                 },
               ),
@@ -135,10 +135,10 @@ class _SafetyVisitPageFirstState extends State<SafetyVisitPageFirst> {
               // Widget for Off-Duty Guard
               buildRadioButtonGroup(
                 title: 'سلامة الموقع العام',
-                value: controller.generalSiteSafetyValue ,
+                value: controller.generalSiteSafetyValue,
                 onChanged: (value) {
                   setState(() {
-                    controller.generalSiteSafetyValue  = value;
+                    controller.generalSiteSafetyValue = value;
                   });
                 },
               ),
@@ -146,10 +146,10 @@ class _SafetyVisitPageFirstState extends State<SafetyVisitPageFirst> {
               // Widget for Off-Duty Guard
               buildRadioButtonGroup(
                 title: 'حماية الشرفات العالية والحفر',
-                value: controller.highPlatformProtectionValue ,
+                value: controller.highPlatformProtectionValue,
                 onChanged: (value) {
                   setState(() {
-                    controller.highPlatformProtectionValue  = value;
+                    controller.highPlatformProtectionValue = value;
                   });
                 },
               ),

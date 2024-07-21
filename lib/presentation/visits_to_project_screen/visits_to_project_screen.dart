@@ -3,18 +3,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/controller/visits_type_controller.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/image_constant.dart';
-import 'package:project/core/utils/locale_utils.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/modules/visit_type_model.dart';
-import 'package:project/presentation/visit_detail_screen/visit_detail_screen.dart';
-import 'package:project/presentation/visits_to_project_screen/controllers/visits_to_project_controller.dart';
-import 'package:project/presentation/visits_to_project_screen/models/visits_model.dart';
-import 'package:project/widgets/custom_app_bar.dart';
-import 'package:project/widgets/custom_image_view.dart';
+import 'package:project_portal/controller/visits_type_controller.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/image_constant.dart';
+import 'package:project_portal/core/utils/locale_utils.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/modules/visit_type_model.dart';
+import 'package:project_portal/presentation/visit_detail_screen/visit_detail_screen.dart';
+import 'package:project_portal/presentation/visits_to_project_screen/controllers/visits_to_project_controller.dart';
+import 'package:project_portal/presentation/visits_to_project_screen/models/visits_model.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
 
 import '../../routes/app_routes.dart';
 
@@ -29,7 +29,7 @@ class VisitsToProjectDetailsScreen extends StatefulWidget {
 class _VisitsToProjectDetailsScreenState
     extends State<VisitsToProjectDetailsScreen> {
   final VisitsToProjectDetailsController _detailsController =
-  Get.put(VisitsToProjectDetailsController());
+      Get.put(VisitsToProjectDetailsController());
 
   final VisitsTypeController _typeController = Get.put(VisitsTypeController());
 
@@ -60,8 +60,10 @@ class _VisitsToProjectDetailsScreenState
               backgroundColor: ColorConstant.whiteA700,
               appBar: CustomAppBar(
                 title:
-                '${'visits'.tr()} (${_detailsController.project.contractName})',
-                showMoreIcon: false, controller: null, project: null,
+                    '${'visits'.tr()} (${_detailsController.project.contractName})',
+                showMoreIcon: false,
+                controller: null,
+                project: null,
               ),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,18 +77,18 @@ class _VisitsToProjectDetailsScreenState
                             decoration: BoxDecoration(
                               border: Border.all(width: 1, color: Colors.grey),
                               borderRadius:
-                              BorderRadius.circular(smallPaddingSize),
+                                  BorderRadius.circular(smallPaddingSize),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: smallPaddingSize),
                               child: CustomDropdown(
                                 listItemStyle:
-                                const TextStyle(fontSize: smallFontSize),
+                                    const TextStyle(fontSize: smallFontSize),
                                 items: itemSections,
                                 hintText: 'types_of_visits'.tr(),
                                 hintStyle:
-                                const TextStyle(fontSize: smallFontSize),
+                                    const TextStyle(fontSize: smallFontSize),
                                 controller: jobRoleCtrl,
                               ),
                             ),
@@ -98,7 +100,7 @@ class _VisitsToProjectDetailsScreenState
                             decoration: BoxDecoration(
                               color: ColorConstant.primaryColor,
                               borderRadius:
-                              BorderRadius.circular(smallPaddingSize),
+                                  BorderRadius.circular(smallPaddingSize),
                             ),
                             child: InkWell(
                               onTap: () {
@@ -108,7 +110,7 @@ class _VisitsToProjectDetailsScreenState
                                 padding: const EdgeInsets.all(largePaddingSize),
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     const Text(
                                       'add_a_visit',
@@ -153,7 +155,8 @@ class _VisitsToProjectDetailsScreenState
           List<Visit> visits = snapshot.data!.visits;
 
           return Expanded(
-            child: SingleChildScrollView( // Wrap with SingleChildScrollView
+            child: SingleChildScrollView(
+              // Wrap with SingleChildScrollView
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -167,7 +170,8 @@ class _VisitsToProjectDetailsScreenState
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => VisitDetailScreen(visit: visits[index]),
+                              builder: (context) =>
+                                  VisitDetailScreen(visit: visits[index]),
                             ),
                           );
                         },
@@ -184,8 +188,10 @@ class _VisitsToProjectDetailsScreenState
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _buildInfoText('Visit From', visits[index].visitFrom.toString()),
-                                _buildInfoText('Code', 'Visit ${visits[index].id.toString()}'),
+                                _buildInfoText('Visit From',
+                                    visits[index].visitFrom.toString()),
+                                _buildInfoText('Code',
+                                    'Visit ${visits[index].id.toString()}'),
                                 _buildInfoText('Type of Visit', 'زيارة مفاجأه'),
                               ],
                             ),
@@ -239,9 +245,12 @@ class _VisitsToProjectDetailsScreenState
                           : visit[index].nameEn;
 
                       return buildListTile(
-                        visitName.tr(), // Assuming the translation function is .tr()
-                        _getVisitImage(visit[index].id), // Function to get image based on visit type
-                        _getVisitRoute(visit[index].id), // Function to get route based on visit type
+                        visitName
+                            .tr(), // Assuming the translation function is .tr()
+                        _getVisitImage(visit[index]
+                            .id), // Function to get image based on visit type
+                        _getVisitRoute(visit[index]
+                            .id), // Function to get route based on visit type
                       );
                     },
                   );

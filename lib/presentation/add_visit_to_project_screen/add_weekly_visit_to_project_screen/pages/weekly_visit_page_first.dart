@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/controllers/add_weekly_visit_to_project_controller.dart';
-import 'package:project/widgets/custom_radio_button_list_tile.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_visit_to_project_screen/controllers/add_weekly_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/custom_radio_button_list_tile.dart';
 
 class WeeklyVisitPageFirst extends StatefulWidget {
   const WeeklyVisitPageFirst({Key? key}) : super(key: key);
@@ -98,7 +98,6 @@ class _WeeklyVisitPageFirstState extends State<WeeklyVisitPageFirst> {
                   });
                 },
               ),
-
             ],
           ),
         ),

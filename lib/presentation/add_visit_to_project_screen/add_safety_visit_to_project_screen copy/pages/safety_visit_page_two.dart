@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/controllers/add_safety_visit_to_project_controller.dart';
-import 'package:project/widgets/custom_radio_button_list_tile.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_safety_visit_to_project_screen%20copy/controllers/add_safety_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/custom_radio_button_list_tile.dart';
 
 class SafetyVisitPageTwo extends StatefulWidget {
   const SafetyVisitPageTwo({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class _SafetyVisitPageTwoState extends State<SafetyVisitPageTwo> {
             children: [
               Container(
                 margin: const EdgeInsets.all(mediumPaddingSize),
-
                 child: Text(
                   '${'احتياطات الامن'.tr()} ( 2 / 3 )',
                   style: const TextStyle(

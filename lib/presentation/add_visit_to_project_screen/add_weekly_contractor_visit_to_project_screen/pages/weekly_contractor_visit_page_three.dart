@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
 
 import '../controllers/add_weekly_contractor_visit_to_project_controller.dart';
 
@@ -48,7 +48,6 @@ class _WeeklyContractorVisitPageThreeState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Padding(
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
@@ -68,7 +67,8 @@ class _WeeklyContractorVisitPageThreeState
                         children: [
                           Flexible(
                               child: CustomTextFormField(
-                                  controller: controller.projectManagementManagerValue,
+                                  controller:
+                                      controller.projectManagementManagerValue,
                                   autofocus: false,
                                   hintText: "0".tr(),
                                   textInputType: TextInputType.number,
@@ -79,7 +79,6 @@ class _WeeklyContractorVisitPageThreeState
                         ],
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.all(largePaddingSize),
                       child: Text(
@@ -92,19 +91,20 @@ class _WeeklyContractorVisitPageThreeState
                       margin: const EdgeInsets.all(largePaddingSize),
                       decoration: const BoxDecoration(
                         borderRadius:
-                        BorderRadius.all(Radius.circular(mediumBorderSize)),
+                            BorderRadius.all(Radius.circular(mediumBorderSize)),
                         color: ColorConstant.primaryColor,
                       ),
                       child: Row(
                         children: [
                           Flexible(
                               child: CustomTextFormField(
-                                  controller: controller.directorOfTechnicalAffairsValue,
+                                  controller: controller
+                                      .directorOfTechnicalAffairsValue,
                                   autofocus: false,
                                   hintText: "0".tr(),
                                   textInputType: TextInputType.number,
                                   prefixConstraints:
-                                  BoxConstraints(maxHeight: 48.v),
+                                      BoxConstraints(maxHeight: 48.v),
                                   contentPadding: EdgeInsets.only(
                                       top: 15.v, right: 30.h, bottom: 15.v))),
                         ],
@@ -113,7 +113,6 @@ class _WeeklyContractorVisitPageThreeState
                   ],
                 ),
               ),
-
             ],
           ),
         ),

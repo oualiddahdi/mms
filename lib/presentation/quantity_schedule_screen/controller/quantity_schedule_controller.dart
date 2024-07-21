@@ -1,15 +1,14 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/pref_utils.dart';
-import 'package:project/model/projects/projects.dart';
-import 'package:project/presentation/quantity_schedule_screen/models/work_items.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
+import 'package:project_portal/model/projects/projects.dart';
+import 'package:project_portal/presentation/quantity_schedule_screen/models/work_items.dart';
 
 class ProjectDetailsModel {}
 
 class QuantityScheduleController extends GetxController {
-
   late final Project project;
   final Dio _dio = Dio();
 
@@ -47,7 +46,8 @@ class QuantityScheduleController extends GetxController {
         return workItems;
       } else {
         print('Failed to load work items. Status code: ${response.statusCode}');
-        throw Exception('Failed to load work items. Status code: ${response.statusCode}');
+        throw Exception(
+            'Failed to load work items. Status code: ${response.statusCode}');
       }
     } catch (e, s) {
       log('Error fetching work items', stackTrace: s, error: e);

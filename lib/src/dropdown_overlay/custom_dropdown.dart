@@ -3,7 +3,7 @@ library animated_custom_dropdown;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
 
 export 'custom_dropdown.dart';
 

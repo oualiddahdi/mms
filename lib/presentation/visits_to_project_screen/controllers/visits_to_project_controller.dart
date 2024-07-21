@@ -2,12 +2,11 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/pref_utils.dart';
-import 'package:project/model/projects/projects.dart';
-import 'package:project/modules/visit_type_model.dart';
-import 'package:project/presentation/visits_to_project_screen/models/visits_model.dart';
-
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
+import 'package:project_portal/model/projects/projects.dart';
+import 'package:project_portal/modules/visit_type_model.dart';
+import 'package:project_portal/presentation/visits_to_project_screen/models/visits_model.dart';
 
 class VisitsToProjectDetailsController extends GetxController {
   late final Project project;
@@ -18,7 +17,6 @@ class VisitsToProjectDetailsController extends GetxController {
     super.onInit();
     project = Get.arguments as Project;
   }
-
 
   Future<VisitsModel> fetchAndSaveVisits() async {
     try {
@@ -47,7 +45,8 @@ class VisitsToProjectDetailsController extends GetxController {
         return visitsModel;
       } else {
         print('Failed to load projects. Status code: ${response.statusCode}');
-        throw Exception('Failed to load projects. Status code: ${response.statusCode}');
+        throw Exception(
+            'Failed to load projects. Status code: ${response.statusCode}');
       }
     } catch (e, s) {
       log('Error fetching projects', stackTrace: s, error: e);
@@ -55,11 +54,8 @@ class VisitsToProjectDetailsController extends GetxController {
     }
   }
 
-
   // Function to navigate to the second page
   void goToSecondPage(screen) {
-    Get.offNamed(
-      screen,arguments: project
-    );
+    Get.offNamed(screen, arguments: project);
   }
 }

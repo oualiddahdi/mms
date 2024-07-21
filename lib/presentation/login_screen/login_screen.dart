@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/image_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/theme/custom_text_style.dart';
-import 'package:project/widgets/custom_elevated_button.dart';
-import 'package:project/widgets/custom_image_view.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/image_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/theme/custom_text_style.dart';
+import 'package:project_portal/widgets/custom_elevated_button.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
 
 import 'controller/login_controller.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/theme/theme_helper.dart';
+import 'package:project_portal/theme/theme_helper.dart';
 
 /// A collection of pre-defined text styles for customizing text appearance,
 /// categorized by different font families and weights.

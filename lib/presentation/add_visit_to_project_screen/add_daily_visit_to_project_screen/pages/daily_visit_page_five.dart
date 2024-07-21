@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/controllers/add_daily_visit_to_project_controller.dart';
-import 'package:project/widgets/video_player.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/controllers/add_daily_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/video_player.dart';
 
 class DailyVisitPageFive extends StatelessWidget {
   const DailyVisitPageFive({Key? key}) : super(key: key);

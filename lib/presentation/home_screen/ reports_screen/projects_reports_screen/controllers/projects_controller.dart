@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/api_constants.dart';
-import 'package:project/core/utils/pref_utils.dart';
-import 'package:project/model/projects/projects.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/pref_utils.dart';
+import 'package:project_portal/model/projects/projects.dart';
 
 class ProjectsController extends GetxController {
   final Dio _dio = Dio();
@@ -36,7 +36,8 @@ class ProjectsController extends GetxController {
         return projects;
       } else {
         print('Failed to load projects. Status code: ${response.statusCode}');
-        throw Exception('Failed to load projects. Status code: ${response.statusCode}');
+        throw Exception(
+            'Failed to load projects. Status code: ${response.statusCode}');
       }
     } catch (e, s) {
       log('Error fetching projects', stackTrace: s, error: e);

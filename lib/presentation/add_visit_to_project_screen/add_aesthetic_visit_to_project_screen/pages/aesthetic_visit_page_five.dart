@@ -3,17 +3,16 @@ import 'dart:io';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/image_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/controllers/add_aesthetic_visit_to_project_controller.dart';
-import 'package:project/widgets/custom_image_view.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
-import 'package:project/widgets/video_player.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/image_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/controllers/add_aesthetic_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
+import 'package:project_portal/widgets/video_player.dart';
 
 class AestheticVisitPageFive extends StatelessWidget {
   const AestheticVisitPageFive({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,6 @@ class AestheticVisitPageFive extends StatelessWidget {
       'الملصقات الاعلانية',
       'معالجة وضع الحاويات',
     ];
-
 
     return Center(
       child: Container(
@@ -174,27 +172,29 @@ class AestheticVisitPageFive extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(width: 1, color: Colors.grey),
-                              borderRadius: BorderRadius.circular(smallPaddingSize),
+                              borderRadius:
+                                  BorderRadius.circular(smallPaddingSize),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: smallPaddingSize),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: smallPaddingSize),
                               child: CustomDropdown(
-                                listItemStyle: const TextStyle(fontSize: smallFontSize),
+                                listItemStyle:
+                                    const TextStyle(fontSize: smallFontSize),
                                 items: itemSections,
                                 hintText: 'عناصر التشوه البصري',
-                                hintStyle: const TextStyle(fontSize: smallFontSize),
+                                hintStyle:
+                                    const TextStyle(fontSize: smallFontSize),
                                 controller: jobRoleCtrl,
                               ),
                             ),
                           ),
                         ),
-
                       ),
                     ),
                   ],
                 ),
               ),
-
               Container(
                 margin: const EdgeInsets.all(smallPaddingSize),
                 width: double.maxFinite,
@@ -342,6 +342,4 @@ class AestheticVisitPageFive extends StatelessWidget {
       ),
     );
   }
-
-
 }

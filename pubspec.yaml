@@ -1,4 +1,4 @@
-name: project
+name: project_portal
 description: "A new Flutter project."
 
 publish_to:
@@ -13,143 +13,55 @@ dependencies:
     sdk: flutter
 
   package_info_plus: ^4.2.0
-  # Library for obtaining package and application information.
-  # Useful for displaying information about the app, such as version number and name.
-
   get: ^4.6.5
-  # State management, routing, and dependency injection library.
-  # Provides a simple and efficient way to manage the app's state.
-
   http: ^1.1.2
   http_parser: ^4.0.0
-
-  # Library for making HTTP requests in a Flutter application.
-  # Essential for interacting with the server and fetching data.
-
   flutter_secure_storage: ^9.0.0
-  # Secure storage mechanism for sensitive information (e.g., tokens, passwords).
-  # Important for securely storing access tokens and credential information.
-
   cupertino_icons: ^1.0.2
-  # Cupertino-style icons for iOS apps.
-  # Provides icons in the iOS design language.
-
   easy_localization: ^3.0.3
-  # Library for localization and internationalization in Flutter.
-  # Simplifies the process of adding multiple language support to the app.
-
   equatable: ^2.0.5
-  # Library for value equality in Dart, simplifying equality checks for complex objects.
-
   provider: ^6.1.1
-  # State management library for Flutter.
-  # Provides a simple and efficient way to manage app state.
-
   flutter_material_symbols: ^0.0.4
-  # Material Design symbols for Flutter apps.
-  # Provides symbols consistent with Material Design guidelines.
-
   delightful_toast: ^1.1.0
-  # Add delightful toast messages to your Flutter app.
-  # Provides a customizable and easy-to-use toast message widget.
-
   cached_network_image: ^3.2.0
-  # Cached network images for Flutter.
-  # Provides an easy way to load and cache network images.
-
   flutter_svg: ^1.1.6
-  # Library for displaying SVG images in Flutter.
-  # Allows rendering scalable vector graphics (SVG) in Flutter apps.
-
   jhijri: ">=0.0.4 <2.0.0"
-  # Hijri calendar for Flutter.
-  # Provides support for the Hijri (Islamic) calendar system.
-
   syncfusion_flutter_charts: ^25.2.5
-  # Syncfusion charts library for Flutter.
-  # Provides a wide range of chart types for data visualization.
-
   local_auth: ^2.1.7
-  # Library for local authentication (e.g., fingerprint, face ID).
-  # Allows integrating biometric authentication into your Flutter app.
-
   flutter_otp_text_field: ^1.1.1
-  # Library for OTP (One-Time Password) input field in Flutter.
-  # Provides a customizable OTP text field widget.
-
   connectivity_plus: ^5.0.1
-  # Library for monitoring network connectivity in Flutter.
-  # Allows checking the device's network connectivity status.
-
   json_annotation: ^4.8.0
-  # Library for JSON serialization and deserialization annotations.
-  # Simplifies the process of converting Dart objects to/from JSON.
-
   json_serializable: ^6.7.0
-  # Library for generating JSON serialization and deserialization code.
-  # Automatically generates code for converting Dart objects to/from JSON.
-
   animated_custom_dropdown: ^1.5.0
-  # Animated dropdown widget for Flutter.
-  # Provides a customizable and animated dropdown widget.
-
   font_awesome_flutter: ^9.1.0
-  # FontAwesome icons for Flutter apps.
-  # Provides a wide range of icon options for use in Flutter apps.
-
   dio: ^4.0.0
-  # Library for making HTTP requests in Flutter.
-  # Similar to the 'http' package but provides additional features like interceptors.
-
   sqflite: ^2.0.0
-  # SQLite database plugin for Flutter.
-  # Allows interacting with SQLite databases in Flutter apps.
-
   path: ^1.8.0
-  # Library for manipulating file paths in Dart.
-  # Provides utilities for working with file paths in a cross-platform manner.
-
   material_dialogs: ^1.1.4
-  # Material Design dialogs for Flutter.
-  # Provides customizable dialog widgets consistent with Material Design guidelines.
-
   timeago: ^3.0.2
-  # Library for formatting time differences as a human-readable string.
-  # Converts timestamps to phrases like "a minute ago" or "2 hours ago".
-
   image_picker: ^0.8.4+4
-  # Library for picking images from the device's gallery or camera.
-  # Allows users to select images from their device to use within the app.
-
   video_player: ^2.8.3
-  # Video player plugin for Flutter.
-  # Allows playing videos in Flutter apps.
-
   permission_handler: ^9.1.0
-  # Library for managing permissions in Flutter.
-  # Simplifies the process of requesting and checking permissions on the device.
-
   flutter_inappwebview: ^5.0.0
-
   chewie: ^1.4.1
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.10.0
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^3.0.1
-  # Lint rules for Dart and Flutter.
-  # Provides additional lint rules for ensuring code quality and best practices.
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/img_logo.png"
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - assets/translations/en-US.json
     - assets/translations/ar-DZ.json
-
     - assets/images/
 
   fonts:

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/widgets/cupertino_radio_button_list_tile.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/widgets/cupertino_radio_button_list_tile.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
 
 import '../controllers/add_weekly_contractor_visit_to_project_controller.dart';
 
@@ -112,10 +112,8 @@ class _WeeklyContractorVisitPageTwoState
                         ],
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
-
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
@@ -132,10 +130,10 @@ class _WeeklyContractorVisitPageTwoState
                               fontSize: smallFontSize,
                             ),
                             prefixConstraints: BoxConstraints(maxHeight: 48.v),
-                            contentPadding: const EdgeInsets.all(largePaddingSize)),
+                            contentPadding:
+                                const EdgeInsets.all(largePaddingSize)),
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -215,10 +213,8 @@ class _WeeklyContractorVisitPageTwoState
                         ],
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.all(mediumPaddingSize),
-
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
@@ -235,10 +231,10 @@ class _WeeklyContractorVisitPageTwoState
                               fontSize: smallFontSize,
                             ),
                             prefixConstraints: BoxConstraints(maxHeight: 48.v),
-                            contentPadding: const EdgeInsets.all(largePaddingSize)),
+                            contentPadding:
+                                const EdgeInsets.all(largePaddingSize)),
                       ),
                     ),
-
                   ],
                 ),
               ),

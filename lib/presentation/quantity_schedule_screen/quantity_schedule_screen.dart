@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/locale_utils.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/model/projects/projects.dart';
-import 'package:project/presentation/quantity_schedule_screen/models/work_items.dart';
-import 'package:project/widgets/custom_app_bar.dart';
-import 'package:project/widgets/custom_image_view.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/locale_utils.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/model/projects/projects.dart';
+import 'package:project_portal/presentation/quantity_schedule_screen/models/work_items.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
 
 import 'controller/quantity_schedule_controller.dart';
 
@@ -21,7 +21,7 @@ class QuantityScheduleScreen extends StatefulWidget {
 
 class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
   final QuantityScheduleController controller =
-  Get.put(QuantityScheduleController());
+      Get.put(QuantityScheduleController());
 
   @override
   Widget build(BuildContext context) {
@@ -78,14 +78,14 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
                       List<WorkItem> workItem = snapshot.data!.workItems;
 
                       double grandTotal =
-                      workItem.fold(0, (sum, item) => sum + item.total);
+                          workItem.fold(0, (sum, item) => sum + item.total);
                       double vat15 = grandTotal * 0.15;
                       double grandTotalWithVAT = grandTotal + vat15;
 
                       String grandTotalString = grandTotal.toStringAsFixed(2);
                       String vat15String = vat15.toStringAsFixed(2);
                       String grandTotalWithVATString =
-                      grandTotalWithVAT.toStringAsFixed(2);
+                          grandTotalWithVAT.toStringAsFixed(2);
 
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,40 +149,38 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
                           ? workItem[index].itemAr
                           : workItem[index].itemEn;
 
-                      return
-                        Container(
-                          padding: const EdgeInsets.all(14),
-                          margin: const EdgeInsets.all(smallFontSize),
-                          decoration: ShapeDecoration(
-                            color: ColorConstant.primarySilverB3B3B3,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                itemName,
-                                style: const TextStyle(color: Colors.black),
-                              ).tr(),
-                              _buildInfoText('item',
-                                  ' ${workItem[index].workType.name.toString()}'),
-                              Row(children: [
-                                _buildInfoText(
-                                    'unit',
-                                    workItem[index]
-                                        .unitOfMeasure
-                                        .name
-                                        .toString()),
-                                _buildInfoText('quantity_in_contract',
-                                    workItem[index].quantity.toString()),
-                              ]),
-                              _buildInfoText('total_value',
-                                  ' ${workItem[index].total.toString()} '),
-                            ],
-                          ),
-                        );
-
+                      return Container(
+                        padding: const EdgeInsets.all(14),
+                        margin: const EdgeInsets.all(smallFontSize),
+                        decoration: ShapeDecoration(
+                          color: ColorConstant.primarySilverB3B3B3,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              itemName,
+                              style: const TextStyle(color: Colors.black),
+                            ).tr(),
+                            _buildInfoText('item',
+                                ' ${workItem[index].workType.name.toString()}'),
+                            Row(children: [
+                              _buildInfoText(
+                                  'unit',
+                                  workItem[index]
+                                      .unitOfMeasure
+                                      .name
+                                      .toString()),
+                              _buildInfoText('quantity_in_contract',
+                                  workItem[index].quantity.toString()),
+                            ]),
+                            _buildInfoText('total_value',
+                                ' ${workItem[index].total.toString()} '),
+                          ],
+                        ),
+                      );
                     },
                   ),
                 );

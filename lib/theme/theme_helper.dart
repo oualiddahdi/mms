@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
 
 String _appTheme = "primary";
 

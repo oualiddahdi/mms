@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/theme/theme_helper.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/theme/theme_helper.dart';
 
 class AppDecoration {
   static BoxDecoration get fillOnPrimaryContainer => BoxDecoration(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/presentation/visit_detail_screen/image_view_screen.dart';
-import 'package:project/presentation/visit_detail_screen/video_player_screen.dart';
-import 'package:project/presentation/visits_to_project_screen/models/visits_model.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/presentation/visit_detail_screen/image_view_screen.dart';
+import 'package:project_portal/presentation/visit_detail_screen/video_player_screen.dart';
+import 'package:project_portal/presentation/visits_to_project_screen/models/visits_model.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:project/widgets/custom_app_bar.dart';
+import 'package:project_portal/widgets/custom_app_bar.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart'; // Import for InAppWebView
-import 'package:project/core/utils/api_constants.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
 
 class VisitDetailScreen extends StatefulWidget {
   final Visit visit;
@@ -18,12 +18,11 @@ class VisitDetailScreen extends StatefulWidget {
 }
 
 class _VisitDetailScreenState extends State<VisitDetailScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     List<VisitDoc> docs = widget.visit.visitDoc;
-    bool hasImages = docs.any((doc) => doc.fileName.endsWith('.jpeg') || doc.fileName.endsWith('.png'));
+    bool hasImages = docs.any((doc) =>
+        doc.fileName.endsWith('.jpeg') || doc.fileName.endsWith('.png'));
     bool hasVideos = docs.any((doc) => doc.fileName.endsWith('.mp4'));
 
     return SafeArea(
@@ -31,7 +30,9 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
           title: 'visitDetail'.tr(),
-          showMoreIcon: false, controller: null, project: null,
+          showMoreIcon: false,
+          controller: null,
+          project: null,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -49,8 +50,10 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildInfoText('visit_from'.tr(), widget.visit.visitFrom.toString()),
-                    _buildInfoText('visit_to'.tr(), widget.visit.visitTo.toString()),
+                    _buildInfoText(
+                        'visit_from'.tr(), widget.visit.visitFrom.toString()),
+                    _buildInfoText(
+                        'visit_to'.tr(), widget.visit.visitTo.toString()),
                     _buildInfoText('note'.tr(), widget.visit.note),
                     // Add more details as needed
                   ],
@@ -58,31 +61,31 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               ),
               if (hasImages || hasVideos)
                 Container(
-                padding: const EdgeInsets.all(14),
-                margin: EdgeInsets.all(16),
-                decoration: ShapeDecoration(
-                  color: ColorConstant.primarySilverB3B3B3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  padding: const EdgeInsets.all(14),
+                  margin: EdgeInsets.all(16),
+                  decoration: ShapeDecoration(
+                    color: ColorConstant.primarySilverB3B3B3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Documents',
+                        style: TextStyle(
+                          color: ColorConstant.primaryColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ).tr(),
+                      const SizedBox(height: 10),
+                      _buildDocumentsList(widget.visit.visitDoc),
+                      // Add more details as needed
+                    ],
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Documents',
-                      style: TextStyle(
-                        color: ColorConstant.primaryColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ).tr(),
-                    const SizedBox(height: 10),
-                    _buildDocumentsList(widget.visit.visitDoc),
-                    // Add more details as needed
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -147,7 +150,8 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
       List<Widget> rows = [];
       for (int i = 0; i < widgets.length; i += 2) {
         Widget firstItem = widgets[i];
-        Widget secondItem = i + 1 < widgets.length ? widgets[i + 1] : SizedBox.shrink();
+        Widget secondItem =
+            i + 1 < widgets.length ? widgets[i + 1] : SizedBox.shrink();
         rows.add(
           Row(
             children: [
@@ -229,7 +233,8 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               return Center(
                 child: CircularProgressIndicator(
                   value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          (loadingProgress.expectedTotalBytes ?? 1)
                       : null,
                 ),
               );
@@ -256,7 +261,8 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         ),
       );
     } else {
-      return SizedBox.shrink(); // Return an empty SizedBox if file type is not supported
+      return SizedBox
+          .shrink(); // Return an empty SizedBox if file type is not supported
     }
   }
 
@@ -272,4 +278,3 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
     ));
   }
 }
-

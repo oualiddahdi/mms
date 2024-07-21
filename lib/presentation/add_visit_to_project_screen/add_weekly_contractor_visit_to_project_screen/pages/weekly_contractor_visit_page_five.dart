@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/utils/color_constant.dart';
-import 'package:project/core/utils/image_constant.dart';
-import 'package:project/core/utils/sizes.dart';
-import 'package:project/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/controllers/add_weekly_contractor_visit_to_project_controller.dart';
-import 'package:project/widgets/custom_image_view.dart';
-import 'package:project/widgets/custom_text_form_field.dart';
-import 'package:project/widgets/video_player.dart';
+import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/image_constant.dart';
+import 'package:project_portal/core/utils/sizes.dart';
+import 'package:project_portal/presentation/add_visit_to_project_screen/add_weekly_contractor_visit_to_project_screen/controllers/add_weekly_contractor_visit_to_project_controller.dart';
+import 'package:project_portal/widgets/custom_image_view.dart';
+import 'package:project_portal/widgets/custom_text_form_field.dart';
+import 'package:project_portal/widgets/video_player.dart';
 
 class WeeklyContractorVisitPageFive extends StatelessWidget {
   const WeeklyContractorVisitPageFive({Key? key}) : super(key: key);

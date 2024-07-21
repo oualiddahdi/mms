@@ -13,7 +13,7 @@
 
 
     <application
-        android:label="MMS"
+        android:label="Project Portal"
 
         android:usesCleartextTraffic="true"
 

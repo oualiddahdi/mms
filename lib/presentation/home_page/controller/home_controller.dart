@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:project/routes/app_routes.dart';
+import 'package:project_portal/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {

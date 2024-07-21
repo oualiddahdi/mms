@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
-import 'package:project/core/utils/shared_preferences_manager.dart';
-import 'package:project/core/utils/size_utils.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/ir_requests_reports_screen/ir_requests_reports_screen.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/projects_reports_screen/projects_reports_screen.dart';
-import 'package:project/presentation/home_screen/%20reports_screen/visits_reports_screen/visits_reports_screen.dart';
+import 'package:project_portal/core/utils/shared_preferences_manager.dart';
+import 'package:project_portal/core/utils/size_utils.dart';
+import 'package:project_portal/presentation/home_screen/%20reports_screen/ir_requests_reports_screen/ir_requests_reports_screen.dart';
+import 'package:project_portal/presentation/home_screen/%20reports_screen/projects_reports_screen/controllers/projects_controller.dart';
+import 'package:project_portal/presentation/home_screen/%20reports_screen/projects_reports_screen/projects_reports_screen.dart';
+import 'package:project_portal/presentation/home_screen/%20reports_screen/visits_reports_screen/visits_reports_screen.dart';
 
 import '../../core/utils/color_constant.dart';
 
