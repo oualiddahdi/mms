@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:project_portal/core/errors/exceptions.dart';
 import 'package:project_portal/core/network/network_info.dart';
 import 'package:project_portal/core/utils/api_constants.dart';
-import 'package:project_portal/core/utils/delight_toast_bar.dart';
 import 'package:project_portal/core/utils/logger.dart';
 import 'package:project_portal/core/utils/progress_dialog_utils.dart';
 import 'package:project_portal/presentation/home_page/home_page.dart';
@@ -27,7 +26,7 @@ class LoginController extends GetxController {
     try {
       await fetchLogin(body);
     } on PostLoginResp {
-      DelightToast.onOnTapSignInError(context);
+      Get.rawSnackbar(message: 'An error occurred. Please try again.');
     } on NoInternetException catch (e) {
       Get.rawSnackbar(message: e.toString());
     } catch (e) {
@@ -49,6 +48,7 @@ class LoginController extends GetxController {
         print(response.body);
         _handleCreateLoginSuccess(response.body,body);
       } else {
+
         throw response.body != null
             ? PostLoginResp.fromJson(json.decode(response.body))
             : 'Something Went Wrong!';

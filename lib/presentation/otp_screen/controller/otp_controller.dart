@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:project_portal/core/errors/exceptions.dart';
 import 'package:project_portal/core/network/network_info.dart';
 import 'package:project_portal/core/utils/api_constants.dart';
-import 'package:project_portal/core/utils/delight_toast_bar.dart';
 import 'package:project_portal/core/utils/logger.dart';
 import 'package:project_portal/core/utils/progress_dialog_utils.dart';
 import 'package:project_portal/presentation/home_page/home_page.dart';
@@ -24,60 +24,54 @@ class OtpController extends GetxController {
     mBody = Get.arguments as Map<String, String>;
   }
 
-  void onTapOtp(otp, context) async {
+  void onTapOtp(String otp, BuildContext context) async {
     final body = {
       'username': mBody['username'],
       'password': mBody['password'],
       'otp': otp,
     };
 
+    // Check for empty fields
+    if (otp == '') {
+      Get.rawSnackbar(message: 'OTP must not be empty.');
+      return;
+    }
+
     try {
+      ProgressDialogUtils.showProgressDialog();
       await fetchOtp(body);
       onOnTapOtpSuccess();
-    } on PostLoginResp {
-      DelightToast.onOnTapSignInError(context);
-    } on NoInternetException catch (e) {
-      Get.rawSnackbar(message: e.toString());
     } catch (e) {
-      //TODO: Handle generic errors
+      ProgressDialogUtils.hideProgressDialog();
+      // Handle generic errors
+      Get.rawSnackbar(message: 'An error occurred. Please try again.');
+    } finally {
+      ProgressDialogUtils.hideProgressDialog();
     }
   }
 
   Future<void> fetchOtp(body) async {
-    try {
-      ProgressDialogUtils.showProgressDialog();
-      await NetworkUtil.isNetworkAvailable();
+    await NetworkUtil.isNetworkAvailable();
 
-      http.Response response = await http.post(
-        Uri.parse(ApiConstants.otpUrl),
-        body: body,
-      );
+    http.Response response = await http.post(
+      Uri.parse(ApiConstants.otpUrl),
+      body: body,
+    );
 
-      ProgressDialogUtils.hideProgressDialog();
-      if (response.statusCode == 200) {
-        final responseData = json.decode(response.body);
-        final token = responseData["token"];
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      final token = responseData["token"];
 
-        _handleCreateLoginSuccess(token);
-      } else {
-        throw response.body != null
-            ? PostLoginResp.fromJson(json.decode(response.body))
-            : 'Something Went Wrong!';
-      }
-    } catch (error, stackTrace) {
-      ProgressDialogUtils.hideProgressDialog();
-      Logger.log(
-        error,
-        stackTrace: stackTrace,
-      );
-      rethrow;
+      _handleCreateLoginSuccess(token);
+    } else {
+      throw response.body != null
+          ? PostLoginResp.fromJson(json.decode(response.body))
+          : 'Something Went Wrong!';
     }
   }
 
-  void _handleCreateLoginSuccess(token) {
-    if (token != null) {
-      Get.find<PrefUtils>().setToken(token.toString());
-    }
+  void _handleCreateLoginSuccess(String token) {
+    Get.find<PrefUtils>().setToken(token);
   }
 
   void onOnTapOtpSuccess() {
