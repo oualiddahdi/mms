@@ -47,7 +47,7 @@ class LoginController extends GetxController {
       ProgressDialogUtils.hideProgressDialog();
       if (response.statusCode == 200) {
         print(response.body);
-        _handleCreateLoginSuccess(body);
+        _handleCreateLoginSuccess(response.body,body);
       } else {
         throw response.body != null
             ? PostLoginResp.fromJson(json.decode(response.body))
@@ -63,9 +63,25 @@ class LoginController extends GetxController {
     }
   }
 
-  void _handleCreateLoginSuccess(responseData) {
-    Get.toNamed(AppRoutes.otpScreen, arguments: responseData);
+  void _handleCreateLoginSuccess(String responseBody, body) {
+    // Show Snackbar with response body
+
+    final Map<String, dynamic> jsonResponse = jsonDecode(responseBody);
+
+    // Extract OTP
+    final String otp = jsonResponse['otp'];
+
+    Get.snackbar(
+      'Login Successful',
+      otp,
+      snackPosition: SnackPosition.BOTTOM,
+      duration: Duration(seconds: 10), // Duration for how long the snackbar will be visible
+    );
+
+    // Navigate to OTP screen with response body
+    Get.toNamed(AppRoutes.otpScreen, arguments:  body);
   }
+
 
   void onOnTapForgotPasswordScreen() {
     Get.toNamed(AppRoutes.forgotPasswordScreen, arguments: {});
