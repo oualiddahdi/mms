@@ -23,7 +23,7 @@ class QuantityScheduleController extends GetxController {
       final token = Get.find<PrefUtils>().getToken();
 
       // Construct the URL dynamically if needed
-      const url = ApiConstants.workItems;
+      var url = ApiConstants.workItems;
       final response = await _dio.get(
         url,
         queryParameters: {'proj_id': 430},

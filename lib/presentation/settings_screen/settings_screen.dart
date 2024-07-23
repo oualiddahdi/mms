@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:get/get.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
 import 'package:project_portal/core/utils/pref_utils.dart';
 import 'package:project_portal/core/utils/size_utils.dart';
@@ -17,28 +18,54 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isEnabled = false;
 
+
   @override
   void initState() {
     super.initState();
-    _loadSettings();
+    _initializeApiConstants();
   }
 
-  _loadSettings() async {
-    // Perform asynchronous work (e.g., fetching data from SharedPreferences).
-    bool isEnabledValue = await PrefUtils().getSwitchValue();
-
-    // Update the state inside a call to setState.
-    setState(() {
-      isEnabled = isEnabledValue;
-    });
+  void _initializeApiConstants() async {
+    await ApiConstants.initialize();
+    setState(() {});
   }
 
-  _saveSettings(bool value) async {
-    setState(() {
-      isEnabled = value;
-    });
 
-    await PrefUtils().setSwitchValue(value);
+
+  Future<void> _showApiUrlDialog() async {
+    String newApiUrl = ApiConstants.apiUrl;
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit API URL'),
+          content: TextField(
+            controller: TextEditingController(text: ApiConstants.apiUrl),
+            decoration: const InputDecoration(hintText: 'Enter new API URL'),
+            onChanged: (value) {
+              newApiUrl = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Save'),
+              onPressed: () async {
+                await ApiConstants.setApiUrl(newApiUrl);
+                setState(() {});
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -46,38 +73,43 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
-        buildListTile('language', MaterialSymbols.language),
+        buildListTile('language', MaterialSymbols.language, () {
+          Get.to(const LanguageScreen());
+        }),
+        buildListTile('API URL', MaterialSymbols.api, () {
+          _showApiUrlDialog();
+        }),
         buildTileSwitch('use_fingerprint', MaterialSymbols.fingerprint),
+        // Add more ListTiles as needed
       ],
     );
   }
 
-  Padding buildListTile(String titleKey, IconData icon) {
+  Padding buildListTile(String title, IconData icon, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
         leading: Icon(icon, color: ColorConstant.primaryColor),
-        title: Text(titleKey).tr(),
-        trailing: Icon(Icons.arrow_forward_ios,
-            size: 16.v, color: ColorConstant.primaryColor),
-        onTap: () {
-          Get.to(const LanguageScreen());
-        },
+        title: Text(title).tr(),
+        trailing: Icon(Icons.arrow_forward_ios, size: 16.v, color: ColorConstant.primaryColor),
+        onTap: onTap,
       ),
     );
   }
 
-  Padding buildTileSwitch(String titleKey, IconData icon) {
+  Padding buildTileSwitch(String title, IconData icon) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListTile(
-        leading: Icon(icon, color: ColorConstant.primaryColor),
-        title: Text(titleKey).tr(),
+        leading: Icon(icon, color: Colors.blue),
+        title: Text(title).tr(),
         trailing: Switch(
-          activeTrackColor: ColorConstant.mysticWhite,
+          activeTrackColor: Colors.grey[300],
           value: isEnabled,
           onChanged: (value) {
-            _saveSettings(value);
+            setState(() {
+              isEnabled = value;
+            });
           },
         ),
       ),

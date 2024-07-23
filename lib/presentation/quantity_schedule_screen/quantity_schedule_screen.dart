@@ -7,6 +7,7 @@ import 'package:project_portal/core/utils/size_utils.dart';
 import 'package:project_portal/core/utils/sizes.dart';
 import 'package:project_portal/model/projects/projects.dart';
 import 'package:project_portal/presentation/quantity_schedule_screen/models/work_items.dart';
+import 'package:project_portal/widgets/Info_text.dart';
 import 'package:project_portal/widgets/custom_app_bar.dart';
 import 'package:project_portal/widgets/custom_image_view.dart';
 
@@ -34,79 +35,69 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
           controller: null,
           project: null,
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Text(
-                    controller.project.contractName.toString(),
-                    style: const TextStyle(color: Colors.black),
-                  ).tr(),
-                ),
-                Expanded(
-                  child: _buildScrollableList(),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                controller.project.contractName.toString(),
+                style: const TextStyle(color: Colors.black),
+              ).tr(),
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.all(14),
-                decoration: ShapeDecoration(
-                  color: ColorConstant.secondaryColor14368E27,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                ),
-                child: FutureBuilder<WorkItems>(
-                  future: controller.fetchWorkItems(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
-                    } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
-                    } else if (snapshot.hasData &&
-                        snapshot.data != null &&
-                        snapshot.data!.workItems.isEmpty) {
-                      return const Center(child: Text('No visits available.'));
-                    } else {
-                      List<WorkItem> workItem = snapshot.data!.workItems;
+            Expanded(
+              child: _buildScrollableList(),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              padding: const EdgeInsets.all(14),
+              decoration: ShapeDecoration(
+                color: ColorConstant.secondaryColor14368E27,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
+              child: FutureBuilder<WorkItems>(
+                future: controller.fetchWorkItems(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (snapshot.hasData &&
+                      snapshot.data != null &&
+                      snapshot.data!.workItems.isEmpty) {
+                    return const Center(child: Text('No visits available.'));
+                  } else {
+                    List<WorkItem> workItem = snapshot.data!.workItems;
 
-                      double grandTotal =
-                          workItem.fold(0, (sum, item) => sum + item.total);
-                      double vat15 = grandTotal * 0.15;
-                      double grandTotalWithVAT = grandTotal + vat15;
+                    double grandTotal =
+                        workItem.fold(0, (sum, item) => sum + item.total);
+                    double vat15 = grandTotal * 0.15;
+                    double grandTotalWithVAT = grandTotal + vat15;
 
-                      String grandTotalString = grandTotal.toStringAsFixed(2);
-                      String vat15String = vat15.toStringAsFixed(2);
-                      String grandTotalWithVATString =
-                          grandTotalWithVAT.toStringAsFixed(2);
+                    String grandTotalString = grandTotal.toStringAsFixed(2);
+                    String vat15String = vat15.toStringAsFixed(2);
+                    String grandTotalWithVATString =
+                        grandTotalWithVAT.toStringAsFixed(2);
 
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildInfoText(
-                            "grandTotal",
-                            grandTotalString + 'sr'.tr(),
-                          ),
-                          _buildInfoText(
-                            "vat15",
-                            vat15String + 'sr'.tr(),
-                          ),
-                          _buildInfoText(
-                            "grandTotalWithVAT",
-                            grandTotalWithVATString + 'sr'.tr(),
-                          ),
-                        ],
-                      );
-                    }
-                  },
-                ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InfoText(
+                          label: 'grandTotal',
+                          value: grandTotalString + 'sr'.tr(),
+                        ),
+                        InfoText(
+                          label: 'vat15',
+                          value: vat15String + 'sr'.tr(),
+                        ),
+                        InfoText(
+                          label: 'grandTotalWithVAT',
+                          value: grandTotalWithVATString + 'sr'.tr(),
+                        ),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
           ],
@@ -139,49 +130,55 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
               } else {
                 List<WorkItem> workItem = snapshot.data!.workItems;
 
-                return SingleChildScrollView(
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: workItem.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      String itemName = context.locale.languageCode == 'ar'
-                          ? workItem[index].itemAr
-                          : workItem[index].itemEn;
-
-                      return Container(
-                        padding: const EdgeInsets.all(14),
-                        margin: const EdgeInsets.all(smallFontSize),
-                        decoration: ShapeDecoration(
-                          color: ColorConstant.primarySilverB3B3B3,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                return Container(
+                  margin: const EdgeInsets.all(smallFontSize),
+                  decoration: ShapeDecoration(
+                    color: ColorConstant.mysticWhite,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(mediumFontSize),
+                        child: Row(
                           children: [
-                            Text(
-                              itemName,
-                              style: const TextStyle(color: Colors.black),
+                            const Text(
+                              'المتسلسل',
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: smallFontSize),
                             ).tr(),
-                            _buildInfoText('item',
-                                ' ${workItem[index].workType.name.toString()}'),
-                            Row(children: [
-                              _buildInfoText(
-                                  'unit',
-                                  workItem[index]
-                                      .unitOfMeasure
-                                      .name
-                                      .toString()),
-                              _buildInfoText('quantity_in_contract',
-                                  workItem[index].quantity.toString()),
-                            ]),
-                            _buildInfoText('total_value',
-                                ' ${workItem[index].total.toString()} '),
+                            const Spacer(),
+                            const Text(
+                              'item',
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: smallFontSize),
+                            ).tr(),
+                            const Spacer(),
                           ],
                         ),
-                      );
-                    },
+                      ),
+                      const Divider(
+                          height: 1, color: ColorConstant.blueGray500),
+                      Expanded(
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: workItem.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              children: [
+                                WorkItemWidget(
+                                  workItem: workItem[index],
+                                ),
+                                const Divider(
+                                    height: 1, color: ColorConstant.gray300),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 );
               }
@@ -189,45 +186,6 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
           );
         }
       },
-    );
-  }
-
-  Widget _buildInfoText(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Text(
-            label,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: ColorConstant.primaryColor,
-              fontSize: 12.v,
-            ),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-          ).tr(),
-          SizedBox(
-            width: 10.v,
-          ),
-          Text(" : ",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: ColorConstant.primaryColor,
-                fontSize: 12.v,
-              )),
-          Text(
-            value,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: ColorConstant.textColor,
-              fontSize: 12.v,
-            ),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-          ),
-        ],
-      ),
     );
   }
 
@@ -241,6 +199,84 @@ class _QuantityScheduleScreenState extends State<QuantityScheduleScreen> {
           // Add your onTap logic here
         },
       ),
+    );
+  }
+}
+
+class WorkItemWidget extends StatefulWidget {
+  final WorkItem workItem;
+
+  WorkItemWidget({required this.workItem});
+
+  @override
+  _WorkItemWidgetState createState() => _WorkItemWidgetState();
+}
+
+class _WorkItemWidgetState extends State<WorkItemWidget> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    String itemName = context.locale.languageCode == 'ar'
+        ? widget.workItem.itemAr
+        : widget.workItem.itemEn;
+
+    return Column(
+      children: [
+        Row(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    color: ColorConstant.primaryColor,
+                    isExpanded
+                        ? Icons.remove_circle_outlined
+                        : Icons.add_circle_outlined,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                ),
+                Text(
+                  widget.workItem.id.toString(),
+                  style: const TextStyle(
+                      color: Colors.black, fontSize: smallFontSize),
+                ).tr(),
+              ],
+            ),
+            const Spacer(),
+            Text(
+              itemName,
+              style:
+                  const TextStyle(color: Colors.black, fontSize: smallFontSize),
+            ).tr(),
+            const Spacer(),
+          ],
+        ),
+        if (isExpanded)
+          Container(
+            margin: const EdgeInsets.all(smallFontSize),
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                InfoText(label: 'item', value: widget.workItem.workType.name),
+                InfoText(
+                    label: 'unit', value: widget.workItem.unitOfMeasure.name),
+                InfoText(
+                    label: 'quantity_in_contract',
+                    value: widget.workItem.quantity.toString()),
+                InfoText(
+                    label: 'total_value',
+                    value: widget.workItem.total.toString() + 'sr'.tr()),
+              ],
+            ),
+          ),
+      ],
     );
   }
 }
