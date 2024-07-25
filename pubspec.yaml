@@ -45,6 +45,10 @@ dependencies:
   flutter_inappwebview: ^5.0.0
   chewie: ^1.4.1
 
+  firebase_core: ^2.16.0  # Check for the latest version
+  firebase_crashlytics: ^3.4.18
+
+
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
   flutter_test:
