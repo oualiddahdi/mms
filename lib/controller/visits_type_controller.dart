@@ -20,7 +20,7 @@ class VisitsTypeController extends GetxController {
 
   Future<VisitTypeModel> fetchAndSaveVisitType() async {
     try {
-      final response = await _dio.get(ApiConstants.visitType);
+      final response = await _dio.get(ApiService.visitType);
 
       if (response.statusCode == 200) {
         final responseData = response.data;

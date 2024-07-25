@@ -215,7 +215,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   }
 
   Widget _buildDocumentWidget(VisitDoc doc) {
-    String fullUrl = ApiConstants.apiUrlDoc + doc.fileName;
+    String fullUrl = ApiService.apiUrlDoc + doc.fileName;
 
     if (doc.fileName.endsWith('.jpeg') || doc.fileName.endsWith('.png')) {
       return GestureDetector(

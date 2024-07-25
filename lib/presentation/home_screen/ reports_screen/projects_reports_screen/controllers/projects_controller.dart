@@ -14,7 +14,7 @@ class ProjectsController extends GetxController {
       final token = Get.find<PrefUtils>().getToken();
 
       final response = await _dio.get(
-        ApiConstants.projectsUrl,
+        ApiService.projectsUrl,
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',

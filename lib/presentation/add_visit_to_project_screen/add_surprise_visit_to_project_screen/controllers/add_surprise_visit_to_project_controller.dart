@@ -155,7 +155,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
         // Prepare the request
         var request = http.MultipartRequest(
           'POST',
-          Uri.parse(ApiConstants.visits),
+          Uri.parse(ApiService.visits),
         );
 
         // Add headers

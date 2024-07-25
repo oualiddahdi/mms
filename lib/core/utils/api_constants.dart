@@ -1,7 +1,10 @@
+import 'dart:convert';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
-class ApiConstants extends GetConnect {
+class ApiService extends GetConnect {
   static String _baseUrl = 'http://192.168.100.250:8080/manageProjects/api/';
   static String _baseUrlDoc = 'http://192.168.100.250:8080/manageProjects/';
 
@@ -29,4 +32,63 @@ class ApiConstants extends GetConnect {
   static String get visits => '${apiUrl}visits';
   static String get visitType => '${apiUrl}visitType';
   static String get workItems => '${apiUrl}workItems';
+
+  static Future<bool> isApiUp() async {
+    try {
+      final response = await http.get(Uri.parse('${_baseUrl}status'));
+      return response.statusCode == 200;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  static Future<void> fetchData(String endpoint) async {
+    if (await _isConnected()) {
+      try {
+        final response = await http.get(Uri.parse('$_baseUrl$endpoint'));
+
+        if (response.statusCode == 200) {
+          final data = json.decode(response.body);
+          // Handle the data
+        } else {
+          Get.snackbar('Error', 'Server responded with status code: ${response.statusCode}');
+          _handleApiError(response.statusCode);
+        }
+      } catch (e) {
+        print('Error: $e');
+        Get.snackbar('Error', 'An error occurred while fetching data.');
+        _handleApiError(-1);  // Pass a specific error code or use a generic one
+      }
+    } else {
+      Get.snackbar('No Internet', 'Please check your network connection.');
+      _handleApiError(-2);  // -2 for no internet
+    }
+  }
+
+  static Future<bool> _isConnected() async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+    return connectivityResult != ConnectivityResult.none;
+  }
+
+  static void _handleApiError(int errorCode) {
+    switch (errorCode) {
+      case 401:
+        Get.offNamed('/login');  // Redirect to login
+        break;
+      case 404:
+        Get.snackbar('Error', 'Resource not found.');
+        break;
+      case 500:
+        Get.snackbar('Error', 'Server error occurred.');
+        break;
+      case -1:
+        Get.snackbar('Error', 'Network error occurred.');
+        break;
+      case -2:
+        Get.snackbar('No Internet', 'No internet connection.');
+        break;
+      default:
+        Get.snackbar('Error', 'An unexpected error occurred.');
+    }
+  }
 }

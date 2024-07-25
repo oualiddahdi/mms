@@ -54,7 +54,7 @@ class OtpController extends GetxController {
     await NetworkUtil.isNetworkAvailable();
 
     http.Response response = await http.post(
-      Uri.parse(ApiConstants.otpUrl),
+      Uri.parse(ApiService.otpUrl),
       body: body,
     );
 

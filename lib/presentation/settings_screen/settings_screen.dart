@@ -22,18 +22,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    _initializeApiConstants();
+    _initializeApiService();
   }
 
-  void _initializeApiConstants() async {
-    await ApiConstants.initialize();
+  void _initializeApiService() async {
+    await ApiService.initialize();
     setState(() {});
   }
 
 
 
   Future<void> _showApiUrlDialog() async {
-    String newApiUrl = ApiConstants.apiUrl;
+    String newApiUrl = ApiService.apiUrl;
 
     await showDialog(
       context: context,
@@ -41,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         return AlertDialog(
           title: const Text('Edit API URL'),
           content: TextField(
-            controller: TextEditingController(text: ApiConstants.apiUrl),
+            controller: TextEditingController(text: ApiService.apiUrl),
             decoration: const InputDecoration(hintText: 'Enter new API URL'),
             onChanged: (value) {
               newApiUrl = value;
@@ -57,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             TextButton(
               child: const Text('Save'),
               onPressed: () async {
-                await ApiConstants.setApiUrl(newApiUrl);
+                await ApiService.setBaseUrl(newApiUrl);
                 setState(() {});
                 Navigator.of(context).pop();
               },

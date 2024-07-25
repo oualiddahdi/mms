@@ -39,7 +39,7 @@ class LoginController extends GetxController {
       ProgressDialogUtils.showProgressDialog();
       await NetworkUtil.isNetworkAvailable();
       http.Response response = await http.post(
-        Uri.parse(ApiConstants.loginUrl),
+        Uri.parse(ApiService.loginUrl),
         body: body,
       );
 
