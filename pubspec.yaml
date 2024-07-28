@@ -39,8 +39,10 @@ dependencies:
   path: ^1.8.0
   material_dialogs: ^1.1.4
   timeago: ^3.0.2
+
   image_picker: ^0.8.4+4
   video_player: ^2.8.3
+
   permission_handler: ^9.1.0
   flutter_inappwebview: ^5.0.0
   chewie: ^1.4.1

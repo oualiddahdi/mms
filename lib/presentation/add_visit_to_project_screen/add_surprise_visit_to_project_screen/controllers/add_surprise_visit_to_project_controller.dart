@@ -1,22 +1,37 @@
-import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project_portal/core/network/network_info.dart';
-import 'package:project_portal/core/utils/api_constants.dart';
-import 'package:project_portal/core/utils/logger.dart';
-import 'package:project_portal/core/utils/pref_utils.dart';
-import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart';
 import 'package:project_portal/core/utils/progress_dialog_utils.dart';
 import 'package:project_portal/model/projects/projects.dart';
+import 'package:video_player/video_player.dart';
 import 'package:path/path.dart' as path;
+
+import 'package:http/http.dart' as http;
+
+
+import '../../../../core/network/network_info.dart';
+import '../../../../core/utils/api_constants.dart';
+import '../../../../core/utils/logger.dart';
+import '../../../../core/utils/pref_utils.dart';
 
 class AddSurpriseVisitToProjectController extends GetxController {
   late final Project project;
+
+  var images = <XFile>[].obs;
+  var videos = <XFile>[].obs;
+  VideoPlayerController? videoPlayerController;
+
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+  TextEditingController reportVisualsController = TextEditingController();
+
+  late String visitFrom;
+  late String visitTo;
+  late String note;
 
   @override
   void onInit() {
@@ -24,55 +39,149 @@ class AddSurpriseVisitToProjectController extends GetxController {
     project = Get.arguments as Project;
   }
 
-  var images = <XFile>[].obs;
-  var videos = <XFile>[].obs;
-  late Long projId;
-  late String visitFrom;
-  late String visitTo;
-  late String note;
-  late VisitDoc visitDoc;
-
-  TextEditingController startDateController = TextEditingController();
-  TextEditingController endDateController = TextEditingController();
-  TextEditingController reportVisualsController = TextEditingController();
-
-  bool isSixthPageDataComplete() {
-    // تحقق من اكتمال البيانات للصفحة السادسة هنا
-    return true; // قم بتحديد شرط اكتمال البيانات للصفحة السادسة
+  @override
+  void onClose() {
+    videoPlayerController?.dispose();
+    super.onClose();
   }
 
+  bool isSixthPageDataComplete() {
+    // التأكد من أن جميع الحقول النصية ليست فارغة
+    bool isTextFieldsFilled = startDateController.text.isNotEmpty &&
+        endDateController.text.isNotEmpty &&
+        reportVisualsController.text.isNotEmpty;
+
+    // التأكد من أن هناك صور أو فيديوهات تم اختيارها
+    bool hasMedia = images.isNotEmpty || videos.isNotEmpty;
+
+    // التأكد من اكتمال جميع البيانات المطلوبة
+    return isTextFieldsFilled && hasMedia;
+  }
+
+
+  Future<void> showImageSourceDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Select Image Source'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                  child: Text('Camera'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    await pickImage(ImageSource.camera);
+                  },
+                ),
+                Padding(padding: EdgeInsets.all(8.0)),
+                // GestureDetector(
+                //   child: Text('Gallery'),
+                //   onTap: () async {
+                //     Navigator.pop(context);
+                //     await pickImage(ImageSource.gallery);
+                //   },
+                // ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> showVideoSourceDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Select Video Source'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                  child: Text('Camera'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    await pickVideo(ImageSource.camera);
+                  },
+                ),
+                Padding(padding: EdgeInsets.all(8.0)),
+                // GestureDetector(
+                //   child: Text('Gallery'),
+                //   onTap: () async {
+                //     Navigator.pop(context);
+                //     await pickVideo(ImageSource.gallery);
+                //   },
+                // ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+
   Future<void> pickImage(ImageSource source) async {
-    final pickedImage = await ImagePicker().pickImage(source: source);
-    if (pickedImage != null) {
-      final extension = path.extension(pickedImage.path).toLowerCase();
-      if (extension == '.jpg' || extension == '.jpeg' || extension == '.png') {
-        images.add(pickedImage);
-      } else {
-        // Handle unsupported file types if necessary
-        print('Unsupported image type: $extension');
+    final permissionStatus = await requestPermission(Permission.camera);
+    if (permissionStatus.isGranted) {
+      final pickedImage = await ImagePicker().pickImage(source: source);
+      if (pickedImage != null) {
+        final extension = path.extension(pickedImage.path).toLowerCase();
+        if (extension == '.jpg' || extension == '.jpeg' || extension == '.png') {
+          images.add(pickedImage);
+        } else {
+          print('Unsupported image type: $extension');
+        }
       }
+    } else {
+      Get.snackbar('Permission Denied', 'Camera access is required to take pictures.');
     }
   }
 
   Future<void> pickVideo(ImageSource source) async {
-    final pickedVideo = await ImagePicker().pickVideo(source: source);
-    if (pickedVideo != null) {
-      final extension = path.extension(pickedVideo.path).toLowerCase();
-      if (extension == '.mp4' || extension == '.avi' || extension == '.mov') {
-        videos.add(pickedVideo);
-      } else {
-        // Handle unsupported file types if necessary
-        print('Unsupported video type: $extension');
+    final permissionStatus = await requestPermission(Permission.camera);
+    if (permissionStatus.isGranted) {
+      final pickedVideo = await ImagePicker().pickVideo(source: source);
+      if (pickedVideo != null) {
+        final extension = path.extension(pickedVideo.path).toLowerCase();
+        if (extension == '.mp4' || extension == '.avi' || extension == '.mov') {
+          videos.add(pickedVideo);
+        } else {
+          print('Unsupported video type: $extension');
+        }
       }
+    } else {
+      Get.snackbar('Permission Denied', 'Camera access is required to record videos.');
     }
   }
 
-  Future<void> showImageSourceDialog(BuildContext context) async {
-    pickImage(ImageSource.camera);
+
+  Future<PermissionStatus> requestPermission(Permission permission) async {
+    final status = await permission.request();
+    if (status.isDenied) {
+      // يمكنك طلب الإذن مرة أخرى هنا إذا رغبت في ذلك.
+      // يمكن أيضًا تقديم رسالة للمستخدم لتوضيح سبب الحاجة للإذن.
+      Get.snackbar('Permission Denied', 'Please grant the necessary permissions.');
+    }
+    return status;
   }
 
-  Future<void> showVideoSourceDialog(BuildContext context) async {
-    pickVideo(ImageSource.camera);
+
+
+  Future<void> initializeVideoPlayer(String videoPath) async {
+    videoPlayerController = VideoPlayerController.file(File(videoPath))
+      ..addListener(() {
+        if (videoPlayerController!.value.hasError) {
+          print('Video player error: ${videoPlayerController!.value.errorDescription}');
+        }
+      })
+      ..initialize().then((_) {
+        videoPlayerController!.play();
+        update(); // تحديث واجهة المستخدم إذا لزم الأمر
+      });
   }
 
   Future<void> selectDateGregorian(
@@ -81,6 +190,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
       context: context,
       firstDate: DateTime(2023),
       lastDate: DateTime(2100),
+      initialDate: DateTime.now(),
     );
 
     if (selectedDate != null) {
@@ -129,7 +239,6 @@ class AddSurpriseVisitToProjectController extends GetxController {
       note = reportVisualsController.text.toString();
 
       if (images.isNotEmpty &&
-          videos.isNotEmpty &&
           visitFrom != '' &&
           visitTo != '' &&
           note != '') {
@@ -140,7 +249,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
 
         // Create list of File objects for visitDoc
         List<File> visitDocList =
-            allFiles.map((file) => File(file.path)).toList();
+        allFiles.map((file) => File(file.path)).toList();
 
         // Construct the body of the request
         final token = Get.find<PrefUtils>().getToken();
@@ -206,8 +315,6 @@ class AddSurpriseVisitToProjectController extends GetxController {
           print('HTTP Error ${response.statusCode}: ${response.body}');
           throw 'HTTP Error ${response.statusCode}: ${response.body}';
         }
-
-        // Proceed with your code (e.g., sending the request)
       } else {
         // Handle the case where one or more variables are empty or null
         Get.snackbar('Error', 'Please fill in all required fields.');
@@ -228,7 +335,7 @@ class VisitDoc {
   VisitDoc({required this.visitId, required this.fileName});
 
   Map<String, dynamic> toJson() => {
-        'visitId': visitId,
-        'fileName': fileName,
-      };
+    'visitId': visitId,
+    'fileName': fileName,
+  };
 }
