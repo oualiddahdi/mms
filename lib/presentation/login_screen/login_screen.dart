@@ -73,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: EdgeInsets.only(left: 16.v, top: 68.v, right: 16.v),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
+
               Text(
                 "lbl_sign_in".tr(),
                 style: CustomTextStyles.labelLargePrimary
