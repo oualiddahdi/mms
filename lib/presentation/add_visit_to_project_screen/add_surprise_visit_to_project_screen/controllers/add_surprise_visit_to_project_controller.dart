@@ -64,18 +64,18 @@ class AddSurpriseVisitToProjectController extends GetxController {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Select Image Source'),
+          title: const Text('Select Image Source'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: Text('Camera'),
+                  child: const Text('Camera'),
                   onTap: () async {
                     Navigator.pop(context);
                     await pickImage(ImageSource.camera);
                   },
                 ),
-                Padding(padding: EdgeInsets.all(8.0)),
+                const Padding(padding: EdgeInsets.all(8.0)),
                 // GestureDetector(
                 //   child: Text('Gallery'),
                 //   onTap: () async {
@@ -96,18 +96,18 @@ class AddSurpriseVisitToProjectController extends GetxController {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Select Video Source'),
+          title: const Text('select_video_source').tr(),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: Text('Camera'),
+                  child: const Text('Camera'),
                   onTap: () async {
                     Navigator.pop(context);
                     await pickVideo(ImageSource.camera);
                   },
                 ),
-                Padding(padding: EdgeInsets.all(8.0)),
+                const Padding(padding: EdgeInsets.all(8.0)),
                 // GestureDetector(
                 //   child: Text('Gallery'),
                 //   onTap: () async {

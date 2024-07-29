@@ -108,6 +108,8 @@
   "total_value": "القيمة الاجمالية",
   "grandTotal": "الاجمالي الكلي",
   "vat15": "الضريبة المضافة 15%",
-  "grandTotalWithVAT": "الاجمالي الكلي بالضريبة 15%"
+  "grandTotalWithVAT": "الاجمالي الكلي بالضريبة 15%",
+  "select_video_source": "اختر مصدر الفيديو",
+  "camera": "الكاميرا"
 
 }

@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:jhijri/_src/_jHijri.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:project_portal/core/utils/api_constants.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
 import 'package:project_portal/core/utils/pref_utils.dart';
@@ -67,6 +68,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   @override

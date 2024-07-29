@@ -102,6 +102,8 @@
   "quantity_schedule": "Quantity schedule",
   "grandTotal": "Grand Total",
   "vat15": "15% VAT",
-  "grandTotalWithVAT": "Grand Total with 15% VAT"
+  "grandTotalWithVAT": "Grand Total with 15% VAT",
+  "select_video_source": "Select Video Source",
+  "camera": "Camera"
 
 }
