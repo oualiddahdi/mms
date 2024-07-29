@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
@@ -42,11 +43,11 @@ class SurpriseVisitPageFive extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'أضافة صورة',
+                                'add_image',
                                 style: TextStyle(
                                     color: ColorConstant.black900,
                                     fontSize: 14),
-                              ),
+                              ).tr(),
                               IconButton(
                                 icon: const Icon(Icons.add_box,
                                     color: ColorConstant.primaryColor),
@@ -91,11 +92,11 @@ class SurpriseVisitPageFive extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'أضافة فيديو',
+                                'add_video',
                                 style: TextStyle(
                                     color: ColorConstant.black900,
                                     fontSize: 14),
-                              ),
+                              ).tr(),
                               IconButton(
                                 icon: const Icon(Icons.add_box,
                                     color: ColorConstant.primaryColor),
@@ -130,22 +131,22 @@ class SurpriseVisitPageFive extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        'بيانات التقرير والتوقيت',
+                     Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: const Text(
+                        'report_and_timing',
                         style: TextStyle(
                             color: ColorConstant.black900, fontSize: 14),
-                      ),
+                      ).tr(),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(largePaddingSize),
-                      child: Text(
-                        'وقت البدء',
+                     Padding(
+                      padding: const EdgeInsets.all(largePaddingSize),
+                      child: const Text(
+                        'start_time',
                         style: TextStyle(
                             color: ColorConstant.black900,
                             fontSize: smallFontSize),
-                      ),
+                      ).tr(),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
@@ -162,7 +163,7 @@ class SurpriseVisitPageFive extends StatelessWidget {
                             autofocus: false,
                             enabled: false,
                             hintStyle: const TextStyle(fontSize: smallFontSize),
-                            hintText: "Enter start date (dd-MM-yyyy)",
+                            hintText: "enter_start_date",
                             textInputType: TextInputType.datetime,
                             textStyle: const TextStyle(fontSize: smallFontSize),
                             prefix: Padding(
@@ -179,14 +180,14 @@ class SurpriseVisitPageFive extends StatelessWidget {
                                 top: 15, right: 30, bottom: 15)),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(largePaddingSize),
-                      child: Text(
-                        'وقت الأنتهاء',
+                     Padding(
+                      padding: const EdgeInsets.all(largePaddingSize),
+                      child: const Text(
+                        'end_time',
                         style: TextStyle(
                             color: ColorConstant.black900,
                             fontSize: smallFontSize),
-                      ),
+                      ).tr(),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
@@ -203,7 +204,7 @@ class SurpriseVisitPageFive extends StatelessWidget {
                             autofocus: false,
                             enabled: false,
                             hintStyle: const TextStyle(fontSize: smallFontSize),
-                            hintText: "Enter end date (dd-MM-yyyy)",
+                            hintText: "enter_end_date",
                             textInputType: TextInputType.datetime,
                             textStyle: const TextStyle(fontSize: smallFontSize),
                             prefix: Padding(
@@ -220,42 +221,41 @@ class SurpriseVisitPageFive extends StatelessWidget {
                                 top: 15, right: 30, bottom: 15)),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(largePaddingSize),
-                      child: Text(
-                        'التقرير  * ',
+                     Padding(
+                      padding: const EdgeInsets.all(largePaddingSize),
+                      child: const Text(
+                        'report',
                         style: TextStyle(
                             color: ColorConstant.black900,
                             fontSize: smallFontSize),
-                      ),
+                      ).tr(),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
-                          left: largePaddingSize,
-                          right: largePaddingSize,
-                          bottom: largePaddingSize),
+                        left: largePaddingSize,
+                        right: largePaddingSize,
+                        bottom: largePaddingSize,
+                      ),
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
-                      child: Flexible(
-                        child: CustomTextFormField(
-                            controller: controller.reportVisualsController,
-                            autofocus: false,
-                            textInputType: TextInputType.multiline,
-                            hintStyle: const TextStyle(
-                              fontSize: smallFontSize,
-                            ),
-                            textStyle: const TextStyle(
-                              fontSize: smallFontSize,
-                            ),
-                            maxLines: 7,
-                            hintText: "",
-                            prefixConstraints:
-                                const BoxConstraints(maxHeight: 48),
-                            contentPadding:
-                                const EdgeInsets.all(largePaddingSize)),
+                      child: TextFormField(
+                        controller: controller.reportVisualsController,
+                        autofocus: false,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 10, // Allows the text field to expand vertically
+                        style: const TextStyle(fontSize: smallFontSize),
+                        decoration: InputDecoration(
+                          hintText: "", // Add your desired hint text here
+                          hintStyle: const TextStyle(fontSize: smallFontSize),
+                          contentPadding: const EdgeInsets.all(largePaddingSize),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          prefixIconConstraints: const BoxConstraints(maxHeight: 48),
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

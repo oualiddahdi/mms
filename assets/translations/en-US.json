@@ -104,6 +104,24 @@
   "vat15": "15% VAT",
   "grandTotalWithVAT": "Grand Total with 15% VAT",
   "select_video_source": "Select Video Source",
-  "camera": "Camera"
+  "camera": "Camera",
+  "add_image": "Add Image",
+  "add_video": "Add Video",
+  "report_and_timing": "Report and Timing",
+  "start_time": "Start Time",
+  "end_time": "End Time",
+  "report": "Report",
+  "enter_start_date": "Enter start date (dd-MM-yyyy)",
+  "enter_end_date": "Enter end date (dd-MM-yyyy)",
+  "report_description": "Report Description",
+  "logout": "logout",
+  "change_password": "Change Password",
+  "current_password": "Current Password",
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password",
+  "lbl_password": "Password",
+  "lbl_new_password": "New Password",
+  "confirm_password_hint": "Confirm Password",
+  "change_password_button": "Change Password"
 
 }

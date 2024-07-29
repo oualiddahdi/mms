@@ -110,6 +110,24 @@
   "vat15": "الضريبة المضافة 15%",
   "grandTotalWithVAT": "الاجمالي الكلي بالضريبة 15%",
   "select_video_source": "اختر مصدر الفيديو",
-  "camera": "الكاميرا"
+  "camera": "الكاميرا",
+  "add_image": "أضافة صورة",
+  "add_video": "أضافة فيديو",
+  "report_and_timing": "بيانات التقرير والتوقيت",
+  "start_time": "وقت البدء",
+  "end_time": "وقت الأنتهاء",
+  "report": "التقرير",
+  "enter_start_date": "أدخل تاريخ البدء (يوم-شهر-سنة)",
+  "enter_end_date": "أدخل تاريخ الانتهاء (يوم-شهر-سنة)",
+  "report_description": "وصف التقرير",
+  "logout": "تسجيل خروج",
+  "change_password": "تغيير كلمة المرور",
+  "current_password": "كلمة المرور الحالية",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_password": "تأكيد كلمة المرور",
+  "lbl_password": "كلمة المرور",
+  "lbl_new_password": "كلمة المرور الجديدة",
+  "confirm_password_hint": "تأكيد كلمة المرور",
+  "change_password_button": "تغيير كلمة المرور"
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project_portal/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project_portal/presentation/account_screen/binding/account_binding.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/add_aesthetic_visit_to_project_screen.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/binding/add_aesthetic_visit_to_project_binding.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/add_daily_visit_to_project_screen.dart';
@@ -22,6 +23,7 @@ import 'package:project_portal/modules/home/content/about_app/about_app_screen.d
 import 'package:project_portal/modules/home/content/messages/messages_screen.dart';
 import 'package:project_portal/modules/home/content/notifications/notifications_screen.dart';
 import 'package:project_portal/presentation/list_projcts_screen/list_projcts_screen.dart';
+import 'package:project_portal/presentation/otp_screen/binding/otp_binding.dart';
 import 'package:project_portal/presentation/otp_screen/otp_screen.dart';
 import 'package:project_portal/presentation/quantity_schedule_screen/quantity_schedule_screen.dart';
 import 'package:project_portal/presentation/recover_password_screen/binding/recover_password_binding.dart';
@@ -30,6 +32,7 @@ import 'package:project_portal/presentation/settings_screen/settings_screen.dart
 import 'package:project_portal/modules/home/content/tasks/tasks_screen.dart';
 import 'package:project_portal/modules/home/content/visits/visits_screen.dart';
 import 'package:project_portal/presentation/language_screen/language_screen.dart';
+import '../presentation/account_screen/account_screen.dart';
 import '../presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/binding/visits_to_project_details_binding.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
 import '../presentation/splash_screen/binding/splash_binding.dart';
@@ -49,6 +52,8 @@ class AppRoutes {
   static const String otpScreen = '/otp_screen';
 
   static const String recoverPasswordScreen = '/recover_password_screen';
+
+  static const String accountScreen = '/account_screen';
 
   static const String homePage = '/home_page';
 
@@ -140,7 +145,14 @@ class AppRoutes {
       name: otpScreen,
       page: () => const OtpScreen(),
       bindings: [
-        ForgotPasswordBinding(),
+        OtpBinding(),
+      ],
+    ),
+    GetPage(
+      name: accountScreen,
+      page: () => const AccountScreen(),
+      bindings: [
+        AccountBinding(),
       ],
     ),
     GetPage(

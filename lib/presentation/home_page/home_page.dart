@@ -18,6 +18,7 @@ import '../../core/utils/color_constant.dart';
 import '../../modules/home/content/about_app/about_app_screen.dart';
 import '../../modules/home/content/messages/messages_screen.dart';
 import '../../modules/home/content/notifications/notifications_screen.dart';
+import '../../routes/app_routes.dart';
 import '../list_projcts_screen/list_projcts_screen.dart';
 import '../settings_screen/settings_screen.dart';
 import '../../modules/home/content/tasks/tasks_screen.dart';
@@ -130,8 +131,8 @@ class _HomePageState extends State<HomePage> {
             buildListTile(
                 'settings', MaterialSymbols.settings, const SettingsScreen()),
 
-            // Add the logout tile
-            buildLogoutTile(context),
+            buildLogoutTile(
+                'logout', MaterialSymbols.logout),
 
             _infoTile('appVersion', _packageInfo.version)
           ],
@@ -142,31 +143,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildLogoutTile(BuildContext context) {
-    return ListTile(
-      leading:
-          const Icon(MaterialSymbols.logout, color: ColorConstant.primaryColor),
-      title: const Text(
-        'Logout',
-        style: TextStyle(color: ColorConstant.primaryColor),
-      ).tr(),
-      onTap: () {
-        homeController.logout();
-      },
-    );
-  }
 
   // Method to create a ListTile for the drawer
   Padding buildListTile(String titleKey, IconData icon, Widget content) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(1.0),
       child: ListTile(
-        leading: Icon(icon, size: 16.v, color: ColorConstant.blue500),
+        leading: Icon(icon, size: 14.v, color: ColorConstant.blue500),
         title: Text(titleKey,
-                style: TextStyle(color: ColorConstant.black900, fontSize: 16.v))
+                style: TextStyle(color: ColorConstant.black900, fontSize: 14.v))
             .tr(),
         trailing: Icon(Icons.arrow_forward_ios,
-            size: 16.v, color: ColorConstant.blue500),
+            size: 14.v, color: ColorConstant.blue500),
         onTap: () {
           // Close the drawer and update the screen and title
           Navigator.pop(context);
@@ -174,6 +162,24 @@ class _HomePageState extends State<HomePage> {
             currentScreen = content;
             appBarTitle = titleKey;
           });
+        },
+      ),
+    );
+  }
+
+  // Method to create a ListTile for the drawer
+  Padding buildLogoutTile(String titleKey, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.all(1.0),
+      child: ListTile(
+        leading: Icon(icon, size: 14.v, color: ColorConstant.blue500),
+        title: Text(titleKey,
+            style: TextStyle(color: ColorConstant.black900, fontSize: 14.v))
+            .tr(),
+        trailing: Icon(Icons.arrow_forward_ios,
+            size: 14.v, color: ColorConstant.blue500),
+        onTap: () {
+          homeController.logout();
         },
       ),
     );
@@ -193,39 +199,47 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topCenter,
                 width: 50,
                 height: 50,
+                padding: const EdgeInsets.all(8.0),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: NetworkImage(
                         'https://googleflutter.com/sample_image.jpg'),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               flex: 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // User name and role
                   Text(
                     'محمد خالد',
                     style: TextStyle(
                       color: ColorConstant.black900,
-                      fontSize: 16.v,
+                      fontSize: 18, // Adjusted font size
+                      fontWeight: FontWeight.bold, // Added bold
                     ),
                   ),
                   Text(
                     'جهة مالكة',
                     style: TextStyle(
                       color: ColorConstant.black900,
-                      fontSize: 16.v,
+                      fontSize: 14, // Adjusted font size
                     ),
                   ),
                 ],
               ),
+            ),
+            IconButton(
+              icon: Icon(Icons.arrow_forward_ios,
+                  size: 16.v, color: ColorConstant.black900),
+              onPressed: () {
+                Get.toNamed(AppRoutes.accountScreen,);
+              },
             ),
           ],
         ),
