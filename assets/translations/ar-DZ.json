@@ -137,5 +137,7 @@
   "employee_name": "أسم الموظف",
   "phone": "رقم هاتف",
   "email": "البريد الالكتروني",
-  "change_password": "تغيير كلمة المرور"
+  "change_password": "تغيير كلمة المرور",
+  "phone_number_verification": "التحقق من رقم الهاتف",
+  "please_enter_verification_code": "برجاء إدخال رمز التحقق الذي تم إرساله على رقم الهاتف الخاص بك"
 }

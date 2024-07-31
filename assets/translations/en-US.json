@@ -131,5 +131,7 @@
   "position": "Position",
   "employee_name": "Employee Name",
   "phone": "Phone",
-  "email": "Email"
+  "email": "Email",
+  "phone_number_verification": "Phone Number Verification",
+  "please_enter_verification_code": "Please enter the verification code sent to your phone number."
 }

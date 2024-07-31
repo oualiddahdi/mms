@@ -38,14 +38,14 @@ class _OtpScreenState extends State<OtpScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "lbl_Profile_verification",
+                  "phone_number_verification", // English text
                   style: CustomTextStyles.labelLargePrimary.copyWith(
                     fontSize: 20.0.v,
                   ),
                 ).tr(),
                 SizedBox(height: 28.v),
                 Text(
-                  "lbl_Profile_verification_d",
+                  "please_enter_verification_code", // English text
                   style: CustomTextStyles.labelMediumBluegray300
                       .copyWith(fontSize: 14.0.v),
                 ).tr(),
@@ -71,7 +71,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 SizedBox(height: 16.v),
                 CustomElevatedButton(
                   height: getVerticalSize(56),
-                  text: "lbl_confirm",
+                  text: "lbl_confirm", // English text
                   margin: getMargin(top: 20),
                   backgroundColor: ColorConstant.primaryColor,
                   shape: ButtonShape.RoundedBorder10,
