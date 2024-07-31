@@ -1,5 +1,5 @@
+import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:project_portal/core/utils/api_constants.dart';
@@ -11,11 +11,18 @@ import 'package:project_portal/presentation/visits_to_project_screen/models/visi
 class VisitsToProjectDetailsController extends GetxController {
   late final Project project;
   final Dio _dio = Dio();
+  var visitsModel = Rx<VisitsModel?>(null);
 
   @override
   void onInit() {
     super.onInit();
     project = Get.arguments as Project;
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    fetchAndSaveVisits(); // Load data when the page is ready
   }
 
   Future<VisitsModel> fetchAndSaveVisits() async {
@@ -34,19 +41,17 @@ class VisitsToProjectDetailsController extends GetxController {
       if (response.statusCode == 200) {
         final responseData = response.data;
 
-        // Debug the response data
-        print('Response data: $responseData');
-
-        // Convert the response data directly to Projects
-        final VisitsModel visitsModel = VisitsModel.fromJson(responseData);
+        // تحويل البيانات إلى VisitsModel
+        final visitsModel = VisitsModel.fromJson(responseData);
+        // تحديث قيمة visitsModel في المتغير
+        this.visitsModel.value = visitsModel;
 
         print('visits object: $visitsModel');
 
-        return visitsModel;
+        return visitsModel; // إرجاع VisitsModel
       } else {
         print('Failed to load projects. Status code: ${response.statusCode}');
-        throw Exception(
-            'Failed to load projects. Status code: ${response.statusCode}');
+        throw Exception('Failed to load projects. Status code: ${response.statusCode}');
       }
     } catch (e, s) {
       log('Error fetching projects', stackTrace: s, error: e);
@@ -55,7 +60,7 @@ class VisitsToProjectDetailsController extends GetxController {
   }
 
   // Function to navigate to the second page
-  void goToSecondPage(screen) {
+  void goToSecondPage(String screen) {
     Get.offNamed(screen, arguments: project);
   }
 }

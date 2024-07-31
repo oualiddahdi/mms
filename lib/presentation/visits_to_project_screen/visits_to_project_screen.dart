@@ -16,6 +16,7 @@ import 'package:project_portal/presentation/visits_to_project_screen/models/visi
 import 'package:project_portal/widgets/custom_app_bar.dart';
 import 'package:project_portal/widgets/custom_image_view.dart';
 
+import '../../core/utils/date_utils.dart';
 import '../../routes/app_routes.dart';
 
 class VisitsToProjectDetailsScreen extends StatefulWidget {
@@ -29,7 +30,7 @@ class VisitsToProjectDetailsScreen extends StatefulWidget {
 class _VisitsToProjectDetailsScreenState
     extends State<VisitsToProjectDetailsScreen> {
   final VisitsToProjectDetailsController _detailsController =
-      Get.put(VisitsToProjectDetailsController());
+  Get.put(VisitsToProjectDetailsController());
 
   final VisitsTypeController _typeController = Get.put(VisitsTypeController());
 
@@ -59,8 +60,7 @@ class _VisitsToProjectDetailsScreenState
             child: Scaffold(
               backgroundColor: ColorConstant.whiteA700,
               appBar: CustomAppBar(
-                title:
-                    '${'visits'.tr()} (${_detailsController.project.contractName})',
+                title: '${'visits'.tr()} (${_detailsController.project.contractName})',
                 showMoreIcon: false,
                 controller: null,
                 project: null,
@@ -76,19 +76,15 @@ class _VisitsToProjectDetailsScreenState
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(width: 1, color: Colors.grey),
-                              borderRadius:
-                                  BorderRadius.circular(smallPaddingSize),
+                              borderRadius: BorderRadius.circular(smallPaddingSize),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: smallPaddingSize),
+                              padding: const EdgeInsets.symmetric(horizontal: smallPaddingSize),
                               child: CustomDropdown(
-                                listItemStyle:
-                                    const TextStyle(fontSize: smallFontSize),
+                                listItemStyle: const TextStyle(fontSize: smallFontSize),
                                 items: itemSections,
                                 hintText: 'types_of_visits'.tr(),
-                                hintStyle:
-                                    const TextStyle(fontSize: smallFontSize),
+                                hintStyle: const TextStyle(fontSize: smallFontSize),
                                 controller: jobRoleCtrl,
                               ),
                             ),
@@ -99,8 +95,7 @@ class _VisitsToProjectDetailsScreenState
                             margin: const EdgeInsets.all(smallPaddingSize),
                             decoration: BoxDecoration(
                               color: ColorConstant.primaryColor,
-                              borderRadius:
-                                  BorderRadius.circular(smallPaddingSize),
+                              borderRadius: BorderRadius.circular(smallPaddingSize),
                             ),
                             child: InkWell(
                               onTap: () {
@@ -109,17 +104,13 @@ class _VisitsToProjectDetailsScreenState
                               child: Padding(
                                 padding: const EdgeInsets.all(largePaddingSize),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    const Text(
-                                      'add_a_visit',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: smallFontSize),
-                                    ).tr(),
-                                    const Icon(Icons.add,
-                                        color: ColorConstant.whiteA700),
+                                    Text(
+                                      'add_a_visit'.tr(),
+                                      style: const TextStyle(color: Colors.white, fontSize: smallFontSize),
+                                    ),
+                                    const Icon(Icons.add, color: ColorConstant.whiteA700),
                                   ],
                                 ),
                               ),
@@ -129,7 +120,7 @@ class _VisitsToProjectDetailsScreenState
                       ],
                     ),
                   ),
-                  _buildScrollableList(),
+                  Expanded(child: _buildScrollableList()), // Wrap in Expanded to fill remaining space
                 ],
               ),
             ),
@@ -139,72 +130,57 @@ class _VisitsToProjectDetailsScreenState
     );
   }
 
-  _buildScrollableList() {
+  Widget _buildScrollableList() {
     return FutureBuilder<VisitsModel>(
       future: _detailsController.fetchAndSaveVisits(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else if (snapshot.hasData &&
-            snapshot.data != null &&
-            snapshot.data!.visits.isEmpty) {
-          return Center(child: Text('No visits available.'));
-        } else {
+          return Center(child: Text('Error: ${snapshot.error}'.tr()));
+        } else if (snapshot.hasData && snapshot.data != null && snapshot.data!.visits.isEmpty) {
+          return Center(child: Text('No visits available.'.tr()));
+        } else if (snapshot.hasData && snapshot.data != null) {
           List<Visit> visits = snapshot.data!.visits;
 
-          return Expanded(
-            child: SingleChildScrollView(
-              // Wrap with SingleChildScrollView
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true, // Important: Set shrinkWrap to true
-                    itemCount: visits.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  VisitDetailScreen(visit: visits[index]),
-                            ),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Container(
-                            padding: const EdgeInsets.only(bottom: 18, top: 18),
-                            margin: const EdgeInsets.all(smallFontSize),
-                            decoration: ShapeDecoration(
-                              color: ColorConstant.primarySilverB3B3B3,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _buildInfoText('Visit From',
-                                    visits[index].visitFrom.toString()),
-                                _buildInfoText('Code',
-                                    'Visit ${visits[index].id.toString()}'),
-                                _buildInfoText('Type of Visit', 'زيارة مفاجأه'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
+          return ListView.builder(
+            itemCount: visits.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VisitDetailScreen(visit: visits[index]),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(bottom: 18, top: 18),
+                    margin: const EdgeInsets.all(smallFontSize),
+                    decoration: ShapeDecoration(
+                      color: ColorConstant.primarySilverB3B3B3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildInfoText('date_of_visit',formatDate(visits[index].visitFrom.toString())),
+                        _buildInfoText('code', 'Visit ${visits[index].id.toString()}'),
+                        _buildInfoText('type_of_visit', 'زيارة مفاجأه'),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           );
         }
+        return const SizedBox.shrink(); // In case no data or error
       },
     );
   }
@@ -263,17 +239,19 @@ class _VisitsToProjectDetailsScreenState
     );
   }
 
-  Padding buildListTile(String titleKey, image, screen) {
+  Padding buildListTile(String titleKey, String? image, String? screen) {
     return Padding(
       padding: const EdgeInsets.all(smallPaddingSize),
       child: ListTile(
-        leading: CustomImageView(imagePath: image),
+        leading: image != null ? CustomImageView(imagePath: image) : null,
         title: Text(
           titleKey,
           style: const TextStyle(fontSize: smallFontSize),
         ).tr(),
         onTap: () {
-          Get.find<VisitsToProjectDetailsController>().goToSecondPage(screen);
+          if (screen != null) {
+            Get.find<VisitsToProjectDetailsController>().goToSecondPage(screen);
+          }
         },
       ),
     );
@@ -294,15 +272,15 @@ class _VisitsToProjectDetailsScreenState
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ).tr(),
-          SizedBox(
-            width: 10.v,
+          SizedBox(width: 10.v),
+          Text(
+            " : ",
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              color: ColorConstant.primaryColor,
+              fontSize: 12.v,
+            ),
           ),
-          Text(" : ",
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: ColorConstant.primaryColor,
-                fontSize: 12.v,
-              )),
           Text(
             value,
             textAlign: TextAlign.start,

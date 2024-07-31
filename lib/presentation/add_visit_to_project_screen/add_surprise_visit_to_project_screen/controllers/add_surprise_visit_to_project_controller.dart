@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart' as el;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,6 @@ import 'package:video_player/video_player.dart';
 import 'package:path/path.dart' as path;
 
 import 'package:http/http.dart' as http;
-
 
 import '../../../../core/network/network_info.dart';
 import '../../../../core/utils/api_constants.dart';
@@ -58,18 +58,17 @@ class AddSurpriseVisitToProjectController extends GetxController {
     return isTextFieldsFilled && hasMedia;
   }
 
-
   Future<void> showImageSourceDialog(BuildContext context) async {
     await showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Image Source'),
+          title: Text(el.tr('select_image_source')),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: const Text('Camera'),
+                  child: Text(el.tr('camera')),
                   onTap: () async {
                     Navigator.pop(context);
                     await pickImage(ImageSource.camera);
@@ -77,7 +76,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
                 ),
                 const Padding(padding: EdgeInsets.all(8.0)),
                 // GestureDetector(
-                //   child: Text('Gallery'),
+                //   child: Text(el.tr('gallery')),
                 //   onTap: () async {
                 //     Navigator.pop(context);
                 //     await pickImage(ImageSource.gallery);
@@ -96,12 +95,12 @@ class AddSurpriseVisitToProjectController extends GetxController {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('select_video_source').tr(),
+          title: Text(el.tr('select_video_source')),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: const Text('Camera'),
+                  child: Text(el.tr('camera')),
                   onTap: () async {
                     Navigator.pop(context);
                     await pickVideo(ImageSource.camera);
@@ -109,7 +108,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
                 ),
                 const Padding(padding: EdgeInsets.all(8.0)),
                 // GestureDetector(
-                //   child: Text('Gallery'),
+                //   child: Text(el.tr('gallery')),
                 //   onTap: () async {
                 //     Navigator.pop(context);
                 //     await pickVideo(ImageSource.gallery);
@@ -122,7 +121,6 @@ class AddSurpriseVisitToProjectController extends GetxController {
       },
     );
   }
-
 
   Future<void> pickImage(ImageSource source) async {
     final permissionStatus = await requestPermission(Permission.camera);
@@ -137,7 +135,7 @@ class AddSurpriseVisitToProjectController extends GetxController {
         }
       }
     } else {
-      Get.snackbar('Permission Denied', 'Camera access is required to take pictures.');
+      Get.snackbar(el.tr('permission_denied_camera'), el.tr('permission_denied_camera_message'));
     }
   }
 
@@ -154,22 +152,19 @@ class AddSurpriseVisitToProjectController extends GetxController {
         }
       }
     } else {
-      Get.snackbar('Permission Denied', 'Camera access is required to record videos.');
+      Get.snackbar(el.tr('permission_denied_video'), el.tr('permission_denied_video_message'));
     }
   }
-
 
   Future<PermissionStatus> requestPermission(Permission permission) async {
     final status = await permission.request();
     if (status.isDenied) {
       // يمكنك طلب الإذن مرة أخرى هنا إذا رغبت في ذلك.
       // يمكن أيضًا تقديم رسالة للمستخدم لتوضيح سبب الحاجة للإذن.
-      Get.snackbar('Permission Denied', 'Please grant the necessary permissions.');
+      Get.snackbar(el.tr('permission_denied'), el.tr('please_grant_permissions'));
     }
     return status;
   }
-
-
 
   Future<void> initializeVideoPlayer(String videoPath) async {
     videoPlayerController = VideoPlayerController.file(File(videoPath))
@@ -242,16 +237,11 @@ class AddSurpriseVisitToProjectController extends GetxController {
           visitFrom != '' &&
           visitTo != '' &&
           note != '') {
-        // Combine images and videos into a single list
         List<XFile> allFiles = [];
         allFiles.addAll(images);
         allFiles.addAll(videos);
+        List<File> visitDocList = allFiles.map((file) => File(file.path)).toList();
 
-        // Create list of File objects for visitDoc
-        List<File> visitDocList =
-        allFiles.map((file) => File(file.path)).toList();
-
-        // Construct the body of the request
         final token = Get.find<PrefUtils>().getToken();
         final Map<String, dynamic> body = {
           'proj_id': project.projectId,
@@ -261,22 +251,18 @@ class AddSurpriseVisitToProjectController extends GetxController {
           'note': note,
         };
 
-        // Prepare the request
         var request = http.MultipartRequest(
           'POST',
           Uri.parse(ApiService.visits),
         );
 
-        // Add headers
         request.headers['Authorization'] = 'Bearer $token';
         request.headers['Content-Type'] = 'multipart/form-data';
 
-        // Add fields to request
         body.forEach((key, value) {
           request.fields[key] = value.toString();
         });
 
-        // Add files to request
         for (var file in visitDocList) {
           final extension = path.extension(file.path).toLowerCase();
           request.files.add(
@@ -290,40 +276,36 @@ class AddSurpriseVisitToProjectController extends GetxController {
           );
         }
 
-        // Show progress dialog if needed
         ProgressDialogUtils.showProgressDialog();
-
-        // Check network availability if needed
         await NetworkUtil.isNetworkAvailable();
 
-        // Send the request
         var streamedResponse = await request.send();
-
-        // Get the response
         var response = await http.Response.fromStream(streamedResponse);
 
-        // Hide progress dialog
         ProgressDialogUtils.hideProgressDialog();
 
-        // Handle the response
         if (response.statusCode == 200) {
-          // Handle success
-          print('Visit submitted successfully: ${response.body}');
-          // You can handle the successful response here
+          // Show success dialog
+          Get.defaultDialog(
+            title: el.tr('success'),
+            middleText: el.tr('visit_submitted_successfully'),
+            onConfirm: () {
+              Get.back(); // Navigate back
+              Get.back(result: true); // Pass a result back to the previous page if needed
+            },
+            textConfirm: el.tr('ok'),
+          );
         } else {
-          // Handle failure
           print('HTTP Error ${response.statusCode}: ${response.body}');
           throw 'HTTP Error ${response.statusCode}: ${response.body}';
         }
       } else {
-        // Handle the case where one or more variables are empty or null
-        Get.snackbar('Error', 'Please fill in all required fields.');
+        Get.snackbar(el.tr('error'), el.tr('please_fill_required_fields'));
       }
     } catch (error, stackTrace) {
-      // Handle errors
       ProgressDialogUtils.hideProgressDialog();
       Logger.log(error, stackTrace: stackTrace);
-      Get.snackbar('Error', 'Failed to submit visit');
+      Get.snackbar(el.tr('error'), el.tr('failed_to_submit_visit'));
     }
   }
 }

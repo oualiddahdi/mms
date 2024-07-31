@@ -133,5 +133,22 @@
   "phone": "Phone",
   "email": "Email",
   "phone_number_verification": "Phone Number Verification",
-  "please_enter_verification_code": "Please enter the verification code sent to your phone number."
+  "please_enter_verification_code": "Please enter the verification code sent to your phone number.",
+  "select_image_source": "Select Image Source",
+  "gallery": "Gallery",
+  "permission_denied_camera": "Permission Denied",
+  "permission_denied_camera_message": "Camera access is required to take pictures.",
+  "permission_denied_video": "Permission Denied",
+  "permission_denied_video_message": "Camera access is required to record videos.",
+  "please_grant_permissions": "Please grant the necessary permissions.",
+  "success": "Success",
+  "visit_submitted_successfully": "Visit submitted successfully.",
+  "ok": "OK",
+  "error": "Error",
+  "please_fill_required_fields": "Please fill in all required fields.",
+  "failed_to_submit_visit": "Failed to submit visit",
+  "Code": "Code",
+  "Type of Visit": "Type of Visit",
+  "date_of_visit": "Date of visit"
+
 }

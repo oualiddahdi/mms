@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
+import 'package:project_portal/core/utils/date_utils.dart';
 import 'package:project_portal/presentation/visit_detail_screen/image_view_screen.dart';
 import 'package:project_portal/presentation/visit_detail_screen/video_player_screen.dart';
 import 'package:project_portal/presentation/visits_to_project_screen/models/visits_model.dart';
@@ -22,7 +23,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   Widget build(BuildContext context) {
     List<VisitDoc> docs = widget.visit.visitDoc;
     bool hasImages = docs.any((doc) =>
-        doc.fileName.endsWith('.jpeg') || doc.fileName.endsWith('.png'));
+    doc.fileName.endsWith('.jpeg') || doc.fileName.endsWith('.png'));
     bool hasVideos = docs.any((doc) => doc.fileName.endsWith('.mp4'));
 
     return SafeArea(
@@ -51,14 +52,27 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildInfoText(
-                        'visit_from'.tr(), widget.visit.visitFrom.toString()),
+                        'visit_from'.tr(),formatDate(widget.visit.visitFrom.toString())),
                     _buildInfoText(
-                        'visit_to'.tr(), widget.visit.visitTo.toString()),
-                    _buildInfoText('note'.tr(), widget.visit.note),
-                    // Add more details as needed
+                        'visit_to'.tr(), formatDate(widget.visit.visitTo.toString())),
+
                   ],
                 ),
               ),
+
+              Container(
+                padding: const EdgeInsets.all(14),
+                margin: EdgeInsets.all(16),
+                decoration: ShapeDecoration(
+                  color: ColorConstant.primarySilverB3B3B3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: _buildInfoText('note'.tr(), widget.visit.note),
+
+              ),
+
               if (hasImages || hasVideos)
                 Container(
                   padding: const EdgeInsets.all(14),
@@ -117,20 +131,22 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 color: ColorConstant.primaryColor,
                 fontSize: 12,
               )),
-          Text(
-            value,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: ColorConstant.textColor,
-              fontSize: 12,
+          Expanded(
+            child: Text(
+              value,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: ColorConstant.textColor,
+                fontSize: 12,
+              ),
             ),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
           ),
         ],
       ),
     );
   }
+
+
 
   Widget _buildDocumentsList(List<VisitDoc> docs) {
     List<Widget> imageWidgets = [];
@@ -151,7 +167,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
       for (int i = 0; i < widgets.length; i += 2) {
         Widget firstItem = widgets[i];
         Widget secondItem =
-            i + 1 < widgets.length ? widgets[i + 1] : SizedBox.shrink();
+        i + 1 < widgets.length ? widgets[i + 1] : SizedBox.shrink();
         rows.add(
           Row(
             children: [
@@ -201,7 +217,12 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               ),
             ).tr(),
             const SizedBox(height: 10),
-            ..._buildRows(videoWidgets),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+              child: Row(
+                children: _buildRows(videoWidgets),
+              ),
+            ),
           ],
         ),
       );
@@ -224,6 +245,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         },
         child: Container(
           height: 200,
+          width: 200, // Constrain the width of the image container
           padding: const EdgeInsets.all(8.0),
           child: Image.network(
             fullUrl,
@@ -234,7 +256,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 child: CircularProgressIndicator(
                   value: loadingProgress.expectedTotalBytes != null
                       ? loadingProgress.cumulativeBytesLoaded /
-                          (loadingProgress.expectedTotalBytes ?? 1)
+                      (loadingProgress.expectedTotalBytes ?? 1)
                       : null,
                 ),
               );
@@ -252,6 +274,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         },
         child: Container(
           height: 200,
+          width: 200, // Constrain the width of the video container
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: Colors.grey[300],
@@ -261,8 +284,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         ),
       );
     } else {
-      return SizedBox
-          .shrink(); // Return an empty SizedBox if file type is not supported
+      return SizedBox.shrink(); // Return an empty SizedBox if file type is not supported
     }
   }
 

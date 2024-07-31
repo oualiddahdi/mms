@@ -139,5 +139,19 @@
   "email": "البريد الالكتروني",
   "change_password": "تغيير كلمة المرور",
   "phone_number_verification": "التحقق من رقم الهاتف",
-  "please_enter_verification_code": "برجاء إدخال رمز التحقق الذي تم إرساله على رقم الهاتف الخاص بك"
+  "please_enter_verification_code": "برجاء إدخال رمز التحقق الذي تم إرساله على رقم الهاتف الخاص بك",
+  "select_image_source": "اختر مصدر الصورة",
+  "gallery": "المعرض",
+  "permission_denied_camera": "إذن مرفوض",
+  "permission_denied_camera_message": "الوصول إلى الكاميرا مطلوب لالتقاط الصور.",
+  "permission_denied_video": "إذن مرفوض",
+  "permission_denied_video_message": "الوصول إلى الكاميرا مطلوب لتسجيل الفيديوهات.",
+  "please_grant_permissions": "يرجى منح الأذونات المطلوبة.",
+  "success": "نجاح",
+  "visit_submitted_successfully": "تم تقديم الزيارة بنجاح.",
+  "ok": "موافق",
+  "error": "خطأ",
+  "please_fill_required_fields": "يرجى ملء جميع الحقول المطلوبة.",
+  "failed_to_submit_visit": "فشل في تقديم الزيارة",
+  "date_of_visit": "تاريخ الزيارة"
 }
