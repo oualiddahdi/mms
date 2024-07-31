@@ -32,6 +32,7 @@ class ApiService extends GetConnect {
   static String get visits => '${apiUrl}visits';
   static String get visitType => '${apiUrl}visitType';
   static String get workItems => '${apiUrl}workItems';
+  static String get profile => '${apiUrl}profile?userId=1';
 
   static Future<bool> isApiUp() async {
     try {

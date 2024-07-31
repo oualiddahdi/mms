@@ -119,9 +119,17 @@
   "current_password": "Current Password",
   "new_password": "New Password",
   "confirm_password": "Confirm Password",
-  "lbl_password": "Password",
-  "lbl_new_password": "New Password",
   "confirm_password_hint": "Confirm Password",
-  "change_password_button": "Change Password"
-
+  "change_password_button": "Change Password",
+  "profile": "Profile",
+  "username": "Username",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "family_name": "Family Name",
+  "job_title": "Job Title",
+  "department": "Department",
+  "position": "Position",
+  "employee_name": "Employee Name",
+  "phone": "Phone",
+  "email": "Email"
 }

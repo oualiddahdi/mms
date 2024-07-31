@@ -19,6 +19,8 @@ import '../../modules/home/content/about_app/about_app_screen.dart';
 import '../../modules/home/content/messages/messages_screen.dart';
 import '../../modules/home/content/notifications/notifications_screen.dart';
 import '../../routes/app_routes.dart';
+import '../account_screen/profile_screen.dart';
+import '../account_screen/profile_screen.dart';
 import '../list_projcts_screen/list_projcts_screen.dart';
 import '../settings_screen/settings_screen.dart';
 import '../../modules/home/content/tasks/tasks_screen.dart';
@@ -238,7 +240,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.arrow_forward_ios,
                   size: 16.v, color: ColorConstant.black900),
               onPressed: () {
-                Get.toNamed(AppRoutes.accountScreen,);
+                Get.toNamed(AppRoutes.profileScreen,);
               },
             ),
           ],

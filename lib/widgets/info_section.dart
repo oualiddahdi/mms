@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project_portal/core/utils/size_utils.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
@@ -16,7 +17,7 @@ class InfoSection extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(color: ColorConstant.black900),
-        ),
+        ).tr(),
         SizedBox(height: 10.v), // Spacing between label and content
         Container(
           width: double.maxFinite,

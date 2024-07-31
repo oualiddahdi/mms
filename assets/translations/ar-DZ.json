@@ -121,13 +121,21 @@
   "enter_end_date": "أدخل تاريخ الانتهاء (يوم-شهر-سنة)",
   "report_description": "وصف التقرير",
   "logout": "تسجيل خروج",
-  "change_password": "تغيير كلمة المرور",
   "current_password": "كلمة المرور الحالية",
   "new_password": "كلمة المرور الجديدة",
   "confirm_password": "تأكيد كلمة المرور",
-  "lbl_password": "كلمة المرور",
-  "lbl_new_password": "كلمة المرور الجديدة",
   "confirm_password_hint": "تأكيد كلمة المرور",
-  "change_password_button": "تغيير كلمة المرور"
-
+  "change_password_button": "تغيير كلمة المرور",
+  "profile": "الملف الشخصي",
+  "username": "أسم المستخدم",
+  "first_name": "الأسم الاول",
+  "last_name": "الأسم الاخير",
+  "family_name": "أسم العائلة",
+  "job_title": "مسمى الوظيفي",
+  "department": "الادارة",
+  "position": "المنصب الأداري",
+  "employee_name": "أسم الموظف",
+  "phone": "رقم هاتف",
+  "email": "البريد الالكتروني",
+  "change_password": "تغيير كلمة المرور"
 }

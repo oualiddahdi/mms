@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:project_portal/modules/home/content/ir_requests/ir_requests_screen.dart';
-import 'package:project_portal/presentation/account_screen/binding/account_binding.dart';
+import 'package:project_portal/presentation/account_screen/binding/profile_binding.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/add_aesthetic_visit_to_project_screen.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_aesthetic_visit_to_project_screen/binding/add_aesthetic_visit_to_project_binding.dart';
 import 'package:project_portal/presentation/add_visit_to_project_screen/add_daily_visit_to_project_screen/add_daily_visit_to_project_screen.dart';
@@ -32,7 +32,7 @@ import 'package:project_portal/presentation/settings_screen/settings_screen.dart
 import 'package:project_portal/modules/home/content/tasks/tasks_screen.dart';
 import 'package:project_portal/modules/home/content/visits/visits_screen.dart';
 import 'package:project_portal/presentation/language_screen/language_screen.dart';
-import '../presentation/account_screen/account_screen.dart';
+import '../presentation/account_screen/profile_screen.dart';
 import '../presentation/add_visit_to_project_screen/add_periodic_visit_to_project_screen/binding/visits_to_project_details_binding.dart';
 import '../presentation/login_screen/binding/login_binding.dart';
 import '../presentation/splash_screen/binding/splash_binding.dart';
@@ -53,7 +53,7 @@ class AppRoutes {
 
   static const String recoverPasswordScreen = '/recover_password_screen';
 
-  static const String accountScreen = '/account_screen';
+  static const String profileScreen = '/account_screen';
 
   static const String homePage = '/home_page';
 
@@ -149,10 +149,10 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: accountScreen,
-      page: () => const AccountScreen(),
+      name: profileScreen,
+      page: () =>  ProfileScreen(),
       bindings: [
-        AccountBinding(),
+        ProfileBinding(),
       ],
     ),
     GetPage(

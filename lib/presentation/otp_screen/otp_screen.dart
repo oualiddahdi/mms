@@ -38,14 +38,14 @@ class _OtpScreenState extends State<OtpScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "lbl_account_verification",
+                  "lbl_Profile_verification",
                   style: CustomTextStyles.labelLargePrimary.copyWith(
                     fontSize: 20.0.v,
                   ),
                 ).tr(),
                 SizedBox(height: 28.v),
                 Text(
-                  "lbl_account_verification_d",
+                  "lbl_Profile_verification_d",
                   style: CustomTextStyles.labelMediumBluegray300
                       .copyWith(fontSize: 14.0.v),
                 ).tr(),
