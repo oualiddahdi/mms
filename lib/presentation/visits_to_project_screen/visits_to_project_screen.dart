@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 import 'package:project_portal/controller/visits_type_controller.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
 import 'package:project_portal/core/utils/image_constant.dart';
@@ -44,6 +45,18 @@ class _VisitsToProjectDetailsScreenState
     'weekly_contractor_visit'.tr(),
     'aesthetic_visit'.tr()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // استدعاء fetchAndSaveVisits عند فتح الصفحة
+    _detailsController.fetchAndSaveVisits();
+
+    // الاستماع إلى النتيجة الممررة من الصفحة السابقة
+    if (Get.arguments != null && Get.arguments == true) {
+      _detailsController.fetchAndSaveVisits(); // تحديث البيانات
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

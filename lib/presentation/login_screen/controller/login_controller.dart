@@ -20,7 +20,7 @@ class LoginController extends GetxController {
   void onTapSignIn(username, password, context) async {
     final body = {
       'username': 'ADMIN123',
-      'password': 'Abc@1234567',
+      'password': 'Abc@12345',
     };
 
     try {

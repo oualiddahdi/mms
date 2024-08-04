@@ -25,6 +25,11 @@ class VisitsToProjectDetailsController extends GetxController {
     fetchAndSaveVisits(); // Load data when the page is ready
   }
 
+  void onPageResume() {
+    fetchAndSaveVisits();
+  }
+
+
   Future<VisitsModel> fetchAndSaveVisits() async {
     try {
       final token = Get.find<PrefUtils>().getToken();
@@ -61,6 +66,9 @@ class VisitsToProjectDetailsController extends GetxController {
 
   // Function to navigate to the second page
   void goToSecondPage(String screen) {
-    Get.offNamed(screen, arguments: project);
+    Get.offNamed(screen, arguments: project)?.then((_) {
+      onPageResume();
+    });
   }
+
 }
