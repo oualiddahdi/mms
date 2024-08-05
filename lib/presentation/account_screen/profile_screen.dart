@@ -25,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
           future: profileController.fetchAndSaveProfile(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                                     if (progress == null) {
                                       return child;
                                     } else {
-                                      return Center(child: CircularProgressIndicator());
+                                      return const Center(child: CircularProgressIndicator());
                                     }
                                   },
                                   errorBuilder: (context, error, stackTrace) {
@@ -95,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                             InfoSection(label: "family_name", content: profile.familyName),
                             InfoSection(label: "job_title", content: job_title), // Add logic if available
                             InfoSection(label: "department", content: profile.userDept.deptName),
-                            InfoSection(label: "position", content: ""), // Add logic if available
+                            const InfoSection(label: "position", content: ""), // Add logic if available
                             InfoSection(label: "employee_name", content: profile.employeeName),
                             InfoSection(label: "phone", content: profile.mobileNumber),
                             InfoSection(label: "email", content: profile.email),
@@ -117,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                 ],
               );
             } else {
-              return Center(child: Text('No data available'));
+              return const Center(child: Text('No data available'));
             }
           },
         ),

@@ -5,9 +5,12 @@ import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:get/instance_manager.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:project_portal/core/utils/api_constants.dart';
 import 'package:project_portal/core/utils/image_constant.dart';
 import 'package:project_portal/core/utils/size_utils.dart';
 import 'package:project_portal/modules/home/content/ir_requests/ir_requests_screen.dart';
+import 'package:project_portal/presentation/account_screen/controller/profile_controller.dart';
+import 'package:project_portal/presentation/account_screen/models/profile_model.dart';
 import 'package:project_portal/presentation/home_page/controller/home_controller.dart';
 import 'package:project_portal/presentation/home_screen/home_screen.dart';
 import 'package:project_portal/widgets/custom_image_view.dart';
@@ -37,6 +40,7 @@ class HomePage extends StatefulWidget {
 // Define the state for the HomePage widget
 class _HomePageState extends State<HomePage> {
   final HomeController homeController = Get.find<HomeController>();
+  final ProfileController profileController = Get.find<ProfileController>();
 
   PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
@@ -188,64 +192,116 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Method to create the user drawer header
-  userDrawerHeader() {
-    return SizedBox(
-      height: 150,
-      child: DrawerHeader(
-        decoration: const BoxDecoration(),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.topCenter,
-                width: 50,
-                height: 50,
-                padding: const EdgeInsets.all(8.0),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://googleflutter.com/sample_image.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            const Expanded(
-              flex: 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+  Widget userDrawerHeader() {
+    return FutureBuilder<ProfileModel>(
+      future: profileController.fetchAndSaveProfile(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error, color: Colors.red, size: 40),
+              SizedBox(height: 8),
+              Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.red)),
+            ],
+          ));
+        } else if (!snapshot.hasData) {
+          return const Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.info_outline, color: Colors.blue, size: 40),
+              SizedBox(height: 8),
+              Text('No data available', style: TextStyle(color: Colors.blue)),
+            ],
+          ));
+        } else {
+          final profile = snapshot.data!.profile;
+          final locale = EasyLocalization.of(context)!.locale;
+
+          String job_title;
+          if (locale.languageCode == 'ar') {
+            job_title = profile.userDept.deptName; // Arabic
+          } else {
+            job_title = profile.userDept.nameEng; // English
+          }
+          return SizedBox(
+            height: 150,
+            child: DrawerHeader(
+              decoration: const BoxDecoration(),
+              child: Row(
                 children: [
-                  Text(
-                    'محمد خالد',
-                    style: TextStyle(
-                      color: ColorConstant.black900,
-                      fontSize: 18, // Adjusted font size
-                      fontWeight: FontWeight.bold, // Added bold
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: NetworkImage(ApiService.apiUrlDoc + profile.profileImageName),
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        child: Image.network(
+                          ApiService.apiUrlDoc + profile.profileImageName,
+                          fit: BoxFit.scaleDown,
+                          loadingBuilder: (context, child, progress) {
+                            if (progress == null) {
+                              return child;
+                            } else {
+                              return const Center(child: CircularProgressIndicator());
+                            }
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset(
+                              ImageConstant.imgLogo,
+                              fit: BoxFit.scaleDown,
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                  Text(
-                    'جهة مالكة',
-                    style: TextStyle(
-                      color: ColorConstant.black900,
-                      fontSize: 14, // Adjusted font size
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${profile.firstName} ${profile.lastName}', // Updated to use dynamic first and last name
+                          style: const TextStyle(
+                            color: ColorConstant.black900,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          job_title, // Updated to use dynamic role
+                          style: const TextStyle(
+                            color: ColorConstant.black900,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.arrow_forward_ios,
+                        size: 16, color: ColorConstant.black900),
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.profileScreen,);
+                    },
                   ),
                 ],
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.arrow_forward_ios,
-                  size: 16.v, color: ColorConstant.black900),
-              onPressed: () {
-                Get.toNamed(AppRoutes.profileScreen,);
-              },
-            ),
-          ],
-        ),
-      ),
+          );
+        }
+      },
     );
   }
 

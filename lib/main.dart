@@ -6,17 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:jhijri/_src/_jHijri.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:project_portal/core/utils/api_constants.dart';
 import 'package:project_portal/core/utils/color_constant.dart';
 import 'package:project_portal/core/utils/pref_utils.dart';
-import 'package:project_portal/core/utils/shared_preferences_manager.dart';
+import 'package:project_portal/presentation/account_screen/controller/profile_controller.dart';
 import 'package:project_portal/presentation/home_page/controller/home_controller.dart';
 import 'package:project_portal/presentation/language_screen/controllers/language_controller.dart';
 import 'package:project_portal/presentation/splash_screen/binding/splash_binding.dart';
 import 'package:project_portal/routes/app_routes.dart';
-import 'package:project_portal/src/jhijri/jhijri_widgets.dart';
 import 'package:project_portal/theme/theme_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -38,6 +34,7 @@ void main() async {
 
   Get.put(PrefUtils());
   Get.put(HomeController());
+  Get.put(ProfileController());
 
   // Initialize FlutterSecureStorage for storing the selected language
   const storage = FlutterSecureStorage();
